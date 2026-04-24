@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b6l0g0leo5rsd"]
+
+[ext_resource type="Script" uid="uid://1q51bqnm67hd" path="res://scripts/csvLoad.gd" id="1_ogwb4"]
+[ext_resource type="Script" uid="uid://cyxgklkp18p1u" path="res://scripts/questionCreator.gd" id="2_gav6b"]
+[ext_resource type="PackedScene" uid="uid://cq4d1b7svj2oe" path="res://scenes/UI/QuestionButton.tscn" id="3_fy4c5"]
+
+[node name="UI" type="Control" unique_id=1315497776]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FileReader" type="Node" parent="." unique_id=1451778774]
+script = ExtResource("1_ogwb4")
+
+[node name="QuestionCreator" type="Node" parent="." unique_id=392487764]
+script = ExtResource("2_gav6b")
+
+[node name="QuestionContainer" type="Control" parent="QuestionCreator" unique_id=1231753533]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Questions" type="HSplitContainer" parent="QuestionCreator/QuestionContainer" unique_id=1205022102]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = 130.0
+offset_right = 475.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(0, 0, 0)
+dragging_enabled = false
+
+[node name="QuestionButton" parent="QuestionCreator/QuestionContainer/Questions" unique_id=858431687 instance=ExtResource("3_fy4c5")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestionButton2" parent="QuestionCreator/QuestionContainer/Questions" unique_id=1282551959 instance=ExtResource("3_fy4c5")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestionButton3" parent="QuestionCreator/QuestionContainer/Questions" unique_id=1199964673 instance=ExtResource("3_fy4c5")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestionButton4" parent="QuestionCreator/QuestionContainer/Questions" unique_id=1382926619 instance=ExtResource("3_fy4c5")]
+layout_mode = 2
+size_flags_horizontal = 3
