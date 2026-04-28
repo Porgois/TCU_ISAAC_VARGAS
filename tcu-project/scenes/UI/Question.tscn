@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b85cxm2qm8gpe"]
+
+[ext_resource type="Script" uid="uid://bgvrrnj0a3wwi" path="res://scripts/script_object/question.gd" id="1_p8oae"]
+
+[node name="Question" type="Control" unique_id=1149820754]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8oae")

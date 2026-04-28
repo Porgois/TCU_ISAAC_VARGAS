@@ -23,28 +23,51 @@ func loadCSVAsArray(csv_path: String) -> Array:
 		
 	# Close file
 	file.close()
-	
 	# Return read text array
 	return text_array
 
 # Return an array of questions
-func textToQuestion(text_array : Array) -> Array[Question]:
-	var questions : Array[Question] = []
-	
+func textToQuestions(text_array: Array) -> Array[Question]:
+	var questions: Array[Question] = []
+	var current_question: Question = null
+
 	for element in text_array:
-		if element.size() < 2:
-			continue
-			
-		var question : Question = Question.new()
-		question.text = element[0]
-		question.is_correct = element[1].to_lower() == "true" # yes if 'TRUE' no if anything else
-		
-		questions.append(question)
-		
+		# Pad the element so we can safely access index 0 and 1
+		while element.size() < 2:
+			element.append("")
+
+		var cell_a: String = element[0].strip_edges()
+		var cell_b: String = element[1].strip_edges()
+		var is_correct: bool = cell_b.to_lower() == "true"
+
+		if cell_b == "":
+			# No value in column B → this is a question prompt row
+			if current_question != null:
+				questions.append(current_question)
+
+			current_question = Question.new()
+			current_question.setQuestionPrompt(cell_a)
+		else:
+			# Has a column B value (option row)
+			if current_question == null:
+				printerr("WARNING: Option row found before any question prompt: ", element)
+				continue
+
+			var option = QuestionOption.new()
+			option.text = cell_a
+			option.is_correct = is_correct
+			current_question.addQuestionOption(option)
+
+	# Save last question
+	if current_question != null:
+		questions.append(current_question)
+
 	return questions
 
-func printCSVArray(text_array : Array):
-	if (!text_array.is_empty()):
-		print("FILE CONTENT:\n")
-		for element in text_array:
-			print(element)
+
+func printQuestions(questions: Array[Question]):
+	for q in questions:
+		print("Question: ", q.question_prompt)
+		for opt in q.options:
+			print("  Option: ", opt.text, " | Correct: ", opt.is_correct)
+		print("")

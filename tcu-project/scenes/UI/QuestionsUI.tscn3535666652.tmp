@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3p4xmm6au5ab" path="res://scripts/programFlow.gd" id="1_fy4c5"]
 [ext_resource type="Script" uid="uid://1q51bqnm67hd" path="res://scripts/csvLoad.gd" id="1_ogwb4"]
+[ext_resource type="Script" uid="uid://cyxgklkp18p1u" path="res://scripts/questionCreator.gd" id="2_gav6b"]
 
 [node name="UI" type="Control" unique_id=1315497776 node_paths=PackedStringArray("question_label", "options_container")]
 layout_mode = 3
@@ -19,7 +20,9 @@ options_container = NodePath("QuestionCreator/OptionsContainer")
 [node name="FileReader" type="Node" parent="." unique_id=1451778774]
 script = ExtResource("1_ogwb4")
 
-[node name="QuestionCreator" type="Node" parent="." unique_id=392487764]
+[node name="QuestionCreator" type="Node" parent="." unique_id=392487764 node_paths=PackedStringArray("options_container")]
+script = ExtResource("2_gav6b")
+options_container = NodePath("")
 
 [node name="QuestionPrompt" type="Control" parent="QuestionCreator" unique_id=1286003033]
 layout_mode = 3

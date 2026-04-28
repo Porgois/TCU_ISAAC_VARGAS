@@ -1,5 +1,13 @@
 class_name Question
-extends Resource
+extends Node
 
-var text : String
-var is_correct : bool
+# Stores the actual question prompt
+var question_prompt : String = ""
+# Stores the options related to the question
+var options : Array[QuestionOption] = []
+
+func setQuestionPrompt(text : String = ""):
+	self.question_prompt = text
+
+func addQuestionOption(option : QuestionOption):
+	self.options.append(option)
