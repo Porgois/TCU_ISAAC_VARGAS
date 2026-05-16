@@ -14,14 +14,26 @@ func _ready() -> void:
 	loadQuiz("res://csvImports/QuestionExamples1.csv")
 
 func loadQuiz(csv_path: String):
+	# Create support classes
 	var reader = FileReader.new()
 	var raw = reader.loadCSVAsArray(csv_path)
+	
+	
 	questions = reader.textToQuestions(raw)
 	showQuestion(current_index)
 
 func showQuestion(index: int):
+	# Quest done
 	if index >= questions.size():
 		question_label.text = "Quiz completed!\nYour score is: " + str(score) + ".\n"
+		
+		# Create image with score
+		var img_generator : ImageGenerator = ImageGenerator.new()
+		add_child(img_generator)
+		
+		await img_generator.create_image("Congratulations!", str(score))
+		img_generator.queue_free()
+		
 		return
 
 	var q: Question = questions[index]
