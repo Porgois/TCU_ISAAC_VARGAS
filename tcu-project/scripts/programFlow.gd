@@ -1,4 +1,4 @@
-class_name ProgramFlow
+class_name QuizHandler
 extends Control
 
 @export var question_label : RichTextLabel
@@ -6,37 +6,46 @@ extends Control
 
 var button_scene = preload("res://scenes/UI/QuestionButton.tscn")
 
-var questions: Array[Question] = []
+var current_quiz : Quiz = null
 var current_index: int = 0
 var score : int = 0
 
+## MOVE THIS SOMEWHERE ELSE
 func _ready() -> void:
-	loadQuiz("res://csvImports/QuestionExamples1.csv")
+	if QuizManager.getQuiz() == null:
+		current_quiz = loadQuiz("res://csvImports/QuestionExamples1.csv")
+	else:
+		current_quiz = QuizManager.getQuiz()
+	
+	showQuestion(current_index)
 
-func loadQuiz(csv_path: String):
+func loadQuiz(csv_path: String) -> Quiz:
 	# Create support classes
 	var reader = FileReader.new()
 	var raw = reader.loadCSVAsArray(csv_path)
 	
-	
-	questions = reader.textToQuestions(raw)
-	showQuestion(current_index)
+	# Create and return quiz
+	var quiz = Quiz.new()
+	quiz.name = csv_path.get_file()
+	quiz.questions = reader.textToQuestions(raw)
+
+	return quiz
 
 func showQuestion(index: int):
 	# Quest done
-	if index >= questions.size():
+	if index >= current_quiz.questions.size():
 		question_label.text = "Quiz completed!\nYour score is: " + str(score) + ".\n"
 		
 		# Create image with score
 		var img_generator : ImageGenerator = ImageGenerator.new()
 		add_child(img_generator)
 		
-		await img_generator.create_image("Congratulations!", str(score))
+		await img_generator.create_image("Congratulations ", str(score))
 		img_generator.queue_free()
 		
 		return
 
-	var q: Question = questions[index]
+	var q: Question = current_quiz.questions[index]
 
 	# Set your question label
 	question_label.text = q.question_prompt

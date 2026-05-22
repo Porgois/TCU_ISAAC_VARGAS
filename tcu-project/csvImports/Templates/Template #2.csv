@@ -1,0 +1,10 @@
+Yay or Nay?,
+Yay,TRUE
+Yay,FALSE
+NAY,TRUE
+Nay,FALSE
+Andrew or Sarah?,
+Andrew,FALSE
+Sarah,FALSE
+Neither,FALSE
+Both,TRUE

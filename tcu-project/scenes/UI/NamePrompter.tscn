@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://c21k8owqkhw0v"]
+
+[ext_resource type="Script" uid="uid://bn52wxeow6rva" path="res://scripts/namePrompter.gd" id="1_27a60"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://Themes/default_theme.tres" id="1_s14h5"]
+
+[node name="NamePrompter" type="Control" unique_id=717873203 node_paths=PackedStringArray("input_menu", "confirmation", "input_field")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_27a60")
+input_menu = NodePath("InputMenu")
+confirmation = NodePath("Confirmation")
+input_field = NodePath("InputMenu/InputField")
+
+[node name="InputMenu" type="Control" parent="." unique_id=1289813602]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Prompt" type="Label" parent="InputMenu" unique_id=875972730]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 324.0
+offset_top = 215.0
+offset_right = 788.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s14h5")
+text = "Hello! What is your name?"
+
+[node name="InputField" type="LineEdit" parent="InputMenu" unique_id=425610009]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 332.0
+offset_top = 286.0
+offset_right = 780.0
+offset_bottom = 333.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="InputMenu" unique_id=1253294990]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 430.0
+offset_top = 332.0
+offset_right = 683.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_s14h5")
+theme_override_font_sizes/font_size = 30
+text = "Save"
+
+[node name="Confirmation" type="Control" parent="." unique_id=1366254429]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextSaved" type="Label" parent="Confirmation" unique_id=1117662783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -27.5
+offset_right = 128.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s14h5")
+text = "Named saved!"
+
+[connection signal="pressed" from="InputMenu/Save" to="." method="_on_save_pressed"]

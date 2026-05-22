@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://be6um43qj5jgs"]
+
+[ext_resource type="Script" uid="uid://wy2litakryq3" path="res://scripts/templateLoadMenu.gd" id="1_ih5ko"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://Themes/default_theme.tres" id="2_wsqt1"]
+
+[node name="TemplateLoadingMenu" type="Control" unique_id=1477583910 node_paths=PackedStringArray("menu_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ih5ko")
+menu_container = NodePath("MenuContainer/OptionsContainer")
+
+[node name="MenuContainer" type="Control" parent="." unique_id=2013402490]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="MenuContainer" unique_id=1332066347]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -98.0
+offset_right = 313.0
+offset_bottom = -49.0
+grow_vertical = 0
+theme = ExtResource("2_wsqt1")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MenuContainer" unique_id=670063714]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 100.0
+offset_right = 313.0
+offset_bottom = 332.0
+theme_override_constants/separation = 8
+
+[node name="LoadMenu" type="Label" parent="MenuContainer/OptionsContainer" unique_id=1748063808]
+layout_mode = 2
+theme = ExtResource("2_wsqt1")
+text = "LOAD"
+
+[connection signal="pressed" from="MenuContainer/Back" to="." method="_on_back_pressed"]

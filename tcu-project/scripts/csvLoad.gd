@@ -8,7 +8,7 @@ func loadCSVAsArray(csv_path: String) -> Array:
 	var file = FileAccess.open(csv_path, FileAccess.READ)
 	
 	if (file == null):
-		printerr("ERROR: no '.CSV' file found at: ", csv_path)
+		printerr("ERROR: No '.CSV' file found at: ", csv_path)
 		return text_array
 	
 	# Read file
@@ -63,7 +63,6 @@ func textToQuestions(text_array: Array) -> Array[Question]:
 		questions.append(current_question)
 
 	return questions
-
 
 func printQuestions(questions: Array[Question]):
 	for q in questions:
