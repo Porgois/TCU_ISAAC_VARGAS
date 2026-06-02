@@ -14,7 +14,7 @@ var font_size : int = 32
 var label_gap : float = 30.0
 var pred_score_text : String = "Your score was: "
 
-func create_image(title_text : String = "Congratulations", score_text : String = "No score provided!", width : int = image_width, \
+func createImage(title_text : String = "Congratulations", score_text : String = "No score provided!", width : int = image_width, \
 	height : int = image_height, color : Color = default_color) -> bool:
 	# Create viewport and set values
 	var viewport : SubViewport = SubViewport.new()
@@ -41,8 +41,8 @@ func create_image(title_text : String = "Congratulations", score_text : String =
 	center.add_child(vbox)
 	
 	# Add text labels
-	add_label(vbox, title_text + QuizManager.getUserName() + "!")
-	add_label(vbox, pred_score_text + score_text)
+	addLabel(vbox, title_text + QuizManager.getUserName() + "!")
+	addLabel(vbox, pred_score_text + score_text)
 	
 	# Viewport render
 	await RenderingServer.frame_post_draw
@@ -61,7 +61,7 @@ func create_image(title_text : String = "Congratulations", score_text : String =
 	print("[IMAGE CREATION] Image saved succesfully to: %s" % default_export_path)
 	return true
 
-func add_label(vbox : VBoxContainer, text : String = "No text given!"):
+func addLabel(vbox : VBoxContainer, text : String = "No text given!"):
 	# Label
 	var label : Label = Label.new()
 	label.text = text

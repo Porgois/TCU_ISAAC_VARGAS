@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dpi66hx1nrc1d"]
+
+[ext_resource type="Material" uid="uid://brrhsut0tp76v" path="res://materials/basicMaterials/basic_material.tres" id="1_g4g6k"]
+[ext_resource type="PackedScene" uid="uid://b6l0g0leo5rsd" path="res://scenes/ui/QuestionsUI.tscn" id="2_tjfso"]
+[ext_resource type="Shader" uid="uid://70tcvy0thkk0" path="res://shaders/palette_limit.gdshader" id="3_i4boc"]
+[ext_resource type="Texture2D" uid="uid://lpgeoat2thq8" path="res://palettes/apollo-1x.png" id="4_72wqw"]
+[ext_resource type="PackedScene" uid="uid://ba10ucc1glbb4" path="res://scenes/characters/characterTeacher.tscn" id="5_b52t3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72wqw"]
+shader = ExtResource("3_i4boc")
+shader_parameter/palette = ExtResource("4_72wqw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc3aw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b52t3"]
+next_pass = SubResource("ShaderMaterial_fc3aw")
+albedo_color = Color(0.3764706, 0.17254902, 0.17254902, 1)
+
+[node name="Classroom" type="Node3D" unique_id=1913309518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5797601, -1.0283958)
+
+[node name="QuizUI" parent="." unique_id=668498225 instance=ExtResource("2_tjfso")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=532407072]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=947803597]
+handle_input_locally = false
+anisotropic_filtering_level = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(288, 162)
+render_target_update_mode = 4
+
+[node name="PaletteLimit" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1868509388]
+texture_filter = 1
+material = SubResource("ShaderMaterial_72wqw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1493793670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82051265, 1.8992833)
+fov = 65.0
+
+[node name="ClassBox" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport" unique_id=1546732187]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.07541317, 0.118819475, 1.0132607)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/ClassBox" unique_id=1116689254]
+transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0)
+size = Vector3(5.926819, 5.0649414, 6.514099)
+material = ExtResource("1_g4g6k")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/ClassBox" unique_id=1678465536]
+size = Vector3(5.926819, 5.0649414, 6.514099)
+
+[node name="Light1" type="SpotLight3D" parent="SubViewportContainer/SubViewport" unique_id=614744124]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.6162114, -1.2703768)
+light_energy = 16.0
+spot_range = 8.258927
+spot_angle = 30.851536
+
+[node name="Light2" type="SpotLight3D" parent="SubViewportContainer/SubViewport" unique_id=1765281242]
+transform = Transform3D(1, 0, 0, 0, -0.25618824, 0.96662694, 0, -0.96662694, -0.25618824, 0, 1.3611329, 1.4844012)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 8.258927
+spot_angle = 42.527893
+
+[node name="Table" type="CSGBox3D" parent="SubViewportContainer/SubViewport" unique_id=937009152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051361084, -1.9216084, 0.1970098)
+size = Vector3(4.0751343, 1, 0.9239502)
+material = SubResource("StandardMaterial3D_b52t3")
+
+[node name="CharacterTeacher" parent="SubViewportContainer/SubViewport" unique_id=798968730 instance=ExtResource("5_b52t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4262882, -2.1120572, -0.9426267)

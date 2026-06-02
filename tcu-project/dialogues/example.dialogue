@@ -1,0 +1,14 @@
+~ start
+Teacher: Before we start... What is your name?
+do QuizManager.promptInput()
+Teacher: Nice to meet you {{QuizManager.user_name}}! Welcome to today's quiz.
+Teacher: I'll be asking you a few questions. Do your best!
+do QuizManager.startQuiz("res://csvImports/General Trivia.csv")
+Teacher: Well done for finishing the quiz!
+Teacher: You scored {{QuizManager.score}} out of {{QuizManager.total}}!
+do QuizManager.showCompletionImage()
+Teacher: Here's your certificate...
+Teacher: Thanks for participating. 
+Teacher: I will see you soon!
+do QuizManager.goToMenu()
+=> END

@@ -1,10 +1,39 @@
 [gd_scene format=3 uid="uid://b6l0g0leo5rsd"]
 
-[ext_resource type="Script" uid="uid://d3p4xmm6au5ab" path="res://scripts/programFlow.gd" id="1_fy4c5"]
-[ext_resource type="Script" uid="uid://1q51bqnm67hd" path="res://scripts/csvLoad.gd" id="1_ogwb4"]
-[ext_resource type="Script" uid="uid://dds1bn71n5mvo" path="res://scripts/imageGenerator.gd" id="3_fy4c5"]
+[ext_resource type="Script" uid="uid://d3p4xmm6au5ab" path="res://scripts/quizUI.gd" id="1_fy4c5"]
+[ext_resource type="Script" uid="uid://b60snxa5gq8rf" path="res://scripts/characterInterpreter.gd" id="2_h320r"]
+[ext_resource type="Script" uid="uid://ctwarpxgaerb3" path="res://scripts/voiceReader.gd" id="3_t06i4"]
+[ext_resource type="AudioStream" uid="uid://yoth6n8fo4g0" path="res://audio/voice/default_animalese/sound01.wav" id="4_beld4"]
+[ext_resource type="AudioStream" uid="uid://jx71jq2seiso" path="res://audio/voice/default_animalese/sound02.wav" id="5_mdba6"]
+[ext_resource type="AudioStream" uid="uid://khmjl5nnxj7t" path="res://audio/voice/default_animalese/sound03.wav" id="6_xbguw"]
+[ext_resource type="AudioStream" uid="uid://cybiba6aimisp" path="res://audio/voice/default_animalese/sound04.wav" id="7_rajpt"]
+[ext_resource type="AudioStream" uid="uid://dpsw8mub5de8j" path="res://audio/voice/default_animalese/sound05.wav" id="8_4bgwq"]
+[ext_resource type="AudioStream" uid="uid://dinqa324rmvo4" path="res://audio/voice/default_animalese/sound06.wav" id="9_x3ies"]
+[ext_resource type="AudioStream" uid="uid://bmew6uvlmvs6i" path="res://audio/voice/default_animalese/sound07.wav" id="10_jyer2"]
+[ext_resource type="AudioStream" uid="uid://nerp6nehh6id" path="res://audio/voice/default_animalese/sound08.wav" id="11_dd7vc"]
+[ext_resource type="AudioStream" uid="uid://c0felnmbhssf3" path="res://audio/voice/default_animalese/sound09.wav" id="12_l84ib"]
+[ext_resource type="AudioStream" uid="uid://bru3v2a66yj3s" path="res://audio/voice/default_animalese/sound10.wav" id="13_6fgn3"]
+[ext_resource type="AudioStream" uid="uid://s7uv2418vi4b" path="res://audio/voice/default_animalese/sound11.wav" id="14_rkt3p"]
+[ext_resource type="AudioStream" uid="uid://b605sdhwuw0jq" path="res://audio/voice/default_animalese/sound12.wav" id="15_oexe6"]
+[ext_resource type="AudioStream" uid="uid://6i230uu8iuul" path="res://audio/voice/default_animalese/sound13.wav" id="16_a3ioq"]
+[ext_resource type="AudioStream" uid="uid://dt7fw58oaqmb8" path="res://audio/voice/default_animalese/sound14.wav" id="17_1m3ck"]
+[ext_resource type="AudioStream" uid="uid://d4kw4lf8n26qy" path="res://audio/voice/default_animalese/sound15.wav" id="18_3p3hu"]
+[ext_resource type="AudioStream" uid="uid://bnlt07dy8atjj" path="res://audio/voice/default_animalese/sound16.wav" id="19_jbwqg"]
+[ext_resource type="AudioStream" uid="uid://bk6qthnhvixgf" path="res://audio/voice/default_animalese/sound17.wav" id="20_4bgst"]
+[ext_resource type="AudioStream" uid="uid://yxv7mb0m5tnf" path="res://audio/voice/default_animalese/sound18.wav" id="21_0440c"]
+[ext_resource type="AudioStream" uid="uid://44tsiqfx7qnk" path="res://audio/voice/default_animalese/sound19.wav" id="22_uj0mi"]
+[ext_resource type="AudioStream" uid="uid://usv8jaqk272x" path="res://audio/voice/default_animalese/sound20.wav" id="23_3acp5"]
+[ext_resource type="AudioStream" uid="uid://bchb3jihrpevv" path="res://audio/voice/default_animalese/sound21.wav" id="24_ey0kp"]
+[ext_resource type="AudioStream" uid="uid://o3dxdyn6fyxs" path="res://audio/voice/default_animalese/sound22.wav" id="25_0r7o7"]
+[ext_resource type="AudioStream" uid="uid://chdplmj4olrd0" path="res://audio/voice/default_animalese/sound23.wav" id="26_wubrk"]
+[ext_resource type="AudioStream" uid="uid://dtfi02eevn4wu" path="res://audio/voice/default_animalese/sound24.wav" id="27_nqetf"]
+[ext_resource type="AudioStream" uid="uid://btnxsyphushm6" path="res://audio/voice/default_animalese/sound25.wav" id="28_f5ae7"]
+[ext_resource type="AudioStream" uid="uid://d24dflert3ggl" path="res://audio/voice/default_animalese/sound26.wav" id="29_286m5"]
+[ext_resource type="AudioStream" uid="uid://bsteu2dqc7gm3" path="res://audio/voice/default_animalese/sound30.wav" id="30_mdba6"]
 
-[node name="UI" type="Control" unique_id=1315497776 node_paths=PackedStringArray("question_label", "options_container")]
+[node name="QuizUI" type="CanvasLayer" unique_id=668498225]
+
+[node name="UI" type="Control" parent="." unique_id=1315497776 node_paths=PackedStringArray("quiz_canvas_layer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -14,67 +43,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fy4c5")
-question_label = NodePath("QuestionCreator/QuestionPrompt/PromptText")
-options_container = NodePath("QuestionCreator/OptionsContainer")
+quiz_canvas_layer = NodePath("..")
 
-[node name="FileReader" type="Node" parent="." unique_id=1451778774]
-script = ExtResource("1_ogwb4")
+[node name="CharacterInterpreter" type="Node" parent="." unique_id=1410515159 node_paths=PackedStringArray("voice_reader")]
+process_priority = 10
+script = ExtResource("2_h320r")
+voice_reader = NodePath("../VoiceReader")
 
-[node name="QuestionCreator" type="Node" parent="." unique_id=392487764]
-
-[node name="QuestionPrompt" type="Control" parent="QuestionCreator" unique_id=1286003033]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -436.0
-offset_top = 26.0
-offset_right = 436.0
-offset_bottom = 106.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PromptBackground" type="ColorRect" parent="QuestionCreator/QuestionPrompt" unique_id=2091689783]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16206557, 0.1620656, 0.16206557, 1)
-
-[node name="PromptText" type="RichTextLabel" parent="QuestionCreator/QuestionPrompt" unique_id=1718879046]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -422.0
-offset_top = -32.5
-offset_right = 422.0
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Question prompt example"
-
-[node name="OptionsContainer" type="HSplitContainer" parent="QuestionCreator" unique_id=1051283399]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -475.0
-offset_top = 130.0
-offset_right = 475.0
-offset_bottom = 215.0
-grow_horizontal = 2
-grow_vertical = 2
-split_offsets = PackedInt32Array(-1)
-dragging_enabled = false
-split_offset = -1
-
-[node name="ImageSaver" type="Node" parent="." unique_id=281057728]
-script = ExtResource("3_fy4c5")
+[node name="VoiceReader" type="Node" parent="." unique_id=1644470853]
+script = ExtResource("3_t06i4")
+audio_character_array = Array[AudioStream]([ExtResource("4_beld4"), ExtResource("5_mdba6"), ExtResource("6_xbguw"), ExtResource("7_rajpt"), ExtResource("8_4bgwq"), ExtResource("9_x3ies"), ExtResource("10_jyer2"), ExtResource("11_dd7vc"), ExtResource("12_l84ib"), ExtResource("13_6fgn3"), ExtResource("14_rkt3p"), ExtResource("15_oexe6"), ExtResource("16_a3ioq"), ExtResource("17_1m3ck"), ExtResource("18_3p3hu"), ExtResource("19_jbwqg"), ExtResource("20_4bgst"), ExtResource("21_0440c"), ExtResource("22_uj0mi"), ExtResource("23_3acp5"), ExtResource("24_ey0kp"), ExtResource("25_0r7o7"), ExtResource("26_wubrk"), ExtResource("27_nqetf"), ExtResource("28_f5ae7"), ExtResource("29_286m5"), ExtResource("30_mdba6")])

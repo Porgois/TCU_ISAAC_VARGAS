@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ba10ucc1glbb4"]
+
+[ext_resource type="Shader" uid="uid://bydm6mkv6eay8" path="res://shaders/outline.gdshader" id="1_mxk6r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ka5uc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fc3aw"]
+render_priority = 0
+shader = ExtResource("1_mxk6r")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = false
+shader_parameter/shadow_strength = 0.999999977648
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0.14509805, 0.3372549, 0.18039216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbw8g"]
+next_pass = SubResource("ShaderMaterial_fc3aw")
+albedo_color = Color(0.45882353, 0.654902, 0.2627451, 1)
+
+[sub_resource type="Animation" id="Animation_ka5uc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mxk6r"]
+resource_name = "character_idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.95, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ka5uc"]
+_data = {
+&"RESET": SubResource("Animation_ka5uc"),
+&"character_idle": SubResource("Animation_mxk6r")
+}
+
+[node name="CharacterTeacher" type="Node3D" unique_id=798968730]
+
+[node name="Pivot" type="Node3D" parent="." unique_id=106769391]
+
+[node name="Instructor" type="MeshInstance3D" parent="Pivot" unique_id=391251560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ka5uc")
+surface_material_override/0 = SubResource("StandardMaterial3D_gbw8g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1084803685]
+libraries/ = SubResource("AnimationLibrary_ka5uc")
+autoplay = &"character_idle"
