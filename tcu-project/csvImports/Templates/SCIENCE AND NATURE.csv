@@ -1,0 +1,75 @@
+What is the powerhouse of the cell?,
+Nucleus,FALSE
+Ribosome,FALSE
+Mitochondria,TRUE
+Golgi apparatus,FALSE
+What planet is closest to the Sun?,
+Venus,FALSE
+Earth,FALSE
+Mercury,TRUE
+Mars,FALSE
+What gas do plants absorb during photosynthesis?,
+Oxygen,FALSE
+Nitrogen,FALSE
+Carbon Dioxide,TRUE
+Hydrogen,FALSE
+What is the speed of light in a vacuum?,
+300000 km/s,TRUE
+150000 km/s,FALSE
+450000 km/s,FALSE
+200000 km/s,FALSE
+What is the most abundant gas in Earth's atmosphere?,
+Oxygen,FALSE
+Carbon Dioxide,FALSE
+Nitrogen,TRUE
+Argon,FALSE
+How many chromosomes do humans have?,
+23,FALSE
+36,FALSE
+46,TRUE
+48,FALSE
+What is the chemical symbol for gold?,
+Go,FALSE
+Gd,FALSE
+Au,TRUE
+Ag,FALSE
+What force keeps planets in orbit around the Sun?,
+Magnetism,FALSE
+Gravity,TRUE
+Friction,FALSE
+Electrostatic force,FALSE
+What type of animal is a salamander?,
+Reptile,FALSE
+Mammal,FALSE
+Amphibian,TRUE
+Fish,FALSE
+What is the pH of pure water?,
+6,FALSE
+7,TRUE
+8,FALSE
+9,FALSE
+Which planet has the most moons?,
+Jupiter,FALSE
+Uranus,FALSE
+Saturn,TRUE
+Neptune,FALSE
+What is the study of earthquakes called?,
+Meteorology,FALSE
+Volcanology,FALSE
+Seismology,TRUE
+Geology,FALSE
+What is the name of the process by which water turns to vapor?,
+Condensation,FALSE
+Precipitation,FALSE
+Evaporation,TRUE
+Sublimation,FALSE
+What is the nucleus of an atom made of?,
+Electrons and neutrons,FALSE
+Protons and electrons,FALSE
+Protons and neutrons,TRUE
+Neutrons and quarks,FALSE
+What is the name of the closest star to Earth?,
+Sirius,FALSE
+Betelgeuse,FALSE
+The Sun,TRUE
+Proxima Centauri,FALSE

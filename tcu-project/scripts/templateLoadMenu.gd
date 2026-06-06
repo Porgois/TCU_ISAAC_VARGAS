@@ -2,7 +2,11 @@ class_name TemplateLoad
 extends Control
 
 @export var menu_container: VBoxContainer
+@export var loaded_prompt : Label
+@export var options : Control
+
 var default_template_path: String = "res://csvImports/Templates/"
+var notification_time : float = 1.5
 
 func _ready() -> void:
 	loadTemplateButtons()
@@ -29,17 +33,48 @@ func createTemplateButton(file_name: String = "") -> void:
 	menu_container.add_child(template_button)
 
 # Loads the quiz into 'Global' so it's ready when the dialogue scene starts
-func _on_template_selected(full_path: String) -> void:
+func loadFile(full_path : String = ""):
 	var reader = FileReader.new()
 	var raw = reader.loadCSVAsArray(full_path)
 	var quiz = Quiz.new()
 	quiz.quiz_name = full_path.get_file()
 	quiz.questions = reader.textToQuestions(raw)
 	QuizManager.setQuiz(quiz)
+	
+	loadedNotification(quiz.quiz_name)
 
-#region BUTTONS
+# Displays the loaded notification
+func loadedNotification(text : String = ""):
+	options.hide()
+	
+	# Set prompt text
+	loaded_prompt.show()
+	loaded_prompt.text = "Template file '" + text + "' loaded succesfully!"
+	
+	await get_tree().create_timer(notification_time).timeout
+	loaded_prompt.hide()
+	options.show()
+
+# Opens file dialog and loads the selected file path if valid
+func browseFile():
+	var file_path : String = ""
+	
+	var file_browser : FileBrowser = FileBrowser.new()
+	get_tree().root.add_child(file_browser)
+	
+	file_path = file_browser.openFileBrowserWindow()
+	
+	if file_path != "":
+		loadFile(file_path)
+
+#region SIGNALS
+func _on_template_selected(full_path: String = "") -> void:
+	loadFile(full_path)
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")
+
+func _on_browse_pressed() -> void:
+	browseFile()
 
 #endregion

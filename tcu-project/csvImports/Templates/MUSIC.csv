@@ -1,0 +1,75 @@
+How many strings does a standard guitar have?,
+4,FALSE
+5,FALSE
+6,TRUE
+7,FALSE
+Who is known as the King of Pop?,
+Elvis Presley,FALSE
+Michael Jackson,TRUE
+Prince,FALSE
+James Brown,FALSE
+What is the term for a musical piece performed by two people?,
+Solo,FALSE
+Trio,FALSE
+Duet,TRUE
+Quartet,FALSE
+Which band recorded the album Abbey Road?,
+The Rolling Stones,FALSE
+The Beatles,TRUE
+Led Zeppelin,FALSE
+Pink Floyd,FALSE
+What is the lowest male singing voice called?,
+Tenor,FALSE
+Baritone,FALSE
+Bass,TRUE
+Alto,FALSE
+How many keys does a standard piano have?,
+72,FALSE
+76,FALSE
+88,TRUE
+92,FALSE
+Which composer wrote the Four Seasons?,
+Bach,FALSE
+Mozart,FALSE
+Vivaldi,TRUE
+Beethoven,FALSE
+What does BPM stand for in music?,
+Beats Per Minute,TRUE
+Bass Per Measure,FALSE
+Beats Per Measure,FALSE
+Bars Per Minute,FALSE
+Which instrument has 47 strings?,
+Violin,FALSE
+Cello,FALSE
+Harp,TRUE
+Lute,FALSE
+What is the name of the do re mi musical scale system?,
+Solmization,FALSE
+Solfege,TRUE
+Notation,FALSE
+Harmony,FALSE
+Who wrote the opera Carmen?,
+Verdi,FALSE
+Puccini,FALSE
+Bizet,TRUE
+Wagner,FALSE
+What note comes after G in the musical alphabet?,
+H,FALSE
+A,TRUE
+B,FALSE
+C,FALSE
+Which band featured Freddie Mercury as lead vocalist?,
+Led Zeppelin,FALSE
+Queen,TRUE
+Aerosmith,FALSE
+The Who,FALSE
+What is the time signature of a waltz?,
+2/4,FALSE
+4/4,FALSE
+3/4,TRUE
+6/8,FALSE
+How many musicians are in a quartet?,
+3,FALSE
+4,TRUE
+5,FALSE
+6,FALSE

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ba10ucc1glbb4"]
 
+[ext_resource type="Script" uid="uid://vs203lvy04be" path="res://scripts/scriptObject/teacher.gd" id="1_ka5uc"]
 [ext_resource type="Shader" uid="uid://bydm6mkv6eay8" path="res://shaders/outline.gdshader" id="1_mxk6r"]
+[ext_resource type="Resource" uid="uid://im1tyehxqbbe" path="res://teachers/teacherLarry.tres" id="2_gbw8g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ka5uc"]
 
@@ -56,6 +58,8 @@ _data = {
 }
 
 [node name="CharacterTeacher" type="Node3D" unique_id=798968730]
+script = ExtResource("1_ka5uc")
+teacher_resource = ExtResource("2_gbw8g")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=106769391]
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Teacher" format=3 uid="uid://im1tyehxqbbe"]
+
+[ext_resource type="Script" uid="uid://sgsklqyq8u70" path="res://scripts/resources/teacherResources/teacherResource.gd" id="1_6sp3g"]
+
+[resource]
+script = ExtResource("1_6sp3g")
+positive_responses = Array[String](["Well done!", "That's correct!", "Indeed.", "Thats absolutely right!", "Yes!", "You know your stuff!"])
+negative_responses = Array[String](["No...", "That's incorrect.", "I'm sorry, that's not it.", "Nope.", "Not quite.", "Almost, but no!", "C'mon..."])
+metadata/_custom_type_script = "uid://sgsklqyq8u70"

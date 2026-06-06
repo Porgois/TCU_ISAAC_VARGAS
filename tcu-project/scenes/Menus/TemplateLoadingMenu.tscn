@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wy2litakryq3" path="res://scripts/templateLoadMenu.gd" id="1_ih5ko"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_wsqt1"]
 
-[node name="TemplateLoadingMenu" type="Control" unique_id=1477583910 node_paths=PackedStringArray("menu_container")]
+[node name="TemplateLoadingMenu" type="Control" unique_id=1477583910 node_paths=PackedStringArray("menu_container", "loaded_prompt", "options")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ih5ko")
-menu_container = NodePath("MenuContainer/OptionsContainer")
+menu_container = NodePath("MenuContainer/OptionsScroll/OptionsContainer")
+loaded_prompt = NodePath("LoadedPrompt")
+options = NodePath("MenuContainer")
+
+[node name="LoadedPrompt" type="Label" parent="." unique_id=961571561]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -14.0
+offset_right = 116.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wsqt1")
+text = "Template loaded!"
 
 [node name="MenuContainer" type="Control" parent="." unique_id=2013402490]
 layout_mode = 1
@@ -20,6 +39,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Browse" type="Button" parent="MenuContainer" unique_id=627912905]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = -156.0
+offset_right = 310.0
+offset_bottom = -115.0
+grow_vertical = 0
+theme = ExtResource("2_wsqt1")
+theme_override_font_sizes/font_size = 20
+text = "Browse
+"
 
 [node name="Back" type="Button" parent="MenuContainer" unique_id=1332066347]
 layout_mode = 1
@@ -35,17 +69,26 @@ theme = ExtResource("2_wsqt1")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
-[node name="OptionsContainer" type="VBoxContainer" parent="MenuContainer" unique_id=670063714]
+[node name="LoadMenu" type="Label" parent="MenuContainer" unique_id=1748063808]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 100.0
 offset_right = 313.0
-offset_bottom = 332.0
-theme_override_constants/separation = 8
-
-[node name="LoadMenu" type="Label" parent="MenuContainer/OptionsContainer" unique_id=1748063808]
-layout_mode = 2
+offset_bottom = 128.0
 theme = ExtResource("2_wsqt1")
 text = "LOAD"
 
+[node name="OptionsScroll" type="ScrollContainer" parent="MenuContainer" unique_id=999853641]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 132.0
+offset_right = 358.0
+offset_bottom = 484.0
+
+[node name="OptionsContainer" type="VBoxContainer" parent="MenuContainer/OptionsScroll" unique_id=1565614073]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="MenuContainer/Browse" to="." method="_on_browse_pressed"]
 [connection signal="pressed" from="MenuContainer/Back" to="." method="_on_back_pressed"]

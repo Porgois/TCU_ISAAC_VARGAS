@@ -5,6 +5,7 @@ signal quiz_completed(score: int, total: int)
 
 var input_prompt_scene = preload("res://scenes/ui/NamePrompter.tscn")
 var current_quiz: Quiz = null
+var current_teacher : Teacher = null
 var user_name: String = ""
 var quiz_score: int = 0
 var total_score: int = 0
@@ -15,6 +16,14 @@ var total: int:
 	get: return total_score
 
 var active_balloon = null
+
+#region TEACHER
+
+func setTeacher(new_teacher: Teacher = null) -> void:
+	current_teacher = new_teacher
+	print("[QUIZ MANAGER] Teacher \"%s\" saved successfully!" % new_teacher)
+
+#endregion
 
 #region USER
 
@@ -89,9 +98,9 @@ func startQuiz(csv_path: String) -> void:
 		
 		if selected_option != null and selected_option.is_correct:
 			quiz_score += 1
-			feedback_text = "Teacher: Well done! That's correct!"
+			feedback_text = "Teacher: " + current_teacher.teacher_resource.get_positive_response()
 		else:
-			feedback_text = "Teacher: Not quite! Better luck next time."
+			feedback_text = "Teacher: " + current_teacher.teacher_resource.get_negative_response()
 
 		var feedback_resource = DialogueManager.create_resource_from_text(
 			"~ feedback\n%s\n=> END" % feedback_text

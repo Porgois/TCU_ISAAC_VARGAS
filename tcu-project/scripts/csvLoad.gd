@@ -23,6 +23,7 @@ func loadCSVAsArray(csv_path: String) -> Array:
 		
 	# Close file
 	file.close()
+	
 	# Return read text array
 	return text_array
 
@@ -41,7 +42,7 @@ func textToQuestions(text_array: Array) -> Array[Question]:
 		var is_correct: bool = cell_b.to_lower() == "true"
 
 		if cell_b == "":
-			# No value in column B → this is a question prompt row
+			# No value in column B, its a question prompt row
 			if current_question != null:
 				questions.append(current_question)
 
