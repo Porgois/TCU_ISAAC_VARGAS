@@ -2,7 +2,6 @@ class_name VoiceReader
 extends Node
 
 # Default values
-var default_pitch : float = 1.75
 var default_volume : float = 1.0
 
 # Audio files
@@ -12,8 +11,11 @@ var default_volume : float = 1.0
 var audio_player : AudioStreamPlayer
 
 func _ready() -> void:
+	Global.setVoiceReader(self)
+
+func setupVoiceReader():
 	audio_player = AudioStreamPlayer.new()
-	audio_player.pitch_scale = default_pitch
+	audio_player.pitch_scale = QuizManager.current_teacher.teacher_resource.voice_pitch
 	audio_player.volume_db = linear_to_db(default_volume)
 	
 	add_child(audio_player)

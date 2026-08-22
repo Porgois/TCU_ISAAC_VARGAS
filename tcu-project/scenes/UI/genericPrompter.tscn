@@ -1,20 +1,18 @@
-[gd_scene format=3 uid="uid://c21k8owqkhw0v"]
+[gd_scene format=3 uid="uid://jidit10ngqc3"]
 
-[ext_resource type="Script" uid="uid://bn52wxeow6rva" path="res://scripts/namePrompter.gd" id="1_ememf"]
-[ext_resource type="StyleBox" uid="uid://dyvu075fdxj8u" path="res://themes/styleBox/style_box_normal.tres" id="2_pwflh"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_scbfa"]
-[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="5_bu3ij"]
+[ext_resource type="Script" uid="uid://dg0wrha02cbad" path="res://scripts/genericPrompter.gd" id="1_25yha"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_tfub3"]
+[ext_resource type="StyleBox" uid="uid://dyvu075fdxj8u" path="res://themes/styleBox/style_box_normal.tres" id="3_4g86b"]
+[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="4_uuai0"]
 
-[node name="NamePrompter" type="Control" unique_id=717873203 node_paths=PackedStringArray("input_menu", "input_field")]
+[node name="GenericPrompter" type="Control" unique_id=717873203]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ememf")
-input_menu = NodePath("InputMenu")
-input_field = NodePath("InputMenu/InputField")
+script = ExtResource("1_25yha")
 
 [node name="InputMenu" type="Control" parent="." unique_id=1289813602]
 layout_mode = 1
@@ -42,15 +40,15 @@ offset_right = 224.0
 offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_scbfa")
+theme = ExtResource("2_tfub3")
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("2_pwflh")
-theme_override_styles/read_only = ExtResource("2_pwflh")
-theme_override_styles/focus = ExtResource("2_pwflh")
-placeholder_text = "Enter your name..."
+theme_override_styles/normal = ExtResource("3_4g86b")
+theme_override_styles/read_only = ExtResource("3_4g86b")
+theme_override_styles/focus = ExtResource("3_4g86b")
+placeholder_text = "Placeholder"
 
-[node name="Done" parent="InputMenu" unique_id=419576029 instance=ExtResource("5_bu3ij")]
+[node name="Done" parent="InputMenu" unique_id=419576029 instance=ExtResource("4_uuai0")]
 layout_mode = 0
 offset_left = -25.0
 offset_top = 78.0

@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://doqxtw5u8lo8d" path="res://scenes/ui/dialogueBaloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="StyleBox" uid="uid://dyvu075fdxj8u" path="res://themes/styleBox/style_box_normal.tres" id="4_4kguv"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="3_cqi42"]
+[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="5_cqi42"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -109,13 +110,6 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2xgb"]
-bg_color = Color(0, 0, 0, 0.23137255)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
 script = ExtResource("1_36de5")
@@ -162,6 +156,12 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme = ExtResource("3_cqi42")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -171,8 +171,12 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_cqi42")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 30
 text = "Dialogue..."
-seconds_per_step = 0.02
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1162966119]
 custom_minimum_size = Vector2(20, 10)
@@ -187,7 +191,7 @@ polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 libraries/ = SubResource("AnimationLibrary_1337t")
 autoplay = &"progress"
 
-[node name="ResponsesMenu" type="HBoxContainer" parent="Balloon" unique_id=903954879 node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="HBoxContainer" parent="Balloon" unique_id=903954879]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -204,17 +208,10 @@ grow_vertical = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
 script = ExtResource("3_72ixx")
-response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=914537232]
+[node name="ResponseExample" parent="Balloon/ResponsesMenu" unique_id=419576029 instance=ExtResource("5_cqi42")]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_p2xgb")
-theme_override_styles/pressed = ExtResource("4_4kguv")
-theme_override_styles/hover = ExtResource("4_4kguv")
-theme_override_styles/disabled = ExtResource("4_4kguv")
-theme_override_styles/focus = ExtResource("4_4kguv")
-text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true

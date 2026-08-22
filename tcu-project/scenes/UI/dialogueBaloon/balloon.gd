@@ -180,6 +180,11 @@ func apply_dialogue_line() -> void:
 
 ## Go to the next line
 func next(next_id: String) -> void:
+	if dialogue_resource == null:
+		# Nothing to advance to (e.g. a stray input event landed here after
+		# an externally-driven line already restored dialogue_resource to
+		# null). Safely ignore instead of crashing.
+		return
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 ## Called by QuizManager.start_quiz() to inject questions from a CSV-built resource.
@@ -250,15 +255,17 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		var was_external_line: bool = is_external_line
 		if is_waiting_for_input:
 			_on_player_advanced.emit()
-		if not is_external_line:
+		if not was_external_line:
 			next(dialogue_line.next_id)
 
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+		var was_external_line: bool = is_external_line
 		if is_waiting_for_input:
 			_on_player_advanced.emit()
-		if not is_external_line:
+		if not was_external_line:
 			next(dialogue_line.next_id)
 
 

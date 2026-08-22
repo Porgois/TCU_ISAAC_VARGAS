@@ -37,18 +37,22 @@ text = "START MENU"
 [node name="Start" type="Button" parent="MenuContainer/VBoxContainer" unique_id=1548489737]
 layout_mode = 2
 theme = ExtResource("2_ldf1p")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
 text = "Start"
 
 [node name="Load" type="Button" parent="MenuContainer/VBoxContainer" unique_id=1350062782]
 layout_mode = 2
 theme = ExtResource("2_ldf1p")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
 text = "Load"
 
 [node name="Exit" type="Button" parent="MenuContainer/VBoxContainer" unique_id=2043499657]
 layout_mode = 2
 theme = ExtResource("2_ldf1p")
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 30
 text = "Exit
 "

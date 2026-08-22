@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b7g3flgfxa2ju"]
+
+[ext_resource type="Script" uid="uid://bl8hutb2i7y62" path="res://scripts/visualScripts/matchDestinationNode.gd" id="1_7sef0"]
+[ext_resource type="Texture2D" uid="uid://blbdvo0sei4kp" path="res://icon.svg" id="2_655ew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3yg"]
+size = Vector2(32, 32)
+
+[node name="GeneralMatchDestinationNode" type="Control" unique_id=1384368825]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 110.0
+offset_top = 63.0
+offset_right = 110.0
+offset_bottom = 63.0
+script = ExtResource("1_7sef0")
+
+[node name="NodeSprite" type="Sprite2D" parent="." unique_id=1457980536]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_655ew")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1570837994]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1695764518]
+shape = SubResource("RectangleShape2D_fy3yg")
+
+[connection signal="mouse_entered" from="DetectionArea" to="." method="_on_detection_area_mouse_entered"]

@@ -46,7 +46,6 @@ script = ExtResource("1_fy4c5")
 quiz_canvas_layer = NodePath("..")
 
 [node name="CharacterInterpreter" type="Node" parent="." unique_id=1410515159 node_paths=PackedStringArray("voice_reader")]
-process_priority = 10
 script = ExtResource("2_h320r")
 voice_reader = NodePath("../VoiceReader")
 

@@ -30,6 +30,7 @@ offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_wsqt1")
+theme_override_font_sizes/font_size = 30
 text = "Template loaded!"
 
 [node name="MenuContainer" type="Control" parent="." unique_id=2013402490]
@@ -83,7 +84,7 @@ layout_mode = 0
 offset_left = 80.0
 offset_top = 132.0
 offset_right = 358.0
-offset_bottom = 484.0
+offset_bottom = 481.0
 
 [node name="OptionsContainer" type="VBoxContainer" parent="MenuContainer/OptionsScroll" unique_id=1565614073]
 layout_mode = 2

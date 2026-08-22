@@ -17,7 +17,7 @@ func onTextEntered(new_text : String = ""):
 	input_field_contents = new_text
 	print("Contents: ", input_field_contents)
 
-func _on_save_pressed() -> void:
+func _on_button_pressed() -> void:
 	QuizManager.setUserName(input_field_contents)
 	input_menu.hide()
 

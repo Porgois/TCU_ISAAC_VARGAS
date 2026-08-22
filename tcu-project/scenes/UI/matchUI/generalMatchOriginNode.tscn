@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cdinhc231qnnp"]
+
+[ext_resource type="Script" uid="uid://qpm5ixqsm21j" path="res://scripts/visualScripts/matchOriginNode.gd" id="1_v7yk8"]
+[ext_resource type="Texture2D" uid="uid://blbdvo0sei4kp" path="res://icon.svg" id="2_a0gng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3yg"]
+size = Vector2(32, 32)
+
+[node name="GeneralMatchOriginNode" type="Control" unique_id=863129241 node_paths=PackedStringArray("clickable_area")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 110.0
+offset_top = 63.0
+offset_right = 110.0
+offset_bottom = 63.0
+script = ExtResource("1_v7yk8")
+clickable_area = NodePath("ClickableArea")
+
+[node name="NodeSprite" type="Sprite2D" parent="." unique_id=1457980536]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_a0gng")
+
+[node name="ClickableArea" type="Area2D" parent="." unique_id=1570837994]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea" unique_id=1695764518]
+shape = SubResource("RectangleShape2D_fy3yg")
+
+[connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]

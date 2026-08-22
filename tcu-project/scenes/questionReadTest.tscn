@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://j7ppf5vuwhmq"]
+
+[ext_resource type="Script" uid="uid://cse8vebqibwi2" path="res://scripts/temp/questionReadTester.gd" id="1_fel3a"]
+
+[node name="QuestionReadTest" type="Node" unique_id=766232612]
+script = ExtResource("1_fel3a")

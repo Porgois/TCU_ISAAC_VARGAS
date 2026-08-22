@@ -1,0 +1,18 @@
+~ start
+{{QuizManager.getDisplayedName()}}: Hello!
+{{QuizManager.getDisplayedName()}}: My name is {{QuizManager.current_teacher.getFullName()}}. It's a pleasure to meet you.
+do QuizManager.setDisplayedName(QuizManager.current_teacher.getFormalName())
+{{QuizManager.getDisplayedName()}}: Today's quiz will be about {{QuizManager.getQuizName()}}.
+{{QuizManager.getDisplayedName()}}: But before we start... What is your name?
+do QuizManager.promptInput()
+{{QuizManager.getDisplayedName()}}: Nice to meet you {{QuizManager.user_name}}! Welcome to today's quiz.
+{{QuizManager.getDisplayedName()}}: I'll be asking you a few questions. Do your best!
+do QuizManager.startQuiz("res://csvImports/templates/GENERAL TRIVIA.csv")
+{{QuizManager.getDisplayedName()}}: Well done for finishing the quiz!
+{{QuizManager.getDisplayedName()}}: You scored {{QuizManager.score}} out of {{QuizManager.total}}!
+{{QuizManager.getDisplayedName()}}: Here's your certificate...
+do QuizManager.showCompletionImage()
+{{QuizManager.getDisplayedName()}}: Thanks for participating. 
+{{QuizManager.getDisplayedName()}}: I will see you soon!
+do QuizManager.goToMenu()
+=> END

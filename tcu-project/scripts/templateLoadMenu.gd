@@ -5,6 +5,7 @@ extends Control
 @export var loaded_prompt : Label
 @export var options : Control
 
+var general_button_scene : PackedScene = preload("res://scenes/ui/generalButton.tscn")
 var default_template_path: String = "res://csvImports/Templates/"
 var notification_time : float = 1.5
 
@@ -25,8 +26,8 @@ func createTemplateButton(file_name: String = "") -> void:
 		printerr("ERROR: No '.CSV' file found at: ", file_name)
 		return
 
-	var template_button := Button.new()
-	template_button.text = file_name
+	var template_button : GeneralButton = general_button_scene.instantiate()
+	template_button.button_label.text = file_name
 
 	var full_path: String = default_template_path + file_name
 	template_button.pressed.connect(_on_template_selected.bind(full_path))
@@ -35,10 +36,9 @@ func createTemplateButton(file_name: String = "") -> void:
 # Loads the quiz into 'Global' so it's ready when the dialogue scene starts
 func loadFile(full_path : String = ""):
 	var reader = FileReader.new()
-	var raw = reader.loadCSVAsArray(full_path)
 	var quiz = Quiz.new()
 	quiz.quiz_name = full_path.get_file()
-	quiz.questions = reader.textToQuestions(raw)
+	quiz.questions = reader.loadCSVQuestions(full_path)
 	QuizManager.setQuiz(quiz)
 	
 	loadedNotification(quiz.quiz_name)

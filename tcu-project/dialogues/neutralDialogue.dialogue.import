@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b16bfwxu6soly"
+path="res://.godot/imported/neutralDialogue.dialogue-3df88e948d80e360febbb5e6cfc7c269.tres"
+
+[deps]
+
+source_file="res://dialogues/neutralDialogue.dialogue"
+dest_files=["res://.godot/imported/neutralDialogue.dialogue-3df88e948d80e360febbb5e6cfc7c269.tres"]
+
+[params]
+
+defaults=true

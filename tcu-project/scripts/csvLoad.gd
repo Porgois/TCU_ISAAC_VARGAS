@@ -1,73 +1,160 @@
 class_name FileReader
 extends Node
 
-func loadCSVAsArray(csv_path: String) -> Array:
-	var text_array : Array = []
+# Delimiters
+var option_delimiter : String = ";"
+var answer_delimiter : String = "/"
+
+# Types
+const TYPE_MAP := {
+	"MC": Question.Type.MC,
+	"SA": Question.Type.SA,
+	"MATCH": Question.Type.MATCH,
+	"COMPLETION": Question.Type.COMPLETION
+}
+
+#region BASICS
+func loadCSVQuestions(csv_path: String) -> Array[Question]:
+	var questions : Array[Question] = []
 	
-	# Load file
-	var file = FileAccess.open(csv_path, FileAccess.READ)
+	var file : FileAccess = FileAccess.open(csv_path, FileAccess.READ)
 	
-	if (file == null):
-		printerr("ERROR: No '.CSV' file found at: ", csv_path)
-		return text_array
+	# Invalid file
+	if file == null:
+		printerr("ERROR: No '.csv' file found at: ", csv_path, "!\n")
+		return questions
 	
-	# Read file
+	# Skip first row (header row)
+	if not file.eof_reached():
+		file.get_csv_line()
+	
+	var next_id : int = 0
 	while not file.eof_reached():
-		var line = file.get_line()
+		var row : PackedStringArray = file.get_csv_line()
 		
-		if line.strip_edges() == "":
+		# Skip blank lines
+		if row.is_empty() or (row.size() == 1 and row[0].strip_edges() == ""):
 			continue
 		
-		var line_column = line.split(",")
-		text_array.append(line_column)
-		
-	# Close file
-	file.close()
+		# Store transformed question in question array
+		var question = rowToQuestion(row, next_id)
+		if question != null:
+			questions.append(question)
+			next_id += 1
 	
-	# Return read text array
-	return text_array
-
-# Return an array of questions
-func textToQuestions(text_array: Array) -> Array[Question]:
-	var questions: Array[Question] = []
-	var current_question: Question = null
-
-	for element in text_array:
-		# Pad the element so we can safely access index 0 and 1
-		while element.size() < 2:
-			element.append("")
-
-		var cell_a: String = element[0].strip_edges()
-		var cell_b: String = element[1].strip_edges()
-		var is_correct: bool = cell_b.to_lower() == "true"
-
-		if cell_b == "":
-			# No value in column B, its a question prompt row
-			if current_question != null:
-				questions.append(current_question)
-
-			current_question = Question.new()
-			current_question.setQuestionPrompt(cell_a)
-		else:
-			# Has a column B value (option row)
-			if current_question == null:
-				printerr("WARNING: Option row found before any question prompt: ", element)
-				continue
-
-			var option = QuestionOption.new()
-			option.text = cell_a
-			option.is_correct = is_correct
-			current_question.addQuestionOption(option)
-
-	# Save last question
-	if current_question != null:
-		questions.append(current_question)
-
+	file.close()
 	return questions
 
-func printQuestions(questions: Array[Question]):
-	for q in questions:
-		print("Question: ", q.question_prompt)
-		for opt in q.options:
-			print("  Option: ", opt.text, " | Correct: ", opt.is_correct)
+func rowToQuestion(row : PackedStringArray, id : int) -> Question:
+	# Pad in case a row is missing empty columns
+	var cells : Array = row
+	while cells.size() < 5:
+		cells.append("")
+	
+	# Load row values
+	var theme : String = String(cells[0]).strip_edges()
+	var type_string : String = String(cells[1]).strip_edges().to_upper()
+	var prompt : String = String(cells[2]).strip_edges()
+	var options_string : String = String(cells[3]).strip_edges()
+	var answer_string : String = String(cells[4]).strip_edges()
+	
+	# Check for invalid question type
+	if not TYPE_MAP.has(type_string):
+		printerr("WARNING: Unknown question type '", type_string, "' - skipping row: ", row)
+		return null
+	
+	# Create new question with row values
+	var new_question : Question = Question.new()
+	new_question.question_id = id
+	new_question.theme = theme
+	new_question.type = TYPE_MAP[type_string]
+	new_question.question = prompt
+	
+	# Parse based on question type
+	match new_question.type:
+		Question.Type.MC: # Multiple choice
+			parseMC(new_question, options_string, answer_string)
+		Question.Type.SA: # Short answer
+			parseSA(new_question, answer_string)
+		Question.Type.MATCH: # Match
+			parseMATCH(new_question, options_string)
+		Question.Type.COMPLETION: # Completion
+			parseCOMPLETION(new_question, answer_string)
+	
+	return new_question
+#endregion
+
+#region PARSING
+func parseMC(new_question : Question, options_string : String, answer_string : String):
+	# Append valid options
+	for option in options_string.split(option_delimiter):
+		var trimmed : String = option.strip_edges()
+		if trimmed != "":
+			new_question.options.append(trimmed)
+	
+	# Append valid answer
+	if answer_string != "":
+		new_question.answers.append(answer_string)
+
+func parseSA(new_question : Question, answer_string : String):
+	# Append valid answers
+	for answer in answer_string.split(answer_delimiter):
+		var trimmed : String = answer.strip_edges()
+		if trimmed != "":
+			new_question.answers.append(trimmed)
+
+func parseMATCH(new_question : Question, options_string : String):
+	for pair_string in options_string.split(";"):
+		# Skip empty pairs
+		var trimmed : String = pair_string.strip_edges()
+		if trimmed == "":
+			continue
+		
+		# Handle separator
+		var sep_index : int = trimmed.find(":")
+		if sep_index == -1:
+			printerr("WARNING: MATCH pair missing ':' separator: ", trimmed)
+			continue
+		
+		# Create pairs once validations are handled
+		var pair : Question.Pair = Question.Pair.new()
+		pair.term = trimmed.substr(0, sep_index).strip_edges()
+		pair.definitions = [trimmed.substr(sep_index + 1).strip_edges()]
+		new_question.pairs.append(pair)
+
+func parseCOMPLETION(new_question : Question, answer_string : String):
+	var accepted_responses : Array[String] = []
+	
+	for answer in answer_string.split("/"):
+		# Only append valid accepted responses (not empty)
+		var trimmed : String = answer.strip_edges()
+		if trimmed != "":
+			accepted_responses.append(trimmed)
+		
+		var blank : Question.Blank = Question.Blank.new()
+		blank.blank = accepted_responses
+		new_question.blanks.append(blank)
+
+#endregion
+
+#region MISC
+func printQuestions(questions : Array[Question]):
+	for question in questions:
+		print(question.question)
+		match question.type:
+			Question.Type.MC:
+				for option in question.options:
+					var marker : String = " "
+					if question.answers.has(option):
+						marker = "*"
+					print(" ", marker, " ", option)
+			Question.Type.SA:
+				print(" Accepted answers: ", question.answers)
+			Question.Type.MATCH:
+				for pair in question.pairs:
+					print(" ", pair.term, " -> ", pair.definitions)
+			Question.Type.COMPLETION:
+				for blank in question.blanks:
+					print( " Accepted: ", blank.blank)
 		print("")
+#endregion

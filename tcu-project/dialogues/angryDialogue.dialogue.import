@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dui0u5wtjqjsf"
+path="res://.godot/imported/angryDialogue.dialogue-3564627655256f4e5d417cf1c1602a6d.tres"
+
+[deps]
+
+source_file="res://dialogues/angryDialogue.dialogue"
+dest_files=["res://.godot/imported/angryDialogue.dialogue-3564627655256f4e5d417cf1c1602a6d.tres"]
+
+[params]
+
+defaults=true

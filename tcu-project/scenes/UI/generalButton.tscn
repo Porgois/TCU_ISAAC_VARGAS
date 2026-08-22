@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bguexmf7cdabl"]
+
+[ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="1_paso4"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_lnyq6"]
+
+[node name="Button" type="Button" unique_id=419576029 node_paths=PackedStringArray("button_label")]
+clip_contents = true
+custom_minimum_size = Vector2(0, 40)
+offset_right = 163.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme = ExtResource("2_lnyq6")
+script = ExtResource("1_paso4")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="." unique_id=1101348109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_lnyq6")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Label"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

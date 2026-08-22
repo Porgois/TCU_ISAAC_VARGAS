@@ -1,0 +1,49 @@
+Theme,Type,Question,Options,Answer
+Theme 1,MC,Which of the following is a greeting?,Bye bye;Hi there;Take care;So long,Hi there
+Theme 1,MC,What do you say when you leave a friend?,Hello;Hi there;See you later;What's your name?,See you later
+Theme 1,MC,Choose the correct question:,What's you name?;What's your name?;What is name your?;Name what's your?,What's your name?
+Theme 1,MC,Which classroom expression is used to ask for permission to enter?,Raise your hand;May I come in?;Good morning;Bye bye,May I come in?
+Theme 1,SA,Write down two ways to greet someone in English.,,Hi there/Hello
+Theme 1,SA,Write down two ways to say goodbye in English.,,Bye bye/See you later
+Theme 1,SA,"Complete with a greeting: ""________________, my name is Ana.""",,Hi there/Hello/Hey
+Theme 1,SA,What do you say if you want someone to repeat what they said?,,"Could you repeat, please?"
+Theme 1,MATCH,Match each expression with its use.,Hi there:An informal greeting;This is my desk.:Used to point out and identify an object;Raise your hand.:A classroom rule that means you must lift your hand to speak;Good evening:A greeting used at night,
+Theme 1,COMPLETION,___ is my classroom. (Use a demonstrative adjective),,This
+Theme 1,COMPLETION,What's your name? My name ___ Diego. (Use the verb to be),,is
+Theme 1,COMPLETION,How old are you? I ___ twelve years old. (Use the verb to be),,am
+Theme 2,MC,What do you say if you want to leave the room?,"May I come in?;May I go to the restroom?;Raise your hand;Could you repeat, please?",May I go to the restroom?
+Theme 2,MC,Which question asks someone to spell a word?,How do you spell that?;How old are you?;Where do you live?;What's your name?,How do you spell that?
+Theme 2,MC,Which expression asks for repetition?,"Could you repeat, please?;May I borrow your pencil?;Raise your hand;Good morning","Could you repeat, please?"
+Theme 2,MC,What's your last name? How do you ______ it?,spell;speak;read;write,spell
+Theme 2,SA,Write the expression you use when you didn't understand and want the teacher to say it again.,,"Could you repeat, please?"
+Theme 2,SA,"Spell your first name out loud, then write it letter by letter (e.g., M-A-R-I-A).",,(student spells their own name)
+Theme 2,SA,"Write a classroom expression that begins with the word ""May"".",,May I come in?/May I go to the restroom?
+Theme 2,SA,Write how you would ask a classmate for their last name.,,How do you spell your last name?
+Theme 2,MATCH,Match each expression with its purpose.,"Could you repeat, please?:Asking for repetition;May I borrow your pencil?:Asking to borrow an object;May I go to the restroom?:Asking for permission to leave for the restroom;How do you say ___ in English?:Asking for a translation",
+Theme 2,COMPLETION,May I ___ in? (Complete the classroom expression),,come
+Theme 2,COMPLETION,How do you ___ your name? (Complete with the correct verb),,spell
+Theme 2,COMPLETION,"___ you repeat, please? (Complete the question)",,Could
+Theme 3,MC,Choose the correct sentence:,She intelligent is.;She is intelligent.;Is she intelligent.;Intelligent she is.,She is intelligent.
+Theme 3,MC,Which word is an intensifier?,happy;really;country;name,really
+Theme 3,MC,"If your team lost the game, you probably feel:",excited;satisfied;disappointed;shy,disappointed
+Theme 3,MC,Complete: They ______ selfish.,am;is;are;be,are
+Theme 3,SA,Write one adjective that describes your personality.,,(accept any appropriate adjective)
+Theme 3,SA,"Write a complete sentence using ""I am"" + a feeling word.",,(accept any appropriate feeling sentence)
+Theme 3,SA,What is your nationality? Answer in a complete sentence.,,(accept any appropriate nationality sentence)
+Theme 3,SA,Write one intensifier that can be used before an adjective.,,very/really/super
+Theme 3,MATCH,Match each situation with the feeling it describes.,You get a good grade on a test.:Excited;You lost your pet.:Sad;You have nothing to do.:Bored;Someone surprises you with good news.:Shocked,
+Theme 3,COMPLETION,I am ___ happy today. (Use an intensifier: very / really / super),,very/really/super
+Theme 3,COMPLETION,My phone ___ is 8888-1234. (Complete the vocabulary word),,number
+Theme 3,COMPLETION,She ___ from Costa Rica. (Use the verb to be),,is
+Theme 4,MC,Choose the correct sentence:,This are my siblings.;These are my siblings.;This is my siblings.;These is my siblings.,These are my siblings.
+Theme 4,MC,Which word means your mother's mother?,Aunt;Cousin;Grandmother;Sister,Grandmother
+Theme 4,MC,Complete: My mother's ______ is Ana.,names;name;name's;naming,name
+Theme 4,MC,"Which sentence uses the possessive ""'s"" correctly?",My father name is Carlos.;My fathers name is Carlos.;My father's name is Carlos.;My father' name is Carlos.,My father's name is Carlos.
+Theme 4,SA,"Write the name of one family member in English (e.g., brother, aunt).",,(accept any correct family member word)
+Theme 4,SA,"Write a sentence describing your mother or father using ""This is my..."".",,"(accept any correct sentence using ""This is my..."")"
+Theme 4,SA,How many siblings do you have? Answer in a complete sentence.,,(accept any correct sentence about siblings)
+Theme 4,SA,"Write a sentence about your grandmother's name using the possessive ""'s"".",,(accept any correct sentence using possessive 's)
+Theme 4,MATCH,Match each family word with its correct definition.,Father:Male parent;Brother:Male sibling;Sister:Female sibling;Cousin:The son or daughter of your aunt or uncle,
+Theme 4,COMPLETION,___ is my father. (Use a demonstrative adjective),,This
+Theme 4,COMPLETION,___ are my siblings. (Use a demonstrative adjective),,These
+Theme 4,COMPLETION,My sister's ___ is Maria. (Complete the sentence),,name

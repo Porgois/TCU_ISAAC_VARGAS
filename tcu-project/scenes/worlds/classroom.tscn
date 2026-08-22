@@ -1,16 +1,25 @@
 [gd_scene format=3 uid="uid://dpi66hx1nrc1d"]
 
+[ext_resource type="Script" uid="uid://bdpyy1leifnyy" path="res://scripts/level.gd" id="1_fc3aw"]
 [ext_resource type="Material" uid="uid://brrhsut0tp76v" path="res://materials/basicMaterials/basic_material.tres" id="1_g4g6k"]
-[ext_resource type="PackedScene" uid="uid://b6l0g0leo5rsd" path="res://scenes/ui/QuestionsUI.tscn" id="2_tjfso"]
 [ext_resource type="Shader" uid="uid://70tcvy0thkk0" path="res://shaders/palette_limit.gdshader" id="3_i4boc"]
 [ext_resource type="Texture2D" uid="uid://lpgeoat2thq8" path="res://palettes/apollo-1x.png" id="4_72wqw"]
 [ext_resource type="PackedScene" uid="uid://ba10ucc1glbb4" path="res://scenes/characters/characterTeacher.tscn" id="5_b52t3"]
+[ext_resource type="Shader" uid="uid://bydm6mkv6eay8" path="res://shaders/outline.gdshader" id="6_fc3aw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72wqw"]
 shader = ExtResource("3_i4boc")
 shader_parameter/palette = ExtResource("4_72wqw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fc3aw"]
+render_priority = 0
+shader = ExtResource("6_fc3aw")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = false
+shader_parameter/shadow_strength = 0.999999977648
+shader_parameter/highlight_strength = 0.999999977648
+shader_parameter/highlight_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
+shader_parameter/shadow_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b52t3"]
 next_pass = SubResource("ShaderMaterial_fc3aw")
@@ -18,8 +27,7 @@ albedo_color = Color(0.3764706, 0.17254902, 0.17254902, 1)
 
 [node name="Classroom" type="Node3D" unique_id=1913309518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5797601, -1.0283958)
-
-[node name="QuizUI" parent="." unique_id=668498225 instance=ExtResource("2_tjfso")]
+script = ExtResource("1_fc3aw")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=532407072]
 texture_filter = 1
@@ -47,6 +55,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CharacterTeacher" parent="SubViewportContainer/SubViewport" unique_id=798968730 instance=ExtResource("5_b52t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4262882, -2.1120572, -0.9426267)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1493793670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82051265, 1.8992833)
@@ -81,6 +92,3 @@ spot_angle = 42.527893
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051361084, -1.9216084, 0.1970098)
 size = Vector3(4.0751343, 1, 0.9239502)
 material = SubResource("StandardMaterial3D_b52t3")
-
-[node name="CharacterTeacher" parent="SubViewportContainer/SubViewport" unique_id=798968730 instance=ExtResource("5_b52t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4262882, -2.1120572, -0.9426267)

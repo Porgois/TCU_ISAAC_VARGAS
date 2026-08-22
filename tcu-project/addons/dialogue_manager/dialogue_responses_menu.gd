@@ -10,7 +10,6 @@ signal response_focused(response: Control)
 ## Emitted when a response is selected.
 signal response_selected(response: Control)
 
-
 ## Optionally specify a control to duplicate for each response
 @export var response_template: Control
 
@@ -25,6 +24,9 @@ signal response_selected(response: Control)
 
 ## Hide any responses where [code]is_allowed[/code] is false
 @export var hide_failed_responses: bool = false
+
+## Custom Button
+var button_scene = preload("res://scenes/ui/generalButton.tscn")
 
 ## The list of dialogue responses.
 var responses: Array = []:
@@ -123,7 +125,7 @@ func _apply_responses() -> void:
 				item = response_template.duplicate(DUPLICATE_GROUPS | DUPLICATE_SCRIPTS | DUPLICATE_SIGNALS)
 				item.show()
 			else:
-				item = Button.new()
+				item = button_scene.instantiate()
 			item.name = "Response%d" % get_child_count()
 			if not response.is_allowed:
 				item.name = item.name + &"Disallowed"
@@ -134,7 +136,7 @@ func _apply_responses() -> void:
 				item.response = response
 			# Otherwise assume we can just set the text
 			else:
-				item.text = response.text
+				item.button_label.text = response.text
 
 			item.set_meta("response", response)
 

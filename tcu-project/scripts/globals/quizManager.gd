@@ -3,9 +3,12 @@ extends Node
 
 signal quiz_completed(score: int, total: int)
 
-var input_prompt_scene = preload("res://scenes/ui/NamePrompter.tscn")
+var input_prompt_scene: PackedScene = preload("res://scenes/ui/NamePrompter.tscn")
+var question_prompter_scene: PackedScene = preload("res://scenes/ui/genericPrompter.tscn")
 var current_quiz: Quiz = null
 var current_teacher : Teacher = null
+
+var displayed_name : String = ""
 var user_name: String = ""
 var quiz_score: int = 0
 var total_score: int = 0
@@ -16,6 +19,9 @@ var total: int:
 	get: return total_score
 
 var active_balloon = null
+
+func _ready() -> void:
+	setDisplayedName("Teacher")
 
 #region TEACHER
 
@@ -33,6 +39,16 @@ func setUserName(new_name: String = "") -> void:
 
 func getUserName() -> String:
 	return user_name
+
+#endregion
+
+#region DISPLAYEDNAME
+
+func setDisplayedName(new_displayed_name : String = ""):
+	displayed_name = new_displayed_name
+
+func getDisplayedName() -> String:
+	return displayed_name
 
 #endregion
 
@@ -57,50 +73,38 @@ func setQuiz(quiz: Quiz) -> void:
 func getQuiz() -> Quiz:
 	return current_quiz
 
-func startQuiz(csv_path: String) -> void:
+func getQuizName() -> String:
+	var formatted_name : String = current_quiz.quiz_name.trim_suffix(".csv")
+	formatted_name = formatted_name.to_lower().capitalize()
+	return formatted_name
+
+func startQuiz(csv_path: String = "") -> void:
 	resetScore()
 
 	var questions: Array[Question] = []
 	if current_quiz != null:
 		questions = current_quiz.questions
 	else:
-		var reader = FileReader.new()
-		var raw = reader.loadCSVAsArray(csv_path)
-		questions = reader.textToQuestions(raw)
+		var reader := FileReader.new()
+		questions = reader.loadQuestionsFromCSV(csv_path)
 
 	total_score = questions.size()
 
-	for i in questions.size():
-		var q: Question = questions[i]
+	var handler := QuestionHandler.new()
+	handler.configure(displayed_name, active_balloon, Global.quiz_ui_container, question_prompter_scene)
 
-		# Build a resource with only the question and its options
-		var lines: PackedStringArray = []
-		lines.append("~ question")
-		lines.append("Teacher: %s" % q.question_prompt.replace("\"", "'"))
-		for option in q.options:
-			lines.append("- %s" % option.text.replace("\"", "'"))
-			lines.append("\t=> END")
-		var question_resource = DialogueManager.create_resource_from_text("\n".join(lines))
+	for question in questions:
+		var result: QuestionHandler.QuestionResult = await handler.handleQuestion(question)
 
-		# Show the question and wait for the player to pick a response
-		var question_line = await question_resource.get_next_dialogue_line("question")
-		var response = await active_balloon.show_external_line(question_line, question_resource)
-
-		# Find which option was selected by matching response text
-		var selected_option: QuestionOption = null
-		for option in q.options:
-			if option.text.replace("\"", "'") == response.text:
-				selected_option = option
-				break
+		if result.correct:
+			quiz_score += 1
 
 		# Build and show the feedback line based on correct/incorrect
 		var feedback_text: String
-		
-		if selected_option != null and selected_option.is_correct:
-			quiz_score += 1
-			feedback_text = "Teacher: " + current_teacher.teacher_resource.get_positive_response()
+		if result.correct:
+			feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_positive_response()
 		else:
-			feedback_text = "Teacher: " + current_teacher.teacher_resource.get_negative_response()
+			feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_negative_response()
 
 		var feedback_resource = DialogueManager.create_resource_from_text(
 			"~ feedback\n%s\n=> END" % feedback_text
@@ -108,7 +112,7 @@ func startQuiz(csv_path: String) -> void:
 		var feedback_line = await feedback_resource.get_next_dialogue_line("feedback")
 		await active_balloon.show_external_text_line(feedback_line, feedback_resource)
 
-	# All questions done — signal the outer .dialogue to resume
+	# All questions done, signal the outer '.dialogue' to resume
 	quiz_completed.emit(quiz_score, total_score)
 
 func goToMenu() -> void:
