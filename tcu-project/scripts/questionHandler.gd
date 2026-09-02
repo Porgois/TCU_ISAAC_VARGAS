@@ -1,6 +1,8 @@
 class_name QuestionHandler
 extends Node
 
+var match_environment_scene: PackedScene = preload("res://scenes/ui/matchUI/matchEnvironment.tscn")
+
 ## Result of asking a single Question and collecting the player's response.
 class QuestionResult:
 	## True only when the question was answered fully correctly.
@@ -17,13 +19,12 @@ var active_balloon = null
 var ui_container: Node = null
 var prompter_scene: PackedScene = null
 
-
-func configure(p_displayed_name: String, p_active_balloon, p_ui_container: Node, p_prompter_scene: PackedScene) -> void:
+func configure(p_displayed_name: String, p_active_balloon, p_ui_container: Node, p_prompter_scene: PackedScene, p_match_environment_scene: PackedScene = null) -> void:
 	displayed_name = p_displayed_name
 	active_balloon = p_active_balloon
 	ui_container = p_ui_container
 	prompter_scene = p_prompter_scene
-
+	match_environment_scene = p_match_environment_scene
 
 ## Dispatches to the right handler based on question.type.
 func handleQuestion(question: Question) -> QuestionResult:
@@ -121,9 +122,9 @@ func handleCOMPLETIONQuestion(question: Question) -> QuestionResult:
 	return result
 
 
-## Match: no dedicated drag-and-drop UI exists yet, so this asks the player
-## to match each term one at a time, MC-style, against all definitions from
-## the question (shuffled). Adjust freely if you build a real matching UI.
+## Match: spawns one origin/destination node pair per Question.Pair into a
+## MatchEnvironment, lets the player drag-link all of them, then scores
+## once they press Confirm.
 func handleMatchQuestion(question: Question) -> QuestionResult:
 	var result := QuestionResult.new()
 
@@ -132,36 +133,34 @@ func handleMatchQuestion(question: Question) -> QuestionResult:
 		result.score_fraction = 1.0
 		return result
 
-	var all_definitions: Array[String] = []
-	for pair in question.pairs:
-		if pair.definitions.size() > 0:
-			all_definitions.append(pair.definitions[0])
+	if match_environment_scene == null or ui_container == null:
+		printerr("QuestionHandler: no match_environment_scene/ui_container configured for MATCH questions.")
+		return result
 
-	var correct_count := 0
+	# Show the prompt text through the balloon, same as SA/COMPLETION.
+	var lines: PackedStringArray = []
+	lines.append("~ question")
+	lines.append(displayed_name + ": %s" % question.question.replace("\"", "'"))
+	lines.append("=> END")
+	var question_resource = DialogueManager.create_resource_from_text("\n".join(lines))
+	var question_line = await question_resource.get_next_dialogue_line("question")
+	await active_balloon.show_external_text_line(question_line, question_resource)
 
-	for pair in question.pairs:
-		var shuffled_definitions := all_definitions.duplicate()
-		shuffled_definitions.shuffle()
+	active_balloon.hide()
 
-		var lines: PackedStringArray = []
-		lines.append("~ question")
-		lines.append(displayed_name + ": Match \"%s\" with its definition." % pair.term.replace("\"", "'"))
-		for definition in shuffled_definitions:
-			lines.append("- %s" % definition.replace("\"", "'"))
-			lines.append("\t=> END")
-		var question_resource = DialogueManager.create_resource_from_text("\n".join(lines))
+	var match_environment: MatchEnvironment = match_environment_scene.instantiate()
+	ui_container.add_child(match_environment)
+	match_environment.configureFromPairs(question.pairs)
 
-		var question_line = await question_resource.get_next_dialogue_line("question")
-		var response = await active_balloon.show_external_line(question_line, question_resource)
+	await match_environment.match_confirmed
+	var scored: Dictionary = match_environment.collectResults()
+	match_environment.queue_free()
 
-		var correct_definition: String = pair.definitions[0] if pair.definitions.size() > 0 else ""
-		if response.text == correct_definition.replace("\"", "'"):
-			correct_count += 1
+	active_balloon.show()
 
-	result.score_fraction = float(correct_count) / float(question.pairs.size())
-	result.correct = correct_count == question.pairs.size()
+	result.score_fraction = float(scored.correct) / float(scored.total) if scored.total > 0 else 1.0
+	result.correct = scored.correct == scored.total
 	return result
-
 
 ## Shared helper for SA/COMPLETION: instantiates the GenericPrompter scene
 ## in ui_container, waits for the player to submit an answer (Enter or the

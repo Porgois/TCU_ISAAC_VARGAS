@@ -1,25 +1,56 @@
 [gd_scene format=3 uid="uid://cdinhc231qnnp"]
 
 [ext_resource type="Script" uid="uid://qpm5ixqsm21j" path="res://scripts/visualScripts/matchOriginNode.gd" id="1_v7yk8"]
-[ext_resource type="Texture2D" uid="uid://blbdvo0sei4kp" path="res://icon.svg" id="2_a0gng"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_a0gng"]
+[ext_resource type="Texture2D" uid="uid://cf6pujpoqihxh" path="res://textures/UI/UImatching/match_node.png" id="2_v7yk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3yg"]
 size = Vector2(32, 32)
 
-[node name="GeneralMatchOriginNode" type="Control" unique_id=863129241 node_paths=PackedStringArray("clickable_area")]
+[node name="GeneralMatchOriginNode" type="Control" unique_id=863129241 node_paths=PackedStringArray("clickable_area", "inner_sprite", "node_text")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 110.0
+offset_left = 260.0
 offset_top = 63.0
-offset_right = 110.0
+offset_right = 260.0
 offset_bottom = 63.0
+mouse_filter = 2
 script = ExtResource("1_v7yk8")
 clickable_area = NodePath("ClickableArea")
+inner_sprite = NodePath("InnerSprite")
+node_text = NodePath("NodeText")
 
-[node name="NodeSprite" type="Sprite2D" parent="." unique_id=1457980536]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_a0gng")
+[node name="NodeText" type="RichTextLabel" parent="." unique_id=2079502597]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -22.0
+offset_right = -21.0
+offset_bottom = 58.0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_a0gng")
+theme_override_font_sizes/normal_font_size = 22
+text = "Text example"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OuterSprite" type="Sprite2D" parent="." unique_id=1457980536]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 0.43137255)
+position = Vector2(3.8146973e-06, -3.8146973e-06)
+scale = Vector2(0.49999988, 0.49999988)
+texture = ExtResource("2_v7yk8")
+
+[node name="InnerSprite" type="Sprite2D" parent="." unique_id=1403144441]
+visible = false
+texture_filter = 4
+position = Vector2(9.357929e-06, -1.7881393e-06)
+scale = Vector2(0.41796893, 0.41796893)
+texture = ExtResource("2_v7yk8")
 
 [node name="ClickableArea" type="Area2D" parent="." unique_id=1570837994]
 

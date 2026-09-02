@@ -5,6 +5,7 @@ signal quiz_completed(score: int, total: int)
 
 var input_prompt_scene: PackedScene = preload("res://scenes/ui/NamePrompter.tscn")
 var question_prompter_scene: PackedScene = preload("res://scenes/ui/genericPrompter.tscn")
+var match_environment_scene: PackedScene = preload("res://scenes/ui/matchUI/matchEnvironment.tscn")
 var current_quiz: Quiz = null
 var current_teacher : Teacher = null
 
@@ -91,7 +92,7 @@ func startQuiz(csv_path: String = "") -> void:
 	total_score = questions.size()
 
 	var handler := QuestionHandler.new()
-	handler.configure(displayed_name, active_balloon, Global.quiz_ui_container, question_prompter_scene)
+	handler.configure(displayed_name, active_balloon, Global.quiz_ui_container, question_prompter_scene, match_environment_scene)
 
 	for question in questions:
 		var result: QuestionHandler.QuestionResult = await handler.handleQuestion(question)

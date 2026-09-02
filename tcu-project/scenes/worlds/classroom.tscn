@@ -55,6 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CharacterTeacher" parent="SubViewportContainer/SubViewport" unique_id=798968730 instance=ExtResource("5_b52t3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4262882, -2.1120572, -0.9426267)

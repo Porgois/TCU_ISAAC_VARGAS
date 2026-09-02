@@ -1,28 +1,65 @@
 [gd_scene format=3 uid="uid://b7g3flgfxa2ju"]
 
 [ext_resource type="Script" uid="uid://bl8hutb2i7y62" path="res://scripts/visualScripts/matchDestinationNode.gd" id="1_7sef0"]
-[ext_resource type="Texture2D" uid="uid://blbdvo0sei4kp" path="res://icon.svg" id="2_655ew"]
+[ext_resource type="Texture2D" uid="uid://cf6pujpoqihxh" path="res://textures/UI/UImatching/match_node.png" id="2_7sef0"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_655ew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3yg"]
 size = Vector2(32, 32)
 
-[node name="GeneralMatchDestinationNode" type="Control" unique_id=1384368825]
+[node name="GeneralMatchDestinationNode" type="Control" unique_id=1384368825 node_paths=PackedStringArray("linking_point", "clickable_area", "inner_sprite", "node_text")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 110.0
 offset_top = 63.0
 offset_right = 110.0
 offset_bottom = 63.0
+mouse_filter = 2
 script = ExtResource("1_7sef0")
+linking_point = NodePath("LinkingPoint")
+clickable_area = NodePath("DetectionArea")
+inner_sprite = NodePath("InnerSprite")
+node_text = NodePath("NodeText")
 
-[node name="NodeSprite" type="Sprite2D" parent="." unique_id=1457980536]
-modulate = Color(0, 0, 1, 1)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_655ew")
+[node name="NodeText" type="RichTextLabel" parent="." unique_id=1540987916]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -22.0
+offset_right = 144.0
+offset_bottom = 58.0
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_655ew")
+theme_override_font_sizes/normal_font_size = 22
+text = "Node Destination text example"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="DetectionArea" type="Area2D" parent="." unique_id=1570837994]
+[node name="OuterSprite" type="Sprite2D" parent="." unique_id=1806621315]
+modulate = Color(0.5489626, 0.5489626, 0.54896253, 0.43137255)
+position = Vector2(0, -3.8146973e-06)
+scale = Vector2(0.49999988, 0.49999988)
+texture = ExtResource("2_7sef0")
+
+[node name="InnerSprite" type="Sprite2D" parent="." unique_id=24457414]
+visible = false
+texture_filter = 4
+position = Vector2(7.6293945e-06, 0)
+scale = Vector2(0.41796893, 0.41796893)
+texture = ExtResource("2_7sef0")
+
+[node name="LinkingPoint" type="Marker2D" parent="." unique_id=1066877193]
+gizmo_extents = 5.0
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1570837994 groups=["DestinationArea"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1695764518]
 shape = SubResource("RectangleShape2D_fy3yg")
 
-[connection signal="mouse_entered" from="DetectionArea" to="." method="_on_detection_area_mouse_entered"]
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="input_event" from="DetectionArea" to="." method="_on_detection_area_input_event"]

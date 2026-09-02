@@ -106,7 +106,7 @@ func _process(_delta: float) -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
-	if will_block_other_input:
+	if will_block_other_input and visible:
 		get_viewport().set_input_as_handled()
 
 

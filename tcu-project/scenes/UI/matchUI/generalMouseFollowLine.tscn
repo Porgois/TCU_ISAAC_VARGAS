@@ -3,16 +3,18 @@
 [ext_resource type="Script" uid="uid://nrgpih7n7r2w" path="res://scripts/visualScripts/mouseFollowLine.gd" id="1_ssccm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_31sbn"]
+radius = 8.0
 
 [node name="GeneralMouseFollowLine" type="Line2D" unique_id=921937067 node_paths=PackedStringArray("endpoint_area")]
 z_index = 1
-default_color = Color(0.7936929, 0.09302392, 5.7756904e-07, 1)
+closed = true
 script = ExtResource("1_ssccm")
 endpoint_area = NodePath("EndpointArea")
+snap_angle_degrees = 15.0
 
 [node name="OriginPoint" type="Node2D" parent="." unique_id=1027192758]
 
-[node name="EndpointArea" type="Area2D" parent="." unique_id=1344843916]
+[node name="EndpointArea" type="Area2D" parent="." unique_id=1344843916 groups=["ConnectionArea"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndpointArea" unique_id=66474150]
 shape = SubResource("CircleShape2D_31sbn")
