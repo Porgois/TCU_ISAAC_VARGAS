@@ -36,7 +36,13 @@ func createLink(point : Vector2):
 	current_mouse_line.linked = true
 	setLinked(true)
 	
-	var local_point : Vector2 = current_mouse_line.to_local(point)
+	# Prefer the node the line is currently snapped to (exact center),
+	# fall back to the raw point if nothing was snapped for some reason
+	var final_global_point : Vector2 = point
+	if current_mouse_line.current_snap_target != null:
+		final_global_point = current_mouse_line.current_snap_target.global_position
+	
+	var local_point : Vector2 = current_mouse_line.to_local(final_global_point)
 	current_mouse_line.destination_point = local_point
 	current_mouse_line.updateLastPoint(local_point)
 

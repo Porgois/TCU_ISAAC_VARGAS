@@ -3,17 +3,13 @@ extends Node
 
 var match_environment_scene: PackedScene = preload("res://scenes/ui/matchUI/matchEnvironment.tscn")
 
-## Result of asking a single Question and collecting the player's response.
+# Result of asking a single Question and collecting the player's response
 class QuestionResult:
-	## True only when the question was answered fully correctly.
 	var correct: bool = false
-	## 1.0 = fully correct. For MATCH this can be a fraction (e.g. 0.5 for
-	## 2 of 4 pairs matched) in case you want partial credit later.
+	# For partial scores
 	var score_fraction: float = 0.0
 
-
-## --- Context needed to render questions through Dialogue Manager ---
-## Call configure() once before handling any questions.
+# Dialogue Manager question render context
 var displayed_name: String = ""
 var active_balloon = null
 var ui_container: Node = null
@@ -26,7 +22,7 @@ func configure(p_displayed_name: String, p_active_balloon, p_ui_container: Node,
 	prompter_scene = p_prompter_scene
 	match_environment_scene = p_match_environment_scene
 
-## Dispatches to the right handler based on question.type.
+# Dispatches to the right handler based on question.type
 func handleQuestion(question: Question) -> QuestionResult:
 	match question.type:
 		Question.Type.MC:
@@ -37,13 +33,11 @@ func handleQuestion(question: Question) -> QuestionResult:
 			return await handleMatchQuestion(question)
 		Question.Type.COMPLETION:
 			return await handleCOMPLETIONQuestion(question)
-		_:
+		_: # Unkown
 			printerr("QuestionHandler: unknown question type: ", question.type)
 			return QuestionResult.new()
 
-
-## Multiple choice: show the prompt with each option as a dialogue
-## response, then check the picked response text against the answer.
+# Multiple choice
 func handleMCQuestion(question: Question) -> QuestionResult:
 	var result := QuestionResult.new()
 
@@ -63,10 +57,7 @@ func handleMCQuestion(question: Question) -> QuestionResult:
 	result.score_fraction = 1.0 if result.correct else 0.0
 	return result
 
-
-## Short answer: show the prompt with no choices, then collect free text
-## from a LineEdit and compare (case-insensitive) against every accepted
-## answer.
+# Short answer (case-insensitive)
 func handleSAQuestion(question: Question) -> QuestionResult:
 	var result := QuestionResult.new()
 
@@ -78,8 +69,7 @@ func handleSAQuestion(question: Question) -> QuestionResult:
 	var question_line = await question_resource.get_next_dialogue_line("question")
 	await active_balloon.show_external_text_line(question_line, question_resource)
 
-	# Hide the balloon while the prompter is up so a stray click/keypress
-	# can't reach its still-active gui_input handler (see _promptForText).
+	# Hide the balloon while the prompter is up so a stray click/keypress can't reach its still-active
 	active_balloon.hide()
 	var response_text := await _promptForText("Type your answer...")
 
@@ -92,9 +82,7 @@ func handleSAQuestion(question: Question) -> QuestionResult:
 	active_balloon.show()
 	return result
 
-
-## Completion: same free-text flow as SA, checked against the accepted
-## answers for the question's single blank.
+# Completion
 func handleCOMPLETIONQuestion(question: Question) -> QuestionResult:
 	var result := QuestionResult.new()
 
@@ -106,8 +94,7 @@ func handleCOMPLETIONQuestion(question: Question) -> QuestionResult:
 	var question_line = await question_resource.get_next_dialogue_line("question")
 	await active_balloon.show_external_text_line(question_line, question_resource)
 
-	# Hide the balloon while the prompter is up so a stray click/keypress
-	# can't reach its still-active gui_input handler (see _promptForText).
+	# Hide the balloon while the prompter is up so a stray click/keypress can't reach its still-active
 	active_balloon.hide()
 	var response_text := await _promptForText("Fill in the blank...")
 
@@ -121,10 +108,7 @@ func handleCOMPLETIONQuestion(question: Question) -> QuestionResult:
 	active_balloon.show()
 	return result
 
-
-## Match: spawns one origin/destination node pair per Question.Pair into a
-## MatchEnvironment, lets the player drag-link all of them, then scores
-## once they press Confirm.
+# Match (uses custom match environment)
 func handleMatchQuestion(question: Question) -> QuestionResult:
 	var result := QuestionResult.new()
 
@@ -137,7 +121,7 @@ func handleMatchQuestion(question: Question) -> QuestionResult:
 		printerr("QuestionHandler: no match_environment_scene/ui_container configured for MATCH questions.")
 		return result
 
-	# Show the prompt text through the balloon, same as SA/COMPLETION.
+	# Show the prompt text through the balloon, same as SA/COMPLETION
 	var lines: PackedStringArray = []
 	lines.append("~ question")
 	lines.append(displayed_name + ": %s" % question.question.replace("\"", "'"))
@@ -162,9 +146,7 @@ func handleMatchQuestion(question: Question) -> QuestionResult:
 	result.correct = scored.correct == scored.total
 	return result
 
-## Shared helper for SA/COMPLETION: instantiates the GenericPrompter scene
-## in ui_container, waits for the player to submit an answer (Enter or the
-## Done button), then removes it and returns the typed text.
+# SA/COMPLETION helper
 func _promptForText(placeholder: String = "Type your answer...") -> String:
 	if prompter_scene == null or ui_container == null:
 		printerr("QuestionHandler: no prompter_scene/ui_container configured for free-text questions.")

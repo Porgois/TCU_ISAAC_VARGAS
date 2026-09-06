@@ -7,7 +7,7 @@
 script = ExtResource("1_q7a0k")
 teacher_name = "Larry"
 teacher_surname = "Anderson"
-voice_pitch = 1.2000000000000002
+voice_pitch = 2.5
 teacher_dialogue = ExtResource("2_q7a0k")
 positive_responses = Array[String](["Well done!", "That's correct!", "Indeed.", "Thats absolutely right!", "Yes!", "You know your stuff!"])
 negative_responses = Array[String](["No...", "That's incorrect.", "I'm sorry, that's not it.", "Nope.", "Not quite.", "Almost, but no!", "C'mon..."])

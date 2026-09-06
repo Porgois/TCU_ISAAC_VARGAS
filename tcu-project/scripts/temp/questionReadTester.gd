@@ -8,5 +8,3 @@ func _ready() -> void:
 	file_reader = FileReader.new()
 	questions = file_reader.loadCSVQuestions(csv_example_path)
 	file_reader.printQuestions(questions)
-	
-	

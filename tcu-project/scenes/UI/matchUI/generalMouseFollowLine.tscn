@@ -10,7 +10,6 @@ z_index = 1
 closed = true
 script = ExtResource("1_ssccm")
 endpoint_area = NodePath("EndpointArea")
-snap_angle_degrees = 15.0
 
 [node name="OriginPoint" type="Node2D" parent="." unique_id=1027192758]
 

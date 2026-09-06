@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3yg"]
 size = Vector2(32, 32)
 
-[node name="GeneralMatchDestinationNode" type="Control" unique_id=1384368825 node_paths=PackedStringArray("linking_point", "clickable_area", "inner_sprite", "node_text")]
+[node name="GeneralMatchDestinationNode" type="Control" unique_id=1384368825 node_paths=PackedStringArray("linking_point", "clickable_area", "inner_sprite", "node_text") groups=["DestinationNode"]]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 110.0
@@ -26,10 +26,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 23.0
-offset_top = -22.0
-offset_right = 144.0
-offset_bottom = 58.0
+offset_left = 16.0
+offset_top = -16.0
+offset_right = 137.0
+offset_bottom = 64.0
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_655ew")

@@ -14,7 +14,7 @@ mouse_filter = 2
 script = ExtResource("1_pf7ik")
 matchContainer = NodePath("MatchContainer")
 confirm_button = NodePath("Button")
-grid_spacing_vector = Vector2(250, 120)
+grid_spacing_vector = Vector2(300, 125)
 
 [node name="MatchContainer" type="GridContainer" parent="." unique_id=1789160226]
 layout_mode = 1
