@@ -4,7 +4,7 @@ Theme 1,MC,What do you say when you leave a friend?,Hello;Hi there;See you later
 Theme 1,MC,Choose the correct question...,What's you name?;What's your name?;What is name your?;Name what's your?,What's your name?
 Theme 1,MC,Which classroom expression is used to ask for permission to enter?,Raise your hand;May I come in?;Good morning;Bye bye,May I come in?
 Theme 1,SA,Write down a way to greet someone in English.,,Hi there/Hello/Greetings/Hi
-Theme 1,SA,Write down a way to say goodbye in English.,,Bye bye/See you later/See you/Bye
+Theme 1,SA,Write down a way to say goodbye in English.,,Bye bye/See you later/See you/Bye/Goodbye
 Theme 1,SA,"Complete with a greeting: ""________________, my name is Ana.""",,Hi there/Hello/Hey/Hi
 Theme 1,SA,What do you say if you want someone to repeat what they said?,,"Could you repeat, please?/Can you say that again?/Sorry?/What did you say?"
 Theme 1,MATCH,Match each expression with its use.,Hi there:An informal greeting;This is my desk.:Used to point out and identify an object;Raise your hand.:A classroom rule that means you must lift your hand to speak;Good evening:A greeting used at night,
@@ -23,7 +23,7 @@ Theme 2,MATCH,Match each expression with its purpose.,"Could you repeat, please?
 Theme 2,COMPLETION,May I ___ in? (Complete the classroom expression),,come
 Theme 2,COMPLETION,How do you ___ your name? (Complete with the correct verb),,spell
 Theme 2,COMPLETION,"___ you repeat, please? (Complete the question)",,Could
-Theme 3,MC,Choose the correct sentence:,She intelligent is.;She is intelligent.;Is she intelligent.;Intelligent she is.,She is intelligent.
+Theme 3,MC,Choose the correct sentence...,She intelligent is.;She is intelligent.;Is she intelligent.;Intelligent she is.,She is intelligent.
 Theme 3,MC,Which word is an intensifier?,happy;really;country;name,really
 Theme 3,MC,"If your team lost the game, you probably feel:",excited;satisfied;disappointed;shy,disappointed
 Theme 3,MC,Complete: They ______ selfish.,am;is;are;be,are
@@ -35,11 +35,11 @@ Theme 3,MATCH,Match each situation with the feeling it describes.,You get a good
 Theme 3,COMPLETION,I am ___ happy today. (Use an intensifier),,very/really/super/greatly
 Theme 3,COMPLETION,My phone ___ is 8888-1234. (Complete the vocabulary word),,number
 Theme 3,COMPLETION,She ___ from Costa Rica. (Use the verb to be),,is
-Theme 4,MC,Choose the correct sentence:,This are my siblings.;These are my siblings.;This is my siblings.;These is my siblings.,These are my siblings.
+Theme 4,MC,Choose the correct sentence...,This are my siblings.;These are my siblings.;This is my siblings.;These is my siblings.,These are my siblings.
 Theme 4,MC,Which word means your mother's mother?,Aunt;Cousin;Grandmother;Sister,Grandmother
 Theme 4,MC,Complete: My mother's ______ is Ana.,names;name;name's;naming,name
 Theme 4,MC,"Which sentence uses the possessive ""'s"" correctly?",My father name is Carlos.;My fathers name is Carlos.;My father's name is Carlos.;My father' name is Carlos.,My father's name is Carlos.
-Theme 4,SA,"Write the name of one family member in English (e.g., brother, aunt).",,(accept any correct family member word)
+Theme 4,SA,"Write the name of one family member in English.",,brother/sister/aunt/uncle/grandmother/grandfather/mother/father/parent/sibling
 Theme 4,SA,"Write a sentence describing your mother or father using ""This is my..."".",,"(accept any correct sentence using ""This is my..."")"
 Theme 4,SA,How many siblings do you have? Answer in a complete sentence.,,I have a brother/I have a sister/I have 2 siblings/I have 3 siblings
 Theme 4,SA,"Write a sentence about your grandmother's name using the possessive ""'s"".",,My grandmother's name is granny

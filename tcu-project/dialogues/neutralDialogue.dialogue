@@ -2,7 +2,7 @@
 {{QuizManager.getDisplayedName()}}: Hello!
 {{QuizManager.getDisplayedName()}}: My name is {{QuizManager.current_teacher.getFullName()}}. It's a pleasure to meet you.
 do QuizManager.setDisplayedName(QuizManager.current_teacher.getFormalName())
-{{QuizManager.getDisplayedName()}}: Today's quiz will be about {{QuizManager.getQuizName()}}.
+{{QuizManager.getDisplayedName()}}: Today's quiz will be "{{QuizManager.getQuizName()}}".
 {{QuizManager.getDisplayedName()}}: But before we start... What is your name?
 do QuizManager.promptInput()
 {{QuizManager.getDisplayedName()}}: Nice to meet you {{QuizManager.user_name}}! Welcome to today's quiz.
