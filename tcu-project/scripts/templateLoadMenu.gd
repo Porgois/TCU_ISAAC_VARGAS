@@ -15,20 +15,19 @@ var sub_menu_amount : int = 3
 var sub_menu_items : int = 6
 
 func _ready() -> void:
-	setup()
+	createMenuFromFolder()
 	#loadTemplateButtons()
 
-#region GENERAL TEMPLATE MENU
+#region TEMPLATE BUTTONS
 
+# Load a template button for each file loaded
 func loadTemplateButtons() -> void:
 	for file in getFilesInFolder(default_template_path):
 		if file.get_extension().to_lower() == "csv":
 			print("File named (%s) is valid!" % file)
 			createTemplateButton(file)
 
-func getFilesInFolder(folder_path: String = "") -> PackedStringArray:
-	return DirAccess.get_files_at(folder_path)
-
+# Create a button for a template at a given path
 func createTemplateButton(file_name: String = "") -> void:
 	if file_name.is_empty():
 		printerr("ERROR: No '.CSV' file found at: ", file_name)
@@ -40,6 +39,10 @@ func createTemplateButton(file_name: String = "") -> void:
 	var full_path: String = default_template_path + file_name
 	template_button.pressed.connect(_on_template_selected.bind(full_path))
 	menu_container.add_child(template_button)
+
+#endregion
+
+#region FILE LOADING
 
 # Loads the quiz into 'Global' so it's ready when the dialogue scene starts
 func loadFile(full_path : String = ""):
@@ -77,29 +80,80 @@ func browseFile():
 
 #endregion
 
+#region HELPERS
+
+# Get subfolders in a given folder
+func getSubFoldersInFolder(folder_path : String = "") -> PackedStringArray:
+	return DirAccess.get_directories_at(folder_path)
+
+# Prints array
+func printStringArray(string_array : PackedStringArray = []):
+	var item_index : int = 0
+	
+	for item in string_array:
+		print("Item #" + str(item_index) + ": ", string_array[item_index])
+		
+		item_index += 1
+
+# Sort array based on string index termination
+func sortByGradeSubstring(string_array : PackedStringArray = [], start_index : int = 0, length : int = 0) -> Array[String]:
+	var result_array : Array[String] = []
+	result_array.assign(string_array) # Populate with string array contents
+	
+	result_array.sort_custom(func(a : String, b: String): # 6 , 1
+		var section_a = a.substr(start_index, length) # Extracts the grade/unit number
+		var section_b = b.substr(start_index, length)
+		
+		return section_a < section_b
+	)
+	
+	return result_array
+
+# Get files in a given folder (Left empty assumes all extensions)
+func getFilesInFolder(folder_path: String = "", extension : String = "") -> PackedStringArray:
+	var all_files : PackedStringArray = DirAccess.get_files_at(folder_path)
+	if extension != "": # Specific extension (filter)
+		var filtered_files = Array(all_files).filter(
+		func(file_name: String):
+			return file_name.get_extension() == extension
+		)
+		
+		return filtered_files
+	else:
+		return all_files
+
+#endregion
+
 #region GRADEMENU (TEST)
 
-func setup():
-	var index : int = 7
+func createMenuFromFolder():
+	# Grade folders
+	var grade_folders_array : Array = Array(getSubFoldersInFolder("res://csvImports/templates/"))
+	grade_folders_array = sortByGradeSubstring(grade_folders_array, 6, 1) # Sort
 	
+	# Main grade menu
 	var grade_menu : GradeMenu = grade_menu_scene.instantiate()
 	add_child(grade_menu)
 	
 	# Menus
-	for menu in menu_amount:
-		var m_menu : PopupMenu = grade_menu.createMenu("Grade" + str(index))
+	for grade in grade_folders_array: # Grade folders
+		var m_menu : PopupMenu = grade_menu.createMenu(grade)
 		grade_menu.add_child(m_menu)
 		
-		index += 1
-	
 		# Submenus
-		for sub_menu in sub_menu_amount:
-			var s_menu : PopupMenu = grade_menu.createSubMenu("Unit")
+		var unit_folders_array : Array = Array(getSubFoldersInFolder("res://csvImports/templates/" + grade))
+		unit_folders_array = sortByGradeSubstring(unit_folders_array, 5, 1) # Sort
+		
+		for unit in unit_folders_array: # Unit folders
+			var s_menu : PopupMenu = grade_menu.createSubMenu(unit)
 			grade_menu.addMenuItem(m_menu, s_menu)
 			
 			# Submenu items
-			for item in sub_menu_items:
-				grade_menu.addSubMenuItem(s_menu, "Item")
+			var files_array : Array = Array(getFilesInFolder("res://csvImports/templates/" + grade + "/" + unit, \
+				"csv")) # '.csv' files only
+			
+			for file in files_array:
+				grade_menu.addSubMenuItem(s_menu, file)
 
 #endregion
 

@@ -43,14 +43,17 @@ grow_vertical = 2
 
 [node name="Browse" type="Button" parent="MenuContainer" unique_id=627912905]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 142.0
-offset_top = -156.0
-offset_right = 310.0
-offset_bottom = -115.0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 150.0
+offset_right = 84.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_wsqt1")
 theme_override_font_sizes/font_size = 20
 text = "Browse
@@ -61,23 +64,32 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 80.0
-offset_top = -98.0
-offset_right = 313.0
-offset_bottom = -49.0
+offset_left = 45.0
+offset_top = -94.0
+offset_right = 278.0
+offset_bottom = -45.0
 grow_vertical = 0
 theme = ExtResource("2_wsqt1")
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [node name="LoadMenu" type="Label" parent="MenuContainer" unique_id=1748063808]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 100.0
-offset_right = 313.0
-offset_bottom = 128.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -215.0
+offset_right = 116.5
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_wsqt1")
+theme_override_font_sizes/font_size = 38
 text = "LOAD"
+horizontal_alignment = 1
 
 [node name="OptionsScroll" type="ScrollContainer" parent="MenuContainer" unique_id=999853641]
 layout_mode = 0
