@@ -10,9 +10,7 @@ var grade_menu_scene : PackedScene = preload("res://scenes/menus/GradeMenu.tscn"
 var default_template_path: String = "res://csvImports/Templates/"
 var notification_time : float = 1.5
 
-var menu_amount : int = 5
-var sub_menu_amount : int = 3
-var sub_menu_items : int = 6
+var grade_menu : GradeMenu = null
 
 func _ready() -> void:
 	createMenuFromFolder()
@@ -56,7 +54,12 @@ func loadFile(full_path : String = ""):
 
 # Displays the loaded notification
 func loadedNotification(text : String = ""):
-	options.hide()
+	if options:
+		options.hide()
+	
+	if grade_menu:
+		grade_menu.hide()
+	
 	
 	# Set prompt text
 	loaded_prompt.show()
@@ -65,6 +68,7 @@ func loadedNotification(text : String = ""):
 	await get_tree().create_timer(notification_time).timeout
 	loaded_prompt.hide()
 	options.show()
+	grade_menu.show()
 
 # Opens file dialog and loads the selected file path if valid
 func browseFile():
@@ -132,7 +136,7 @@ func createMenuFromFolder():
 	grade_folders_array = sortByGradeSubstring(grade_folders_array, 6, 1) # Sort
 	
 	# Main grade menu
-	var grade_menu : GradeMenu = grade_menu_scene.instantiate()
+	grade_menu = grade_menu_scene.instantiate()
 	add_child(grade_menu)
 	
 	# Menus
@@ -153,11 +157,23 @@ func createMenuFromFolder():
 				"csv")) # '.csv' files only
 			
 			for file in files_array:
+				# Add subitem
 				grade_menu.addSubMenuItem(s_menu, file)
+				
+			# Add clicked-on signal to the submenu items
+			s_menu.index_pressed.connect(_on_submenu_item_pressed.bind(files_array, grade, unit))
 
 #endregion
 
 #region SIGNALS
+func _on_submenu_item_pressed(index : int = 0, files_array : Array = [], grade : String = "",unit : String = ""):
+		# Create the file name to load
+		var file_name : String = files_array[index]
+		var full_path : String = "res://csvImports/templates/" + grade + "/" + unit + "/" + file_name
+		
+		# Load file
+		loadFile(full_path)
+
 func _on_template_selected(full_path: String = "") -> void:
 	loadFile(full_path)
 
