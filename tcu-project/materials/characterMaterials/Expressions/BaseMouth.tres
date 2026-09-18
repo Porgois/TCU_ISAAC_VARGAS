@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bj7lxnt1m3jbt"]
+
+[ext_resource type="Texture2D" uid="uid://cq58rr0aqm5yv" path="res://textures/Characters/basic_mouth_sprite_sheet.png" id="1_gcsya"]
+
+[resource]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_gcsya")
+texture_filter = 0
+texture_repeat = false

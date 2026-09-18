@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ddwnvu6mbflbv"]
+
+[ext_resource type="Texture2D" uid="uid://h0dpklr6l8ar" path="res://textures/Characters/basic_eyes_sprite_sheet.png" id="1_jxmri"]
+
+[resource]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_jxmri")
+texture_filter = 0
+texture_repeat = false

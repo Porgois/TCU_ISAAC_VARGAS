@@ -1,0 +1,49 @@
+Theme,Type,Question,Options,Answer
+Theme 1,MC,Which of these is something you would buy at the grocery store?,shirt;rice;watch;belt,rice
+Theme 1,MC,"Complete: ""I need to buy some ______ for dinner.""",fish;shirt;belt;watch,fish
+Theme 1,MC,Which question correctly asks about an uncountable noun?,How many money do you have?;How much money do you have?;How many milk do you have?;How much milks do you have?,How much money do you have?
+Theme 1,MC,Choose the correct sentence.,Do you have any vegetables?;Do you have some vegetables?;Do you has any vegetables?;Do you have a vegetables?,Do you have any vegetables?
+Theme 1,SA,Name two things on your family's grocery list.,,Milk and rice.
+Theme 1,SA,"Write a sentence using ""I need to buy...""",,I need to buy some fruit and vegetables.
+Theme 1,SA,Why is it important to make a grocery list before shopping?,,A grocery list helps us remember what we need and avoid overspending.
+Theme 1,SA,What foods does your family buy every week?,,"My family buys milk, rice, fruit, and vegetables every week."
+Theme 1,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,"fruit:food like apples and bananas;meat:food from animals, like beef or chicken;vegetables:food like carrots and broccoli;dog food:food for pets",
+Theme 1,COMPLETION,I need to buy some ______ for breakfast.,,milk
+Theme 1,COMPLETION,Do you have any ______ at home?,,rice
+Theme 1,COMPLETION,How much ______ do you have?,,money
+Theme 2,MC,Where would you find bread in a grocery store?,bakery;pet supplies;cosmetics;frozen food,bakery
+Theme 2,MC,Which question asks where to find something?,Can you do a price check?;Where can I buy the vegetables?;Is this on sale?;How much does it cost?,Where can I buy the vegetables?
+Theme 2,MC,Which store sector sells canned goods?,fresh food;canned goods;household goods;cashier,canned goods
+Theme 2,MC,Choose the correct modal question.,Can you do a price check for me?;Do you a price check can?;You can a price check?;Price check can you do?,Can you do a price check for me?
+Theme 2,SA,Name two sectors you can find in a grocery store.,,The bakery and the frozen food section.
+Theme 2,SA,Where do you pay for your groceries?,,I pay for my groceries at the cashier.
+Theme 2,SA,Write a question you could ask a store worker for help.,,"Can you help me find the pasta, please?"
+Theme 2,SA,What is your favorite grocery store sector? Explain why.,,I like the bakery because I enjoy fresh bread.
+Theme 2,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,bakery:the section with bread and pastries;cashier:the person who takes your payment;frozen food:food kept cold in freezers;express lane:checkout for people with few items,
+Theme 2,COMPLETION,______ can I buy the vegetables?,,Where
+Theme 2,COMPLETION,Can you do a price ______ for me?,,check
+Theme 2,COMPLETION,She has eight ______ in her fridge.,,oranges
+Theme 3,MC,Which size is bigger than medium?,extra small;small;large;none of these,large
+Theme 3,MC,Which of these is a material used to make clothes?,cotton;cashier;bakery;receipt,cotton
+Theme 3,MC,Which adjective describes something that costs a lot?,cheap;expensive;reasonable;small,expensive
+Theme 3,MC,Which clothing item is best for a formal event?,pajamas;tuxedo;shorts;overalls,tuxedo
+Theme 3,SA,Describe an outfit you like to wear.,,I like to wear a blue shirt and comfortable pants.
+Theme 3,SA,Name two colors you like for clothes.,,Blue and green.
+Theme 3,SA,What size do you usually wear?,,I usually wear a medium.
+Theme 3,SA,Write a sentence describing a piece of clothing using its material.,,This jacket is made of leather.
+Theme 3,MATCH,Match each word on the left with its category on the right. Write the correct letter in the blank.,leather:material;extra-large:size;necklace:jewelry;beautiful:adjective,
+Theme 3,COMPLETION,This shirt is very ______ because it is made of silk.,,expensive
+Theme 3,COMPLETION,I am looking for a ______ size sweater.,,medium
+Theme 3,COMPLETION,Where can I buy a ______ dress?,,blue
+Theme 4,MC,What do you say when you want to pay with a card?,Can I pay by credit card?;Is this on sale?;May I have the receipt?;Do you have change?,Can I pay by credit card?
+Theme 4,MC,Which word means money that you owe?,income;savings;debts;budget,debts
+Theme 4,MC,Choose the correct past tense sentence.,We go to a club.;We went to a club.;We goes to a club.;We going to a club.,We went to a club.
+Theme 4,MC,Which phrase do you use to ask for proof of purchase?,"Is this on sale?;May I have the receipt, please?;Do you have change?;Can I pay in cash?","May I have the receipt, please?"
+Theme 4,SA,Write a sentence asking if an item is on sale.,,Is this shirt on sale?
+Theme 4,SA,Name two things you should include in a budget.,,Income and utility bills.
+Theme 4,SA,Why is it important to save money?,,Saving money helps us pay for things we need in the future.
+Theme 4,SA,Write a sentence in the past tense about something you bought.,,I bought a new pair of shoes last weekend.
+Theme 4,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,income:money you earn;savings:money you keep for later;utility bill:payment for services like electricity;debts:money you owe,
+Theme 4,COMPLETION,Where ______ you buy this watch?,,did
+Theme 4,COMPLETION,It ______ very expensive.,,was
+Theme 4,COMPLETION,A penny saved is a penny ______.,,earned

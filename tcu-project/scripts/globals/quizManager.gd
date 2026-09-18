@@ -4,7 +4,7 @@ extends Node
 signal quiz_completed(score: int, total: int)
 
 var input_prompt_scene: PackedScene = preload("res://scenes/ui/NamePrompter.tscn")
-var question_prompter_scene: PackedScene = preload("res://scenes/ui/genericPrompter.tscn")
+var question_prompter_scene: PackedScene = preload("res://scenes/ui/generalPrompter.tscn")
 var match_environment_scene: PackedScene = preload("res://scenes/ui/matchUI/matchEnvironment.tscn")
 var current_quiz: Quiz = null
 var current_teacher : Teacher = null
@@ -75,9 +75,12 @@ func getQuiz() -> Quiz:
 	return current_quiz
 
 func getQuizName() -> String:
-	var formatted_name : String = current_quiz.quiz_name.trim_suffix(".csv")
-	formatted_name = formatted_name.to_lower().capitalize()
-	return formatted_name
+	if current_quiz:
+		var formatted_name : String = current_quiz.quiz_name.trim_suffix(".csv")
+		formatted_name = formatted_name.to_lower().capitalize()
+		return formatted_name
+	else:
+		return ""
 
 func startQuiz(csv_path: String = "") -> void:
 	resetScore()

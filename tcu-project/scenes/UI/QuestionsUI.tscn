@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b6l0g0leo5rsd"]
 
-[ext_resource type="Script" uid="uid://d3p4xmm6au5ab" path="res://scripts/quizUI.gd" id="1_fy4c5"]
-[ext_resource type="Script" uid="uid://b60snxa5gq8rf" path="res://scripts/characterInterpreter.gd" id="2_h320r"]
-[ext_resource type="Script" uid="uid://ctwarpxgaerb3" path="res://scripts/voiceReader.gd" id="3_t06i4"]
+[ext_resource type="Script" uid="uid://d3p4xmm6au5ab" path="res://scripts/quizScripts/quizUI.gd" id="1_fy4c5"]
+[ext_resource type="Script" uid="uid://b60snxa5gq8rf" path="res://scripts/characterScripts/characterInterpreter.gd" id="2_h320r"]
+[ext_resource type="Script" uid="uid://ctwarpxgaerb3" path="res://scripts/characterScripts/voiceReader.gd" id="3_t06i4"]
 [ext_resource type="AudioStream" uid="uid://yoth6n8fo4g0" path="res://audio/voice/default_animalese/sound01.wav" id="4_beld4"]
 [ext_resource type="AudioStream" uid="uid://jx71jq2seiso" path="res://audio/voice/default_animalese/sound02.wav" id="5_mdba6"]
 [ext_resource type="AudioStream" uid="uid://khmjl5nnxj7t" path="res://audio/voice/default_animalese/sound03.wav" id="6_xbguw"]

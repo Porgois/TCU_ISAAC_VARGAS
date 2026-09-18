@@ -1,0 +1,49 @@
+Theme,Type,Question,Options,Answer
+Theme 1,MC,"Which word means ""the plant life of an area""?",fauna;flora;garbage;stones,flora
+Theme 1,MC,What do you say to ask if something exists in your backyard?,Where do you live?;Is there a tree in your backyard?;Who is your teacher?;How old are you?,Is there a tree in your backyard?
+Theme 1,MC,Which of these is a non-living thing?,cat;tree;stone;flower,stone
+Theme 1,MC,"Choose the correct verb: ""There ______ a big tree in my backyard.""",is;are;am;be,is
+Theme 1,SA,What is one living thing you have in your backyard? Write a complete sentence.,,I have a big tree in my backyard.
+Theme 1,SA,Name two non-living things you can find in nature.,,Rocks and stones.
+Theme 1,SA,Describe your backyard in one or two sentences.,,"My backyard has grass, flowers, and a small tree."
+Theme 1,SA,Why is it important to appreciate the natural wonders around you?,,Because natural wonders help us appreciate and protect the environment.
+Theme 1,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,"flora:the plant life of an area;fauna:the animal life of an area;nature:the physical world, including plants, animals, and landscapes;hot springs:natural pools of water heated underground",
+Theme 1,COMPLETION,There ______ many flowers in my garden.,,are
+Theme 1,COMPLETION,______ there a cat in your backyard?,,Is
+Theme 1,COMPLETION,I like my ______ because it has many trees.,,backyard
+Theme 2,MC,Which of these is a type of protected natural area in Costa Rica?,shopping mall;national park;soccer field;high school,national park
+Theme 2,MC,"Complete: ""In Costa Rica there ______ many volcanoes.""",is;are;am;be,are
+Theme 2,MC,Which is an example of a Costa Rican natural marvel?,Great Barrier Reef;Arenal Volcano;Mount Everest;Grand Canyon,Arenal Volcano
+Theme 2,MC,"Choose the correct word: ""Costa Rica has cloud, rain, and dry ______.""",forests;beaches;caves;lakes,forests
+Theme 2,SA,Name two natural marvels found in Costa Rica.,,Volcanoes and national parks.
+Theme 2,SA,Why do you think Costa Rica has so many national parks?,,"Because Costa Rica protects its forests, rivers, and wildlife."
+Theme 2,SA,Write one sentence about a biological reserve.,,The biological reserve protects many plants and animals.
+Theme 2,SA,What is your favorite natural place in Costa Rica? Explain why.,,I like the beach because I enjoy the ocean and the sand.
+Theme 2,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,national park:protected land for wildlife and nature;biological reserve:a protected area used to study and conserve species;cave:a natural hollow or underground chamber;volcano:a mountain that can erupt with lava,
+Theme 2,COMPLETION,In Costa Rica there ______ a Biological Reserve.,,is
+Theme 2,COMPLETION,In Costa Rica there ______ many national parks.,,are
+Theme 2,COMPLETION,Costa Rica has beautiful ______ and rivers.,,mountains
+Theme 3,MC,Which natural wonder is the tallest mountain in the world?,Grand Canyon;Mount Everest;Victoria Falls;Great Barrier Reef,Mount Everest
+Theme 3,MC,Which natural wonder is a large coral reef system?,Aurora Borealis;Great Barrier Reef;Paricutin Volcano;Grand Canyon,Great Barrier Reef
+Theme 3,MC,What natural light phenomenon can be seen in the night sky?,Victoria Falls;Aurora Borealis;Harbor-Rio de Janeiro;Grand Canyon,Aurora Borealis
+Theme 3,MC,Which question would you use to ask about a wonder's location?,Why is it a wonder?;Where is a natural wonder in the world?;What's your daily routine?;How old are you?,Where is a natural wonder in the world?
+Theme 3,SA,Name one natural wonder of the world.,,The Great Barrier Reef.
+Theme 3,SA,Why is Mount Everest considered a wonder?,,Because it is the tallest mountain in the world.
+Theme 3,SA,What natural wonder would you like to visit? Explain why.,,I would like to visit Victoria Falls because it is a beautiful waterfall.
+Theme 3,SA,Describe the Great Barrier Reef in your own words.,,The Great Barrier Reef is a very large coral reef in the ocean.
+Theme 3,MATCH,Match each natural wonder on the left with its description on the right. Write the correct letter in the blank.,Mount Everest:the tallest mountain in the world;Victoria Falls:a large waterfall in Africa;Grand Canyon:a huge canyon carved by a river;Aurora Borealis:colorful lights that appear in the night sky,
+Theme 3,COMPLETION,Mount Everest ______ the tallest mountain in the world.,,is
+Theme 3,COMPLETION,There ______ many natural wonders in the world.,,are
+Theme 3,COMPLETION,Why ______ it a wonder?,,is
+Theme 4,MC,Which place would you visit to see wild animals?,zoo;soccer field;beach;river,zoo
+Theme 4,MC,Which activity can you do in a rainforest?,fishing;zip-lining;shopping;painting,zip-lining
+Theme 4,MC,"Complete: ""I can go to the beach ______ swim in the ocean.""",but;and;because;is,and
+Theme 4,MC,Which is NOT a place mentioned for travel plans?,mountain;beach;shopping mall;rainforest,shopping mall
+Theme 4,SA,"Where can you go next on a trip? Answer using ""I can go to...""",,I can go to the beach and go swimming.
+Theme 4,SA,Name two activities you can do at the beach.,,Swimming and fishing.
+Theme 4,SA,Write one reason why you want to visit a mountain.,,I want to visit a mountain because I like hiking.
+Theme 4,SA,Describe an activity you can do in a rainforest.,,I can go zip-lining in the rainforest.
+Theme 4,MATCH,Match each activity on the left with its description on the right. Write the correct letter in the blank.,zip-lining:sliding along a cable through the trees;hiking:walking long distances in nature;fishing:catching fish in a river or the ocean;zoo:a place to see different animals,
+Theme 4,COMPLETION,I can go to the mountain ______ go hiking.,,and
+Theme 4,COMPLETION,I want to go to the beach ______ I like the ocean.,,because
+Theme 4,COMPLETION,I can go to the rainforest ______ I don't have transportation yet.,,but

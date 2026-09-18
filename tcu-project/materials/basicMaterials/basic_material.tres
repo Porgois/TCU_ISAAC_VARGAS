@@ -2,4 +2,6 @@
 
 [resource]
 cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
 albedo_color = Color(0.64705884, 0.1882353, 0.1882353, 1)

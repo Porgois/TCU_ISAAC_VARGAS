@@ -1,0 +1,49 @@
+Theme,Type,Question,Options,Answer
+Theme 1,MC,Which place would you visit to see a movie?,Cinema;Bank;Church;Hospital,Cinema
+Theme 1,MC,"Complete: ""We ______ going to Manuel Antonio National Park.""",is;are;am;be,are
+Theme 1,MC,Which question asks about future plans?,Are you going to visit Poas Volcano?;Did you visit Poas Volcano?;Do you visit Poas Volcano?;Have you visited Poas Volcano?,Are you going to visit Poas Volcano?
+Theme 1,MC,Which place would you go to buy groceries?,Supermarket;Cinema;Church;Soccer field,Supermarket
+Theme 1,SA,Name two places you would like to visit.,,I would like to visit the beach and the National Park.
+Theme 1,SA,"Write a sentence using ""going to"" about a future trip.",,We are going to visit my aunt this summer.
+Theme 1,SA,Where do you want to go on your next vacation? Explain why.,,I want to go to the beach because I love swimming in the ocean.
+Theme 1,SA,Name one place in your community you visit often.,,I often visit the park near my house.
+Theme 1,MATCH,Match each place on the left with its description on the right. Write the correct letter in the blank.,Bank:a place where you keep and manage money;Hospital:a place where sick people get medical care;Soccer field:a place where people play soccer;National Park:a protected natural area to visit,
+Theme 1,COMPLETION,We are ______ to Manuel Antonio National Park.,,going
+Theme 1,COMPLETION,______ you going to visit Poas Volcano?,,Are
+Theme 1,COMPLETION,I want to go to the ______ to swim.,,beach
+Theme 2,MC,Which word describes something located beside another thing?,next to;far;opposite;behind,next to
+Theme 2,MC,Which question asks about location?,Where is the post office?;When is the post office?;Why is the post office?;Who is at the post office?,Where is the post office?
+Theme 2,MC,"Complete: ""The bank is ______ the supermarket and the park.""",between;behind;in;at,between
+Theme 2,MC,Which phrase asks if you are traveling correctly?,Are we on the right road?;Is this the right food?;Are we on time?;Is this the right price?,Are we on the right road?
+Theme 2,SA,Describe where your school is located using a preposition of place.,,My school is next to the park.
+Theme 2,SA,"Write a sentence using ""between.""",,The bank is between the supermarket and the church.
+Theme 2,SA,Write a question asking how far a place is.,,How far is it to the mall?
+Theme 2,SA,Name two prepositions of place.,,Near and behind.
+Theme 2,MATCH,Match each preposition on the left with its meaning on the right. Write the correct letter in the blank.,"next to:beside something;in front of:before something, facing it;opposite to:across from something;behind:at the back of something",
+Theme 2,COMPLETION,The park is ______ my house.,,near
+Theme 2,COMPLETION,The church is ______ the bank.,,opposite
+Theme 2,COMPLETION,How far ______ it to the mall?,,is
+Theme 3,MC,Which is the correct imperative for giving directions?,Turn left;Turning left;You turn left;Turned left,Turn left
+Theme 3,MC,Which word means traveling with others to save money?,carpooling;toll;fare;reservation,carpooling
+Theme 3,MC,"Complete: ""It's ______ far, only two blocks away.""",not;is;very;never,not
+Theme 3,MC,Which phrase means to continue in the same direction?,Go straight;Turn left;Follow the signs;Turn around,Go straight
+Theme 3,SA,Write directions from your house to your school.,,"Go straight for two blocks, then turn left."
+Theme 3,SA,Name two ways you can travel to a new place.,,By bus and by bike.
+Theme 3,SA,What do you do if you are lost?,,I ask someone for directions.
+Theme 3,SA,Describe a time you followed directions to find a place.,,I followed the signs and found the museum easily.
+Theme 3,MATCH,Match each phrase on the left with its meaning on the right. Write the correct letter in the blank.,Go straight:continue in the same direction;Turn left:change direction to the left;Follow the signs:use signs to find your way;carpooling:sharing a ride with others,
+Theme 3,COMPLETION,______ straight and then turn left.,,Go
+Theme 3,COMPLETION,"It is not ______, only a short walk.",,far
+Theme 3,COMPLETION,I go to school ______ bus.,,by
+Theme 4,MC,Which word means the document you need to board a plane?,ticket;form;toll;fare,ticket
+Theme 4,MC,"Complete: ""I ______ to the beach every summer.""",go;going;goes;went,go
+Theme 4,MC,Which word refers to money you pay to use certain roads?,toll;fare;ticket;reservation,toll
+Theme 4,MC,Which of these is NOT a travel expense?,ticket;toll;reservation;soccer field,soccer field
+Theme 4,SA,Name two things you need before going on a trip.,,A ticket and some cash.
+Theme 4,SA,Write a sentence using the present tense about your daily travel.,,I go to school by bus every morning.
+Theme 4,SA,Why is it useful to make a reservation before traveling?,,Because it guarantees you a place and can save you money.
+Theme 4,SA,Name two days of the week you like to travel.,,Saturday and Sunday.
+Theme 4,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,schedule:a plan of times for events or travel;reservation:a booking made in advance;toll:money paid to use a road;fare:the price paid to travel,
+Theme 4,COMPLETION,I ______ to the beach every weekend.,,go
+Theme 4,COMPLETION,Please make a ______ before you travel.,,reservation
+Theme 4,COMPLETION,The bus ______ costs five dollars.,,fare

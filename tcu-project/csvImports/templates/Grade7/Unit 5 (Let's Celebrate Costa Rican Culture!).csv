@@ -1,0 +1,49 @@
+Theme,Type,Question,Options,Answer
+Theme 1,MC,Which of these is a family gathering?,baby shower;soccer field;cashier;volcano,baby shower
+Theme 1,MC,"Complete: ""Costa Rica celebrates Mother's Day ______ August 15th.""",in;on;at;by,on
+Theme 1,MC,"Complete: ""______ Christmas time, I visit my grandparents.""",In;On;At;By,At
+Theme 1,MC,Which family gathering celebrates a new baby?,wedding;baby shower;graduation;anniversary party,baby shower
+Theme 1,SA,Name two family gatherings your family celebrates.,,We celebrate birthdays and graduations.
+Theme 1,SA,"Write a sentence about a celebration using ""on"" or ""at.""",,We celebrate my grandmother's birthday on Saturday.
+Theme 1,SA,What is your favorite family celebration? Explain why.,,My favorite celebration is Christmas because my whole family gets together.
+Theme 1,SA,Describe one thing your family does for a birthday party.,,We sing 'Happy Birthday' and eat cake.
+Theme 1,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,wedding:a celebration when two people get married;graduation:a celebration when someone finishes school;anniversary party:a celebration of how many years a couple has been married;family reunion:a gathering where relatives come together,
+Theme 1,COMPLETION,Costa Rica celebrates Mother's Day ______ August.,,in
+Theme 1,COMPLETION,"______ Christmas time, my family decorates the tree.",,At
+Theme 1,COMPLETION,My cousin's wedding is ______ Saturday.,,on
+Theme 2,MC,Which question asks about the time of a celebration?,What do you celebrate?;When do you celebrate ______?;Who celebrates it?;Where is it?,When do you celebrate ______?
+Theme 2,MC,Which of these is a community celebration?,Patron Saint Day;baby shower;wedding;graduation,Patron Saint Day
+Theme 2,MC,"Complete: ""What do you ______ on Mother's Day?""",do;does;doing;did,do
+Theme 2,MC,Which word describes special customs passed down in a community?,traditions;fares;reservations;toll,traditions
+Theme 2,SA,What does your community celebrate?,,My community celebrates Community Day.
+Theme 2,SA,Name one tradition in your community.,,We have a Patron Saint Day festival.
+Theme 2,SA,Write a question asking when a community celebrates something.,,When do you celebrate Community Day?
+Theme 2,SA,Describe Community Day in your own words.,,Community Day is when neighbors come together to celebrate with food and music.
+Theme 2,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,Community Day:a day to celebrate the community together;Community traditions:customs practiced by a community;Patron Saint Day:a celebration honoring a community's patron saint;celebrate:to do something special for an occasion,
+Theme 2,COMPLETION,______ do you celebrate Patron Saint Day?,,When
+Theme 2,COMPLETION,What do you ______ on Community Day?,,do
+Theme 2,COMPLETION,What do you celebrate in your ______?,,community
+Theme 3,MC,Which celebration takes place in Guanacaste?,"""Guanacastequeidad"" Week;Virgen del Mar Day;Diablitos celebration;Culture Day","""Guanacastequeidad"" Week"
+Theme 3,MC,Choose the correct past tense sentence.,Last Christmas I am at my grandma's house.;Last Christmas I was at my grandma's house.;Last Christmas I is at my grandma's house.;Last Christmas I be at my grandma's house.,Last Christmas I was at my grandma's house.
+Theme 3,MC,Which celebration honors the sea?,"Virgen del Mar Day;Diablitos celebration;""Guanacastequeidad"" Week;Independence Day",Virgen del Mar Day
+Theme 3,MC,Which celebration includes traditional masked dancers?,Diablitos celebration;Virgen del Mar Day;Culture Day;Labor Day,Diablitos celebration
+Theme 3,SA,Name one celebration from a Costa Rican community other than your own.,,The Diablitos celebration.
+Theme 3,SA,Write a sentence in the past tense about a celebration you attended.,,Last year I went to Virgen del Mar Day with my family.
+Theme 3,SA,Why is it important to respect other communities' celebrations?,,Because every community's traditions are important and deserve respect.
+Theme 3,SA,What celebration would you like to learn more about? Explain why.,,I would like to learn more about Guanacastequeidad Week.
+Theme 3,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,"""Guanacastequeidad"" Week:a celebration of Guanacaste culture;Virgen del Mar Day:a celebration honoring the Virgin of the Sea;Diablitos celebration:a traditional celebration with masked dancers;community:a group of people living in the same area",
+Theme 3,COMPLETION,Last Christmas I ______ at my grandma's house.,,was
+Theme 3,COMPLETION,"""Guanacastequeidad"" Week celebrates the culture of ______.",,Guanacaste
+Theme 3,COMPLETION,The Diablitos celebration uses colorful ______.,,masks
+Theme 4,MC,Which is a Costa Rican national holiday?,Independence Day;Patron Saint Day;baby shower;Community Day,Independence Day
+Theme 4,MC,"Complete: ""Costa Rica celebrates Independence Day ______ September 15th.""",in;on;at;by,on
+Theme 4,MC,Which holiday celebrates workers?,Labor Day;Culture Day;Mother's Day;Christmas Day,Labor Day
+Theme 4,MC,Choose the correct past tense sentence.,Last year Independence Day was on a Sunday.;Last year Independence Day is on a Sunday.;Last year Independence Day be on a Sunday.;Last year Independence Day am on a Sunday.,Last year Independence Day was on a Sunday.
+Theme 4,SA,Name two Costa Rican national holidays.,,Independence Day and Christmas Day.
+Theme 4,SA,What do Costa Ricans do on Independence Day?,,They walk with lanterns and sing the national anthem.
+Theme 4,SA,Why is Culture Day important in Costa Rica?,,Culture Day celebrates the diversity and traditions of Costa Rica.
+Theme 4,SA,Write a sentence describing what you do on a day off.,,"On a day off, I like to relax and spend time with my family."
+Theme 4,MATCH,Match each holiday on the left with its meaning on the right. Write the correct letter in the blank.,Independence Day:celebrates Costa Rica's freedom;Culture Day:celebrates Costa Rican traditions and diversity;Labor Day:celebrates workers;Christmas Day:celebrates the birth of Jesus,
+Theme 4,COMPLETION,Costa Rica celebrates Independence Day ______ September.,,in
+Theme 4,COMPLETION,Labor Day is ______ May 1st.,,on
+Theme 4,COMPLETION,"Last Independence Day, my family ______ at the parade.",,was

@@ -1,0 +1,49 @@
+Theme,Type,Question,Options,Answer
+Theme 1,MC,"Which phrase means ""to clean your teeth""?",Wake up;Brush my teeth;Take a nap;Go out,Brush my teeth
+Theme 1,MC,What do you say to ask about someone's daily routine?,Where do you live?;What's your daily routine?;Who is your teacher?;How old are you?,What's your daily routine?
+Theme 1,MC,Which activity do people usually do at night?,Have breakfast;Go to high school;Take a nap;Go to bed,Go to bed
+Theme 1,MC,"Choose the correct verb: ""I ______ breakfast at 6:30 a.m.""",have;go;brush;wake,have
+Theme 1,SA,What time do you wake up on school days? Write a complete sentence.,,I wake up at 6am
+Theme 1,SA,Write one thing you do before you go to high school.,,I brush my teeth / I take a shower / I eat breakfast / I have breakfast
+Theme 1,SA,Describe your routine after school in one or two sentences.,,I do my homework and then I watch TV
+Theme 1,SA,Name two activities you do before you go to bed.,,I read a book and I take a shower
+Theme 1,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,wake up:to stop sleeping and open your eyes;brush my teeth:to clean your teeth;take a nap:to sleep for a short time during the day;finish high school:to end classes for the day,
+Theme 1,COMPLETION,I ______ breakfast at 6:30 a.m.,,have
+Theme 1,COMPLETION,I ______ to high school at 7:00 a.m.,,go
+Theme 1,COMPLETION,"At night, I take a shower and ______ my teeth.",,brush
+Theme 2,MC,Which word means food that is not good for your health?,healthy food;junk food;typical food;fresh food,junk food
+Theme 2,MC,"Complete: ""I ______ eat vegetables because they are healthy.""",never;always;hate;don't,always
+Theme 2,MC,Which of these is a healthy food?,potato chips;fruit;cookies;fast food,fruit
+Theme 2,MC,"Choose the correct adverb of frequency: ""I ______ drink soda, only on special occasions.""",always;sometimes;every day;all the time,sometimes
+Theme 2,SA,Name two healthy foods.,,Fruit and vegetables.
+Theme 2,SA,Why is it important to eat vegetables? Answer in your own words.,,Vegetables are healthy / They are healthy / Vegetables give us energy / They give us energy.
+Theme 2,SA,Write one junk food that you sometimes eat.,,Cookies / potato chips.
+Theme 2,SA,Do you drink water every day? Explain your answer.,,"Yes, I drink water because it is healthy. / No, I drink juice instead."
+Theme 2,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,apple:fruit;potato chips:junk food;rice and beans:typical food;chicken:meat,
+Theme 2,COMPLETION,Eating and drinking shouldn't stop us from ______.,,thinking
+Theme 2,COMPLETION,I like to eat vegetables because they are ______.,,healthy
+Theme 2,COMPLETION,I don't like to eat fast food because it is ______.,,unhealthy
+Theme 3,MC,"Which phrase means ""to relax""?",hang out;chill out;send text messages;play cards,chill out
+Theme 3,MC,Which activity usually happens at the mall?,go to the pool;go shopping;play board games;watch a DVD,go shopping
+Theme 3,MC,"""I hang out with my friends ______ we like to talk."" Choose the correct connector.",but;because;or;never,because
+Theme 3,MC,Which is NOT a hanging out activity mentioned in the unit?,play cards;do homework;watch a DVD;go to the cinema,do homework
+Theme 3,SA,What do you like to do to hang out with your friends?,,I like to watch a DVD and play board games.
+Theme 3,SA,Name two things you can do at a sleepover.,,"You can watch a movie, eat snacks, and talk with friends."
+Theme 3,SA,Where do you go to watch a movie with friends?,,I go to the cinema.
+Theme 3,SA,"Explain the idiom ""chill out"" in your own words.",,"""Chill out"" means to relax and calm down."
+Theme 3,MATCH,Match each item on the left with its meaning on the right. Write the correct letter in the blank.,"with bells on:enthusiastically, gladly;chill out:to relax;hang out:to spend time with friends;play board games:a game activity using boards and pieces",
+Theme 3,COMPLETION,I like to send text ______ to my friends.,,messages
+Theme 3,COMPLETION,We ______ to the cinema on Fridays.,,go
+Theme 3,COMPLETION,I watch a DVD ______ I like movies.,,because
+Theme 4,MC,Which sentence correctly expresses a strong like?,I hate reading.;I love reading.;I never read.;I don't read.,I love reading.
+Theme 4,MC,"""I'm fond of ______."" Choose the correct word.",travel;traveling;traveled;travels,traveling
+Theme 4,MC,"Which number is ""forty-two""?",42;14;24;402,42
+Theme 4,MC,Choose the sentence with the correct word order (subject + verb + complement):,TV watch I.;I watch TV.;Watch I TV.;TV I watch.,I watch TV.
+Theme 4,SA,"What are you interested in? Use the phrase ""I'm interested in...""",,I'm interested in computers / sports / music.
+Theme 4,SA,"Write a sentence using ""I love.""",,I love reading books.
+Theme 4,SA,Name one thing you are fond of doing.,,I'm fond of traveling.
+Theme 4,SA,Write the number 35 in words.,,thirty-five
+Theme 4,MATCH,Match each sentence on the left with what it shows on the right. Write the correct letter in the blank.,"I love reading.:shows a strong, positive feeling about an activity;I'm interested in computers.:shows curiosity about a subject;I'm fond of traveling.:shows enjoyment of an activity;Numbers 1-59:used for counting",
+Theme 4,COMPLETION,I'm ______ traveling.,,fond of
+Theme 4,COMPLETION,I ______ reading books.,,love
+Theme 4,COMPLETION,Write the number 27 in words: ______,,twenty-seven

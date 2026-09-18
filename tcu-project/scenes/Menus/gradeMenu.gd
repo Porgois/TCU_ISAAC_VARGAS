@@ -48,7 +48,3 @@ func setMenuTitle(m_menu : PopupMenu = null, new_title : String = ""):
 		m_menu.name = new_title
 
 #endregion
-
-
-func _on_popup_menu_index_pressed(index: int) -> void:
-	pass # Replace with function body.
