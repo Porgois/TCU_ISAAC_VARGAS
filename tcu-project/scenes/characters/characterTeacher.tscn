@@ -60,84 +60,113 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.45882353, 0.654902, 0.2627451, 1)
 
-[sub_resource type="Animation" id="Animation_ka5uc"]
+[sub_resource type="Animation" id="Animation_y7lpg"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot:scale")
+tracks/0/path = NodePath("../..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Pivot/Instructor/Eyes:frame")
+tracks/1/path = NodePath("../..:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Vector3(0, 0.3577925, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Pivot/Instructor/Mouth:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmc5e"]
+_data = {
+&"RESET": SubResource("Animation_y7lpg")
+}
+
+[sub_resource type="Animation" id="Animation_12ttu"]
+resource_name = "angry_character"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3577925, 0), Vector3(0, -0.75049156, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mxk6r"]
-resource_name = "character_idle"
+resource_name = "neutral_character"
 loop_mode = 2
-tracks/0/type = "value"
+tracks/0/type = "scale_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot:scale")
+tracks/0/path = NodePath("../..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 0.95, 1, 1, 1, 1, 1, 1)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 0.95, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_j66po"]
-resource_name = "speak"
-length = 0.6
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/Instructor/Mouth:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ka5uc"]
 _data = {
-&"RESET": SubResource("Animation_ka5uc"),
-&"character_idle": SubResource("Animation_mxk6r"),
-&"neutral_speak": SubResource("Animation_j66po")
+&"angry_body": SubResource("Animation_12ttu"),
+&"neutral_body": SubResource("Animation_mxk6r")
+}
+
+[sub_resource type="Animation" id="Animation_elels"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7lpg"]
+_data = {
+&"RESET": SubResource("Animation_elels")
+}
+
+[sub_resource type="Animation" id="Animation_g5jby"]
+resource_name = "angry_speak"
+length = 0.35
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 3]
 }
 
 [sub_resource type="Animation" id="Animation_bedx1"]
@@ -147,11 +176,11 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/Instructor/Mouth:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 0]
@@ -159,7 +188,25 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g5jby"]
 _data = {
+&"angry_speak": SubResource("Animation_g5jby"),
 &"neutral_speak": SubResource("Animation_bedx1")
+}
+
+[sub_resource type="Animation" id="Animation_15xhf"]
+resource_name = "angry_blink"
+length = 0.35
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Instructor/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 3]
 }
 
 [sub_resource type="Animation" id="Animation_njy1q"]
@@ -181,17 +228,48 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bedx1"]
 _data = {
+&"angry_blink": SubResource("Animation_15xhf"),
 &"neutral_blink": SubResource("Animation_njy1q")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bedx1"]
+animation = &"BodyAnimations/angry_body"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g5jby"]
+animation = &"BodyAnimations/neutral_body"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15xhf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_12ttu"]
+xfade_time = 0.5
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"is_angry"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_elels"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g5jby"]
+states/BodyAnimations_angry_body/node = SubResource("AnimationNodeAnimation_bedx1")
+states/BodyAnimations_angry_body/position = Vector2(815, 200)
+states/BodyAnimations_neutral_body/node = SubResource("AnimationNodeAnimation_g5jby")
+states/BodyAnimations_neutral_body/position = Vector2(431, 200)
+states/End/position = Vector2(1070, 241)
+states/Start/position = Vector2(195, 200)
+transitions = ["Start", "BodyAnimations_neutral_body", SubResource("AnimationNodeStateMachineTransition_15xhf"), "BodyAnimations_neutral_body", "BodyAnimations_angry_body", SubResource("AnimationNodeStateMachineTransition_12ttu"), "BodyAnimations_angry_body", "BodyAnimations_neutral_body", SubResource("AnimationNodeStateMachineTransition_elels")]
 
 [node name="CharacterTeacher" type="Node3D" unique_id=798968730]
 script = ExtResource("1_ka5uc")
 teacher_resource = ExtResource("2_gbw8g")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=106769391]
+transform = Transform3D(0.9366722, 0, 0.3502074, 0, 0.95, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
 
 [node name="Instructor" type="Node3D" parent="Pivot" unique_id=1924811014]
-transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0.01735276, 0)
+transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 0, 0.01735276, 0)
 
 [node name="BeanBody" type="MeshInstance3D" parent="Pivot/Instructor" unique_id=1766467335]
 transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 0.85, 0, 0, 0)
@@ -204,7 +282,8 @@ material_override = ExtResource("4_u028t")
 pixel_size = 0.0085
 texture_filter = 0
 texture = ExtResource("6_u028t")
-hframes = 3
+hframes = 6
+frame = 3
 
 [node name="Mouth" type="Sprite3D" parent="Pivot/Instructor" unique_id=1499217909]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999976, 0, 0.99999976, 0, -0.99999976, 0, -4.3711385e-08, 0.8514675, 1.8608652, 0.0009465278)
@@ -212,26 +291,43 @@ material_override = ExtResource("5_j66po")
 pixel_size = 0.015
 texture_filter = 0
 texture = ExtResource("7_j66po")
-hframes = 3
+hframes = 6
+frame = 4
+
+[node name="ExpressionHandler" type="Node" parent="." unique_id=1214993377 node_paths=PackedStringArray("eye_animator", "mouth_animator", "body_animator", "body_animation_tree", "blink_timer")]
+script = ExtResource("8_njy1q")
+eye_animator = NodePath("../AnimationPlayers/EyeAnimator")
+mouth_animator = NodePath("../AnimationPlayers/MouthAnimator")
+body_animator = NodePath("../AnimationPlayers/BodyAnimator")
+body_animation_tree = NodePath("../AnimationPlayers/BodyAnimationTree")
+blink_timer = NodePath("../BlinkTimer")
+blink_frequency = Vector2(2, 6)
 
 [node name="AnimationPlayers" type="Node" parent="." unique_id=2004423296]
 
 [node name="BodyAnimator" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1084803685]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_ka5uc")
-autoplay = &"character_idle"
+root_node = NodePath("../../Pivot/Instructor/BeanBody")
+libraries/ = SubResource("AnimationLibrary_cmc5e")
+libraries/BodyAnimations = SubResource("AnimationLibrary_ka5uc")
+autoplay = &"BodyAnimations/neutral_body"
 
 [node name="MouthAnimator" type="AnimationPlayer" parent="AnimationPlayers" unique_id=565075306]
-root_node = NodePath("../..")
+root_node = NodePath("../../Pivot/Instructor/Mouth")
+libraries/ = SubResource("AnimationLibrary_y7lpg")
 libraries/MouthAnimations = SubResource("AnimationLibrary_g5jby")
 speed_scale = 2.0
 
 [node name="EyeAnimator" type="AnimationPlayer" parent="AnimationPlayers" unique_id=297693874]
 root_node = NodePath("../..")
 libraries/EyeAnimations = SubResource("AnimationLibrary_bedx1")
-autoplay = &"EyeAnimations/neutral_blink"
 
-[node name="ExpressionHandler" type="Node" parent="." unique_id=1214993377 node_paths=PackedStringArray("eye_animator", "mouth_animator")]
-script = ExtResource("8_njy1q")
-eye_animator = NodePath("../AnimationPlayers/EyeAnimator")
-mouth_animator = NodePath("../AnimationPlayers/MouthAnimator")
+[node name="BodyAnimationTree" type="AnimationTree" parent="AnimationPlayers" unique_id=1281640340]
+root_node = NodePath("../../Pivot/Instructor/BeanBody")
+tree_root = SubResource("AnimationNodeStateMachine_g5jby")
+anim_player = NodePath("../BodyAnimator")
+parameters/conditions/is_angry = false
+
+[node name="BlinkTimer" type="Timer" parent="." unique_id=1172512283]
+autostart = true
+
+[connection signal="timeout" from="BlinkTimer" to="ExpressionHandler" method="_on_blink_timer_timeout"]

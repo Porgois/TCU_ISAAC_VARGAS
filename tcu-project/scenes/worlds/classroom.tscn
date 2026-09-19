@@ -58,11 +58,11 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CharacterTeacher" parent="SubViewportContainer/SubViewport" unique_id=798968730 instance=ExtResource("5_b52t3")]
-transform = Transform3D(0.87951434, 0, 0.47587255, 0, 1, 0, -0.47587255, 0, 0.87951434, -1.7712973, -2.1120572, -1.0457761)
+transform = Transform3D(0.959594, 0, 0.28138793, 0, 1, 0, -0.28138793, 0, 0.959594, -1.2371984, -2.1120572, -0.7903396)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1493793670]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82051265, 1.8992833)
-fov = 65.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82051265, 2.9977655)
+fov = 45.0
 
 [node name="ClassBox" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport" unique_id=1546732187]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.07541317, 0.118819475, 1.0132607)

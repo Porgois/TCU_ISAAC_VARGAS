@@ -24,6 +24,9 @@ func configure(p_displayed_name: String, p_active_balloon, p_ui_container: Node,
 
 # Dispatches to the right handler based on question.type
 func handleQuestion(question: Question) -> QuestionResult:
+	# Go back to neutral reaction
+	Global.expression_handler.triggerNeutralReaction()
+	
 	match question.type:
 		Question.Type.MC:
 			return await handleMCQuestion(question)

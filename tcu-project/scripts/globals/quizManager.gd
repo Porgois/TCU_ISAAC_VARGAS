@@ -99,15 +99,17 @@ func startQuiz(csv_path: String = "") -> void:
 
 	for question in questions:
 		var result: QuestionHandler.QuestionResult = await handler.handleQuestion(question)
-
+		
 		if result.correct:
 			quiz_score += 1
 
 		# Build and show the feedback line based on correct/incorrect
 		var feedback_text: String
-		if result.correct:
+		if result.correct: # Positive response
+			Global.expression_handler.triggerNeutralReaction()
 			feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_positive_response()
-		else:
+		else: # Negative response
+			Global.expression_handler.triggerNegativeReaction()
 			feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_negative_response()
 
 		var feedback_resource = DialogueManager.create_resource_from_text(
