@@ -15,7 +15,6 @@ func _ready() -> void:
 	expression_handler = Global.expression_handler
 
 func processCharacter(character: String, _speed: float, _extra: bool):
-	print("[CHARACTER INTERPRETER] character: ", character, ".\n")
 	# Voice
 	voice_reader.playCharacter(character)
 	

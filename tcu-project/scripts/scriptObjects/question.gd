@@ -1,7 +1,7 @@
 class_name Question
 extends Node
 
-# Kind of question
+# Type of question
 enum Type {MC, SA, MATCH, COMPLETION}
 
 #region GENERAL
@@ -11,6 +11,7 @@ var type : Type = Type.MC
 var question : String = ""
 var options : Array[String] = []
 var answers : Array[String] = []
+var was_answered_correctly : bool = false
 #endregion
 
 #region MATCH

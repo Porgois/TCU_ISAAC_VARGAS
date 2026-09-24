@@ -4,6 +4,7 @@ var quiz_ui_container : CanvasLayer
 var character_interpreter : CharacterInterpreter
 var voice_reader : VoiceReader
 var expression_handler : ExpressionHandler
+var previous_questions : Array[Question] = []
 
 func setQuizUiContainer(quiz_ui : CanvasLayer = null):
 	self.quiz_ui_container = quiz_ui

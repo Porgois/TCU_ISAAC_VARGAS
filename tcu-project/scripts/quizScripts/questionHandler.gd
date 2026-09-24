@@ -25,6 +25,7 @@ func configure(p_displayed_name: String, p_active_balloon, p_ui_container: Node,
 # Dispatches to the right handler based on question.type
 func handleQuestion(question: Question) -> QuestionResult:
 	# Go back to neutral reaction
+	print("Back to neutral!")
 	Global.expression_handler.triggerNeutralReaction()
 	
 	match question.type:
@@ -47,6 +48,7 @@ func handleMCQuestion(question: Question) -> QuestionResult:
 	var lines: PackedStringArray = []
 	lines.append("~ question")
 	lines.append(displayed_name + ": %s" % question.question.replace("\"", "'"))
+	
 	for option in question.options:
 		lines.append("- %s" % option.replace("\"", "'"))
 		lines.append("\t=> END")

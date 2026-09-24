@@ -6,8 +6,11 @@ signal quiz_completed(score: int, total: int)
 var input_prompt_scene: PackedScene = preload("res://scenes/ui/NamePrompter.tscn")
 var question_prompter_scene: PackedScene = preload("res://scenes/ui/generalPrompter.tscn")
 var match_environment_scene: PackedScene = preload("res://scenes/ui/matchUI/matchEnvironment.tscn")
+var results_screen_scene : PackedScene = preload("res://scenes/ui/resultSummaryScreen/resultsScreen.tscn")
+
 var current_quiz: Quiz = null
 var current_teacher : Teacher = null
+var questions: Array[Question] = []
 
 var displayed_name : String = ""
 var user_name: String = ""
@@ -75,23 +78,24 @@ func getQuiz() -> Quiz:
 	return current_quiz
 
 func getQuizName() -> String:
-	if current_quiz:
+	if current_quiz: # Quiz loadead
 		var formatted_name : String = current_quiz.quiz_name.trim_suffix(".csv")
 		formatted_name = formatted_name.to_lower().capitalize()
 		return formatted_name
-	else:
-		return ""
+	else: # No quiz loaded
+		return "ExampleQuiz"
 
 func startQuiz(csv_path: String = "") -> void:
 	resetScore()
-
-	var questions: Array[Question] = []
-	if current_quiz != null:
+	
+	# Set questions based on if the quiz was loaded or not
+	if current_quiz != null: # Quiz loaded
 		questions = current_quiz.questions
-	else:
+	else: # No quiz loaded
 		var reader := FileReader.new()
-		questions = reader.loadQuestionsFromCSV(csv_path)
-
+		questions = reader.loadCSVQuestions(csv_path)
+	
+	# Get total score
 	total_score = questions.size()
 
 	var handler := QuestionHandler.new()
@@ -111,7 +115,10 @@ func startQuiz(csv_path: String = "") -> void:
 		else: # Negative response
 			Global.expression_handler.triggerNegativeReaction()
 			feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_negative_response()
-
+	
+		# Store question result
+		question.was_answered_correctly = result.correct
+		
 		var feedback_resource = DialogueManager.create_resource_from_text(
 			"~ feedback\n%s\n=> END" % feedback_text
 		)
@@ -123,6 +130,16 @@ func startQuiz(csv_path: String = "") -> void:
 
 func goToMenu() -> void:
 	get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")
+
+func showResultsScreen() -> void:
+	# Instantiate result screen scene and fill with summaryItems
+	var result_screen : ResultScreen = results_screen_scene.instantiate()
+	result_screen.appendItemQuestions(questions)
+	
+	# Add to tree and await signal
+	get_tree().current_scene.add_child(result_screen)
+	await result_screen.continueToCompletionImage
+	result_screen.queue_free()
 
 func showCompletionImage() -> void:
 	var img_generator := ImageGenerator.new()

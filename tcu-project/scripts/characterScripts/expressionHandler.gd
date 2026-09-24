@@ -13,10 +13,10 @@ extends Node
 
 # Emotions
 enum EMOTION {
-	NEUTRAL,
-	ANGRY,
-	SAD,
-	HAPPY
+	NEUTRAL, # 0
+	ANGRY, # 1
+	SAD, # 2
+	HAPPY # 3
 }
 
 var current_emotion : EMOTION = EMOTION.NEUTRAL
@@ -50,17 +50,36 @@ func changeEmotion(new_emotion : EMOTION = EMOTION.NEUTRAL):
 
 func triggerPositiveReaction():
 	changeEmotion(EMOTION.HAPPY)
+	play_eye_animation()
 
 func triggerNeutralReaction():
 	changeEmotion(EMOTION.NEUTRAL)
+	play_eye_animation()
 
 func triggerNegativeReaction():
 	changeEmotion(EMOTION.ANGRY)
+	play_eye_animation()
 	play_body_animation()
 
 #endregion
 
 #region ANIMATIONS
+# Play eye animationa according to emotion
+func play_eye_animation():
+	if eye_animator == null:
+		printerr("[EXPRESSION HANDLER] Error: No eye animation player has been set!\n")
+		return
+	
+	# Map emotion to prefix
+	var animation_prefix : String = ""
+	match current_emotion:
+		EMOTION.NEUTRAL:
+			animation_prefix = "neutral"
+		EMOTION.ANGRY:
+			animation_prefix = "angry"
+	
+	# Play animation
+	eye_animator.play("EyeAnimations/" + animation_prefix + "_eyes")
 
 # Play blink animation according to emotion
 func play_blink_animation():
@@ -114,7 +133,6 @@ func play_body_animation():
 			body_animation_tree.set("parameters/conditions/is_angry", false)
 #endregion
 
-
 #region SIGNALS
 
 # Sets new random wait time and starts again
@@ -130,7 +148,6 @@ func _on_blink_timer_timeout() -> void:
 func _on_body_animation_finished(animation_name : String = ""):
 	# Only play once if not neutral
 	if animation_name != "BodyAnimations/neutral_body":
-		changeEmotion(EMOTION.NEUTRAL)
 		body_animation_tree.set("parameters/conditions/is_angry", false) # Expand this to include more animations later on
 
 #endregion

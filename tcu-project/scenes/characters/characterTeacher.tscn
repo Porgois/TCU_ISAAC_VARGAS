@@ -89,7 +89,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_12ttu"]
 resource_name = "angry_character"
-length = 0.8
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,10 +97,10 @@ tracks/0/path = NodePath("../..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.39968038, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.3577925, 0), Vector3(0, -0.75049156, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.75049156, 0), Vector3(0, -0.75049156, 0), Vector3(0, 0.3577925, 0), Vector3(0, 0.3577925, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mxk6r"]
@@ -209,6 +209,23 @@ tracks/0/keys = {
 "values": [3, 4, 5, 3]
 }
 
+[sub_resource type="Animation" id="Animation_cmc5e"]
+resource_name = "angry_eyes"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Instructor/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
 [sub_resource type="Animation" id="Animation_njy1q"]
 resource_name = "neutral_blink"
 length = 0.35
@@ -226,10 +243,29 @@ tracks/0/keys = {
 "values": [0, 1, 2, 0]
 }
 
+[sub_resource type="Animation" id="Animation_16mog"]
+resource_name = "neutral_eyes"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Instructor/Eyes:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bedx1"]
 _data = {
 &"angry_blink": SubResource("Animation_15xhf"),
-&"neutral_blink": SubResource("Animation_njy1q")
+&"angry_eyes": SubResource("Animation_cmc5e"),
+&"neutral_blink": SubResource("Animation_njy1q"),
+&"neutral_eyes": SubResource("Animation_16mog")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bedx1"]
@@ -266,7 +302,7 @@ script = ExtResource("1_ka5uc")
 teacher_resource = ExtResource("2_gbw8g")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=106769391]
-transform = Transform3D(0.9366722, 0, 0.3502074, 0, 0.95, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
+transform = Transform3D(0.9366722, 0, 0.3502074, 0, 1, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
 
 [node name="Instructor" type="Node3D" parent="Pivot" unique_id=1924811014]
 transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 0, 0.01735276, 0)
@@ -277,13 +313,12 @@ mesh = SubResource("ArrayMesh_nv0ws")
 surface_material_override/0 = SubResource("StandardMaterial3D_gbw8g")
 
 [node name="Eyes" type="Sprite3D" parent="Pivot/Instructor" unique_id=391411423]
-transform = Transform3D(-4.3711385e-08, 0, 0.99999976, 0, 0.99999976, 0, -0.99999976, 0, -4.3711385e-08, 0.8382648, 2.4718323, -3.6641726e-08)
+transform = Transform3D(-4.371139e-08, 0, 0.99999976, 0, 0.99999976, 0, -0.99999976, 0, -4.371139e-08, 0.8467143, 2.471832, -3.701107e-08)
 material_override = ExtResource("4_u028t")
 pixel_size = 0.0085
 texture_filter = 0
 texture = ExtResource("6_u028t")
 hframes = 6
-frame = 3
 
 [node name="Mouth" type="Sprite3D" parent="Pivot/Instructor" unique_id=1499217909]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999976, 0, 0.99999976, 0, -0.99999976, 0, -4.3711385e-08, 0.8514675, 1.8608652, 0.0009465278)

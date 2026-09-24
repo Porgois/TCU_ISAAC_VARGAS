@@ -22,7 +22,6 @@ func setupVoiceReader():
 
 func playCharacterSound(audio_index : int = 0):
 	audio_player.stream = audio_character_array[audio_index]
-	print("[VOICE READER] current stream: ", audio_player.stream.resource_path.get_file().get_basename())
 	audio_player.play()
 
 func characterToIndex(character : String) -> int:
