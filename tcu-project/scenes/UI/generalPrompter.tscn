@@ -5,7 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://dyvu075fdxj8u" path="res://themes/styleBox/style_box_normal.tres" id="3_4g86b"]
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="4_uuai0"]
 
-[node name="GenericPrompter" type="Control" unique_id=717873203]
+[node name="GenericPrompter" type="Control" unique_id=717873203 node_paths=PackedStringArray("guide_text", "guide_text_show_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_25yha")
+guide_text = NodePath("InputMenu/QuestionText")
+guide_text_show_timer = NodePath("GuidePromptWaitTimer")
 
 [node name="InputMenu" type="Control" parent="." unique_id=1289813602]
 layout_mode = 1
@@ -27,6 +29,25 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="QuestionText" type="RichTextLabel" parent="InputMenu" unique_id=1448539923]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -105.0
+offset_right = 215.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_tfub3")
+theme_override_font_sizes/normal_font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InputField" type="LineEdit" parent="InputMenu" unique_id=425610009]
 layout_mode = 1
@@ -58,6 +79,10 @@ offset_bottom = 118.0
 [node name="ButtonLabel" parent="InputMenu/Done" index="0" unique_id=1101348109]
 text = "Done"
 
+[node name="GuidePromptWaitTimer" type="Timer" parent="." unique_id=977858579]
+one_shot = true
+
 [connection signal="pressed" from="InputMenu/Done" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="GuidePromptWaitTimer" to="." method="_on_guide_prompt_wait_timer_timeout"]
 
 [editable path="InputMenu/Done"]

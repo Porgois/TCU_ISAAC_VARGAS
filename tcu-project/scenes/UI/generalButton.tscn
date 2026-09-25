@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="1_paso4"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_lnyq6"]
 
-[node name="Button" type="Button" unique_id=419576029 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 40)
-clip_contents = true
-offset_right = 163.0
-offset_bottom = 40.0
+[node name="Button" type="Button" unique_id=362318287 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 174.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 theme = ExtResource("2_lnyq6")
 script = ExtResource("1_paso4")
@@ -18,6 +19,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

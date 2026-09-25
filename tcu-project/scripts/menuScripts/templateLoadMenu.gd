@@ -1,9 +1,9 @@
 class_name TemplateLoad
 extends Control
 
-@export var menu_container: VBoxContainer
-@export var loaded_prompt : Label
-@export var options : Control
+@export var menu_container: VBoxContainer = null
+@export var loaded_prompt : RichTextLabel = null
+@export var options : Control = null
 
 var general_button_scene : PackedScene = preload("res://scenes/ui/generalButton.tscn")
 var grade_menu_scene : PackedScene = preload("res://scenes/menus/GradeMenu.tscn")
@@ -14,7 +14,6 @@ var grade_menu : GradeMenu = null
 
 func _ready() -> void:
 	createMenuFromFolder()
-	#loadTemplateButtons()
 
 #region TEMPLATE BUTTONS
 
@@ -30,7 +29,7 @@ func createTemplateButton(file_name: String = "") -> void:
 	if file_name.is_empty():
 		printerr("ERROR: No '.CSV' file found at: ", file_name)
 		return
-
+	
 	var template_button : GeneralButton = general_button_scene.instantiate()
 	template_button.button_label.text = file_name
 

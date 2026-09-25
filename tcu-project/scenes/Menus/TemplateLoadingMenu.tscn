@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://wy2litakryq3" path="res://scripts/menuScripts/templateLoadMenu.gd" id="1_ih5ko"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_wsqt1"]
+[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="3_ud3yd"]
+[ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="4_vimvy"]
 
 [node name="TemplateLoadingMenu" type="Control" unique_id=1477583910 node_paths=PackedStringArray("menu_container", "loaded_prompt", "options")]
 layout_mode = 3
@@ -15,7 +17,7 @@ menu_container = NodePath("MenuContainer/OptionsScroll/OptionsContainer")
 loaded_prompt = NodePath("LoadedPrompt")
 options = NodePath("MenuContainer")
 
-[node name="LoadedPrompt" type="Label" parent="." unique_id=961571561]
+[node name="LoadedPrompt" type="RichTextLabel" parent="." unique_id=880145074]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -23,15 +25,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -116.5
-offset_top = -14.0
-offset_right = 116.5
-offset_bottom = 14.0
+offset_left = -488.5
+offset_top = -31.75
+offset_right = 488.5
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_wsqt1")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/normal_font_size = 32
 text = "Template loaded!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MenuContainer" type="Control" parent="." unique_id=2013402490]
 layout_mode = 1
@@ -41,39 +45,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Browse" type="Button" parent="MenuContainer" unique_id=627912905]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -84.0
-offset_top = 150.0
-offset_right = 84.0
-offset_bottom = 191.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_wsqt1")
-theme_override_font_sizes/font_size = 20
+[node name="Browse" parent="MenuContainer" unique_id=362318287 instance=ExtResource("3_ud3yd")]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 475.0
+offset_right = 666.0
+offset_bottom = 515.0
+
+[node name="ButtonLabel" parent="MenuContainer/Browse" index="0" unique_id=1101348109]
 text = "Browse
 "
 
-[node name="Back" type="Button" parent="MenuContainer" unique_id=1332066347]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 45.0
-offset_top = -94.0
-offset_right = 278.0
-offset_bottom = -45.0
-grow_vertical = 0
+[node name="Back" type="Button" parent="MenuContainer" unique_id=1266885989 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 555.0
+offset_right = 219.0
+offset_bottom = 595.0
+size_flags_horizontal = 3
 theme = ExtResource("2_wsqt1")
-theme_override_font_sizes/font_size = 30
-text = "Back"
+script = ExtResource("4_vimvy")
+button_label = NodePath("ButtonLabel")
 
-[node name="LoadMenu" type="Label" parent="MenuContainer" unique_id=1748063808]
+[node name="ButtonLabel" type="RichTextLabel" parent="MenuContainer/Back" unique_id=2057657951]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_wsqt1")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Back
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadMenu" type="RichTextLabel" parent="MenuContainer" unique_id=780922921]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -83,11 +102,11 @@ anchor_bottom = 0.5
 offset_left = -116.5
 offset_top = -215.0
 offset_right = 116.5
-offset_bottom = -178.0
+offset_bottom = -168.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_wsqt1")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/normal_font_size = 40
 text = "LOAD"
 horizontal_alignment = 1
 
@@ -105,3 +124,5 @@ size_flags_vertical = 3
 
 [connection signal="pressed" from="MenuContainer/Browse" to="." method="_on_browse_pressed"]
 [connection signal="pressed" from="MenuContainer/Back" to="." method="_on_back_pressed"]
+
+[editable path="MenuContainer/Browse"]

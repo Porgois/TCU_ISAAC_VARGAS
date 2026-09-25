@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dltoj5xw62gy5"]
+
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_htwok"]
+
+[node name="HSeparator" type="HSeparator" unique_id=1924160153]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1.5
+offset_right = 1.5
+offset_bottom = 4.0
+grow_horizontal = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme = ExtResource("1_htwok")
+theme_override_constants/separation = 20

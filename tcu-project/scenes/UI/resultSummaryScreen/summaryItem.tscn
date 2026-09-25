@@ -20,8 +20,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -377.5
-offset_right = 377.5
+offset_left = -409.25
+offset_right = 409.25
 offset_bottom = 46.0
 grow_horizontal = 2
 
@@ -34,16 +34,18 @@ text = "MC
 "
 fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuestionText" type="RichTextLabel" parent="SummaryHolder" unique_id=867830474]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("1_8jfqe")
-text = "\"Complete the following question\"
+text = "\"Complete the following question by answering twice what you need\"
 "
 fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Correct" type="RichTextLabel" parent="SummaryHolder" unique_id=31626610]
 layout_mode = 2
@@ -53,3 +55,4 @@ theme = ExtResource("1_8jfqe")
 text = "True"
 fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1

@@ -76,7 +76,7 @@ func handleSAQuestion(question: Question) -> QuestionResult:
 
 	# Hide the balloon while the prompter is up so a stray click/keypress can't reach its still-active
 	active_balloon.hide()
-	var response_text := await _promptForText("Type your answer...")
+	var response_text := await _promptForText("Type your answer...", question.question)
 
 	for accepted in question.answers:
 		if response_text.strip_edges().to_lower() == accepted.strip_edges().to_lower():
@@ -101,7 +101,7 @@ func handleCOMPLETIONQuestion(question: Question) -> QuestionResult:
 
 	# Hide the balloon while the prompter is up so a stray click/keypress can't reach its still-active
 	active_balloon.hide()
-	var response_text := await _promptForText("Fill in the blank...")
+	var response_text := await _promptForText("Fill in the blank...", question.question)
 
 	if question.blanks.size() > 0:
 		for accepted in question.blanks[0].blank:
@@ -152,16 +152,19 @@ func handleMatchQuestion(question: Question) -> QuestionResult:
 	return result
 
 # SA/COMPLETION helper
-func _promptForText(placeholder: String = "Type your answer...") -> String:
+func _promptForText(placeholder: String = "Type your answer...", question_content : String = "") -> String:
 	if prompter_scene == null or ui_container == null:
 		printerr("QuestionHandler: no prompter_scene/ui_container configured for free-text questions.")
 		return ""
 
-	var prompter := prompter_scene.instantiate()
+	var prompter : GenericPrompter = prompter_scene.instantiate()
 	ui_container.add_child(prompter)
 	prompter.reset(placeholder)
-
+	
+	# Set guide text values
+	prompter.enableGuideText(question_content)
+	
 	var response_text: String = await prompter.input_saved
-
+	
 	prompter.queue_free()
 	return response_text

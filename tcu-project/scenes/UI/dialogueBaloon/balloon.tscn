@@ -65,8 +65,6 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
-[sub_resource type="Theme" id="Theme_p2xgb"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kguv"]
 bg_color = Color(0, 0, 0, 0.5372549)
 corner_radius_top_left = 10
@@ -138,7 +136,7 @@ grow_vertical = 0
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
-theme = SubResource("Theme_p2xgb")
+theme = ExtResource("3_cqi42")
 theme_override_styles/panel = SubResource("StyleBoxFlat_4kguv")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1030936092]
@@ -211,7 +209,6 @@ script = ExtResource("3_72ixx")
 
 [node name="ResponseExample" parent="Balloon/ResponsesMenu" unique_id=419576029 instance=ExtResource("5_cqi42")]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1116280512]
 unique_name_in_owner = true
