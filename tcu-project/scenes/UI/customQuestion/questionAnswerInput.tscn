@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rkq5s1q5fakj"]
+
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_0b7fh"]
+[ext_resource type="Script" uid="uid://ckw4hkby8tt72" path="res://scripts/uiScripts/questionInput/questionAnswer.gd" id="1_ghjbj"]
+[ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="2_m36ni"]
+
+[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071]
+offset_right = 386.0
+offset_bottom = 24.0
+script = ExtResource("1_ghjbj")
+
+[node name="questionInput" parent="." unique_id=1546857390 instance=ExtResource("2_m36ni")]
+layout_mode = 2
+script = null
+
+[node name="deleteButton" type="Button" parent="." unique_id=1341111823]
+layout_mode = 2
+theme = ExtResource("1_0b7fh")
+theme_override_font_sizes/font_size = 15
+text = "X"
+
+[connection signal="pressed" from="deleteButton" to="." method="_on_delete_button_pressed"]

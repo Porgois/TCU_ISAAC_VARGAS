@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://br4fbq4aag8ps"]
+
+[ext_resource type="Script" uid="uid://bugaiq033ixi6" path="res://scripts/menuScripts/questionAnswerInputMenu.gd" id="1_eeqbe"]
+[ext_resource type="PackedScene" uid="uid://rkq5s1q5fakj" path="res://scenes/ui/customQuestion/questionAnswerInput.tscn" id="2_pedkk"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="3_hf4uu"]
+
+[node name="QuestionAnswerMenu" type="Control" unique_id=1829706107 node_paths=PackedStringArray("question_answer_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_eeqbe")
+question_answer_container = NodePath("VBoxContainer/AnswersContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1313544877]
+layout_mode = 1
+offset_right = 291.0
+offset_bottom = 537.0
+
+[node name="AnswersContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=831264418]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="QuestionAnswer" parent="VBoxContainer/AnswersContainer" unique_id=68155071 instance=ExtResource("2_pedkk")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1358210461]
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_hf4uu")
+theme_override_font_sizes/font_size = 20
+text = "+"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

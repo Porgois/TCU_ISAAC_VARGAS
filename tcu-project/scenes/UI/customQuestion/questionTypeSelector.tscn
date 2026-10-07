@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://27y4bmongq42"]
+
+[ext_resource type="Script" uid="uid://b75vxdd4dpdud" path="res://scripts/uiScripts/customQuiz/questionTypeSelector.gd" id="1_2kq0c"]
+
+[node name="QuestionTypeSelector" type="Control" unique_id=1733004040 node_paths=PackedStringArray("selector", "popup_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2kq0c")
+selector = NodePath("TypeSelector")
+popup_menu = NodePath("TypeSelector/QuestionType")
+
+[node name="TypeSelector" type="MenuBar" parent="." unique_id=191631177]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuestionType" type="PopupMenu" parent="TypeSelector" unique_id=441105531]
+oversampling_override = 1.0
+size = Vector2i(180, 100)
+item_count = 3
+item_0/text = "MULTIPLE CHOICE"
+item_0/id = 0
+item_1/text = "COMPLETION"
+item_1/id = 1
+item_2/text = "MATCH"
+item_2/id = 2
+
+[connection signal="id_pressed" from="TypeSelector/QuestionType" to="." method="_on_question_type_id_pressed"]

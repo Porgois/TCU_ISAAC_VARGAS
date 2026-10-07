@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dr78uqw86ko8t"]
+
+[ext_resource type="Script" uid="uid://bxvav45n0fxyg" path="res://scripts/uiScripts/questionInput/questionInput.gd" id="1_63c8f"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_ma4a0"]
+
+[node name="QuestionInput" type="Control" unique_id=491828673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_63c8f")
+
+[node name="QuestionInputField" type="LineEdit" parent="." unique_id=1546857390]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme = ExtResource("1_ma4a0")

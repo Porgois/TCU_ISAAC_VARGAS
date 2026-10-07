@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cu7rtuya3qimm"]
+
+[ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="1_1erip"]
+[ext_resource type="PackedScene" uid="uid://br4fbq4aag8ps" path="res://scenes/ui/customQuestion/questionAnswerMenu.tscn" id="2_1erip"]
+
+[node name="CompletionQuestionItem" type="Control" unique_id=2010322714]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CompletionQuestion" type="HBoxContainer" parent="." unique_id=1433300523]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 742.0
+offset_bottom = 501.0
+
+[node name="QuestionInput" parent="CompletionQuestion" unique_id=491828673 instance=ExtResource("1_1erip")]
+layout_mode = 2
+
+[node name="QuestionAnswerMenu" parent="CompletionQuestion" unique_id=1829706107 instance=ExtResource("2_1erip")]
+layout_mode = 2

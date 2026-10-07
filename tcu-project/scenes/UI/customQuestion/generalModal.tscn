@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://8wa2ldinw3fn"]
+
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_a81qr"]
+[ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="3_m2iav"]
+
+[node name="ModalOverlay" type="Control" unique_id=866828715]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalBoundaries" type="ColorRect" parent="." unique_id=332353004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.33333334)
+
+[node name="ModalTitle" type="RichTextLabel" parent="." unique_id=1797294049]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.25
+offset_top = 37.0
+offset_right = 150.25
+offset_bottom = 84.0
+grow_horizontal = 2
+theme = ExtResource("2_a81qr")
+theme_override_font_sizes/normal_font_size = 40
+text = "New Question"
+horizontal_alignment = 1
+
+[node name="ModalContents" type="CenterContainer" parent="." unique_id=1766805401]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=276440373]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -60.0
+offset_right = 237.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="SaveButton" type="Button" parent="Buttons" unique_id=362318287 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_a81qr")
+script = ExtResource("3_m2iav")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/SaveButton" unique_id=1101348109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_a81qr")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Save"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="Button" parent="Buttons" unique_id=984492716 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_a81qr")
+script = ExtResource("3_m2iav")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/CancelButton" unique_id=1503869456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_a81qr")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Cancel"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
