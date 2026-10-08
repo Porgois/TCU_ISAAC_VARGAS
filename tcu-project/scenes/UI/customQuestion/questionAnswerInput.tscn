@@ -4,10 +4,11 @@
 [ext_resource type="Script" uid="uid://ckw4hkby8tt72" path="res://scripts/uiScripts/questionInput/questionAnswer.gd" id="1_ghjbj"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="2_m36ni"]
 
-[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071]
+[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071 node_paths=PackedStringArray("delete_button")]
 offset_right = 386.0
-offset_bottom = 24.0
+offset_bottom = 35.0
 script = ExtResource("1_ghjbj")
+delete_button = NodePath("deleteButton")
 
 [node name="questionInput" parent="." unique_id=1546857390 instance=ExtResource("2_m36ni")]
 layout_mode = 2

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cwdiacjdnrmmd"]
+
+[ext_resource type="Script" uid="uid://coi7cg6u8u2g6" path="res://scripts/uiScripts/customQuiz/customQuestionItem.gd" id="1_b6tmi"]
+[ext_resource type="PackedScene" uid="uid://27y4bmongq42" path="res://scenes/ui/customQuestion/questionTypeSelector.tscn" id="1_t0wcq"]
+[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="2_b6tmi"]
+
+[node name="CustomQuestionItem" type="Control" unique_id=246808537 node_paths=PackedStringArray("question_type_selector")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b6tmi")
+question_type_selector = NodePath("QuestionHolder/QuestionTypeSelector")
+
+[node name="QuestionHolder" type="HBoxContainer" parent="." unique_id=803793035]
+layout_mode = 1
+offset_right = 481.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="QuestionTypeSelector" parent="QuestionHolder" unique_id=1733004040 instance=ExtResource("1_t0wcq")]
+layout_mode = 2
+
+[node name="EditButton" parent="QuestionHolder" unique_id=362318287 instance=ExtResource("2_b6tmi")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="QuestionHolder/EditButton" index="0" unique_id=1101348109]
+text = "Edit
+"
+
+[node name="DeleteButton" parent="QuestionHolder" unique_id=1415411737 instance=ExtResource("2_b6tmi")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="QuestionHolder/DeleteButton" index="0" unique_id=1101348109]
+text = "X
+"
+
+[connection signal="pressed" from="QuestionHolder/EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="QuestionHolder/DeleteButton" to="." method="_on_delete_button_pressed"]
+
+[editable path="QuestionHolder/EditButton"]
+[editable path="QuestionHolder/DeleteButton"]

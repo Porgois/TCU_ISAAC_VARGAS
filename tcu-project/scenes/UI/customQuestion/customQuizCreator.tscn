@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://difg5ygm0rh2c"]
+
+[ext_resource type="Script" uid="uid://c3cm60xt3qei1" path="res://scripts/menuScripts/quizCreationMenu.gd" id="1_lnrtv"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_daqpn"]
+[ext_resource type="PackedScene" uid="uid://cwdiacjdnrmmd" path="res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn" id="3_fosxa"]
+[ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="4_daqpn"]
+
+[node name="CustomQuestionCreator" type="Control" unique_id=1948691967 node_paths=PackedStringArray("total_question_label", "creator_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lnrtv")
+total_question_label = NodePath("TotalQuestions")
+creator_container = NodePath("ScrollContainer/CreatorContainer")
+
+[node name="QuizTitle" type="RichTextLabel" parent="." unique_id=1469593344]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -259.0
+offset_right = 118.0
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_daqpn")
+theme_override_font_sizes/normal_font_size = 40
+text = "New Quiz"
+horizontal_alignment = 1
+
+[node name="TotalQuestions" type="RichTextLabel" parent="." unique_id=1323638332]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = 204.0
+offset_right = 242.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_daqpn")
+theme_override_font_sizes/normal_font_size = 40
+text = "Total questions:"
+horizontal_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=797608835]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -199.0
+offset_right = 242.5
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreatorContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=163675209]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="CustomQuestionItem" parent="ScrollContainer/CreatorContainer" unique_id=246808537 instance=ExtResource("3_fosxa")]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="." unique_id=1035654521]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -60.0
+offset_right = 237.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="NewButton" type="Button" parent="Buttons" unique_id=744980254 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_daqpn")
+script = ExtResource("4_daqpn")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/NewButton" unique_id=701504317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_daqpn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "New"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveButton" type="Button" parent="Buttons" unique_id=606986739 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_daqpn")
+script = ExtResource("4_daqpn")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/SaveButton" unique_id=1017116264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_daqpn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Save"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="Button" parent="Buttons" unique_id=1933320683 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_daqpn")
+script = ExtResource("4_daqpn")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/CancelButton" unique_id=1855106194]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_daqpn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Cancel"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Buttons/NewButton" to="." method="_on_new_button_pressed"]

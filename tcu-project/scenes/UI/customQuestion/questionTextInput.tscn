@@ -14,10 +14,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_63c8f")
 
-[node name="QuestionInputField" type="LineEdit" parent="." unique_id=1546857390]
+[node name="QuestionInputField" type="TextEdit" parent="." unique_id=88266246]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 24.0
+offset_bottom = 34.0
 grow_horizontal = 2
 theme = ExtResource("1_ma4a0")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Enter question content here..."

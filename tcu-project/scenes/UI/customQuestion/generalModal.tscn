@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://8wa2ldinw3fn"]
 
+[ext_resource type="Script" uid="uid://d1h48wwwb4uvl" path="res://scenes/ui/customQuestion/creationModal.gd" id="1_siadc"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_a81qr"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="3_m2iav"]
+[ext_resource type="PackedScene" uid="uid://cu7rtuya3qimm" path="res://scenes/ui/customQuestion/questionItems/completionQuestionItem.tscn" id="3_siadc"]
 
 [node name="ModalOverlay" type="Control" unique_id=866828715]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_siadc")
 
 [node name="ModalBoundaries" type="ColorRect" parent="." unique_id=332353004]
 layout_mode = 1
@@ -122,3 +125,20 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1524908933]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = 53.0
+offset_right = 15.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CompletionQuestionItem" parent="CenterContainer" unique_id=2010322714 instance=ExtResource("3_siadc")]
+layout_mode = 2

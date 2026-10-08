@@ -4,12 +4,11 @@
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_lnyq6"]
 
 [node name="Button" type="Button" unique_id=362318287 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(75, 40)
 offset_left = 10.0
 offset_top = 1.0
-offset_right = 174.0
+offset_right = 175.0
 offset_bottom = 41.0
-size_flags_horizontal = 3
 theme = ExtResource("2_lnyq6")
 script = ExtResource("1_paso4")
 button_label = NodePath("ButtonLabel")

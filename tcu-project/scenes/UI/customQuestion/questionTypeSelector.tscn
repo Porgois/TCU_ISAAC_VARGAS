@@ -1,32 +1,35 @@
 [gd_scene format=3 uid="uid://27y4bmongq42"]
 
 [ext_resource type="Script" uid="uid://b75vxdd4dpdud" path="res://scripts/uiScripts/customQuiz/questionTypeSelector.gd" id="1_2kq0c"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_eagq7"]
 
-[node name="QuestionTypeSelector" type="Control" unique_id=1733004040 node_paths=PackedStringArray("selector", "popup_menu")]
+[node name="QuestionTypeSelector" type="Control" unique_id=1733004040 node_paths=PackedStringArray("option_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 script = ExtResource("1_2kq0c")
-selector = NodePath("TypeSelector")
-popup_menu = NodePath("TypeSelector/QuestionType")
+option_button = NodePath("TypeSelector")
 
-[node name="TypeSelector" type="MenuBar" parent="." unique_id=191631177]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="QuestionType" type="PopupMenu" parent="TypeSelector" unique_id=441105531]
-oversampling_override = 1.0
-size = Vector2i(180, 100)
+[node name="TypeSelector" type="OptionButton" parent="." unique_id=1118216290]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eagq7")
+theme_override_font_sizes/font_size = 24
 item_count = 3
-item_0/text = "MULTIPLE CHOICE"
-item_0/id = 0
-item_1/text = "COMPLETION"
-item_1/id = 1
-item_2/text = "MATCH"
-item_2/id = 2
+popup/item_0/text = "MULTIPLE CHOICE"
+popup/item_0/id = 0
+popup/item_1/text = "COMPLETION"
+popup/item_1/id = 1
+popup/item_2/text = "MATCH"
+popup/item_2/id = 2
 
-[connection signal="id_pressed" from="TypeSelector/QuestionType" to="." method="_on_question_type_id_pressed"]
+[connection signal="item_selected" from="TypeSelector" to="." method="_on_type_selector_item_selected"]
