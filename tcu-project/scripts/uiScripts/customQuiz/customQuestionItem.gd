@@ -2,11 +2,13 @@ class_name CustomQuestionItem
 extends Control
 
 @export var question_type_selector : QuestionTypeSelector = null
+@export var question_number_label : RichTextLabel = null
 
 var general_modal_scene : PackedScene = preload("res://scenes/ui/customQuestion/generalModal.tscn")
 
 var associated_question : Question = null
 var associated_creation_modal : QuestionCreationModal = null
+var quiz_control : QuizCreationMenu = null
 
 signal question_deleted(question_id : int)
 
@@ -19,20 +21,51 @@ func _ready() -> void:
 	if question_type_selector != null:
 		question_type_selector.type_selected.connect(setQuestionType)
 
+func delete():
+	if is_queued_for_deletion():
+		return
+	
+	# Modal exists?, delete it
+	if associated_creation_modal != null:
+		associated_creation_modal.queue_free()
+	
+	# Emit deletion signal, then delete
+	queue_free()
+	question_deleted.emit(associated_question.question_id)
+
+func setQuestionNumber(text : String = ""):
+	if question_number_label != null:
+		question_number_label.text = text + "."
+	
 #region MODAL
 
+# Check if the modal is not created, it is just open it
+func checkModalRequirements():
+	if associated_creation_modal != null: # Modal exists
+		openModal()
+	else: # Modal does not exist
+		createModal()
+
 func createModal():
-	# Instantiate question creation modal
+	# Instantiate question creation modal and associate values
 	associated_creation_modal = general_modal_scene.instantiate()
+	associated_creation_modal.associated_question_item = self # Associated self with the modals question
+	associated_creation_modal.hide()
+	
+	# Add modal to quiz control node
+	if quiz_control != null:
+		quiz_control.add_child(associated_creation_modal)
 	
 	fillModal()
-	pass
-	
+	openModal()
+
 func openModal():
-	pass
+	if associated_creation_modal != null:
+		associated_creation_modal.show()
 
 func closeModal():
-	pass
+	if associated_creation_modal != null:
+		associated_creation_modal.hide()
 
 func fillModal():
 	pass
@@ -71,11 +104,9 @@ func removeQuestionAnswer(answer_index : int = -1):
 #region SIGNALS
 
 func _on_edit_button_pressed() -> void:
-	createModal()
-	openModal()
+	checkModalRequirements()
 
 func _on_delete_button_pressed() -> void:
-	self.queue_free()
-	question_deleted.emit(associated_question.question_id)
+	delete()
 
 #endregion

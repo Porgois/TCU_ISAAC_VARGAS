@@ -1,12 +1,28 @@
 class_name QuestionCreationModal
 extends Control
 
+var associated_question_item : CustomQuestionItem = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+#region MODAL
 
+func closeModal():
+	if self.visible: # Only hide for now
+		self.hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func deleteModal():
+	self.queue_free()
+
+#endregion
+
+func saveQuestion():
 	pass
+
+func cancel():
+	closeModal()
+
+#region SIGNALS
+
+func _on_cancel_button_pressed() -> void:
+	cancel()
+
+#endregion

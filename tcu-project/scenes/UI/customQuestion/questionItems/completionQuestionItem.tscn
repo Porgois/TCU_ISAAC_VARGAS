@@ -43,8 +43,8 @@ deselect_on_focus_loss_enabled = false
 layout_mode = 2
 mouse_filter = 2
 
-[node name="deleteButton" parent="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer/QuestionAnswer" parent_id_path=PackedInt32Array(1829706107, 68155071) index="1" unique_id=1341111823]
-visible = false
+[node name="VBoxContainer" parent="CompletionQuestion/QuestionAnswerMenu" index="0" unique_id=1313544877]
+mouse_filter = 2
 
 [node name="QuestionTitlesContainer" type="HBoxContainer" parent="." unique_id=305508210]
 layout_mode = 1

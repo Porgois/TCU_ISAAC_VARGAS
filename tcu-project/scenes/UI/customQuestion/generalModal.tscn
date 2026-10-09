@@ -21,7 +21,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.33333334)
+mouse_filter = 2
+color = Color(0.19434929, 0.19434926, 0.19434926, 1)
 
 [node name="ModalTitle" type="RichTextLabel" parent="." unique_id=1797294049]
 layout_mode = 1
@@ -33,6 +34,7 @@ offset_top = 37.0
 offset_right = 150.25
 offset_bottom = 84.0
 grow_horizontal = 2
+mouse_filter = 2
 theme = ExtResource("2_a81qr")
 theme_override_font_sizes/normal_font_size = 40
 text = "New Question"
@@ -47,6 +49,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 use_top_left = true
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=276440373]
@@ -139,6 +142,9 @@ offset_right = 15.0
 offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CompletionQuestionItem" parent="CenterContainer" unique_id=2010322714 instance=ExtResource("3_siadc")]
 layout_mode = 2
+
+[connection signal="pressed" from="Buttons/CancelButton" to="." method="_on_cancel_button_pressed"]
