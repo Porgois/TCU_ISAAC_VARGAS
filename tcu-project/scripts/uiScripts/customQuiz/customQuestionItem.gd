@@ -6,9 +6,14 @@ extends Control
 
 var general_modal_scene : PackedScene = preload("res://scenes/ui/customQuestion/generalModal.tscn")
 
+var modal_title_to_assign : String = ""
+var quiz_control : QuizCreationMenu = null
+
 var associated_question : Question = null
 var associated_creation_modal : QuestionCreationModal = null
-var quiz_control : QuizCreationMenu = null
+
+# To determine wether or not edit button should open a modal
+var type_set : bool = false
 
 signal question_deleted(question_id : int)
 
@@ -41,16 +46,39 @@ func setQuestionNumber(text : String = ""):
 
 # Check if the modal is not created, it is just open it
 func checkModalRequirements():
-	if associated_creation_modal != null: # Modal exists
-		openModal()
-	else: # Modal does not exist
-		createModal()
+	if type_set: # Only do something if a question type has been selected
+		if associated_creation_modal != null: # Modal exists
+			openModal()
+		else: # Modal does not exist
+			createModal()
 
+func setModalTitle():
+	if associated_creation_modal:
+		associated_creation_modal.setModalTitle(modal_title_to_assign)
+
+# Creates a modal fill based on the question type
+func checkModalType():
+	match associated_question.type:
+		Question.Type.MC:
+			modal_title_to_assign = "Multiple Choice"
+			print("The question is Multiple Choice!\n")
+		Question.Type.COMPLETION:
+			modal_title_to_assign = "Completion"
+			print("The question is Completion!\n")
+		_: # Default (must be match)
+			modal_title_to_assign = "Match"
+			print("The question is Match!\n")
+
+# Creates modal based on question type
 func createModal():
+	# Check modal type
+	checkModalType()
+
 	# Instantiate question creation modal and associate values
 	associated_creation_modal = general_modal_scene.instantiate()
 	associated_creation_modal.associated_question_item = self # Associated self with the modals question
 	associated_creation_modal.hide()
+	setModalTitle()
 	
 	# Add modal to quiz control node
 	if quiz_control != null:
@@ -79,6 +107,7 @@ func setQuestionId(id : int = -1):
 	
 func setQuestionType(question_type : Question.Type = Question.Type.MC):
 	associated_question.type = question_type
+	type_set = true # The modal can now be created
 	print("[CUSTOM QUESTION ITEM] Set question type to: ", Question.Type.keys()[question_type])
 
 func addQuestionOption(option_text : String = ""):

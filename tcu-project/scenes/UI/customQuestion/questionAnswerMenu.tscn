@@ -28,6 +28,7 @@ theme_override_constants/separation = 20
 
 [node name="QuestionAnswer" parent="VBoxContainer/AnswersContainer" unique_id=68155071 instance=ExtResource("2_pedkk")]
 layout_mode = 2
+is_deletable = true
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1358210461]
 custom_minimum_size = Vector2(25, 25)

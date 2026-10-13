@@ -6,8 +6,10 @@ extends Control
 var text_input_scene : PackedScene = preload("res://scenes/ui/customQuestion/questionAnswerInput.tscn")
 var current_answer_count : int = 1
 
-func addAnswerInputItem():
+func addAnswerInputItem(is_deletable : bool = true):
+	# Create and set values
 	var answer_input_field : QuestionAnswer = text_input_scene.instantiate()
+	answer_input_field.is_deletable = is_deletable
 	
 	# Add to container
 	if question_answer_container != null and current_answer_count < max_answer_count: # Up to max_answer_count - 1

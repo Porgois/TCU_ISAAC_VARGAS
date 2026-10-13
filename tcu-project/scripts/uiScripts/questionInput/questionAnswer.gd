@@ -9,14 +9,28 @@ signal question_deleted
 
 func _ready() -> void:
 	if is_deletable:
-		delete_button.show()
+		showDeleteButton()
 	else:
-		delete_button.hide()
+		hideDeleteButton()
+
+#region DELETION
+
+func showDeleteButton():
+	delete_button.modulate.a = 1.0
+	delete_button.mouse_filter = Control.MOUSE_FILTER_STOP # Can be interacted with
+	delete_button.focus_mode = Control.FOCUS_ALL
+
+func hideDeleteButton():
+	delete_button.modulate.a = 0.0
+	delete_button.mouse_filter = Control.MOUSE_FILTER_IGNORE  # Can't be interacted with
+	delete_button.focus_mode = Control.FOCUS_NONE
 
 func deleteAnswer():
 	## DELETE ANSWER FROM ANSWER LIST
 	print("Deleting answer...\n")
 	self.queue_free()
+
+#endregion
 
 #region SIGNALS
 
