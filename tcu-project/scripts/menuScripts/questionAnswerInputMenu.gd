@@ -4,7 +4,11 @@ extends Control
 @export var max_answer_count : int = 8 # Max number of answers that can be added
 
 var text_input_scene : PackedScene = preload("res://scenes/ui/customQuestion/questionAnswerInput.tscn")
-var current_answer_count : int = 1
+var current_answer_count : int = 0
+
+# First answer already created
+func _ready() -> void:
+	addAnswerInputItem(false) # Not deletable (at least one answer)
 
 func addAnswerInputItem(is_deletable : bool = true):
 	# Create and set values

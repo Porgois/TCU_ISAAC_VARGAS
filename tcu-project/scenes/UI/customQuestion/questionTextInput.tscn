@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxvav45n0fxyg" path="res://scripts/uiScripts/questionInput/questionInput.gd" id="1_63c8f"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_ma4a0"]
 
-[node name="QuestionInput" type="Control" unique_id=491828673]
+[node name="QuestionInput" type="Control" unique_id=491828673 node_paths=PackedStringArray("text_edit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_63c8f")
+text_edit = NodePath("QuestionInputField")
 
 [node name="QuestionInputField" type="TextEdit" parent="." unique_id=88266246]
 layout_mode = 1
@@ -23,3 +24,5 @@ grow_horizontal = 2
 theme = ExtResource("1_ma4a0")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter question content here..."
+
+[connection signal="text_changed" from="QuestionInputField" to="." method="_on_question_input_field_text_changed"]

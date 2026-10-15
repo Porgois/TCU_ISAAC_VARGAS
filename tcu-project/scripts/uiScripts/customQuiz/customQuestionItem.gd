@@ -3,6 +3,7 @@ extends Control
 
 @export var question_type_selector : QuestionTypeSelector = null
 @export var question_number_label : RichTextLabel = null
+@export var question_preview_label : RichTextLabel = null
 
 var general_modal_scene : PackedScene = preload("res://scenes/ui/customQuestion/generalModal.tscn")
 
@@ -38,10 +39,18 @@ func delete():
 	queue_free()
 	question_deleted.emit(associated_question.question_id)
 
+#region LABELS
+
 func setQuestionNumber(text : String = ""):
 	if question_number_label != null:
 		question_number_label.text = text + "."
-	
+
+func setQuestionPreview(text : String = ""):
+	if question_preview_label != null:
+		question_preview_label.text = text
+
+#endregion
+
 #region MODAL
 
 # Check if the modal is not created, it is just open it

@@ -2,7 +2,12 @@ class_name Question
 extends Node
 
 # Type of question
-enum Type {MC, SA, MATCH, COMPLETION}
+enum Type {
+	MC, 
+	SA,
+	MATCH, 
+	COMPLETION
+}
 
 #region GENERAL
 var question_id : int = -1

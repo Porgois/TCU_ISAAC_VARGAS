@@ -8,9 +8,26 @@ extends Control
 var custom_question_item_scene : PackedScene = preload("res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn")
 
 var question_count : int = 0
+var current_quiz : Quiz = null
 
 func _ready() -> void:
 	setup()
+
+#region QUIZ CREATION
+
+func createQuiz():
+	current_quiz = Quiz.new()
+	setQuizName("EXAMPLE QUIZ")
+
+func setQuizName(text : String = ""):
+	if current_quiz != null:
+		current_quiz.quiz_name = text
+
+func setQuizQuestions(questions : Array[Question] = []):
+	if questions != null:
+		current_quiz.questions = questions
+
+#endregion
 
 #region SETUP
 

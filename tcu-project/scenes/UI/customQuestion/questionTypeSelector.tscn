@@ -4,26 +4,28 @@
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_eagq7"]
 
 [node name="QuestionTypeSelector" type="Control" unique_id=1733004040 node_paths=PackedStringArray("option_button")]
+custom_minimum_size = Vector2(175, 0)
+custom_maximum_size = Vector2(175, -1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -977.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
 script = ExtResource("1_2kq0c")
 option_button = NodePath("TypeSelector")
 
 [node name="TypeSelector" type="OptionButton" parent="." unique_id=1118216290]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(175, 0)
+custom_maximum_size = Vector2(175, -1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 175.0
 grow_vertical = 2
 theme = ExtResource("2_eagq7")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 item_count = 3
 popup/item_0/text = "MULTIPLE CHOICE"
 popup/item_0/id = 0

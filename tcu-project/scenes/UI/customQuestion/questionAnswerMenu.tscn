@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://br4fbq4aag8ps"]
 
 [ext_resource type="Script" uid="uid://bugaiq033ixi6" path="res://scripts/menuScripts/questionAnswerInputMenu.gd" id="1_eeqbe"]
-[ext_resource type="PackedScene" uid="uid://rkq5s1q5fakj" path="res://scenes/ui/customQuestion/questionAnswerInput.tscn" id="2_pedkk"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="3_hf4uu"]
 
 [node name="QuestionAnswerMenu" type="Control" unique_id=1829706107 node_paths=PackedStringArray("question_answer_container")]
@@ -25,10 +24,6 @@ theme_override_constants/separation = 40
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
-
-[node name="QuestionAnswer" parent="VBoxContainer/AnswersContainer" unique_id=68155071 instance=ExtResource("2_pedkk")]
-layout_mode = 2
-is_deletable = true
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1358210461]
 custom_minimum_size = Vector2(25, 25)

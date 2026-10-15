@@ -4,20 +4,23 @@
 [ext_resource type="Script" uid="uid://ckw4hkby8tt72" path="res://scripts/uiScripts/questionInput/questionAnswer.gd" id="1_ghjbj"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="2_m36ni"]
 
-[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071 node_paths=PackedStringArray("delete_button")]
+[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071 node_paths=PackedStringArray("delete_button", "question_input")]
 offset_right = 386.0
 offset_bottom = 35.0
 size_flags_vertical = 3
 script = ExtResource("1_ghjbj")
 is_deletable = false
 delete_button = NodePath("deleteButton")
+question_input = NodePath("QuestionInput")
 
-[node name="questionInput" parent="." unique_id=1546857390 instance=ExtResource("2_m36ni")]
+[node name="QuestionInput" parent="." unique_id=491828673 instance=ExtResource("2_m36ni")]
 layout_mode = 2
-script = null
 
 [node name="deleteButton" type="Button" parent="." unique_id=1341111823]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
 theme = ExtResource("1_0b7fh")
 theme_override_font_sizes/font_size = 15
 text = "X"

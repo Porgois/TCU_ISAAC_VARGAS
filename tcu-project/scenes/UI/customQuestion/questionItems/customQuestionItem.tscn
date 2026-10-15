@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="2_b6tmi"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_iudgs"]
 
-[node name="CustomQuestionItem" type="Control" unique_id=246808537 node_paths=PackedStringArray("question_type_selector", "question_number_label")]
+[node name="CustomQuestionItem" type="Control" unique_id=246808537 node_paths=PackedStringArray("question_type_selector", "question_number_label", "question_preview_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,10 +15,11 @@ grow_vertical = 2
 script = ExtResource("1_b6tmi")
 question_type_selector = NodePath("QuestionHolder/QuestionTypeSelector")
 question_number_label = NodePath("QuestionHolder/QuestionNumber")
+question_preview_label = NodePath("QuestionHolder/QuestionPreviewText")
 
 [node name="QuestionHolder" type="HBoxContainer" parent="." unique_id=803793035]
 layout_mode = 1
-offset_right = 481.0
+offset_right = 960.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 
@@ -33,6 +34,16 @@ vertical_alignment = 1
 
 [node name="QuestionTypeSelector" parent="QuestionHolder" unique_id=1733004040 instance=ExtResource("1_t0wcq")]
 layout_mode = 2
+
+[node name="QuestionPreviewText" type="RichTextLabel" parent="QuestionHolder" unique_id=1567004561]
+custom_minimum_size = Vector2(35, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_iudgs")
+theme_override_font_sizes/normal_font_size = 24
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EditButton" parent="QuestionHolder" unique_id=362318287 instance=ExtResource("2_b6tmi")]
 layout_mode = 2

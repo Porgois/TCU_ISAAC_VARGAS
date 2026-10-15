@@ -1,4 +1,3 @@
-@tool
 class_name QuestionAnswer
 extends Control
 
@@ -6,12 +5,26 @@ signal question_deleted
 
 @export var is_deletable : bool = true
 @export var delete_button : Button = null
+@export var question_input : QuestionInputField = null
 
 func _ready() -> void:
 	if is_deletable:
 		showDeleteButton()
 	else:
 		hideDeleteButton()
+
+#region DATA
+
+# Gets the text input from its question input field child
+func getInputText() -> String:
+	var result : String = ""
+	
+	if question_input:
+		result = question_input.getInputText()
+	
+	return result
+
+#endregion
 
 #region DELETION
 

@@ -1,11 +1,13 @@
-class_name InputField
+class_name QuestionInputField
 extends Control
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var text_edit : TextEdit = null
 
+func getInputText() -> String:
+	if text_edit == null:
+		printerr("[QUESTION INPUT] Error: Text edit not set!")
+		return ""
+	return text_edit.text
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func printInputText():
+	print("[QUESTION INPUT] Current text: ", getInputText())
