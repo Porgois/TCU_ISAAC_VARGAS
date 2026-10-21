@@ -1,0 +1,4 @@
+theme,type,prompt,options,answer
+,COMPLETION,What is 4 + 4?,,8/12
+,COMPLETION,What is 2 * 2?,,4
+,COMPLETION,What is 3 + 2 * 3?,,9

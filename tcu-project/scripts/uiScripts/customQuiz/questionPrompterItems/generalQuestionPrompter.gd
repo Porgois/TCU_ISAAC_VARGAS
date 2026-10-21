@@ -6,7 +6,7 @@ extends Control
 
 var question_text : String = ""
 var question_answer_texts : Array[String] = []
-var associated_creation_modal : QuestionCreationModal = null
+var associated_creation_modal : QuestionCreationModal = null # Get to associated question item through the modal
 
 #region TEXT EXTRACTION
 
@@ -14,7 +14,6 @@ var associated_creation_modal : QuestionCreationModal = null
 
 func getQuestionText() -> String:
 	return question_text
-	
 
 func getAnswerTexts() -> Array[String]:
 	return question_answer_texts
@@ -35,6 +34,8 @@ func setAnswerText(answer : QuestionAnswer = null):
 	question_answer_texts.push_back(answer.getInputText())
 
 func setAnswers():
+	question_answer_texts.clear() # Clear first
+	
 	for answer in question_answers_container.get_children():
 		setAnswerText(answer) # Gets text from the answer field and stores it inside the array
 
@@ -43,9 +44,38 @@ func submitQuestion(print_text : bool = false):
 	setQuestionText()
 	setAnswers()
 	
+	# Save associated question data
+	saveQuestion()
+
 	if print_text:
 		printPrompt()
 		printAnswers()
+
+#endregion
+
+#region QUESTION SAVING
+
+# Sets associated question item's question answers to the local answer array
+func setQuestionAnswers():
+	var question_item = associated_creation_modal.getQuestionItem()
+	
+	if question_item != null:
+		for answer in question_answer_texts:
+			question_item.addQuestionAnswer(answer)
+
+# Sets the local question prompt as the associated question item's question text (prompt)
+func setQuestionPrompt():
+	var question_item = associated_creation_modal.getQuestionItem()
+	
+	if question_item != null:
+		question_item.setQuestionText(question_text)
+
+# Compiles all other methods to save all the question data
+func saveQuestion():
+	setQuestionPrompt()
+	setQuestionAnswers()
+	
+	print("[QUESTION PROMPTER] Saved question data!\n")
 
 #endregion
 

@@ -3,7 +3,7 @@ extends Control
 
 var start_scene_path : String = "res://scenes/worlds/classroom.tscn"
 var template_load_scene_path : String =  "res://scenes/Menus/TemplateLoadingMenu.tscn"
-var create_scene_path : String = "res://scenes/menus/quizCreationMenu.tscn"
+var create_scene_path : String = "res://scenes/ui/customQuestion/customQuizCreator.tscn"
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file(start_scene_path)

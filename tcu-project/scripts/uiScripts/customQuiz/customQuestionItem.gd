@@ -8,8 +8,9 @@ extends Control
 var general_modal_scene : PackedScene = preload("res://scenes/ui/customQuestion/generalModal.tscn")
 
 var modal_title_to_assign : String = ""
-var quiz_control : QuizCreationMenu = null
+var associated_quiz_creation_menu : QuizCreationMenu = null
 
+# Associated objects for communication (all are set from the other's script)
 var associated_question : Question = null
 var associated_creation_modal : QuestionCreationModal = null
 
@@ -90,8 +91,8 @@ func createModal():
 	setModalTitle()
 	
 	# Add modal to quiz control node
-	if quiz_control != null:
-		quiz_control.add_child(associated_creation_modal)
+	if associated_quiz_creation_menu != null:
+		associated_quiz_creation_menu.add_child(associated_creation_modal)
 	
 	fillModal()
 	openModal()
@@ -136,6 +137,15 @@ func removeQuestionAnswer(answer_index : int = -1):
 		print("[CUSTOM QUESTION ITEM] Removed answer at index: ", answer_index, \
 			" (", associated_question.answers[answer_index], ").\n") # Print, then delete (needs deleted value)
 		associated_question.answers.remove_at(answer_index)
+
+# Returns the question item's associated Question object
+func getAssociatedQuestion() -> Question:
+	var result : Question = null
+	if associated_question != null:
+		result = associated_question
+	else:
+		printerr("[CUSTOM QUESTION ITEM] Error: The associated question is empty!\n")
+	return result
 
 #endregion
 

@@ -55,12 +55,25 @@ func setQuestionItem():
 		question_item_container.add_child(associated_question_prompter)
 	else:
 		printerr("[CREATION MODAL] Error: Question item is not set!\n")
+
+func getQuestionItem() -> CustomQuestionItem:
+	var question_item : CustomQuestionItem = null
 	
+	if associated_question_item != null:
+		question_item = associated_question_item
+		
+	return question_item
+
 func saveQuestion():
 	if associated_question_prompter and associated_question_prompter.has_method("submitQuestion"):
 		associated_question_prompter.submitQuestion(true) # Print questions for now
 		associated_question_prompter.setQuestionPreviewText()
+		saveQuestionToQuiz() # Store inside the quiz being created on the quiz creation menu
 
+func saveQuestionToQuiz():
+	var question_item : CustomQuestionItem = associated_question_item
+	question_item.associated_quiz_creation_menu.addQuizQuestion(question_item.associated_question)
+	
 func cancel():
 	closeModal()
 

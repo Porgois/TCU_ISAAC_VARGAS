@@ -4,16 +4,21 @@ extends Control
 @export var total_question_label : RichTextLabel
 @export var total_question_label_preffix : String = "Total questions:"
 @export var creator_container : VBoxContainer = null
+@export var quiz_name_text : TextEdit = null
 
+
+var default_custom_quiz_path : String = "res://csvImports/customQuizzes/"
 var custom_question_item_scene : PackedScene = preload("res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn")
+var main_menu_scene_path : String  = "res://scenes/menus/MainMenu.tscn"
 
 var question_count : int = 0
 var current_quiz : Quiz = null
 
 func _ready() -> void:
 	setup()
+	createQuiz() # Create here for now
 
-#region QUIZ CREATION
+#region QUIZ-RELATED
 
 func createQuiz():
 	current_quiz = Quiz.new()
@@ -27,6 +32,28 @@ func setQuizQuestions(questions : Array[Question] = []):
 	if questions != null:
 		current_quiz.questions = questions
 
+func addQuizQuestion(question : Question = null):
+	if question != null:
+		current_quiz.questions.push_back(question)
+		printQuiz()
+
+func saveQuiz():
+	var file_reader : FileReader = FileReader.new()
+	
+	# default_custom_quiz_path is a folder, so add a filename to it
+	var file_name : String = current_quiz.quiz_name.validate_filename() + ".csv"
+	var full_path : String = default_custom_quiz_path.path_join(file_name)
+	
+	if file_reader.saveQuizToCSV(current_quiz, full_path):
+		print("[QUIZ CREATION MENU] Saved quiz (", current_quiz.quiz_name, ") to: ", full_path, "\n")
+	else:
+		printerr("[QUIZ CREATION MENU] Failed to save quiz (", current_quiz.quiz_name, ")!\n")
+	
+	file_reader.free()
+
+func printQuiz():
+	current_quiz.printQuiz()
+
 #endregion
 
 #region SETUP
@@ -34,8 +61,9 @@ func setQuizQuestions(questions : Array[Question] = []):
 func setupItem(item : CustomQuestionItem) -> void:
 	# Connect question deleted signal for existing question item children and set quiz control
 	item.question_deleted.connect(deleteQuestionItem)
-	item.quiz_control = self # Set self as quiz control item so that the question item knows \
+	item.associated_quiz_creation_menu = self # Set self as quiz control item so that the question item knows \
 	# what to set the modal parent to
+	item.associated_quiz_creation_menu = self
 
 func setupExistingItems():
 	for child in creator_container.get_children():
@@ -99,5 +127,15 @@ func getInitialQuestionCount():
 
 func _on_new_button_pressed() -> void:
 	addNewQuestionItem()
+
+func _on_save_button_pressed() -> void:
+	saveQuiz()
+
+func _on_quiz_title_text_changed() -> void:
+	setQuizName(quiz_name_text.text)
+
+# Go back to menu for now
+func _on_cancel_button_pressed() -> void:
+	get_tree().change_scene_to_file(main_menu_scene_path)
 
 #endregion

@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dw0l25xxcuk5e"
+
+[deps]
+
+source_file="res://csvImports/customQuizzes/Math quiz.csv"
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

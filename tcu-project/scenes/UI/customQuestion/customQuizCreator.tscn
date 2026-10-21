@@ -5,7 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cwdiacjdnrmmd" path="res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn" id="3_fosxa"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="4_daqpn"]
 
-[node name="CustomQuestionCreator" type="Control" unique_id=1948691967 node_paths=PackedStringArray("total_question_label", "creator_container")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fx2g0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwjvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3xux"]
+
+[node name="CustomQuestionCreator" type="Control" unique_id=1948691967 node_paths=PackedStringArray("total_question_label", "creator_container", "quiz_name_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,24 +21,28 @@ grow_vertical = 2
 script = ExtResource("1_lnrtv")
 total_question_label = NodePath("TotalQuestions")
 creator_container = NodePath("ScrollContainer/CreatorContainer")
+quiz_name_text = NodePath("QuizTitle")
 
-[node name="QuizTitle" type="RichTextLabel" parent="." unique_id=1469593344]
+[node name="QuizTitle" type="TextEdit" parent="." unique_id=1310703212]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -115.0
-offset_top = -259.0
-offset_right = 118.0
-offset_bottom = -212.0
+offset_left = -302.0
+offset_top = -265.0
+offset_right = 302.0
+offset_bottom = -225.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_daqpn")
-theme_override_font_sizes/normal_font_size = 40
-text = "New Quiz"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fx2g0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nwjvr")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_r3xux")
+placeholder_text = "Enter quiz title here..."
 
 [node name="TotalQuestions" type="RichTextLabel" parent="." unique_id=1323638332]
 layout_mode = 1
@@ -75,17 +85,17 @@ layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="." unique_id=1035654521]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -236.0
-offset_top = -60.0
-offset_right = 237.0
-offset_bottom = -20.0
+anchor_bottom = 0.5
+offset_left = -319.5
+offset_top = 260.0
+offset_right = 319.5
+offset_bottom = 300.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 50
 
 [node name="NewButton" type="Button" parent="Buttons" unique_id=744980254 node_paths=PackedStringArray("button_label")]
@@ -113,7 +123,7 @@ theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/normal_font_size = 24
-text = "New"
+text = "New question"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -181,4 +191,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="text_changed" from="QuizTitle" to="." method="_on_quiz_title_text_changed"]
 [connection signal="pressed" from="Buttons/NewButton" to="." method="_on_new_button_pressed"]
+[connection signal="pressed" from="Buttons/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Buttons/CancelButton" to="." method="_on_cancel_button_pressed"]
