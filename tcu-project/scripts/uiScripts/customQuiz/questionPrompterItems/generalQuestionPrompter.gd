@@ -31,13 +31,17 @@ func setQuestionText():
 
 # Question answers
 func setAnswerText(answer : QuestionAnswer = null):
-	question_answer_texts.push_back(answer.getInputText())
+	var text : String = answer.getInputText().strip_edges()
+	if text != "":
+		question_answer_texts.push_back(text)
 
+# Set answers for a given question
 func setAnswers():
-	question_answer_texts.clear() # Clear first
-	
+	question_answer_texts.clear()
 	for answer in question_answers_container.get_children():
-		setAnswerText(answer) # Gets text from the answer field and stores it inside the array
+		if answer.is_queued_for_deletion():
+			continue
+		setAnswerText(answer)
 
 # Stores question and prints text, if need be
 func submitQuestion(print_text : bool = false):
@@ -58,10 +62,8 @@ func submitQuestion(print_text : bool = false):
 # Sets associated question item's question answers to the local answer array
 func setQuestionAnswers():
 	var question_item = associated_creation_modal.getQuestionItem()
-	
 	if question_item != null:
-		for answer in question_answer_texts:
-			question_item.addQuestionAnswer(answer)
+		question_item.associated_question.answers.assign(question_answer_texts)  # overwrite
 
 # Sets the local question prompt as the associated question item's question text (prompt)
 func setQuestionPrompt():
@@ -75,7 +77,32 @@ func saveQuestion():
 	setQuestionPrompt()
 	setQuestionAnswers()
 	
-	print("[QUESTION PROMPTER] Saved question data!\n")
+	print("[COMPLETION QUESTION PROMPTER] Saved question data!\n")
+
+#endregion
+
+#region LOAD FROM EXISTING QUIZ
+
+func loadFromQuestion(question : Question) -> void:
+	question_input.setInputText(question.question)
+	fillAnswerRows(question.answers)
+
+func getAnswerMenu() -> QuestionAnswerMenu:
+	var node : Node = question_answers_container
+	while node != null and not node is QuestionAnswerMenu:
+		node = node.get_parent()
+	return node as QuestionAnswerMenu
+
+func fillAnswerRows(texts : Array[String]) -> void:
+	var menu : QuestionAnswerMenu = getAnswerMenu()
+	if menu != null:
+		menu.ensureAnswerCount(texts.size())
+	
+	var rows : Array[Node] = question_answers_container.get_children()
+	for i in rows.size():
+		var row : QuestionAnswer = rows[i] as QuestionAnswer
+		if row != null:
+			row.setInputText(texts[i] if i < texts.size() else "")
 
 #endregion
 

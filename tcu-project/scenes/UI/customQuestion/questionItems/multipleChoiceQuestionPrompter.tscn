@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c3e4lbvm6xxy"]
 
+[ext_resource type="Script" uid="uid://btv6cg81yruk5" path="res://scripts/uiScripts/customQuiz/questionPrompterItems/multipleChoiceQuestionPrompter.gd" id="1_cnmeq"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="1_o612j"]
 [ext_resource type="Script" uid="uid://bugaiq033ixi6" path="res://scripts/menuScripts/questionAnswerInputMenu.gd" id="2_wu6n3"]
-[ext_resource type="PackedScene" uid="uid://rkq5s1q5fakj" path="res://scenes/ui/customQuestion/questionAnswerInput.tscn" id="3_81uxf"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="3_myur0"]
 
-[node name="CompletionQuestionItem" type="Control" unique_id=2010322714]
+[node name="MultipleChoiceQuestionItem" type="Control" unique_id=2010322714 node_paths=PackedStringArray("question_input", "question_answers_container")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,6 +15,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_cnmeq")
+question_input = NodePath("CompletionQuestion/QuestionInput")
+question_answers_container = NodePath("CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer")
 
 [node name="CompletionQuestion" type="HBoxContainer" parent="." unique_id=1433300523]
 layout_mode = 1
@@ -58,18 +61,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="QuestionAnswer" parent="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer" unique_id=68155071 instance=ExtResource("3_81uxf")]
-layout_mode = 2
-
-[node name="QuestionAnswer2" parent="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer" unique_id=268421042 instance=ExtResource("3_81uxf")]
-layout_mode = 2
-
-[node name="QuestionAnswer3" parent="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer" unique_id=803931368 instance=ExtResource("3_81uxf")]
-layout_mode = 2
-
-[node name="QuestionAnswer4" parent="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer" unique_id=1898541518 instance=ExtResource("3_81uxf")]
-layout_mode = 2
-
 [node name="QuestionTitlesContainer" type="HBoxContainer" parent="." unique_id=305508210]
 layout_mode = 1
 anchors_preset = 8
@@ -107,7 +98,3 @@ text = "Answers"
 horizontal_alignment = 1
 
 [editable path="CompletionQuestion/QuestionInput"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer/QuestionAnswer"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer/QuestionAnswer2"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer/QuestionAnswer3"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/VBoxContainer/AnswersContainer/QuestionAnswer4"]

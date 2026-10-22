@@ -1,3 +1,4 @@
+class_name QuestionAnswerMenu
 extends Control
 
 @export var question_answer_container : VBoxContainer = null
@@ -9,6 +10,8 @@ var current_answer_count : int = 0
 # First answer already created
 func _ready() -> void:
 	addAnswerInputItem(false) # Not deletable (at least one answer)
+
+#region COUNT
 
 func addAnswerInputItem(is_deletable : bool = true):
 	# Create and set values
@@ -23,8 +26,17 @@ func addAnswerInputItem(is_deletable : bool = true):
 	else:
 		print("[QUESTION ANSWER MENU] Warning: Can't add more answers!\n") # Limit answer amount
 
+# Make sure a certain number of questions exist
+func ensureAnswerCount(count : int, deletable : bool = true) -> void:
+	if question_answer_container == null:
+		return
+	while current_answer_count < count and current_answer_count < max_answer_count:
+		addAnswerInputItem(deletable)
+
 func decreaseAnswerCount():
 	current_answer_count = current_answer_count - 1
+
+#endregion
 
 #region SIGNALS
 

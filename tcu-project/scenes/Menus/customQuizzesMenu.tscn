@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://dcafdsp0wcfjs"]
+
+[ext_resource type="Script" uid="uid://cuefdpyxenk7k" path="res://scripts/menuScripts/customQuizzes.gd" id="1_hwmon"]
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_v0fxh"]
+[ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="2_ilyke"]
+[ext_resource type="PackedScene" uid="uid://c7cpcey4qi5i6" path="res://scenes/ui/customQuestion/questionItems/customQuizItem.tscn" id="2_nb76o"]
+
+[node name="CustomQuizzes" type="Control" unique_id=431676214]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hwmon")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1691298060]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = -197.5
+offset_right = 495.0
+offset_bottom = 197.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuizzesContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1993759789]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="CustomQuizItem" parent="ScrollContainer/QuizzesContainer" unique_id=246808537 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem2" parent="ScrollContainer/QuizzesContainer" unique_id=1409386906 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem3" parent="ScrollContainer/QuizzesContainer" unique_id=1189562445 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem4" parent="ScrollContainer/QuizzesContainer" unique_id=139154138 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem5" parent="ScrollContainer/QuizzesContainer" unique_id=207044962 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem6" parent="ScrollContainer/QuizzesContainer" unique_id=624350028 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem7" parent="ScrollContainer/QuizzesContainer" unique_id=636964375 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem8" parent="ScrollContainer/QuizzesContainer" unique_id=2079165224 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem9" parent="ScrollContainer/QuizzesContainer" unique_id=108841293 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem10" parent="ScrollContainer/QuizzesContainer" unique_id=1926192789 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem11" parent="ScrollContainer/QuizzesContainer" unique_id=458650347 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem12" parent="ScrollContainer/QuizzesContainer" unique_id=2096009235 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem13" parent="ScrollContainer/QuizzesContainer" unique_id=125534538 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem14" parent="ScrollContainer/QuizzesContainer" unique_id=43604779 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizItem15" parent="ScrollContainer/QuizzesContainer" unique_id=148073020 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="CustomQuizzes" type="RichTextLabel" parent="." unique_id=2130502264]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -259.0
+offset_right = 211.5
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v0fxh")
+theme_override_font_sizes/normal_font_size = 40
+text = "CUSTOM QUIZZES"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="." unique_id=2137537826 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 555.0
+offset_right = 219.0
+offset_bottom = 595.0
+size_flags_horizontal = 3
+theme = ExtResource("1_v0fxh")
+script = ExtResource("2_ilyke")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="Back" unique_id=1385394024]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_v0fxh")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Back
+"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

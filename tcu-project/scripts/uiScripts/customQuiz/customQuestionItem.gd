@@ -21,8 +21,8 @@ signal question_deleted(question_id : int)
 
 func _ready() -> void:
 	# Create question on start
-	self.associated_question = Question.new()
-	print("[CUSTOM QUESTION ITEM] Created a question!\n")
+	if associated_question == null:
+		associated_question = Question.new()
 	
 	# Connect type selected signal
 	if question_type_selector != null:
@@ -54,6 +54,22 @@ func setQuestionPreview(text : String = ""):
 
 #region MODAL
 
+# Load modal content based on existing question
+func loadFromQuestion(question : Question) -> void:
+	associated_question = question
+
+	# CSV-loaded completion answers live in `blanks`; the editor uses `answers`.
+	# Normalize, or FileReader.questionToRow() would keep saving the stale blanks.
+	if question.type == Question.Type.COMPLETION:
+		if question.answers.is_empty() and not question.blanks.is_empty():
+			question.answers.assign(question.blanks[0].blank)
+		question.blanks.clear()
+
+	setQuestionPreview(question.question)
+	if question_type_selector != null:
+		question_type_selector.setTypeSilently(question.type)
+	type_set = true
+	
 # Check if the modal is not created, it is just open it
 func checkModalRequirements():
 	if type_set: # Only do something if a question type has been selected
@@ -106,7 +122,12 @@ func closeModal():
 		associated_creation_modal.hide()
 
 func fillModal():
-	pass
+	if associated_creation_modal == null:
+		return
+	
+	var prompter : GeneralQuestionPrompter = associated_creation_modal.associated_question_prompter
+	if prompter != null:
+		prompter.loadFromQuestion(associated_question)
 
 #endregion
 

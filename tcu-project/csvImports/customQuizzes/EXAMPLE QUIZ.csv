@@ -1,2 +1,2 @@
 theme,type,prompt,options,answer
-,COMPLETION,What is 4 + 4?,12/3
+,MC,What is 4 + 4?,8;12;23;4,8

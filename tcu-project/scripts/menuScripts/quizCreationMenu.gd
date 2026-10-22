@@ -9,7 +9,7 @@ extends Control
 
 var default_custom_quiz_path : String = "res://csvImports/customQuizzes/"
 var custom_question_item_scene : PackedScene = preload("res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn")
-var main_menu_scene_path : String  = "res://scenes/menus/MainMenu.tscn"
+var custom_quizzes_menu_scene_path : String  = "res://scenes/menus/customQuizzesMenu.tscn"
 
 var question_count : int = 0
 var current_quiz : Quiz = null
@@ -32,15 +32,22 @@ func setQuizQuestions(questions : Array[Question] = []):
 	if questions != null:
 		current_quiz.questions = questions
 
-func addQuizQuestion(question : Question = null):
-	if question != null:
-		current_quiz.questions.push_back(question)
-		printQuiz()
+func collectQuestionsFromItems() -> Array[Question]:
+	var questions : Array[Question] = []
+	for child in creator_container.get_children():
+		if child is CustomQuestionItem and not child.is_queued_for_deletion():
+			var q : Question = child.associated_question
+			if q != null and q.question.strip_edges() != "":  # skip never-edited items
+				questions.append(q)
+	return questions
 
 func saveQuiz():
 	var file_reader : FileReader = FileReader.new()
+	setQuizQuestions(collectQuestionsFromItems())
 	
-	# default_custom_quiz_path is a folder, so add a filename to it
+	# Rebuild from the items so edits overwrite, deletes are respected, and order matches the UI
+	setQuizQuestions(collectQuestionsFromItems())
+	
 	var file_name : String = current_quiz.quiz_name.validate_filename() + ".csv"
 	var full_path : String = default_custom_quiz_path.path_join(file_name)
 	
@@ -50,6 +57,33 @@ func saveQuiz():
 		printerr("[QUIZ CREATION MENU] Failed to save quiz (", current_quiz.quiz_name, ")!\n")
 	
 	file_reader.free()
+
+func loadQuizFromCSV(csv_path : String) -> void:
+	var file_reader : FileReader = FileReader.new()
+	var quiz : Quiz = Quiz.new()
+	quiz.quiz_name = csv_path.get_file().get_basename()
+	quiz.questions = file_reader.loadCSVQuestions(csv_path)
+	file_reader.free()
+	
+	loadQuiz(quiz)
+
+func loadQuiz(quiz : Quiz) -> void:
+	current_quiz = quiz
+	quiz_name_text.text = quiz.quiz_name  # No text_changed signal from code
+
+	for child in creator_container.get_children():
+		if child is CustomQuestionItem:
+			creator_container.remove_child(child)
+			child.queue_free()
+
+	for question in quiz.questions:
+		var item : CustomQuestionItem = custom_question_item_scene.instantiate()
+		item.associated_question = question # Before add_child so _ready() keeps it
+		setupItem(item)
+		creator_container.add_child(item)
+		item.loadFromQuestion(question) # After add_child so exports are resolved
+
+	refreshQuestions()
 
 func printQuiz():
 	current_quiz.printQuiz()
@@ -136,6 +170,6 @@ func _on_quiz_title_text_changed() -> void:
 
 # Go back to menu for now
 func _on_cancel_button_pressed() -> void:
-	get_tree().change_scene_to_file(main_menu_scene_path)
+	get_tree().change_scene_to_file(custom_quizzes_menu_scene_path)
 
 #endregion

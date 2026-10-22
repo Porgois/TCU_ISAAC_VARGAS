@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://csrahnn0q1boc"]
 
+[ext_resource type="Script" uid="uid://dnxnub6sc3f5i" path="res://scripts/uiScripts/customQuiz/questionPrompterItems/matchQuestionPrompter.gd" id="1_7pm6a"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="1_f74h7"]
-[ext_resource type="Script" uid="uid://bugaiq033ixi6" path="res://scripts/menuScripts/questionAnswerInputMenu.gd" id="2_yqq74"]
 [ext_resource type="PackedScene" uid="uid://rkq5s1q5fakj" path="res://scenes/ui/customQuestion/questionAnswerInput.tscn" id="3_uqoj4"]
 [ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="4_mn5xk"]
 
-[node name="CompletionQuestionItem" type="Control" unique_id=2010322714]
+[node name="MatchQuestionItem" type="Control" unique_id=2010322714 node_paths=PackedStringArray("term_container", "definition_container")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,85 +15,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="CompletionQuestion" type="HBoxContainer" parent="." unique_id=1433300523]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -458.0
-offset_top = -238.0
-offset_right = 459.0
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="SideBContainer" type="VBoxContainer" parent="CompletionQuestion" unique_id=831264418]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="QuestionInput" parent="CompletionQuestion/SideBContainer" unique_id=491828673 instance=ExtResource("1_f74h7")]
-layout_mode = 2
-
-[node name="QuestionInput2" parent="CompletionQuestion/SideBContainer" unique_id=671928008 instance=ExtResource("1_f74h7")]
-layout_mode = 2
-
-[node name="QuestionInput3" parent="CompletionQuestion/SideBContainer" unique_id=580830902 instance=ExtResource("1_f74h7")]
-layout_mode = 2
-
-[node name="QuestionInput4" parent="CompletionQuestion/SideBContainer" unique_id=899464921 instance=ExtResource("1_f74h7")]
-layout_mode = 2
-
-[node name="QuestionAnswerMenu" type="Control" parent="CompletionQuestion" unique_id=1829706107 node_paths=PackedStringArray("question_answer_container")]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("2_yqq74")
-question_answer_container = NodePath("../SideBContainer")
-
-[node name="SideAContainer" type="VBoxContainer" parent="CompletionQuestion/QuestionAnswerMenu" unique_id=1862464513]
-layout_mode = 0
-offset_left = 2.0
-offset_right = 503.0
-offset_bottom = 156.0
-size_flags_horizontal = 3
-theme_override_constants/separation = 20
-
-[node name="QuestionAnswer" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer" unique_id=68155071 instance=ExtResource("3_uqoj4")]
-layout_mode = 2
-
-[node name="deleteButton" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer" index="1" unique_id=1341111823]
-modulate = Color(1, 1, 1, 0)
-focus_mode = 0
-mouse_filter = 2
-
-[node name="QuestionAnswer2" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer" unique_id=302008719 instance=ExtResource("3_uqoj4")]
-layout_mode = 2
-
-[node name="deleteButton" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer2" index="1" unique_id=1341111823]
-modulate = Color(1, 1, 1, 0)
-focus_mode = 0
-mouse_filter = 2
-
-[node name="QuestionAnswer3" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer" unique_id=504961464 instance=ExtResource("3_uqoj4")]
-layout_mode = 2
-
-[node name="deleteButton" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer3" index="1" unique_id=1341111823]
-modulate = Color(1, 1, 1, 0)
-focus_mode = 0
-mouse_filter = 2
-
-[node name="QuestionAnswer4" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer" unique_id=1231475312 instance=ExtResource("3_uqoj4")]
-layout_mode = 2
-
-[node name="deleteButton" parent="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer4" index="1" unique_id=1341111823]
-modulate = Color(1, 1, 1, 0)
-focus_mode = 0
-mouse_filter = 2
+script = ExtResource("1_7pm6a")
+term_container = NodePath("MatchQuestion/TermContainer")
+definition_container = NodePath("MatchQuestion/DefinitionContainer")
 
 [node name="QuestionTitlesContainer" type="HBoxContainer" parent="." unique_id=305508210]
 layout_mode = 1
@@ -118,7 +42,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("4_mn5xk")
 theme_override_font_sizes/normal_font_size = 38
-text = "Side A"
+text = "Terms"
 horizontal_alignment = 1
 
 [node name="SideBText" type="RichTextLabel" parent="QuestionTitlesContainer" unique_id=1764798967]
@@ -128,10 +52,59 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("4_mn5xk")
 theme_override_font_sizes/normal_font_size = 38
-text = "Side B"
+text = "Definitions"
 horizontal_alignment = 1
 
-[editable path="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer2"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer3"]
-[editable path="CompletionQuestion/QuestionAnswerMenu/SideAContainer/QuestionAnswer4"]
+[node name="MatchQuestion" type="HBoxContainer" parent="." unique_id=1433300523]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -458.0
+offset_top = -238.0
+offset_right = 497.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TermContainer" type="VBoxContainer" parent="MatchQuestion" unique_id=831264418]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="SideAInput1" parent="MatchQuestion/TermContainer" unique_id=491828673 instance=ExtResource("1_f74h7")]
+layout_mode = 2
+
+[node name="SideAInput2" parent="MatchQuestion/TermContainer" unique_id=671928008 instance=ExtResource("1_f74h7")]
+layout_mode = 2
+
+[node name="SideAInput3" parent="MatchQuestion/TermContainer" unique_id=580830902 instance=ExtResource("1_f74h7")]
+layout_mode = 2
+
+[node name="SideAInput4" parent="MatchQuestion/TermContainer" unique_id=899464921 instance=ExtResource("1_f74h7")]
+layout_mode = 2
+
+[node name="DefinitionContainer" type="VBoxContainer" parent="MatchQuestion" unique_id=1862464513]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="SideBAnswer1" parent="MatchQuestion/DefinitionContainer" unique_id=68155071 instance=ExtResource("3_uqoj4")]
+layout_mode = 2
+
+[node name="SideBAnswer2" parent="MatchQuestion/DefinitionContainer" unique_id=302008719 instance=ExtResource("3_uqoj4")]
+layout_mode = 2
+
+[node name="SideBAnswer3" parent="MatchQuestion/DefinitionContainer" unique_id=504961464 instance=ExtResource("3_uqoj4")]
+layout_mode = 2
+
+[node name="SideBAnswer4" parent="MatchQuestion/DefinitionContainer" unique_id=1231475312 instance=ExtResource("3_uqoj4")]
+layout_mode = 2
+
+[editable path="MatchQuestion/DefinitionContainer/SideBAnswer1"]
+[editable path="MatchQuestion/DefinitionContainer/SideBAnswer2"]
+[editable path="MatchQuestion/DefinitionContainer/SideBAnswer3"]
+[editable path="MatchQuestion/DefinitionContainer/SideBAnswer4"]

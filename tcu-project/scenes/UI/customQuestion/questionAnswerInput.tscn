@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ckw4hkby8tt72" path="res://scripts/uiScripts/questionInput/questionAnswer.gd" id="1_ghjbj"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="2_m36ni"]
 
-[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071 node_paths=PackedStringArray("delete_button", "question_input")]
+[node name="QuestionAnswer" type="HBoxContainer" unique_id=68155071 node_paths=PackedStringArray("delete_button", "question_input", "correct_check")]
 offset_right = 386.0
 offset_bottom = 35.0
 size_flags_vertical = 3
@@ -12,8 +12,12 @@ script = ExtResource("1_ghjbj")
 is_deletable = false
 delete_button = NodePath("deleteButton")
 question_input = NodePath("QuestionInput")
+correct_check = NodePath("correctCheck")
 
 [node name="QuestionInput" parent="." unique_id=491828673 instance=ExtResource("2_m36ni")]
+layout_mode = 2
+
+[node name="correctCheck" type="CheckBox" parent="." unique_id=1918676512]
 layout_mode = 2
 
 [node name="deleteButton" type="Button" parent="." unique_id=1341111823]
