@@ -4,10 +4,9 @@ extends Control
 @export var total_question_label : RichTextLabel
 @export var total_question_label_preffix : String = "Total questions:"
 @export var creator_container : VBoxContainer = null
-@export var quiz_name_text : TextEdit = null
+@export var quiz_name_text : LineEdit = null
 
-
-var default_custom_quiz_path : String = "res://csvImports/customQuizzes/"
+var default_custom_quiz_path : String = QuizSession.CUSTOM_QUIZ_PATH
 var custom_question_item_scene : PackedScene = preload("res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn")
 var custom_quizzes_menu_scene_path : String  = "res://scenes/menus/customQuizzesMenu.tscn"
 
@@ -16,13 +15,18 @@ var current_quiz : Quiz = null
 
 func _ready() -> void:
 	setup()
-	createQuiz() # Create here for now
+	
+	if QuizSession.pending_csv_path != "":
+		loadQuizFromCSV(QuizSession.pending_csv_path)
+		QuizSession.pending_csv_path = ""  # consume it, so "new quiz" starts empty next time
+	else:
+		createQuiz()
 
 #region QUIZ-RELATED
 
 func createQuiz():
 	current_quiz = Quiz.new()
-	setQuizName("EXAMPLE QUIZ")
+	setQuizName("UntitledQuiz")
 
 func setQuizName(text : String = ""):
 	if current_quiz != null:
@@ -43,7 +47,6 @@ func collectQuestionsFromItems() -> Array[Question]:
 
 func saveQuiz():
 	var file_reader : FileReader = FileReader.new()
-	setQuizQuestions(collectQuestionsFromItems())
 	
 	# Rebuild from the items so edits overwrite, deletes are respected, and order matches the UI
 	setQuizQuestions(collectQuestionsFromItems())
@@ -57,6 +60,9 @@ func saveQuiz():
 		printerr("[QUIZ CREATION MENU] Failed to save quiz (", current_quiz.quiz_name, ")!\n")
 	
 	file_reader.free()
+	
+	# Go back to quiz menu
+	get_tree().change_scene_to_file(custom_quizzes_menu_scene_path)
 
 func loadQuizFromCSV(csv_path : String) -> void:
 	var file_reader : FileReader = FileReader.new()
@@ -165,8 +171,8 @@ func _on_new_button_pressed() -> void:
 func _on_save_button_pressed() -> void:
 	saveQuiz()
 
-func _on_quiz_title_text_changed() -> void:
-	setQuizName(quiz_name_text.text)
+func _on_quiz_title_text_changed(new_text : String) -> void:
+	setQuizName(new_text)
 
 # Go back to menu for now
 func _on_cancel_button_pressed() -> void:

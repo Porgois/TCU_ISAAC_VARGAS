@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d2rgi2r6pw0ih"
+
+[deps]
+
+source_file="res://csvImports/customQuizzes/UntitledQuiz.csv"
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

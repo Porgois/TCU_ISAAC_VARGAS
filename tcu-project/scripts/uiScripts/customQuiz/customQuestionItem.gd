@@ -1,5 +1,5 @@
 class_name CustomQuestionItem
-extends Control
+extends MarginContainer
 
 @export var question_type_selector : QuestionTypeSelector = null
 @export var question_number_label : RichTextLabel = null

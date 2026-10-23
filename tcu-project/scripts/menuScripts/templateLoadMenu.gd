@@ -2,14 +2,14 @@ class_name TemplateLoad
 extends Control
 
 @export var menu_container: VBoxContainer = null
-@export var loaded_prompt : RichTextLabel = null
 @export var options : Control = null
+@export var notification_time : float = 2.0
 
 var general_button_scene : PackedScene = preload("res://scenes/ui/generalButton.tscn")
 var grade_menu_scene : PackedScene = preload("res://scenes/menus/GradeMenu.tscn")
-var default_template_path: String = "res://csvImports/Templates/"
-var notification_time : float = 1.5
+var message_notifier_scene : PackedScene = preload("res://scenes/ui/messageNotifier.tscn")
 
+var default_template_path: String = "res://csvImports/Templates/"
 var grade_menu : GradeMenu = null
 
 func _ready() -> void:
@@ -49,25 +49,9 @@ func loadFile(full_path : String = ""):
 	quiz.questions = reader.loadCSVQuestions(full_path)
 	QuizManager.setQuiz(quiz)
 	
-	loadedNotification(quiz.quiz_name)
-
-# Displays the loaded notification
-func loadedNotification(text : String = ""):
-	if options:
-		options.hide()
-	
-	if grade_menu:
-		grade_menu.hide()
-	
-	
-	# Set prompt text
-	loaded_prompt.show()
-	loaded_prompt.text = "Template file '" + text + "' loaded succesfully!"
-	
-	await get_tree().create_timer(notification_time).timeout
-	loaded_prompt.hide()
-	options.show()
-	grade_menu.show()
+	# Notify that the quiz has been loaded
+	var message : String = "Quiz '" + quiz.quiz_name + "' loaded!"
+	MessageNotifier.showMessage(get_tree(), message)
 
 # Opens file dialog and loads the selected file path if valid
 func browseFile():

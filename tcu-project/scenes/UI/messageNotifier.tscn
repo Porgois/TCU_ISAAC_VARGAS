@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b1puusdvms4aj"]
+
+[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_3prmn"]
+[ext_resource type="Script" uid="uid://bfmxi8kwaf0af" path="res://scripts/menuScripts/messageNotifier.gd" id="1_wgqkt"]
+
+[node name="MessageNotifier" type="Control" unique_id=1547492303 node_paths=PackedStringArray("notifier_prompt", "notifier_timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wgqkt")
+notifier_prompt = NodePath("NotifierPrompt")
+notifier_timer = NodePath("SceneSwitchTimer")
+
+[node name="NotifierPrompt" type="RichTextLabel" parent="." unique_id=1034417151]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.5
+offset_top = -31.75
+offset_right = 488.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3prmn")
+theme_override_font_sizes/normal_font_size = 32
+text = "Template loaded!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SceneSwitchTimer" type="Timer" parent="." unique_id=1551827976]
+wait_time = 2.0
+
+[connection signal="timeout" from="SceneSwitchTimer" to="." method="_on_scene_switch_timer_timeout"]
