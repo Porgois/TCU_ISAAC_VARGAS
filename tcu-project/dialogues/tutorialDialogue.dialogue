@@ -1,0 +1,10 @@
+~ start
+{{QuizManager.getDisplayedName()}}: Hello!
+{{QuizManager.getDisplayedName()}}: My name is {{QuizManager.current_teacher.getFullName()}}. It's a pleasure to meet you.
+do QuizManager.setDisplayedName(QuizManager.current_teacher.getFormalName())
+{{QuizManager.getDisplayedName()}}: I will briefly explain to you how to take a quiz all the different question types you will be asked, and how to answer them.
+{{QuizManager.getDisplayedName()}}: Firstly, when taking a 'Multiple Choice' question you will be presented with 4 options and must click on the correct one.
+{{QuizManager.getDisplayedName()}}: Secondly, for a 'Completion' question you will be shown an input field where you can type in the answer using your keyboard.
+{{QuizManager.getDisplayedName()}}: And lastly,for a 'Matching' type question you will have to connect the dots on the right to the dots on the left so that a term matches its definition.
+do QuizManager.goToMenu()
+=> END

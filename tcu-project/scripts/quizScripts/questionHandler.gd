@@ -1,8 +1,6 @@
 class_name QuestionHandler
 extends Node
 
-var match_environment_scene: PackedScene = preload("res://scenes/ui/matchUI/matchEnvironment.tscn")
-
 # Result of asking a single Question and collecting the player's response
 class QuestionResult:
 	var correct: bool = false
@@ -14,6 +12,7 @@ var displayed_name: String = ""
 var active_balloon = null
 var ui_container: Node = null
 var prompter_scene: PackedScene = null
+var match_environment_scene: PackedScene = null
 
 func configure(p_displayed_name: String, p_active_balloon, p_ui_container: Node, p_prompter_scene: PackedScene, p_match_environment_scene: PackedScene = null) -> void:
 	displayed_name = p_displayed_name
