@@ -11,9 +11,11 @@ var message_notifier_scene : PackedScene = preload("res://scenes/ui/messageNotif
 
 var default_template_path: String = "res://csvImports/Templates/"
 var grade_menu : GradeMenu = null
+var file_reader : FileReader = null
 
 func _ready() -> void:
 	createMenuFromFolder()
+	file_reader = FileReader.new()
 
 #region TEMPLATE BUTTONS
 
@@ -41,18 +43,6 @@ func createTemplateButton(file_name: String = "") -> void:
 
 #region FILE LOADING
 
-# Loads the quiz into 'Global' so it's ready when the dialogue scene starts
-func loadFile(full_path : String = ""):
-	var reader = FileReader.new()
-	var quiz = Quiz.new()
-	quiz.quiz_name = full_path.get_file()
-	quiz.questions = reader.loadCSVQuestions(full_path)
-	QuizManager.setQuiz(quiz)
-	
-	# Notify that the quiz has been loaded
-	var message : String = "Quiz '" + quiz.quiz_name + "' loaded!"
-	MessageNotifier.showMessage(get_tree(), message)
-
 # Opens file dialog and loads the selected file path if valid
 func browseFile():
 	var file_path : String = ""
@@ -63,7 +53,7 @@ func browseFile():
 	file_path = file_browser.openFileBrowserWindow()
 	
 	if file_path != "":
-		loadFile(file_path)
+		file_reader.loadFile(file_path)
 
 #endregion
 
@@ -148,10 +138,10 @@ func _on_menu_item_pressed(index : int = 0, files_array : Array = [], grade : St
 		print("[LOADING MENU] Full file path: ", full_path, ".\n")
 		
 		# Load file
-		loadFile(full_path)
+		file_reader.loadFile(full_path)
 
 func _on_template_selected(full_path: String = "") -> void:
-	loadFile(full_path)
+	file_reader.loadFile(full_path)
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")

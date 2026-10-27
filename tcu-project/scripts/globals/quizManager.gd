@@ -10,6 +10,8 @@ var results_screen_scene : PackedScene = preload("res://scenes/ui/resultSummaryS
 
 var current_quiz: Quiz = null
 var current_teacher : Teacher = null
+var current_teacher_dialogue : DialogueResource = null
+
 var questions: Array[Question] = []
 var question_handler : QuestionHandler = null
 
@@ -33,6 +35,14 @@ func _ready() -> void:
 func setTeacher(new_teacher: Teacher = null) -> void:
 	current_teacher = new_teacher
 	print("[QUIZ MANAGER] Teacher \"%s\" saved successfully!" % new_teacher)
+
+func getTeacher() -> Teacher:
+	var result : Teacher = null
+	
+	if current_teacher != null:
+		result = current_teacher
+
+	return result
 
 #endregion
 
@@ -124,6 +134,10 @@ func showCompletionImage() -> void:
 	await img_generator.createImage("Congratulations ", str(quiz_score))
 	img_generator.queue_free()
 
+func loadQuizInFile(quiz_location : String = ""):
+	var file_reader : FileReader = FileReader.new()
+	file_reader.loadFile(quiz_location, false)
+	
 #endregion
 
 #region SPECIFIC QUESTION

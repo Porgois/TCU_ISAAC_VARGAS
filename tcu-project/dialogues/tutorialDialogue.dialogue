@@ -1,10 +1,18 @@
 ~ start
-{{QuizManager.getDisplayedName()}}: Hello!
+{{QuizManager.getDisplayedName()}}: Hi!
 {{QuizManager.getDisplayedName()}}: My name is {{QuizManager.current_teacher.getFullName()}}. It's a pleasure to meet you.
 do QuizManager.setDisplayedName(QuizManager.current_teacher.getFormalName())
+do QuizManager.loadQuizInFile("res://csvImports/tutorials/TutorialQuiz.csv")
 {{QuizManager.getDisplayedName()}}: I will briefly explain to you how to take a quiz all the different question types you will be asked, and how to answer them.
 {{QuizManager.getDisplayedName()}}: Firstly, when taking a 'Multiple Choice' question you will be presented with 4 options and must click on the correct one.
+do QuizManager.askQuestion(0)
 {{QuizManager.getDisplayedName()}}: Secondly, for a 'Completion' question you will be shown an input field where you can type in the answer using your keyboard.
-{{QuizManager.getDisplayedName()}}: And lastly,for a 'Matching' type question you will have to connect the dots on the right to the dots on the left so that a term matches its definition.
+do QuizManager.askQuestion(2)
+{{QuizManager.getDisplayedName()}}: And lastly, for a 'Matching' type question you will have to connect the dots on the left to the dots on the right so that a term matches its definition.
+{{QuizManager.getDisplayedName()}}: For that, you will have to click on the dot and drag it to where you want to conect it.
+{{QuizManager.getDisplayedName()}}: If you change your mind you can click on the connected right dots to undo the connection.
+{{QuizManager.getDisplayedName()}}: Once you've connected all the dots, simply press the button that will be shown to you then to continue.
+do QuizManager.askQuestion(1)
+{{QuizManager.getDisplayedName()}}: With this information you should be able to know how to take any quiz! Best of luck!
 do QuizManager.goToMenu()
 => END
