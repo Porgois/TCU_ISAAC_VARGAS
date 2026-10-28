@@ -53,7 +53,7 @@ func browseFile():
 	file_path = file_browser.openFileBrowserWindow()
 	
 	if file_path != "":
-		file_reader.loadFile(file_path)
+		file_reader.loadFile(file_path, get_tree())
 
 #endregion
 
@@ -138,10 +138,10 @@ func _on_menu_item_pressed(index : int = 0, files_array : Array = [], grade : St
 		print("[LOADING MENU] Full file path: ", full_path, ".\n")
 		
 		# Load file
-		file_reader.loadFile(full_path)
+		file_reader.loadFile(full_path, get_tree())
 
 func _on_template_selected(full_path: String = "") -> void:
-	file_reader.loadFile(full_path)
+	file_reader.loadFile(full_path, get_tree())
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")

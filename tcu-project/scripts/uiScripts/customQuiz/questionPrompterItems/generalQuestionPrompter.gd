@@ -48,8 +48,9 @@ func submitQuestion(print_text : bool = false):
 	setQuestionText()
 	setAnswers()
 	
-	# Save associated question data
+	# Save associated question data and notify
 	saveQuestion()
+	MessageNotifier.showMessage(get_tree(), "Question saved succesfully!\n")
 
 	if print_text:
 		printPrompt()

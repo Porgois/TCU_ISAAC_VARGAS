@@ -5,6 +5,10 @@ extends Node
 
 func _ready() -> void:
 	QuizManager.setTeacher(self)
+	
+	# Set tutorial dialogue if it exists (selected from menu)
+	if QuizManager.current_teacher_dialogue != null:
+		setDialogue(QuizManager.current_teacher_dialogue)
 
 func getName() -> String:
 	return teacher_resource.teacher_name
@@ -29,7 +33,7 @@ func getFormalName() -> String:
 #region DIALOGUE
 
 func setDialogue(new_dialogue : DialogueResource = null):
-	if teacher_resource.teacher_dialogue:
+	if new_dialogue != null:
 		print("SET NEW DIALOGUE TO: ", new_dialogue)
 		teacher_resource.teacher_dialogue = new_dialogue
 

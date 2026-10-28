@@ -3,16 +3,37 @@
 {{QuizManager.getDisplayedName()}}: My name is {{QuizManager.current_teacher.getFullName()}}. It's a pleasure to meet you.
 do QuizManager.setDisplayedName(QuizManager.current_teacher.getFormalName())
 do QuizManager.loadQuizInFile("res://csvImports/tutorials/TutorialQuiz.csv")
-{{QuizManager.getDisplayedName()}}: I will briefly explain to you how to take a quiz all the different question types you will be asked, and how to answer them.
-{{QuizManager.getDisplayedName()}}: Firstly, when taking a 'Multiple Choice' question you will be presented with 4 options and must click on the correct one.
-do QuizManager.askQuestion(0)
-{{QuizManager.getDisplayedName()}}: Secondly, for a 'Completion' question you will be shown an input field where you can type in the answer using your keyboard.
-do QuizManager.askQuestion(2)
-{{QuizManager.getDisplayedName()}}: And lastly, for a 'Matching' type question you will have to connect the dots on the left to the dots on the right so that a term matches its definition.
-{{QuizManager.getDisplayedName()}}: For that, you will have to click on the dot and drag it to where you want to conect it.
-{{QuizManager.getDisplayedName()}}: If you change your mind you can click on the connected right dots to undo the connection.
-{{QuizManager.getDisplayedName()}}: Once you've connected all the dots, simply press the button that will be shown to you then to continue.
-do QuizManager.askQuestion(1)
+{{QuizManager.getDisplayedName()}}: I will briefly explain to you how to take a quiz; all the different question types you will be asked, and how to answer them.
+{{QuizManager.getDisplayedName()}}: Generally, all you will need to take the quiz is a [color=yellow][wave amp=20 freq=5]mouse 🖱️[/wave][/color] and [color=yellow][wave amp=20 freq=5]keyboard ⌨️[/wave][/color].
+{{QuizManager.getDisplayedName()}}: Firstly, when taking a [color=yellow][wave amp=20 freq=5]'Multiple Choice'[/wave][/color] question you will be presented with [color=yellow][wave amp=20 freq=5]4 options[/wave][/color] and must [color=yellow][wave amp=20 freq=5]🖱 click on the correct one[/wave][/color].
+=>< ask_multiple_choice_question
+{{QuizManager.getDisplayedName()}}: Secondly, for a [color=yellow][wave amp=20 freq=5]'Completion'[/wave][/color] question you will be shown an [color=yellow][wave amp=20 freq=5]input field[/wave][/color] where you can [color=yellow][wave amp=20 freq=5]type in the answer[/wave][/color] using your [color=yellow][wave amp=20 freq=5]⌨️ keyboard[/wave][/color].
+=>< ask_completion_question
+{{QuizManager.getDisplayedName()}}: And lastly, for a [color=yellow][wave amp=20 freq=5]'Matching'[/wave][/color] type question you will have to [color=yellow][wave amp=20 freq=5]connect the dots on the left to the dots on the right[/wave][/color] using your [color=yellow][wave amp=20 freq=5]mouse 🖱[/wave][/color], so that a [color=yellow][wave amp=20 freq=5]term matches[/wave][/color] its [color=yellow][wave amp=20 freq=5]definition[/wave][/color].
+{{QuizManager.getDisplayedName()}}: For that, you will have to [color=yellow][wave amp=20 freq=5]🖱️ click on the dot[/wave][/color] and [color=yellow][wave amp=20 freq=5]drag it[/wave][/color] to where you want to [color=yellow][wave amp=20 freq=5]connect it[/wave][/color].
+{{QuizManager.getDisplayedName()}}: If you change your mind, you can [color=yellow][wave amp=20 freq=5]🖱️ click on the connected right dots[/wave][/color] to [color=yellow][wave amp=20 freq=5]undo[/wave][/color] the [color=yellow][wave amp=20 freq=5]connection[/wave][/color].
+{{QuizManager.getDisplayedName()}}: Once you've [color=yellow][wave amp=20 freq=5]connected all the dots[/wave][/color], simply [color=yellow][wave amp=20 freq=5]press the button[/wave][/color] that will be shown to you then to [color=yellow][wave amp=20 freq=5]continue[/wave][/color].
+=>< ask_match_question
 {{QuizManager.getDisplayedName()}}: With this information you should be able to know how to take any quiz! Best of luck!
 do QuizManager.goToMenu()
+=> END
+
+~ ask_multiple_choice_question
+do QuizManager.askQuestion(0, false) 
+if QuizManager.getQuestionResultValue(0) == false # Wrong answer (repeat until the user answers correctly)
+	{{QuizManager.getDisplayedName()}}: Thats not right! It's ok, try again.
+	=>< ask_multiple_choice_question
+
+=> END
+
+~ ask_completion_question
+do QuizManager.askQuestion(2, false)
+if QuizManager.getQuestionResultValue(2) == false # Wrong answer (repeat until the user answers correctly)
+	{{QuizManager.getDisplayedName()}}: No, please type the word I'm asking you to.
+=> END
+
+~ ask_match_question
+do QuizManager.askQuestion(1, false)
+if QuizManager.getQuestionResultValue(1) == false # Wrong answer (repeat until the user answers correctly)
+	{{QuizManager.getDisplayedName()}}: The matching is not quite right, please redo it!
 => END

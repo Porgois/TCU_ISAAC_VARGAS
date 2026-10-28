@@ -91,7 +91,7 @@ func rowToQuestion(row : PackedStringArray, id : int) -> Question:
 	return new_question
 
 # Loads the quiz into 'Global' so it's ready when the dialogue scene starts
-func loadFile(full_path : String = "", notify : bool = true):
+func loadFile(full_path : String = "", tree : SceneTree = self.get_tree(), notify : bool = true):
 	var quiz = Quiz.new()
 	quiz.quiz_name = full_path.get_file()
 	quiz.questions = loadCSVQuestions(full_path)
@@ -99,8 +99,9 @@ func loadFile(full_path : String = "", notify : bool = true):
 	
 	# Notify that the quiz has been loaded and notify hasnt been overwritten
 	if notify:
+		print("NOTIFY")
 		var message : String = "Quiz '" + quiz.quiz_name + "' loaded!"
-		MessageNotifier.showMessage(get_tree(), message)
+		MessageNotifier.showMessage(tree, message)
 
 #endregion
 

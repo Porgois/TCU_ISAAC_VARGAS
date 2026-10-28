@@ -136,7 +136,7 @@ func showCompletionImage() -> void:
 
 func loadQuizInFile(quiz_location : String = ""):
 	var file_reader : FileReader = FileReader.new()
-	file_reader.loadFile(quiz_location, false)
+	file_reader.loadFile(quiz_location, get_tree(), false)
 	
 #endregion
 
@@ -151,7 +151,7 @@ func getHandler() -> QuestionHandler:
 	return question_handler
 
 # Asks a single question from the current quiz by index, returns the QuestionResult (or null if the index is invalid).
-func askQuestion(question_index: int = 0) -> QuestionHandler.QuestionResult:
+func askQuestion(question_index: int = 0, trigger_reaction : bool = true) -> QuestionHandler.QuestionResult:
 	# Make sure questions are loaded even if startQuiz() hasn't run
 	if questions.is_empty() and current_quiz != null:
 		questions = current_quiz.questions
@@ -161,15 +161,21 @@ func askQuestion(question_index: int = 0) -> QuestionHandler.QuestionResult:
 		printerr("[QUIZ MANAGER] askQuestion: index %d out of range (0-%d)" % [question_index, questions.size() - 1])
 		return null
 
-	return await presentQuestion(questions[question_index])
+	return await presentQuestion(questions[question_index], trigger_reaction)
 
 # Ask a question of a random index (random question)
 func askRandomQuestion() -> QuestionHandler.QuestionResult:
 	return await askQuestion(randi() % questions.size())
 
 # Ask any question in the baloon, handling teacher feedback and returns the result
-func presentQuestion(question : Question) -> QuestionHandler.QuestionResult:
+func presentQuestion(question : Question, trigger_reaction : bool = true) -> QuestionHandler.QuestionResult:
 	var result : QuestionHandler.QuestionResult = await getHandler().handleQuestion(question)
+	
+	# Always record the result, even when skipping feedback
+	question.was_answered_correctly = result.correct
+	
+	if not trigger_reaction:
+		return result  # Skip feedback dialogue entirely
 	
 	var feedback_text : String = ""
 	if result.correct:
@@ -179,14 +185,19 @@ func presentQuestion(question : Question) -> QuestionHandler.QuestionResult:
 		Global.expression_handler.triggerNegativeReaction()
 		feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_negative_response()
 	
-	question.was_answered_correctly = result.correct
-	
-	# Create feedback resource
+	# Create feedback resourc
 	var feedback_resource = DialogueManager.create_resource_from_text("~ feedback\n%s\n=> END" % feedback_text)
 	var feedback_line : DialogueLine = await feedback_resource.get_next_dialogue_line("feedback")
 	await active_balloon.show_external_text_line(feedback_line, feedback_resource)
 
 	return result
+
+# Gets the correct/wrong value of the question of the given index
+func getQuestionResultValue(question_index : float = 0) -> bool:
+		if questions.is_empty() and current_quiz != null: # Get questions first
+			questions = current_quiz.questions
+		
+		return questions[question_index].was_answered_correctly
 
 #endregion
 
