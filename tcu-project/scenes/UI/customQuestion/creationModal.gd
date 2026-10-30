@@ -68,6 +68,7 @@ func saveQuestion():
 	if associated_question_prompter and associated_question_prompter.has_method("submitQuestion"):
 		associated_question_prompter.submitQuestion(true) # Print questions for now
 		associated_question_prompter.setQuestionPreviewText()
+		MessageNotifier.showMessage(get_tree(), "Question saved succesfully!\n")
 
 func cancel():
 	closeModal()
@@ -80,7 +81,7 @@ func _on_cancel_button_pressed() -> void:
 	cancel()
 
 func _on_save_button_pressed() -> void:
-	closeModal()
 	saveQuestion()
+	closeModal()
 
 #endregion

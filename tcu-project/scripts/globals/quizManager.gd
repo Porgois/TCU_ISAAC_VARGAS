@@ -151,7 +151,7 @@ func getHandler() -> QuestionHandler:
 	return question_handler
 
 # Asks a single question from the current quiz by index, returns the QuestionResult (or null if the index is invalid).
-func askQuestion(question_index: int = 0, trigger_reaction : bool = true) -> QuestionHandler.QuestionResult:
+func askQuestion(question_index: int = 0, reaction_mode : ExpressionHandler.ReactionMode = ExpressionHandler.ReactionMode.ALL) -> QuestionHandler.QuestionResult:
 	# Make sure questions are loaded even if startQuiz() hasn't run
 	if questions.is_empty() and current_quiz != null:
 		questions = current_quiz.questions
@@ -161,31 +161,29 @@ func askQuestion(question_index: int = 0, trigger_reaction : bool = true) -> Que
 		printerr("[QUIZ MANAGER] askQuestion: index %d out of range (0-%d)" % [question_index, questions.size() - 1])
 		return null
 
-	return await presentQuestion(questions[question_index], trigger_reaction)
+	return await presentQuestion(questions[question_index], reaction_mode)
 
 # Ask a question of a random index (random question)
 func askRandomQuestion() -> QuestionHandler.QuestionResult:
 	return await askQuestion(randi() % questions.size())
 
 # Ask any question in the baloon, handling teacher feedback and returns the result
-func presentQuestion(question : Question, trigger_reaction : bool = true) -> QuestionHandler.QuestionResult:
+# Ask any question in the balloon, handling teacher feedback and returns the result
+func presentQuestion(question : Question, reaction_mode : ExpressionHandler.ReactionMode = ExpressionHandler.ReactionMode.ALL) -> QuestionHandler.QuestionResult:
 	var result : QuestionHandler.QuestionResult = await getHandler().handleQuestion(question)
 	
 	# Always record the result, even when skipping feedback
 	question.was_answered_correctly = result.correct
 	
-	if not trigger_reaction:
+	# Triggers the expression and tells us whether to show feedback
+	if not Global.expression_handler.reactToResult(reaction_mode, result.correct):
 		return result  # Skip feedback dialogue entirely
 	
-	var feedback_text : String = ""
-	if result.correct:
-		Global.expression_handler.triggerNeutralReaction()
-		feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_positive_response()
-	else:
-		Global.expression_handler.triggerNegativeReaction()
-		feedback_text = displayed_name + ": " + current_teacher.teacher_resource.get_negative_response()
+	var teacher_resource : TeacherResource = current_teacher.teacher_resource
+	var response : String = teacher_resource.get_positive_response() if result.correct else teacher_resource.get_negative_response()
+	var feedback_text : String = displayed_name + ": " + response
 	
-	# Create feedback resourc
+	# Create feedback resource
 	var feedback_resource = DialogueManager.create_resource_from_text("~ feedback\n%s\n=> END" % feedback_text)
 	var feedback_line : DialogueLine = await feedback_resource.get_next_dialogue_line("feedback")
 	await active_balloon.show_external_text_line(feedback_line, feedback_resource)

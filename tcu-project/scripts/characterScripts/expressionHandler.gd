@@ -19,6 +19,9 @@ enum EMOTION {
 	HAPPY # 3
 }
 
+# React
+enum ReactionMode { ALL, POSITIVE_ONLY, NEGATIVE_ONLY, NONE }
+
 var current_emotion : EMOTION = EMOTION.NEUTRAL
 
 func _ready() -> void:
@@ -43,6 +46,28 @@ func setRandomTimerTime():
 func changeEmotion(new_emotion : EMOTION = EMOTION.NEUTRAL):
 	current_emotion = new_emotion
 	print("[EXPRESSION HANDLER] Set new emotion to: ", current_emotion, ".\n")
+
+# Reroute reaction handling
+func reactToResult(mode : ReactionMode, correct : bool) -> bool:
+	if not shouldReact(mode, correct):
+		return false
+	if correct:
+		triggerNeutralReaction()
+	else:
+		triggerNegativeReaction()
+	return true
+
+#endregion
+
+#region REACTIONS
+
+# Decides the extent of the teacher's reaction (only positive, only negative, both, neither)
+func shouldReact(mode : ReactionMode, correct : bool) -> bool:
+	match mode:
+		ReactionMode.ALL: return true
+		ReactionMode.POSITIVE_ONLY: return correct
+		ReactionMode.NEGATIVE_ONLY: return not correct
+		_: return false
 
 #endregion
 

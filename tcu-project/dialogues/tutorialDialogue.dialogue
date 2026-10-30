@@ -18,8 +18,10 @@ do QuizManager.loadQuizInFile("res://csvImports/tutorials/TutorialQuiz.csv")
 do QuizManager.goToMenu()
 => END
 
-~ ask_multiple_choice_question
-do QuizManager.askQuestion(0, false) 
+# Only react positively (if user answers correctly)
+
+~ ask_multiple_choice_question 
+do QuizManager.askQuestion(0, ExpressionHandler.ReactionMode.POSITIVE_ONLY) 
 if QuizManager.getQuestionResultValue(0) == false # Wrong answer (repeat until the user answers correctly)
 	{{QuizManager.getDisplayedName()}}: Thats not right! It's ok, try again.
 	=>< ask_multiple_choice_question
@@ -27,13 +29,15 @@ if QuizManager.getQuestionResultValue(0) == false # Wrong answer (repeat until t
 => END
 
 ~ ask_completion_question
-do QuizManager.askQuestion(2, false)
+do QuizManager.askQuestion(2, ExpressionHandler.ReactionMode.POSITIVE_ONLY)
 if QuizManager.getQuestionResultValue(2) == false # Wrong answer (repeat until the user answers correctly)
 	{{QuizManager.getDisplayedName()}}: No, please type the word I'm asking you to.
+	=>< ask_completion_question
 => END
 
 ~ ask_match_question
-do QuizManager.askQuestion(1, false)
+do QuizManager.askQuestion(1, ExpressionHandler.ReactionMode.POSITIVE_ONLY)
 if QuizManager.getQuestionResultValue(1) == false # Wrong answer (repeat until the user answers correctly)
 	{{QuizManager.getDisplayedName()}}: The matching is not quite right, please redo it!
+	=>< ask_match_question
 => END

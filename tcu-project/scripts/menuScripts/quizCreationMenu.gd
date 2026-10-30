@@ -61,8 +61,8 @@ func saveQuiz():
 	
 	file_reader.free()
 	
-	# Go back to quiz menu
-	get_tree().change_scene_to_file(custom_quizzes_menu_scene_path)
+	# Notify of quiz alteration/creation and return to quiz menu
+	MessageNotifier.showMessage(get_tree(), "Quiz saved succesfully!\n", 2.0, custom_quizzes_menu_scene_path)
 
 func loadQuizFromCSV(csv_path : String) -> void:
 	var file_reader : FileReader = FileReader.new()
