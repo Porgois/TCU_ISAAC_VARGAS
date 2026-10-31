@@ -169,13 +169,15 @@ func _on_new_button_pressed() -> void:
 	addNewQuestionItem()
 
 func _on_save_button_pressed() -> void:
-	saveQuiz()
+	if await ConfirmationModal.ask("Save changes?", "This will create a new quiz file in your hardrive."):
+		saveQuiz()
 
 func _on_quiz_title_text_changed(new_text : String) -> void:
 	setQuizName(new_text)
 
 # Go back to menu for now
 func _on_cancel_button_pressed() -> void:
-	get_tree().change_scene_to_file(custom_quizzes_menu_scene_path)
+	if await ConfirmationModal.ask("Cancel changes?", "Any changes made will be undone."):
+		get_tree().change_scene_to_file(custom_quizzes_menu_scene_path)
 
 #endregion

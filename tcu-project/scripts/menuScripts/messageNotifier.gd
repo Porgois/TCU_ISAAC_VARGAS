@@ -18,7 +18,7 @@ func notify(text : String = "", scene_path : String = "", time : float = 2.0):
 	
 	notifier_timer.start(time)
 
-static func showMessage(tree : SceneTree, text : String = "", time : float = 2.0, return_path : String = "") -> void:
+static func showMessage(tree : SceneTree, text : String = "", time : float = 1.0, return_path : String = "") -> void:
 	if return_path != "" and not ResourceLoader.exists(return_path):
 		printerr("[MESSAGE NOTIFIER] Return scene not found: ", return_path, "\n")
 		return

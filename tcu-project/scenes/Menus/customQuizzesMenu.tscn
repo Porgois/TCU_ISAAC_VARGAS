@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://dcafdsp0wcfjs"]
 
 [ext_resource type="Script" uid="uid://cuefdpyxenk7k" path="res://scripts/menuScripts/customQuizMenu.gd" id="1_hwmon"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_v0fxh"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="1_v0fxh"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="2_ilyke"]
 [ext_resource type="PackedScene" uid="uid://c7cpcey4qi5i6" path="res://scenes/ui/customQuestion/questionItems/customQuizItem.tscn" id="2_nb76o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fx2g0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwjvr"]
 
 [node name="CustomQuizzes" type="Control" unique_id=431676214 node_paths=PackedStringArray("quizzes_container")]
 layout_mode = 3
@@ -28,6 +32,8 @@ offset_right = 521.0
 offset_bottom = 208.25
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fx2g0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nwjvr")
 
 [node name="QuizzesContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1993759789]
 layout_mode = 2

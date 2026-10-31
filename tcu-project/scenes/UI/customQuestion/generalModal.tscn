@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8wa2ldinw3fn"]
 
 [ext_resource type="Script" uid="uid://d1h48wwwb4uvl" path="res://scenes/ui/customQuestion/creationModal.gd" id="1_siadc"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_a81qr"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_a81qr"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="3_m2iav"]
 
 [node name="ModalOverlay" type="Control" unique_id=866828715 node_paths=PackedStringArray("modal_title", "question_item_container")]

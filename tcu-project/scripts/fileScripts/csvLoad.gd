@@ -248,6 +248,41 @@ func parseCOMPLETION(new_question : Question, answer_string : String):
 
 #endregion
 
+#region DELETION
+# Deletes the quiz csv at the given path. Returns true if the file was removed.
+func deleteQuiz(csv_path : String) -> bool:
+	if csv_path == "":
+		printerr("ERROR: Cannot delete a quiz without a path!\n")
+		return false
+	
+	if not FileAccess.file_exists(csv_path):
+		printerr("ERROR: No '.csv' file found at: ", csv_path, "!\n")
+		return false
+	
+	# Only ever delete csv files, as a safety net against bad paths
+	if csv_path.get_extension().to_lower() != "csv":
+		printerr("ERROR: Refusing to delete non-csv file: ", csv_path, "\n")
+		return false
+	
+	var error : Error = DirAccess.remove_absolute(csv_path)
+	if error != OK:
+		printerr("ERROR: Could not delete '", csv_path, "': ", error_string(error), "\n")
+		return false
+	
+	# Forget the path if it was the last loaded one, so saving doesn't silently recreate it
+	if last_loaded_path == csv_path:
+		last_loaded_path = ""
+	
+	# Unload the quiz if it's the one currently loaded
+	var current_quiz : Quiz = QuizManager.getQuiz()
+	if current_quiz != null and current_quiz.quiz_name == csv_path.get_file():
+		QuizManager.current_quiz = null
+		QuizManager.questions.clear()
+	
+	print("[FILE READER] Succesfully deleted quiz at: '", csv_path, "'\n")
+	return true
+#endregion
+
 #region MISC
 func printQuestions(questions : Array[Question]):
 	for question in questions:

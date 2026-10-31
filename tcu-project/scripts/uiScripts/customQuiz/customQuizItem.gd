@@ -27,10 +27,20 @@ func setCreatorEnvironment():
 func goToQuizCreator():
 	get_tree().change_scene_to_file(quiz_creation_scene_path)
 
+func deleteQuiz():
+	var file_reader : FileReader = FileReader.new()
+	file_reader.deleteQuiz("res://csvImports/customQuizzes/" + quiz_name.text + ".csv")
+	MessageNotifier.showMessage(get_tree(), "Quiz deleted succesfully!\n")
+	get_tree().reload_current_scene()
+
 #region SIGNALS
 
 func _on_edit_button_pressed() -> void:
 	setCreatorEnvironment()
 	goToQuizCreator()
+
+func _on_delete_button_pressed() -> void:
+	if await ConfirmationModal.ask("Delete quiz?", "This action cannot be undone."):
+		deleteQuiz()
 
 #endregion

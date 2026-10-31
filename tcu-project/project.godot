@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*uid://binqwxkdd3id7"
 QuizManager="*uid://dg0q8m8o5at7q"
 DialogueManager="*uid://c3rodes2l3gxb"
+ConfirmationModal="*uid://c1g7bc5kwcudy"
 
 [dialogue_manager]
 
@@ -34,6 +35,11 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 DestinationArea=""
 ConnectionArea=""
 DestinationNode=""
+
+[gui]
+
+theme/custom="uid://uoiby3l5h8v"
+theme/custom_font="uid://dhhu4nxotg3d0"
 
 [internationalization]
 

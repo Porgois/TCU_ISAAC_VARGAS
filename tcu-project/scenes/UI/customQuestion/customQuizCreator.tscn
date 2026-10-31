@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://difg5ygm0rh2c"]
 
 [ext_resource type="Script" uid="uid://c3cm60xt3qei1" path="res://scripts/menuScripts/quizCreationMenu.gd" id="1_lnrtv"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_daqpn"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_daqpn"]
 [ext_resource type="PackedScene" uid="uid://cwdiacjdnrmmd" path="res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn" id="3_fosxa"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="4_daqpn"]
 
@@ -10,6 +10,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3xux"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwjvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vimvy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p33t8"]
 
 [node name="CustomQuestionCreator" type="Control" unique_id=1948691967 node_paths=PackedStringArray("total_question_label", "creator_container", "quiz_name_text")]
 layout_mode = 3
@@ -76,6 +80,8 @@ offset_right = 535.0
 offset_bottom = 197.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vimvy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p33t8")
 
 [node name="CreatorContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=163675209]
 layout_mode = 2

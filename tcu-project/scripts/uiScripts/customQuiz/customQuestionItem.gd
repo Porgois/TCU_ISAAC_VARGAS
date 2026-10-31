@@ -176,6 +176,7 @@ func _on_edit_button_pressed() -> void:
 	checkModalRequirements()
 
 func _on_delete_button_pressed() -> void:
-	delete()
+	if await ConfirmationModal.ask("Delete question?", "This will remove the question from the quiz's question list."):
+		delete()
 
 #endregion

@@ -78,10 +78,12 @@ func cancel():
 #region SIGNALS
 
 func _on_cancel_button_pressed() -> void:
-	cancel()
+	if await ConfirmationModal.ask("Cancel?", "Any changes will be undone."):
+		cancel()
 
 func _on_save_button_pressed() -> void:
-	saveQuestion()
-	closeModal()
+	if await ConfirmationModal.ask("Save question?", "It will be added to the quiz's question list."):
+		saveQuestion()
+		closeModal()
 
 #endregion

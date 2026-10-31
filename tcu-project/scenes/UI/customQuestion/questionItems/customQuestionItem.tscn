@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://coi7cg6u8u2g6" path="res://scripts/uiScripts/customQuiz/customQuestionItem.gd" id="1_b6tmi"]
 [ext_resource type="PackedScene" uid="uid://27y4bmongq42" path="res://scenes/ui/customQuestion/questionTypeSelector.tscn" id="1_t0wcq"]
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="2_b6tmi"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_iudgs"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_iudgs"]
 
 [node name="CustomQuestionItem" type="MarginContainer" unique_id=912511112 node_paths=PackedStringArray("question_type_selector", "question_number_label", "question_preview_label")]
 anchors_preset = 15

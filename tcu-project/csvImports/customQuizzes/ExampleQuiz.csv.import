@@ -2,11 +2,11 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://cy2ql33sterhq"
+uid="uid://b7kti1yte7lqh"
 
 [deps]
 
-source_file="res://csvImports/customQuizzes/EXAMPLE QUIZ.csv"
+source_file="res://csvImports/customQuizzes/ExampleQuiz.csv"
 
 [params]
 

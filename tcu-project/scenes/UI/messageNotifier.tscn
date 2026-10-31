@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1puusdvms4aj"]
 
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_3prmn"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="1_3prmn"]
 [ext_resource type="Script" uid="uid://bfmxi8kwaf0af" path="res://scripts/menuScripts/messageNotifier.gd" id="1_wgqkt"]
 
 [node name="MessageNotifier" type="Control" unique_id=1547492303 node_paths=PackedStringArray("notifier_prompt", "notifier_timer")]

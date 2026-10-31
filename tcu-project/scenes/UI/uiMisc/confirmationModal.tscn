@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c1g7bc5kwcudy"]
+
+[ext_resource type="Script" uid="uid://bi6h2irpabtsr" path="res://scripts/menuScripts/confirmationModalManager.gd" id="1_ww2w2"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_ls381"]
+[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="3_mejmc"]
+
+[node name="ConfirmationModal" type="CanvasLayer" unique_id=585062125 node_paths=PackedStringArray("title_label", "message_label", "ok_button", "cancel_button")]
+layer = 200
+script = ExtResource("1_ww2w2")
+title_label = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/ModalTitle")
+message_label = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/ModalMessage")
+ok_button = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons/ConfirmationButton")
+cancel_button = NodePath("CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons/CancelButton")
+
+[node name="Dimmer" type="ColorRect" parent="." unique_id=566152398]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.84313726)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=534388529]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1892929791]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+theme = ExtResource("2_ls381")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=130320413]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -100.0
+offset_right = 175.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1151525650]
+layout_mode = 2
+
+[node name="ModalTitle" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=398897747]
+custom_maximum_size = Vector2(-1, 45)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 18
+text = "Delete file?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModalMessage" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=195826442]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 24
+text = "Are you sure you want to save the quiz?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1322766177]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="ConfirmationButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons" unique_id=362318287 instance=ExtResource("3_mejmc")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons/ConfirmationButton" index="0" unique_id=1101348109]
+text = "Confirm"
+
+[node name="CancelButton" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons" unique_id=1353223780 instance=ExtResource("3_mejmc")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons/CancelButton" index="0" unique_id=1101348109]
+text = "Cancel"
+
+[editable path="CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons/ConfirmationButton"]
+[editable path="CenterContainer/Panel/MarginContainer/VBoxContainer/Buttons/CancelButton"]
