@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6mh6t6i5dx27"]
 
 [ext_resource type="Script" uid="uid://7p50xsiy2teg" path="res://scripts/menuScripts/mainMenu.gd" id="1_bqojv"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_ldf1p"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_ldf1p"]
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="4_tyyoy"]
 
 [node name="MainMenu" type="Control" unique_id=730716012]
@@ -54,6 +54,13 @@ layout_mode = 2
 text = "Start
 "
 
+[node name="Tutorial" parent="MenuContainer/VBoxContainer" unique_id=1920287806 instance=ExtResource("4_tyyoy")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="MenuContainer/VBoxContainer/Tutorial" index="0" unique_id=1101348109]
+text = "Tutorial
+"
+
 [node name="Load" parent="MenuContainer/VBoxContainer" unique_id=375991740 instance=ExtResource("4_tyyoy")]
 layout_mode = 2
 
@@ -67,13 +74,6 @@ layout_mode = 2
 text = "Create
 "
 
-[node name="Tutorial" parent="MenuContainer/VBoxContainer" unique_id=1920287806 instance=ExtResource("4_tyyoy")]
-layout_mode = 2
-
-[node name="ButtonLabel" parent="MenuContainer/VBoxContainer/Tutorial" index="0" unique_id=1101348109]
-text = "Tutorial
-"
-
 [node name="Exit" parent="MenuContainer/VBoxContainer" unique_id=611182587 instance=ExtResource("4_tyyoy")]
 layout_mode = 2
 
@@ -82,13 +82,13 @@ text = "Exit
 "
 
 [connection signal="pressed" from="MenuContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MenuContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MenuContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MenuContainer/VBoxContainer/Create" to="." method="_on_create_pressed"]
-[connection signal="pressed" from="MenuContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MenuContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 
 [editable path="MenuContainer/VBoxContainer/Start"]
+[editable path="MenuContainer/VBoxContainer/Tutorial"]
 [editable path="MenuContainer/VBoxContainer/Load"]
 [editable path="MenuContainer/VBoxContainer/Create"]
-[editable path="MenuContainer/VBoxContainer/Tutorial"]
 [editable path="MenuContainer/VBoxContainer/Exit"]

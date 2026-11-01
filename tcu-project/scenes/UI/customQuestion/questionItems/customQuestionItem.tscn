@@ -6,28 +6,37 @@
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_iudgs"]
 
 [node name="CustomQuestionItem" type="MarginContainer" unique_id=912511112 node_paths=PackedStringArray("question_type_selector", "question_number_label", "question_preview_label")]
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -570.0
+offset_bottom = 60.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
 script = ExtResource("1_b6tmi")
-question_type_selector = NodePath("QuestionHolder/LeftHolder/QuestionTypeSelector")
-question_number_label = NodePath("QuestionHolder/LeftHolder/QuestionNumber")
-question_preview_label = NodePath("QuestionHolder/QuestionPreviewText")
+question_type_selector = NodePath("MarginContainer/QuestionHolder/ButtonsContainer/QuestionTypeSelector")
+question_number_label = NodePath("MarginContainer/QuestionHolder/LeftHolder/QuestionNumber")
+question_preview_label = NodePath("MarginContainer/QuestionHolder/LeftHolder/QuestionPreviewText")
 
-[node name="QuestionHolder" type="HBoxContainer" parent="." unique_id=803793035]
+[node name="Panel" type="Panel" parent="." unique_id=109583776]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1439181932]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuestionHolder" type="HBoxContainer" parent="MarginContainer" unique_id=803793035]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LeftHolder" type="HBoxContainer" parent="QuestionHolder" unique_id=417397994]
+[node name="LeftHolder" type="HBoxContainer" parent="MarginContainer/QuestionHolder" unique_id=417397994]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
 
-[node name="QuestionNumber" type="RichTextLabel" parent="QuestionHolder/LeftHolder" unique_id=868486863]
+[node name="QuestionNumber" type="RichTextLabel" parent="MarginContainer/QuestionHolder/LeftHolder" unique_id=868486863]
 custom_minimum_size = Vector2(35, 20)
 layout_mode = 2
 theme = ExtResource("2_iudgs")
@@ -36,41 +45,40 @@ text = "1."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuestionTypeSelector" parent="QuestionHolder/LeftHolder" unique_id=1733004040 instance=ExtResource("1_t0wcq")]
-layout_mode = 2
-
-[node name="QuestionPreviewText" type="RichTextLabel" parent="QuestionHolder" unique_id=1567004561]
-custom_minimum_size = Vector2(500, 20)
+[node name="QuestionPreviewText" type="RichTextLabel" parent="MarginContainer/QuestionHolder/LeftHolder" unique_id=1567004561]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_iudgs")
 theme_override_font_sizes/normal_font_size = 24
-text = "-"
-horizontal_alignment = 1
+bbcode_enabled = true
+text = "Untitled question"
 vertical_alignment = 1
 
-[node name="ButtonsContainer" type="HBoxContainer" parent="QuestionHolder" unique_id=1021731505]
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/QuestionHolder" unique_id=1021731505]
 layout_mode = 2
 size_flags_horizontal = 10
 
-[node name="EditButton" parent="QuestionHolder/ButtonsContainer" unique_id=362318287 instance=ExtResource("2_b6tmi")]
+[node name="QuestionTypeSelector" parent="MarginContainer/QuestionHolder/ButtonsContainer" unique_id=1733004040 instance=ExtResource("1_t0wcq")]
+layout_mode = 2
+
+[node name="EditButton" parent="MarginContainer/QuestionHolder/ButtonsContainer" unique_id=362318287 instance=ExtResource("2_b6tmi")]
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="ButtonLabel" parent="QuestionHolder/ButtonsContainer/EditButton" index="0" unique_id=1101348109]
+[node name="ButtonLabel" parent="MarginContainer/QuestionHolder/ButtonsContainer/EditButton" index="0" unique_id=1101348109]
 text = "Edit
 "
 
-[node name="DeleteButton" parent="QuestionHolder/ButtonsContainer" unique_id=1415411737 instance=ExtResource("2_b6tmi")]
+[node name="DeleteButton" parent="MarginContainer/QuestionHolder/ButtonsContainer" unique_id=1415411737 instance=ExtResource("2_b6tmi")]
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="ButtonLabel" parent="QuestionHolder/ButtonsContainer/DeleteButton" index="0" unique_id=1101348109]
+[node name="ButtonLabel" parent="MarginContainer/QuestionHolder/ButtonsContainer/DeleteButton" index="0" unique_id=1101348109]
 text = "X
 "
 
-[connection signal="pressed" from="QuestionHolder/ButtonsContainer/EditButton" to="." method="_on_edit_button_pressed"]
-[connection signal="pressed" from="QuestionHolder/ButtonsContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="MarginContainer/QuestionHolder/ButtonsContainer/EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="MarginContainer/QuestionHolder/ButtonsContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 
-[editable path="QuestionHolder/ButtonsContainer/EditButton"]
-[editable path="QuestionHolder/ButtonsContainer/DeleteButton"]
+[editable path="MarginContainer/QuestionHolder/ButtonsContainer/EditButton"]
+[editable path="MarginContainer/QuestionHolder/ButtonsContainer/DeleteButton"]

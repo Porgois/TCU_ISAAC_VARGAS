@@ -17,63 +17,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hwmon")
-quizzes_container = NodePath("ScrollContainer/QuizzesContainer")
+quizzes_container = NodePath("Margin/VBoxContainer/ScrollContainer/QuizzesContainer")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1691298060]
+[node name="Margin" type="MarginContainer" parent="." unique_id=1783944481]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -521.0
-offset_top = -208.25
-offset_right = 521.0
-offset_bottom = 208.25
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fx2g0")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nwjvr")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="QuizzesContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1993759789]
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin" unique_id=695604739]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 30
+theme_override_constants/separation = 16
 
-[node name="CustomQuizItem" parent="ScrollContainer/QuizzesContainer" unique_id=246808537 instance=ExtResource("2_nb76o")]
+[node name="Back" type="Button" parent="Margin/VBoxContainer" unique_id=2137537826 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
-
-[node name="CustomQuizzes" type="RichTextLabel" parent="." unique_id=2130502264]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -379.0
-offset_top = -268.0
-offset_right = 380.0
-offset_bottom = -221.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_v0fxh")
-theme_override_font_sizes/normal_font_size = 40
-text = "CUSTOM QUIZZES"
-horizontal_alignment = 1
-
-[node name="Back" type="Button" parent="." unique_id=2137537826 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 0
-offset_left = 55.0
-offset_top = 555.0
-offset_right = 220.0
-offset_bottom = 595.0
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 theme = ExtResource("1_v0fxh")
 script = ExtResource("2_ilyke")
 button_label = NodePath("ButtonLabel")
 
-[node name="ButtonLabel" type="RichTextLabel" parent="Back" unique_id=1385394024]
+[node name="ButtonLabel" type="RichTextLabel" parent="Margin/VBoxContainer/Back" unique_id=1385394024]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,26 +67,41 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NewQuiz" type="Button" parent="." unique_id=997938123 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = 231.0
-offset_right = 82.0
-offset_bottom = 271.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CustomQuizzes" type="RichTextLabel" parent="Margin/VBoxContainer" unique_id=2130502264]
+custom_maximum_size = Vector2(370, 40)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_v0fxh")
+theme_override_font_sizes/normal_font_size = 40
+text = "CUSTOM QUIZZES"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Margin/VBoxContainer" unique_id=1691298060]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fx2g0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nwjvr")
+
+[node name="QuizzesContainer" type="VBoxContainer" parent="Margin/VBoxContainer/ScrollContainer" unique_id=1993759789]
+layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="CustomQuizItem" parent="Margin/VBoxContainer/ScrollContainer/QuizzesContainer" unique_id=246808537 instance=ExtResource("2_nb76o")]
+layout_mode = 2
+
+[node name="NewQuiz" type="Button" parent="Margin/VBoxContainer" unique_id=997938123 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 6
 theme = ExtResource("1_v0fxh")
 script = ExtResource("2_ilyke")
 button_label = NodePath("ButtonLabel")
 
-[node name="ButtonLabel" type="RichTextLabel" parent="NewQuiz" unique_id=913793220]
+[node name="ButtonLabel" type="RichTextLabel" parent="Margin/VBoxContainer/NewQuiz" unique_id=913793220]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,5 +125,5 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="NewQuiz" to="." method="_on_new_quiz_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/NewQuiz" to="." method="_on_new_quiz_pressed"]

@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84rtl"]
 
-[node name="TemplateLoadingMenu" type="Control" unique_id=1477583910 node_paths=PackedStringArray("menu_container", "options")]
+[node name="TemplateLoadingMenu" type="Control" unique_id=1477583910 node_paths=PackedStringArray("grade_tabs", "options_container", "load_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,41 +17,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ih5ko")
-menu_container = NodePath("MenuContainer/OptionsScroll/OptionsContainer")
-options = NodePath("MenuContainer")
+grade_tabs = NodePath("Margin/Root/CenterContainer/Column/GradeTabs")
+options_container = NodePath("Margin/Root/CenterContainer/Column/OptionsScroll/OptionsContainer")
+load_button = NodePath("Margin/Root/CenterContainer/Column/Actions/LoadButton")
 
-[node name="MenuContainer" type="Control" parent="." unique_id=2013402490]
+[node name="Margin" type="MarginContainer" parent="." unique_id=1299510545]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="Browse" parent="MenuContainer" unique_id=362318287 instance=ExtResource("3_ud3yd")]
-layout_mode = 0
-offset_left = 502.0
-offset_top = 475.0
-offset_right = 666.0
-offset_bottom = 515.0
+[node name="Root" type="VBoxContainer" parent="Margin" unique_id=826591373]
+layout_mode = 2
 
-[node name="ButtonLabel" parent="MenuContainer/Browse" index="0" unique_id=1101348109]
-text = "Browse
-"
+[node name="Topbar" type="HBoxContainer" parent="Margin/Root" unique_id=1958946789]
+layout_mode = 2
 
-[node name="Back" type="Button" parent="MenuContainer" unique_id=1266885989 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 0
-offset_left = 55.0
-offset_top = 555.0
-offset_right = 219.0
-offset_bottom = 595.0
-size_flags_horizontal = 3
+[node name="Back" type="Button" parent="Margin/Root/Topbar" unique_id=1266885989 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 2
 theme = ExtResource("2_wsqt1")
 script = ExtResource("4_vimvy")
 button_label = NodePath("ButtonLabel")
 
-[node name="ButtonLabel" type="RichTextLabel" parent="MenuContainer/Back" unique_id=2057657951]
+[node name="ButtonLabel" type="RichTextLabel" parent="Margin/Root/Topbar/Back" unique_id=2057657951]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,39 +71,60 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LoadMenu" type="RichTextLabel" parent="MenuContainer" unique_id=780922921]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -116.5
-offset_top = -215.0
-offset_right = 116.5
-offset_bottom = -168.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CenterContainer" type="CenterContainer" parent="Margin/Root" unique_id=408929503]
+layout_mode = 2
+
+[node name="Column" type="VBoxContainer" parent="Margin/Root/CenterContainer" unique_id=752886876]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LoadMenu" type="RichTextLabel" parent="Margin/Root/CenterContainer/Column" unique_id=780922921]
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("2_wsqt1")
 theme_override_font_sizes/normal_font_size = 40
 text = "LOAD"
+fit_content = true
 horizontal_alignment = 1
 
-[node name="OptionsScroll" type="ScrollContainer" parent="MenuContainer" unique_id=999853641]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 132.0
-offset_right = 358.0
-offset_bottom = 481.0
+[node name="GradeTabs" type="HBoxContainer" parent="Margin/Root/CenterContainer/Column" unique_id=328880710]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="OptionsScroll" type="ScrollContainer" parent="Margin/Root/CenterContainer/Column" unique_id=999853641]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_nb76o")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_84rtl")
+horizontal_scroll_mode = 0
 
-[node name="OptionsContainer" type="VBoxContainer" parent="MenuContainer/OptionsScroll" unique_id=1565614073]
+[node name="OptionsContainer" type="VBoxContainer" parent="Margin/Root/CenterContainer/Column/OptionsScroll" unique_id=1565614073]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 6
 
-[connection signal="pressed" from="MenuContainer/Browse" to="." method="_on_browse_pressed"]
-[connection signal="pressed" from="MenuContainer/Back" to="." method="_on_back_pressed"]
+[node name="Actions" type="HBoxContainer" parent="Margin/Root/CenterContainer/Column" unique_id=1165110226]
+layout_mode = 2
 
-[editable path="MenuContainer/Browse"]
+[node name="BrowseButton" parent="Margin/Root/CenterContainer/Column/Actions" unique_id=362318287 instance=ExtResource("3_ud3yd")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="Margin/Root/CenterContainer/Column/Actions/BrowseButton" index="0" unique_id=1101348109]
+text = "Browse
+"
+
+[node name="LoadButton" parent="Margin/Root/CenterContainer/Column/Actions" unique_id=433001951 instance=ExtResource("3_ud3yd")]
+layout_mode = 2
+
+[node name="ButtonLabel" parent="Margin/Root/CenterContainer/Column/Actions/LoadButton" index="0" unique_id=1101348109]
+text = "Load
+"
+
+[connection signal="pressed" from="Margin/Root/Topbar/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Margin/Root/CenterContainer/Column/Actions/BrowseButton" to="." method="_on_browse_pressed"]
+
+[editable path="Margin/Root/CenterContainer/Column/Actions/BrowseButton"]
+[editable path="Margin/Root/CenterContainer/Column/Actions/LoadButton"]

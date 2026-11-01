@@ -1,147 +1,161 @@
 class_name TemplateLoad
 extends Control
 
-@export var menu_container: VBoxContainer = null
-@export var options : Control = null
-@export var notification_time : float = 2.0
+@export var grade_tabs: HBoxContainer = null
+@export var options_container: VBoxContainer = null
+@export var load_button: GeneralButton = null
 
-var general_button_scene : PackedScene = preload("res://scenes/ui/generalButton.tscn")
-var grade_menu_scene : PackedScene = preload("res://scenes/menus/GradeMenu.tscn")
-var message_notifier_scene : PackedScene = preload("res://scenes/ui/messageNotifier.tscn")
+const TEMPLATES_PATH: String = "res://csvImports/templates/"
+const COLOR_NORMAL: Color = Color("f2f2f2")
+const COLOR_DIM: Color = Color("505057ff")
 
-var default_template_path: String = "res://csvImports/Templates/"
-var grade_menu : GradeMenu = null
-var file_reader : FileReader = null
+var general_button_scene: PackedScene = preload("res://scenes/ui/generalButton.tscn")
+var grade_group: ButtonGroup = ButtonGroup.new()
+var file_group: ButtonGroup = ButtonGroup.new()
+var file_reader: FileReader = null
+var selected_path: String = ""
 
 func _ready() -> void:
-	createMenuFromFolder()
 	file_reader = FileReader.new()
+	setEnabled(load_button, false)
+	grade_group.pressed.connect(_on_grade_pressed)
+	file_group.pressed.connect(_on_file_pressed)
+	load_button.pressed.connect(_on_load_pressed)
+	buildGradeTabs()
 
-#region TEMPLATE BUTTONS
+#region HELPERS
 
-# Load a template button for each file loaded
-func loadTemplateButtons() -> void:
-	for file in getFilesInFolder(default_template_path):
-		if file.get_extension().to_lower() == "csv":
-			print("File named (%s) is valid!" % file)
-			createTemplateButton(file)
+# "Unit 1 (Here I Am!).csv" -> { unit: "Unit 1", title: "Here I Am!" }
+func parseUnitName(file_name: String) -> Dictionary:
+	var base: String = file_name.get_basename() # Gets rid of the '.csv' termination
+	var paren: int = base.find("(")
+	if paren == -1:
+		return {"unit": "", "title": base}
+	return {
+		"unit": base.substr(0, paren).strip_edges(),
+		"title": base.substr(paren).trim_prefix("(").trim_suffix(")").strip_edges()
+	}
 
-# Create a button for a template at a given path
-func createTemplateButton(file_name: String = "") -> void:
-	if file_name.is_empty():
-		printerr("ERROR: No '.CSV' file found at: ", file_name)
-		return
-	
-	var template_button : GeneralButton = general_button_scene.instantiate()
-	template_button.button_label.text = file_name
+# Natural sort so "Unit 10" comes after "Unit 9", and Grade 10 after Grade 9
+func sortNatural(items: PackedStringArray) -> Array[String]:
+	var result: Array[String] = []
+	result.assign(items)
+	result.sort_custom(func(a: String, b: String) -> bool:
+		return a.naturalnocasecmp_to(b) < 0
+	)
+	return result
 
-	var full_path: String = default_template_path + file_name
-	template_button.pressed.connect(_on_template_selected.bind(full_path))
-	menu_container.add_child(template_button)
+# Get files in a given folder (empty extension returns all files)
+func getFilesInFolder(folder_path: String, extension: String = "") -> PackedStringArray:
+	var result := PackedStringArray()
+	for file in DirAccess.get_files_at(folder_path):
+		if extension.is_empty() or file.get_extension().to_lower() == extension:
+			result.append(file)
+	return result
 
 #endregion
 
 #region FILE LOADING
 
 # Opens file dialog and loads the selected file path if valid
-func browseFile():
-	var file_path : String = ""
-	
-	var file_browser : FileBrowser = FileBrowser.new()
+func browseFile() -> void:
+	var file_browser: FileBrowser = FileBrowser.new()
 	get_tree().root.add_child(file_browser)
 	
-	file_path = file_browser.openFileBrowserWindow()
-	
+	var file_path: String = file_browser.openFileBrowserWindow()
 	if file_path != "":
 		file_reader.loadFile(file_path, get_tree())
 
 #endregion
 
-#region HELPERS
+#region BUILD UI
 
-# Get subfolders in a given folder
-func getSubFoldersInFolder(folder_path : String = "") -> PackedStringArray:
-	return DirAccess.get_directories_at(folder_path)
-
-# Prints array
-func printStringArray(string_array : PackedStringArray = []):
-	var item_index : int = 0
+# One place that makes every toggle-style GeneralButton
+func makeToggleButton(text: String, group: ButtonGroup, variation: StringName, align: String = "center") -> GeneralButton:
+	var button: GeneralButton = general_button_scene.instantiate()
+	setButtonText(button, text, align)
+	button.toggle_mode = true
+	button.button_group = group
+	button.theme_type_variation = variation
+	setLabelColor(button, COLOR_NORMAL)
 	
-	for item in string_array:
-		print("Item #" + str(item_index) + ": ", string_array[item_index])
-		
-		item_index += 1
 
-# Sort array based on string index termination
-func sortByGradeSubstring(string_array : PackedStringArray = [], start_index : int = 0, length : int = 0) -> Array[String]:
-	var result_array : Array[String] = []
-	result_array.assign(string_array) # Populate with string array contents
+	return button
+
+func setLabelColor(button: GeneralButton, color: Color) -> void:
+	button.button_label.add_theme_color_override("default_color", color)
+
+# Sets the label text with BBCode alignment. Escapes "[" so quiz names can't break the markup.
+func setButtonText(button: GeneralButton, text: String, align: String = "center") -> void:
+	var label: RichTextLabel = button.button_label
+	label.bbcode_enabled = true
+	label.scroll_active = false
+	label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.text = "[%s]%s[/%s]" % [align, text.replace("[", "[lb]"), align]
+
+func setEnabled(button: GeneralButton, enabled: bool) -> void:
+	button.disabled = not enabled
+	setLabelColor(button, COLOR_NORMAL if enabled else COLOR_DIM)
+
+func buildGradeTabs() -> void:
+	var grades : Array[String] = sortNatural(DirAccess.get_directories_at(TEMPLATES_PATH))
 	
-	result_array.sort_custom(func(a : String, b: String): # 6 , 1
-		var section_a = a.substr(start_index, length) # Extracts the grade/unit number
-		var section_b = b.substr(start_index, length)
-		
-		return section_a < section_b
-	)
+	for grade in grades:
+		var tab : GeneralButton = makeToggleButton(
+			grade.replace("Grade", "Grade "), grade_group, &"SegmentTab")
+		tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tab.set_meta("grade", grade)
+		grade_tabs.add_child(tab)
 	
-	return result_array
+	if grade_tabs.get_child_count() > 0: # Select the first grade by default
+		var first: GeneralButton = grade_tabs.get_child(0)
+		first.button_pressed = true
+		showGrade(first.get_meta("grade"))
 
-# Get files in a given folder (Left empty assumes all extensions)
-func getFilesInFolder(folder_path: String = "", extension : String = "") -> PackedStringArray:
-	var all_files : PackedStringArray = DirAccess.get_files_at(folder_path)
-	if extension != "": # Specific extension (filter)
-		var filtered_files = Array(all_files).filter(
-		func(file_name: String):
-			return file_name.get_extension() == extension
-		)
-		
-		return filtered_files
-	else:
-		return all_files
-
-#endregion
-
-#region GRADEMENU (TEST)
-
-func createMenuFromFolder():
-	# Grade folders
-	var grade_folders_array : Array = Array(getSubFoldersInFolder("res://csvImports/templates/"))
-	grade_folders_array = sortByGradeSubstring(grade_folders_array, 6, 1) # Sort
+func showGrade(grade: String) -> void:
+	selected_path = ""
+	setEnabled(load_button, false)
+	for child in options_container.get_children():
+		child.queue_free()
 	
-	# Main grade menu
-	grade_menu = grade_menu_scene.instantiate()
-	add_child(grade_menu)
+	var folder: String = TEMPLATES_PATH + grade + "/"
+	var files: Array[String] = sortNatural(getFilesInFolder(folder, "csv"))
 	
-	# Menus
-	for grade in grade_folders_array: # Grade folders
-		var m_menu : PopupMenu = grade_menu.createMenu(grade)
-		grade_menu.add_child(m_menu)
-		
-		# Unit Items
-		var unit_files_array : Array = Array(getFilesInFolder("res://csvImports/templates/" + grade, \
-			"csv")) # '.csv' files only
-		unit_files_array = sortByGradeSubstring(unit_files_array, 5, 1) # Sort
-		
-		for unit in unit_files_array: # Unit files
-			grade_menu.addSubMenuItem(m_menu, unit)
-			
-		# Add clicked-on signal to the menu items
-		m_menu.index_pressed.connect(_on_menu_item_pressed.bind(unit_files_array, grade))
+	if files.is_empty():
+		var empty := Label.new()
+		empty.text = "No quizzes for this grade yet"
+		empty.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		options_container.add_child(empty)
+		return
+	
+	for file_name in files:
+		createFileButton(folder + file_name, file_name)
+
+func createFileButton(full_path: String, file_name: String) -> void:
+	var parts: Dictionary = parseUnitName(file_name)
+	var text: String = parts.title if parts.unit.is_empty() else parts.unit + "    " + parts.title
+	
+	var button: GeneralButton = makeToggleButton(text, file_group, &"ListRow", "left")
+	button.custom_minimum_size.y = 48
+	button.button_label.clip_contents = true
+	button.set_meta("path", full_path)
+	options_container.add_child(button)
 
 #endregion
 
 #region SIGNALS
-func _on_menu_item_pressed(index : int = 0, files_array : Array = [], grade : String = ""):
-		# Create the file name to load
-		var file_name : String = files_array[index]
-		var full_path : String = "res://csvImports/templates/" + grade + "/" + file_name
-		print("[LOADING MENU] Full file path: ", full_path, ".\n")
-		
-		# Load file
-		file_reader.loadFile(full_path, get_tree())
 
-func _on_template_selected(full_path: String = "") -> void:
-	file_reader.loadFile(full_path, get_tree())
+func _on_grade_pressed(button: BaseButton) -> void:
+	showGrade(button.get_meta("grade"))
+
+func _on_file_pressed(button: BaseButton) -> void:
+	selected_path = button.get_meta("path")
+	setEnabled(load_button, true)
+
+func _on_load_pressed() -> void: # Connect LoadButton.pressed to this
+	if selected_path != "":
+		file_reader.loadFile(selected_path, get_tree())
 
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Menus/MainMenu.tscn")

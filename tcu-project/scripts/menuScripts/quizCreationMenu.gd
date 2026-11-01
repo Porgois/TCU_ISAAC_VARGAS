@@ -2,7 +2,7 @@ class_name QuizCreationMenu
 extends Control
 
 @export var total_question_label : RichTextLabel
-@export var total_question_label_preffix : String = "Total questions:"
+@export var total_question_label_suffix : String = " questions"
 @export var creator_container : VBoxContainer = null
 @export var quiz_name_text : LineEdit = null
 
@@ -155,7 +155,7 @@ func recalculateQuestionNumbers():
 
 # Change total question label based on the question container's children
 func updateTotalQuestions() -> void:
-	total_question_label.text = total_question_label_preffix + " " + str(question_count)
+	total_question_label.text = str(question_count) + total_question_label_suffix
 
 func getInitialQuestionCount():
 	question_count = creator_container.get_child_count()

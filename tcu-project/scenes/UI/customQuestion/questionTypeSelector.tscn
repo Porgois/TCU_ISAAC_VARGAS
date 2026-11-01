@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://27y4bmongq42"]
 
 [ext_resource type="Script" uid="uid://b75vxdd4dpdud" path="res://scripts/uiScripts/customQuiz/questionTypeSelector.gd" id="1_2kq0c"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_eagq7"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_eagq7"]
 
 [node name="QuestionTypeSelector" type="Control" unique_id=1733004040 node_paths=PackedStringArray("option_button")]
 custom_minimum_size = Vector2(175, 0)
@@ -26,6 +26,7 @@ offset_right = 175.0
 grow_vertical = 2
 theme = ExtResource("2_eagq7")
 theme_override_font_sizes/font_size = 16
+alignment = 1
 item_count = 3
 popup/item_0/text = "MULTIPLE CHOICE"
 popup/item_0/id = 0
