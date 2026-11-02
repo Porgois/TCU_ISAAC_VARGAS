@@ -1,7 +1,7 @@
 class_name MainMenu
 extends Control
 
-var start_scene_path : String = "res://scenes/worlds/classroom.tscn"
+var start_scene_path : String = "res://scenes/worlds/generalEnvironment.tscn"
 var template_load_scene_path : String =  "res://scenes/Menus/TemplateLoadingMenu.tscn"
 var create_scene_path : String = "res://scenes/menus/customQuizzesMenu.tscn"
 

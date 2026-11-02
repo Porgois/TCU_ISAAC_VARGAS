@@ -1,11 +1,11 @@
 class_name Teacher
-extends Node
+extends Node3D
 
 @export var teacher_resource : TeacherResource
 
 func _ready() -> void:
 	QuizManager.setTeacher(self)
-	
+
 	# Set tutorial dialogue if it exists (selected from menu)
 	if QuizManager.current_teacher_dialogue != null:
 		setDialogue(QuizManager.current_teacher_dialogue)
@@ -36,6 +36,9 @@ func setDialogue(new_dialogue : DialogueResource = null):
 	if new_dialogue != null:
 		print("SET NEW DIALOGUE TO: ", new_dialogue)
 		teacher_resource.teacher_dialogue = new_dialogue
+
+func getDialogueArray() -> Array[DialogueResource]:
+	return teacher_resource.potential_dialogues
 
 func getDialogue() -> DialogueResource:
 	var result : DialogueResource = null

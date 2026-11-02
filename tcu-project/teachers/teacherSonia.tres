@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TeacherResource" format=3 uid="uid://bliaotj8pnhqh"]
+
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_jfkx4"]
+[ext_resource type="Script" uid="uid://sgsklqyq8u70" path="res://resources/teacherResources/teacherResource.gd" id="2_1eko5"]
+[ext_resource type="Resource" uid="uid://b16bfwxu6soly" path="res://dialogues/neutralDialogue.dialogue" id="3_o13ri"]
+
+[resource]
+script = ExtResource("2_1eko5")
+teacher_name = "Sonia"
+teacher_surname = "Newman"
+teacher_gender = "Female"
+voice_pitch = 3.5
+teacher_dialogue = ExtResource("3_o13ri")
+positive_responses = Array[String](["Well done!", "That's correct!", "Indeed.", "Thats absolutely right!", "Yes!", "You know your stuff!"])
+negative_responses = Array[String](["No...", "That's incorrect.", "I'm sorry, that's not it.", "Nope.", "Not quite.", "Almost, but no!", "C'mon..."])
+metadata/_custom_type_script = "uid://sgsklqyq8u70"

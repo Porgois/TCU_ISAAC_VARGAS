@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://ba10ucc1glbb4"]
 
-[ext_resource type="Script" uid="uid://vs203lvy04be" path="res://scripts/scriptObjects/teacher.gd" id="1_ka5uc"]
-[ext_resource type="Shader" uid="uid://bydm6mkv6eay8" path="res://shaders/outline.gdshader" id="1_mxk6r"]
-[ext_resource type="Resource" uid="uid://im1tyehxqbbe" path="res://teachers/teacherLarry.tres" id="2_gbw8g"]
-[ext_resource type="Material" uid="uid://brrhsut0tp76v" path="res://materials/basicMaterials/basic_material.tres" id="3_by15g"]
-[ext_resource type="Material" uid="uid://ddwnvu6mbflbv" path="res://materials/characterMaterials/Expressions/BaseEyes.tres" id="4_u028t"]
-[ext_resource type="Material" uid="uid://bj7lxnt1m3jbt" path="res://materials/characterMaterials/Expressions/BaseMouth.tres" id="5_j66po"]
-[ext_resource type="Texture2D" uid="uid://h0dpklr6l8ar" path="res://textures/Characters/basic_eyes_sprite_sheet.png" id="6_u028t"]
-[ext_resource type="Texture2D" uid="uid://cq58rr0aqm5yv" path="res://textures/Characters/basic_mouth_sprite_sheet.png" id="7_j66po"]
-[ext_resource type="Script" uid="uid://cvmtqpbsyldfk" path="res://scripts/characterScripts/expressionHandler.gd" id="8_njy1q"]
+[ext_resource type="Script" uid="uid://vs203lvy04be" path="res://scripts/scriptObjects/teacher.gd" id="1_u6mbg"]
+[ext_resource type="Resource" uid="uid://im1tyehxqbbe" path="res://teachers/teacherLarry.tres" id="2_my7ow"]
+[ext_resource type="Material" uid="uid://brrhsut0tp76v" path="res://materials/basicMaterials/basic_material.tres" id="3_s5s46"]
+[ext_resource type="Shader" uid="uid://bydm6mkv6eay8" path="res://shaders/outline.gdshader" id="4_fnged"]
+[ext_resource type="Material" uid="uid://ddwnvu6mbflbv" path="res://materials/characterMaterials/Expressions/BaseEyes.tres" id="5_jdft6"]
+[ext_resource type="Texture2D" uid="uid://h0dpklr6l8ar" path="res://textures/Characters/basic_eyes_sprite_sheet.png" id="6_lx2m1"]
+[ext_resource type="Material" uid="uid://bj7lxnt1m3jbt" path="res://materials/characterMaterials/Expressions/BaseMouth.tres" id="7_2xt3d"]
+[ext_resource type="Texture2D" uid="uid://cq58rr0aqm5yv" path="res://textures/Characters/basic_mouth_sprite_sheet.png" id="8_81crk"]
+[ext_resource type="Script" uid="uid://cvmtqpbsyldfk" path="res://scripts/characterScripts/expressionHandler.gd" id="9_ty5mm"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_43ios"]
 _surfaces = [{
@@ -34,7 +34,7 @@ _surfaces = [{
 "index_count": 924,
 "index_data": PackedByteArray("YwArAAIAKwBkAAIAYwBlACsAZgBlAGMAKwBnAGQAZwAZAGQAZQAJACsACQBnACsAZgBoAGUAaQBoAGYAZQBqAAkAaABqAGUAZwAqABkAKgA8ABkACQBrAGcAawAqAGcAagAaAAkAGgBrAAkAKgA7ADwAOwAIADwAOwBsAAgANAA7ACoAawA0ACoAbQBsADsANABtADsAbQBuAGwAbwA0AGsAGgBvAGsAKQBtADQAbwApADQANgBuAG0AKQA2AG0ANgARAG4AOQARADYAOQBwABEAKAA2ACkAKAA5ADYAcQApAG8AcQAoACkAAABxAG8AAABvABoAcgBwADkAcgA6AHAANwA5ACgANwByADkAcwAoAHEAcwA3ACgANQBxAAAANQBzAHEAPQA6AHIAPQB0ADoADwByADcADwA9AHIAdQA3AHMAdQAPADcAHQBzADUAHQB1AHMASgB0AD0ASgA+AHQAJwA9AA8AJwBKAD0AdgAPAHUAdgAnAA8AAQB1AB0AAQB2AHUAdwA+AEoAdwB4AD4ATABKACcATAB3AEoAeQAnAHYAeQBMACcASwB2AAEASwB5AHYATQB4AHcATQAmAHgADgB3AEwADgBNAHcAegBMAHkAegAOAEwADAB5AEsADAB6AHkATgAmAE0ATgB7ACYAJQBNAA4AJQBOAE0AfAAOAHoAfAAlAA4AJAB6AAwAJAB8AHoAfQB7AE4AfQBPAHsAUABPAH0AUAANAE8AEABQAH0AUQB9AE4AEAB9AFEAUQBOACUAfgAQAFEAfwBRACUAfgBRAH8AfwAlAHwABwB+AH8AEgB/AHwABwB/ABIAEgB8ACQAgAAHABIAgACBAAcAggASACQAggCAABIAgwCCACQAgwAkAAwAhACAAIIAhQCBAIAAhACFAIAAhQCGAIEAhwCEAIIAhwCCAIMAiACFAIQAiQCGAIUAiACJAIUAiQCKAIYAiQAGAIoAiAAjAIkAiQAjAAYAiwCIAIQAiwCEAIcAiAATACMAiwATAIgABgAjAIwABgCMAI0AIwATAI4AIwCOAIwAiwAiABMAjQCMAFIAjQBSACEAjACOAFMAjABTAFIAEwCPAI4AEwAiAI8AjgAWAFMAjgCPABYAIQBSAFQAIQBUAFUAVQBUAFYAVQBWABQAVACQAFYAUgBXAFQAVABXAJAAUgBTAFcAVwBYAJAAUwBZAFcAVwBZAFgAUwAWAFkAWQCRAFgAWQBaAJEAFgBaAFkAWgAFAJEAFgBbAFoAWgBcAAUAWwBcAFoAXACSAAUAjwBbABYAXABIAJIASABGAJIAWwAfAFwAHwBIAFwAjwCTAFsAkwAfAFsAIgCTAI8ASABHAEYARwCUAEYAHwBJAEgASQBHAEgAkwCVAB8AlQBJAB8AIgAVAJMAFQCVAJMAlgAVACIAlgAiAIsAlgCLAIcAlgCHAJcAlwCHAIMAmAAVAJYAmACWAJcAFQAEAJUAmAAEABUABACZAJUAlQCZAEkAlwCDAJoAmgCDAAwAmgAMAEsAmwCXAJoAmACXAJsAnACaAEsAmwCaAJwAnABLAAEAnQCYAJsAnQAEAJgAngCbAJwAnQCbAJ4AnwCcAAEAngCcAJ8AnwABAB0AnQAeAAQABAAeAJkAoACdAJ4AoAAeAJ0AoQCeAJ8AoACeAKEAogCfAB0AoQCfAKIAogAdADUAowCiADUAowA1AAAApAChAKIApACiAKMApQCgAKEApQChAKQApQALAKAAoAALAB4ApgCjAAAApgAAABoAagCmABoApwCjAKYApwCkAKMAqACmAGoAqACnAKYAaACoAGoAqQCkAKcAqQClAKQAqgCnAKgAqgCpAKcAqwCoAGgAqwCqAKgAaQCrAGgAqQAbAKUApQAbAAsAqgAYAKkAqQAYABsAqwAKAKoAqgAKABgAaQAsAKsAqwAsAAoAaQADACwALAADAKwALACsAK0ACgAsAK0ArQCsAC0AGAAKAK4ACgCtAK4ArQAtAD8ArgCtAD8APwAtAEAAGACuAK8AGwAYAK8ArgA/AEEArwCuAEEAPwBAALAAQQA/ALAAsABAABcAsAAXALEAQgCwALEAQQCwAEIAQgCxALIArwBBADgAOABBAEIAGwCvALMAswCvADgACwAbALMAQwBCALIAOABCAEMAQwCyACAAswA4AEQARAA4AEMACwCzALQAtACzAEQAHgALALQAHgC0AJkARQBDACAARABDAEUARQAgAJQARwBFAJQAHABEAEUAHABFAEcAtABEABwAmQC0ABwASQAcAEcAmQAcAEkAtQAuALYAtQC3AC4ALgC3AF0AuAC1AC8AuQC1ALgAtwC1ALkAuQC4AF8AtwC5ALoAugC5AF4AtwC6ADAAMgC7ALwAMgC9ALsAuwC9ADEAvgAyAGIAvwAyAL4AvQAyAL8AvwC+AGEAvQC/AMAAwAC/ADMAvQDAAGAA"),
 "lods": [0.08098738, PackedByteArray("GgAbAAAAAAApABoAAAAoACkAGgApADQANQAoAAAAGwA1AAAAKAA2ACkAKQA2ADQANQA3ACgAGgA0AAkAGAAbABoACQAYABoAGwAYADgANwA5ACgAKAA5ADYAOQARADYANgARAAgAOQA6ABEANgAIADsANAA2ADsAOwAIADwANAA7ACoAKgA7ADwACQA0ACoAKgA8ABkAPQA6ADkANwA9ADkAPQA+ADoAKwAqABkACQAqACsAKwAZAAIAAwArAAIAAwAsACsALAAJACsALAADAC0ALAAKAAkACgAYAAkALAAtAD8ACgAsAD8APwAtAEAAGAAKAEEACgA/AEEAGABBADgAPwBAAEIAQQA/AEIAOABBAEIAQgBAABcAQgAXACAAOABCAEMAQwBCACAARAA4AEMAGwA4AEQARQBDACAARABDAEUARQAgAEYACwAbAEQAGwALADUAHABEAEUACwBEABwARwBFAEYAHABFAEcASABHAEYASABGAAUASQAcAEcASQBHAEgAHgALABwAHgAcAEkACwAdADUACwAeAB0AHQA3ADUAHQAPADcADwA9ADcAHgABAB0AAQAPAB0ABAAeAEkAHgAEAAEABABJAB8AHwBJAEgAJwA9AA8AAQAnAA8AJwBKAD0ASgA+AD0ASwAnAAEABABLAAEATABKACcASwBMACcATQA+AEoATABNAEoATQAmAD4ADABMAEsABAAVAEsAFQAEAB8AFQAMAEsATgAmAE0ATgBPACYAUABPAE4AUAANAE8AUQBQAE4AEABQAFEABwAQAFEAUQBOACUAJQBOAE0ABwBRABIAEgBRACUAEgAGAAcAJQBNAA4ADgBNAEwADAAOAEwAJAAlAA4AJAAOAAwAEgAlACQAEgAjAAYAJAAjABIABgAjAFIABgBSACEAJAATACMADAATACQAIwBTAFIAIwATAFMAIQBSAFQAIQBUAFUAVQBUAFYAVQBWABQAUgBXAFQAVABXAFYAUgBTAFcAVwBYAFYAUwBZAFcAVwBZAFgAUwAWAFkAEwAWAFMAWQBaAFgAFgBaAFkAWgAFAFgAEwAiABYADAAiABMAFQAiAAwAIgBbABYAIgAVAFsAFgBbAFoAFQAfAFsAWgBcAAUAWwBcAFoAWwAfAFwAXABIAAUAHwBIAFwALwBdAC4AXQAvAF4AXgAvAF8AXQBeADAAMgBgADEAYAAyAGEAYQAyAGIAYABhADMA"), 0.24847294, PackedByteArray("GgAbAAAAGAAbABoAGwALAAAACwAbABwAGwAYABwACwAdAAAACwAeAB0AHgALABwAHQAPAAAAHgABAB0AAQAPAB0AHgAcAB8AHgAEAAEABAAeAB8AHwAcAAUAFQAEAB8ABAAVAAEAFgAfAAUAFQAfABYAHAAgAAUAHAAYACAAFgAFABQAIQAWABQAIgAVABYAIwAWACEABgAjACEAEwAiABYAIwATABYAFQAiAAwADAAiABMAFQAMAAEAJAATACMADAATACQAEgAjAAYAJAAjABIAEgAGAAcABwAQABIAEgAQACUAEgAlACQAEAANACUAJAAOAAwAJAAlAA4ADAAOAAEAJQANACYAJQAmAA4AAQAOACcADgAmACcAAQAnAA8AJwAmAA8ADwAmABEADwARACgAAAAPACgAAAAoACkAKAARACkAAAApABoAGgApAAkAKQARACoACQApACoAEQAIACoAKgAIABkACQAYABoAKwAqABkACQAqACsAKwAZAAIAAwArAAIAAwAsACsALAAJACsALAADAC0ACgAYAAkALAAKAAkACgAsAC0AGAAKACAACgAtACAALQAXACAALgAvADAAMQAyADMA"), 0.5107153, PackedByteArray("AQAOAA8ADgANAA8AEAANAA4ADwANABEAEgAQAA4ABwAQABIAEgAGAAcAEgAOAAwADAAOAAEAEgATAAYADAATABIABgATABQADAAVABMAFQAMAAEAEwAWABQAEwAVABYAFgAFABQAFQAEABYAFgAEAAUABAAVAAEABAALAAUACwAEAAEACwAXAAUACwABAAAAAQAPAAAAAAAPABEAGAALAAAACwAYABcAAAARAAkACQAYAAAACQARABkAEQAIABkACQAZAAIACgAYAAkAGAAKABcACgAJAAIACgADABcAAwAKAAIA"), 1.1900808, PackedByteArray("AAAIAAkACQAIAAIAAAABAAgACgAJAAIACQAKAAAAAwAKAAIACgADAAUACgALAAAACwABAAAACwAKAAUABAALAAUACwAEAAEABgAEAAUABAAMAAEADAAEAAYADAANAAEADAAGAAcABwANAAwA"), 1.7851212, PackedByteArray("AAABAAIAAwAAAAIAAwAEAAAABAABAAAABAADAAUABgAEAAUAAQAEAAYAAQAGAAcA")],
-"material": ExtResource("3_by15g"),
+"material": ExtResource("3_s5s46"),
 "name": "m_capsule",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -46,7 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_43ios")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_njy1q"]
 render_priority = 0
-shader = ExtResource("1_mxk6r")
+shader = ExtResource("4_fnged")
 shader_parameter/shadows_enabled = true
 shader_parameter/highlights_enabled = false
 shader_parameter/shadow_strength = 0.999999977648
@@ -297,12 +297,12 @@ states/End/position = Vector2(1070, 241)
 states/Start/position = Vector2(195, 200)
 transitions = ["Start", "BodyAnimations_neutral_body", SubResource("AnimationNodeStateMachineTransition_15xhf"), "BodyAnimations_neutral_body", "BodyAnimations_angry_body", SubResource("AnimationNodeStateMachineTransition_12ttu"), "BodyAnimations_angry_body", "BodyAnimations_neutral_body", SubResource("AnimationNodeStateMachineTransition_elels")]
 
-[node name="CharacterTeacher" type="Node3D" unique_id=798968730]
-script = ExtResource("1_ka5uc")
-teacher_resource = ExtResource("2_gbw8g")
+[node name="CharacterLarry" type="Node3D" unique_id=798968730]
+script = ExtResource("1_u6mbg")
+teacher_resource = ExtResource("2_my7ow")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=106769391]
-transform = Transform3D(0.9366722, 0, 0.3502074, 0, 1, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
+transform = Transform3D(0.9366722, 0, 0.3502074, 0, 0.9500609, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
 
 [node name="Instructor" type="Node3D" parent="Pivot" unique_id=1924811014]
 transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 0, 0.01735276, 0)
@@ -314,23 +314,23 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gbw8g")
 
 [node name="Eyes" type="Sprite3D" parent="Pivot/Instructor" unique_id=391411423]
 transform = Transform3D(-4.371139e-08, 0, 0.99999976, 0, 0.99999976, 0, -0.99999976, 0, -4.371139e-08, 0.8467143, 2.471832, -3.701107e-08)
-material_override = ExtResource("4_u028t")
+material_override = ExtResource("5_jdft6")
 pixel_size = 0.0085
 texture_filter = 0
-texture = ExtResource("6_u028t")
+texture = ExtResource("6_lx2m1")
 hframes = 6
 
 [node name="Mouth" type="Sprite3D" parent="Pivot/Instructor" unique_id=1499217909]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999976, 0, 0.99999976, 0, -0.99999976, 0, -4.3711385e-08, 0.8514675, 1.8608652, 0.0009465278)
-material_override = ExtResource("5_j66po")
+material_override = ExtResource("7_2xt3d")
 pixel_size = 0.015
 texture_filter = 0
-texture = ExtResource("7_j66po")
+texture = ExtResource("8_81crk")
 hframes = 6
 frame = 4
 
 [node name="ExpressionHandler" type="Node" parent="." unique_id=1214993377 node_paths=PackedStringArray("eye_animator", "mouth_animator", "body_animator", "body_animation_tree", "blink_timer")]
-script = ExtResource("8_njy1q")
+script = ExtResource("9_ty5mm")
 eye_animator = NodePath("../AnimationPlayers/EyeAnimator")
 mouth_animator = NodePath("../AnimationPlayers/MouthAnimator")
 body_animator = NodePath("../AnimationPlayers/BodyAnimator")
