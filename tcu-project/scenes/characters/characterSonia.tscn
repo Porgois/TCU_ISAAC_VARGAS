@@ -302,7 +302,7 @@ script = ExtResource("1_ma158")
 teacher_resource = ExtResource("2_ma158")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=106769391]
-transform = Transform3D(0.9366722, 0, 0.3502074, 0, 0.96210426, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
+transform = Transform3D(0.9366722, 0, 0.3502074, 0, 0.9511875, 0, -0.3502074, 0, 0.9366722, 0, 0, 0)
 
 [node name="Instructor" type="Node3D" parent="Pivot" unique_id=1924811014]
 transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, 0, 0.01735276, 0)

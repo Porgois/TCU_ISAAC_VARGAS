@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jidit10ngqc3"]
 
 [ext_resource type="Script" uid="uid://dg0wrha02cbad" path="res://scripts/uiScripts/genericPrompter.gd" id="1_25yha"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_tfub3"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_tfub3"]
 [ext_resource type="StyleBox" uid="uid://dyvu075fdxj8u" path="res://themes/styleBox/style_box_normal.tres" id="3_4g86b"]
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="4_uuai0"]
 
@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_25yha")
+no_response_wait_time = 2.0
 guide_text = NodePath("InputMenu/QuestionText")
 guide_text_show_timer = NodePath("GuidePromptWaitTimer")
 
@@ -68,6 +69,7 @@ theme_override_styles/normal = ExtResource("3_4g86b")
 theme_override_styles/read_only = ExtResource("3_4g86b")
 theme_override_styles/focus = ExtResource("3_4g86b")
 placeholder_text = "Placeholder"
+alignment = 1
 
 [node name="Done" parent="InputMenu" unique_id=419576029 instance=ExtResource("4_uuai0")]
 layout_mode = 0

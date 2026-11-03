@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bnj2e6tddd2h3"
+
+[deps]
+
+source_file="res://csvImports/customQuizzes/Match Example TESTING.csv"
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

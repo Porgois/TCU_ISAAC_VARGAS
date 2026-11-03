@@ -1,10 +1,11 @@
 class_name MatchDestinationNode
-extends Control
+extends HBoxContainer
 
 @export var linking_point : Marker2D = null
 @export var clickable_area : Area2D = null
-@export var inner_sprite : Sprite2D = null
+@export var inner_sprite : TextureRect = null
 @export var node_text : RichTextLabel = null
+@export var dot : Control = null
 @export var node_number : int = 0
 
 var current_line : MouseFollowLine = null
@@ -37,6 +38,10 @@ func checkNodeCompatibility() -> bool:
 		return true
 	else:
 		return false
+
+func getAnchor() -> Vector2:
+	var anchor : Vector2 = dot.global_position + dot.size / 2.0
+	return anchor
 
 func miscPrint():
 	if checkNodeCompatibility():

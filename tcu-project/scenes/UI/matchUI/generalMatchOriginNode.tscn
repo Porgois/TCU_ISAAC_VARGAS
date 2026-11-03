@@ -1,60 +1,74 @@
 [gd_scene format=3 uid="uid://cdinhc231qnnp"]
 
 [ext_resource type="Script" uid="uid://qpm5ixqsm21j" path="res://scripts/visualScripts/matchOriginNode.gd" id="1_v7yk8"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_a0gng"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_a0gng"]
 [ext_resource type="Texture2D" uid="uid://cf6pujpoqihxh" path="res://textures/UI/UImatching/match_node.png" id="2_v7yk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy3yg"]
 size = Vector2(32, 32)
 
-[node name="GeneralMatchOriginNode" type="Control" unique_id=863129241 node_paths=PackedStringArray("clickable_area", "inner_sprite", "node_text")]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 260.0
-offset_top = 63.0
-offset_right = 260.0
-offset_bottom = 63.0
+[node name="GeneralMatchOriginNode" type="HBoxContainer" unique_id=1514637666 node_paths=PackedStringArray("clickable_area", "inner_sprite", "dot", "node_text")]
+custom_minimum_size = Vector2(400, 50)
+offset_right = 300.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
+theme_override_constants/separation = 15
 script = ExtResource("1_v7yk8")
-clickable_area = NodePath("ClickableArea")
-inner_sprite = NodePath("InnerSprite")
+clickable_area = NodePath("OriginNode/ClickableArea")
+inner_sprite = NodePath("OriginNode/InnerSprite")
+dot = NodePath("OriginNode")
 node_text = NodePath("NodeText")
 
 [node name="NodeText" type="RichTextLabel" parent="." unique_id=2079502597]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -137.0
-offset_top = -16.0
-offset_right = -16.0
-offset_bottom = 64.0
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 theme = ExtResource("2_a0gng")
 theme_override_font_sizes/normal_font_size = 22
 text = "Text example"
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
+horizontal_alignment = 2
 
-[node name="OuterSprite" type="Sprite2D" parent="." unique_id=1457980536]
+[node name="OriginNode" type="Control" parent="." unique_id=1674363584]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="OuterSprite" type="TextureRect" parent="OriginNode" unique_id=1176152570]
 modulate = Color(0.5489626, 0.5489626, 0.54896253, 0.43137255)
-position = Vector2(3.8146973e-06, -3.8146973e-06)
-scale = Vector2(0.49999988, 0.49999988)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_v7yk8")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="InnerSprite" type="Sprite2D" parent="." unique_id=1403144441]
+[node name="InnerSprite" type="TextureRect" parent="OriginNode" unique_id=1705392306]
 visible = false
-texture_filter = 4
-position = Vector2(9.357929e-06, -1.7881393e-06)
-scale = Vector2(0.41796893, 0.41796893)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_v7yk8")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="ClickableArea" type="Area2D" parent="." unique_id=1570837994]
+[node name="ClickableArea" type="Area2D" parent="OriginNode" unique_id=1570837994]
+position = Vector2(16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea" unique_id=1695764518]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OriginNode/ClickableArea" unique_id=1695764518]
 shape = SubResource("RectangleShape2D_fy3yg")
 
-[connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]
+[connection signal="input_event" from="OriginNode/ClickableArea" to="." method="_on_clickable_area_input_event"]

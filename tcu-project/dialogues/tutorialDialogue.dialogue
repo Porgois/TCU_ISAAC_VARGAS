@@ -14,7 +14,8 @@ do QuizManager.loadQuizInFile("res://csvImports/tutorials/TutorialQuiz.csv")
 {{QuizManager.getDisplayedName()}}: If you change your mind, you can [color=yellow][wave amp=20 freq=5]🖱️ click on the connected right dots[/wave][/color] to [color=yellow][wave amp=20 freq=5]undo[/wave][/color] the [color=yellow][wave amp=20 freq=5]connection[/wave][/color].
 {{QuizManager.getDisplayedName()}}: Once you've [color=yellow][wave amp=20 freq=5]connected all the dots[/wave][/color], simply [color=yellow][wave amp=20 freq=5]press the button[/wave][/color] that will be shown to you then to [color=yellow][wave amp=20 freq=5]continue[/wave][/color].
 =>< ask_match_question
-{{QuizManager.getDisplayedName()}}: With this information you should be able to know how to take any quiz! Best of luck!
+{{QuizManager.getDisplayedName()}}: With this information you should be able to know how to take any quiz.
+{{QuizManager.getDisplayedName()}}: Best of luck!
 do QuizManager.goToMenu()
 => END
 
@@ -25,7 +26,6 @@ do QuizManager.askQuestion(0, ExpressionHandler.ReactionMode.POSITIVE_ONLY)
 if QuizManager.getQuestionResultValue(0) == false # Wrong answer (repeat until the user answers correctly)
 	{{QuizManager.getDisplayedName()}}: Thats not right! It's ok, try again.
 	=>< ask_multiple_choice_question
-
 => END
 
 ~ ask_completion_question

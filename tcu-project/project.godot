@@ -26,6 +26,10 @@ ConfirmationModal="*uid://c1g7bc5kwcudy"
 
 runtime/balloon_path="res://scenes/ui/dialogueBaloon/balloon.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")

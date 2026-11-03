@@ -8,7 +8,7 @@ signal match_confirmed
 @export var matchContainer : GridContainer = null
 @export var confirm_button : Button = null
 @export var confirmation_text : String = "Confirm"
-@export var grid_spacing_vector : Vector2 = Vector2(250, 85) # x -> h, y -> v
+@export var grid_spacing_vector : Vector2 = Vector2(120, 15) # x -> h, y -> v
 
 var origin_node_scene : PackedScene = preload("res://scenes/ui/matchUI/generalMatchOriginNode.tscn")
 var destination_node_scene : PackedScene = preload("res://scenes/ui/matchUI/generalMatchDestinationNode.tscn")
@@ -21,14 +21,20 @@ func _ready() -> void:
 	setGridSpacing()
 	
 	if confirm_button:
-		confirm_button.hide()
+		hideConfirmButton()
 		confirm_button.pressed.connect(_on_confirm_pressed)
 		confirm_button.button_label.text = confirmation_text
 
+func hideConfirmButton():
+	confirm_button.modulate.a = 0.0
+
+func showConfirmButton():
+	confirm_button.modulate.a = 1.0
+
 # Sets custom grid spacing at start
 func setGridSpacing():
-	matchContainer.add_theme_constant_override("h_separation", grid_spacing_vector.x)
-	matchContainer.add_theme_constant_override("v_separation", grid_spacing_vector.y)
+	matchContainer.add_theme_constant_override("h_separation", int(grid_spacing_vector.x))
+	matchContainer.add_theme_constant_override("v_separation", int(grid_spacing_vector.y))
 
 # Spawns one origin/destination node per question pair, shuffling which definition ends up next to which term 
 func configureFromPairs(pairs: Array) -> void:
@@ -71,8 +77,9 @@ func _clearEntities() -> void:
 		node.queue_free()
 	origin_nodes.clear()
 	destination_nodes.clear()
+	
 	if confirm_button:
-		confirm_button.hide()
+		hideConfirmButton()
 
 func _on_origin_link_state_changed(_node: MatchOriginNode) -> void:
 	_updateConfirmVisibility()
@@ -85,7 +92,9 @@ func _updateConfirmVisibility() -> void:
 		if not node.linked:
 			all_linked = false
 			break
-	confirm_button.visible = all_linked
+	
+	if all_linked:
+		showConfirmButton()
 
 func _on_confirm_pressed() -> void:
 	confirm_button.hide()

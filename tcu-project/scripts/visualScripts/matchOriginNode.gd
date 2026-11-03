@@ -1,10 +1,11 @@
 class_name MatchOriginNode
-extends Control
+extends HBoxContainer
 
 signal link_state_changed(node: MatchOriginNode)
 
 @export var clickable_area : Area2D = null
-@export var inner_sprite : Sprite2D = null
+@export var inner_sprite : TextureRect = null
+@export var dot : Control = null
 @export var node_text : RichTextLabel = null
 @export var node_number : int = 1
 
@@ -26,27 +27,29 @@ func drawMouseFollowLine():
 	self.add_child(current_mouse_line)
 	current_mouse_line.setOriginNode(self)
 
-func eraseMouseFollowLine():
+func eraseMouseFollowLine() -> void:
 	if current_mouse_line != null:
 		inner_sprite.hide()
 		current_mouse_line.queue_free()
+		current_mouse_line = null
 
-func createLink(point : Vector2):
+func createLink(point : Vector2 = Vector2.ZERO) -> void:
+	if current_mouse_line == null:
+		return
+	
+	var target : MatchDestinationNode = current_mouse_line.current_snap_target
+	if target == null:  # Fall back to the closest destination to where the link was made
+		target = current_mouse_line.findClosestNode(point, INF)
+	if target == null:
+		return
+	
 	node_active = false
-	current_mouse_line.linked = true
+	current_mouse_line.lockTo(target)
 	setLinked(true)
-	
-	# Prefer the node the line is currently snapped to (exact center),
-	# fall back to the raw point if nothing was snapped for some reason
-	var final_global_point : Vector2 = point
-	if current_mouse_line.current_snap_target != null:
-		final_global_point = current_mouse_line.current_snap_target.global_position
-	
-	var local_point : Vector2 = current_mouse_line.to_local(final_global_point)
-	current_mouse_line.destination_point = local_point
-	current_mouse_line.updateLastPoint(local_point)
 
-func deleteLink():
+func deleteLink() -> void:
+	if current_mouse_line == null:
+		return
 	current_mouse_line.linked = false
 	eraseMouseFollowLine()
 	setLinked(false)
@@ -54,6 +57,10 @@ func deleteLink():
 func setLinked(value : bool = false):
 	linked = value
 	link_state_changed.emit(self)
+
+func getAnchor() -> Vector2:
+	var anchor : Vector2 = dot.global_position + dot.size / 2.0
+	return anchor
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

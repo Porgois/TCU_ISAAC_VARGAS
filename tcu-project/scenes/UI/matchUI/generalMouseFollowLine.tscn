@@ -8,6 +8,7 @@ radius = 8.0
 [node name="GeneralMouseFollowLine" type="Line2D" unique_id=921937067 node_paths=PackedStringArray("endpoint_area")]
 z_index = 1
 closed = true
+default_color = Color(0.94509804, 0.9647059, 0.9411765, 1)
 script = ExtResource("1_ssccm")
 endpoint_area = NodePath("EndpointArea")
 
