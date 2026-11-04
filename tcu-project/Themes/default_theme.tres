@@ -181,5 +181,3 @@ RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/shadow_offset_x = 2
 RichTextLabel/constants/shadow_offset_y = 2
 RichTextLabel/fonts/normal_font = ExtResource("1_nwjvr")
-ScrollContainer/styles/focus = ExtResource("1_het5a")
-ScrollContainer/styles/panel = ExtResource("1_het5a")

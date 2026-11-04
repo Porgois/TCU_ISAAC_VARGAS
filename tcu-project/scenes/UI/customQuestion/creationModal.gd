@@ -7,7 +7,7 @@ extends Control
 @export var modal_title_sufix : String = ""
 @export_group("")
 
-@export var question_item_container : CenterContainer = null
+@export var question_item_container : MarginContainer = null
 
 #region QUESTION ITEM SCENES
 

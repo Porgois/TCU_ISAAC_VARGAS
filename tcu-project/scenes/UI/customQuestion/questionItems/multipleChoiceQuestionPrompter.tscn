@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://btv6cg81yruk5" path="res://scripts/uiScripts/customQuiz/questionPrompterItems/multipleChoiceQuestionPrompter.gd" id="1_cnmeq"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="1_o612j"]
 [ext_resource type="Script" uid="uid://bugaiq033ixi6" path="res://scripts/menuScripts/questionAnswerInputMenu.gd" id="2_wu6n3"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="3_myur0"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="3_myur0"]
 
 [node name="MultipleChoiceQuestionItem" type="Control" unique_id=2010322714 node_paths=PackedStringArray("question_input", "question_answers_container")]
 layout_mode = 3
@@ -37,11 +37,6 @@ mouse_filter = 2
 [node name="QuestionInput" parent="CompletionQuestion" unique_id=491828673 instance=ExtResource("1_o612j")]
 layout_mode = 2
 mouse_filter = 2
-
-[node name="QuestionInputField" parent="CompletionQuestion/QuestionInput" index="0" unique_id=88266246]
-offset_bottom = 166.0
-placeholder_text = "Enter content question here..."
-deselect_on_focus_loss_enabled = false
 
 [node name="QuestionAnswerMenu" type="Control" parent="CompletionQuestion" unique_id=1829706107 node_paths=PackedStringArray("question_answer_container")]
 layout_mode = 2

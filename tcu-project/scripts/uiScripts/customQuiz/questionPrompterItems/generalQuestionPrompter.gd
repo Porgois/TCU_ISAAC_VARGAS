@@ -1,5 +1,5 @@
 class_name GeneralQuestionPrompter
-extends Control
+extends VBoxContainer
 
 @export var question_input : QuestionInputField = null
 @export var question_answers_container : VBoxContainer = null

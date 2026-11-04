@@ -73,6 +73,8 @@ vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Margin/Root" unique_id=408929503]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="Column" type="VBoxContainer" parent="Margin/Root/CenterContainer" unique_id=752886876]
 custom_minimum_size = Vector2(700, 450)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rkq5s1q5fakj"]
 
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_0b7fh"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="1_0b7fh"]
 [ext_resource type="Script" uid="uid://ckw4hkby8tt72" path="res://scripts/uiScripts/questionInput/questionAnswer.gd" id="1_ghjbj"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="2_m36ni"]
 
@@ -18,10 +18,12 @@ correct_check = NodePath("correctCheck")
 layout_mode = 2
 
 [node name="correctCheck" type="CheckBox" parent="." unique_id=1918676512]
+visible = false
 layout_mode = 2
 
 [node name="deleteButton" type="Button" parent="." unique_id=1341111823]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2

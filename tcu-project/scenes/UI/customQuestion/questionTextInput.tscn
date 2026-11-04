@@ -3,26 +3,16 @@
 [ext_resource type="Script" uid="uid://bxvav45n0fxyg" path="res://scripts/uiScripts/questionInput/questionInput.gd" id="1_63c8f"]
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="1_ma4a0"]
 
-[node name="QuestionInput" type="Control" unique_id=491828673 node_paths=PackedStringArray("text_edit")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("1_63c8f")
-text_edit = NodePath("QuestionInputField")
-
-[node name="QuestionInputField" type="TextEdit" parent="." unique_id=88266246]
-layout_mode = 1
+[node name="QuestionInputField" type="TextEdit" unique_id=88266246 node_paths=PackedStringArray("text_edit")]
+custom_minimum_size = Vector2(0, 55)
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 34.0
+offset_bottom = 8.0
 grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_ma4a0")
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter question content here..."
-
-[connection signal="text_changed" from="QuestionInputField" to="." method="_on_question_input_field_text_changed"]
+script = ExtResource("1_63c8f")
+text_edit = NodePath(".")

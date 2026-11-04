@@ -1,5 +1,5 @@
 class_name QuestionInputField
-extends Control
+extends TextEdit
 
 @export var text_edit : TextEdit = null
 
@@ -11,7 +11,14 @@ func setInputText(new_text : String = ""):
 		return ""
 	else: # Set text
 		text_edit.text = new_text
-	
+
+func setPlaceholderText(new_text : String = ""):
+	if text_edit == null:
+		printerr("[QUESTION INPUT] Error: Text edit not set!")
+		return ""
+	else: # Set placeholder text
+		text_edit.placeholder_text = new_text
+
 func getInputText() -> String:
 	if text_edit == null:
 		printerr("[QUESTION INPUT] Error: Text edit not set!")

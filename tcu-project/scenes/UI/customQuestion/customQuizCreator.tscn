@@ -21,6 +21,12 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p33t8"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_daqpn"]
+color = Color(0.50140655, 0.5014065, 0.5014065, 1)
+grow_begin = -115.0
+grow_end = -115.0
+thickness = 5
+
 [node name="CustomQuestionCreator" type="Control" unique_id=1948691967 node_paths=PackedStringArray("total_question_label", "creator_container", "quiz_name_text")]
 layout_mode = 3
 anchors_preset = 15
@@ -29,41 +35,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lnrtv")
-total_question_label = NodePath("QuestionCount&Button/TotalQuestions")
-creator_container = NodePath("ScrollContainer/CreatorContainer")
-quiz_name_text = NodePath("QuizTitle")
+total_question_label = NodePath("MarginContainer/GeneralContainer/QuestionCount&Button/TotalQuestions")
+creator_container = NodePath("MarginContainer/GeneralContainer/ScrollContainer/CreatorContainer")
+quiz_name_text = NodePath("MarginContainer/GeneralContainer/QuizTitle")
 
-[node name="TitlePrompt" type="RichTextLabel" parent="." unique_id=823142426]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=322169514]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -504.0
-offset_top = -276.0
-offset_right = -21.0
-offset_bottom = -242.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="GeneralContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1609367851]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitlePrompt" type="RichTextLabel" parent="MarginContainer/GeneralContainer" unique_id=823142426]
+layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("2_daqpn")
 theme_override_font_sizes/normal_font_size = 22
 text = "Quiz title"
+fit_content = true
 vertical_alignment = 1
 
-[node name="QuizTitle" type="LineEdit" parent="." unique_id=1215988054]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -504.0
-offset_top = -242.0
-offset_right = 481.0
-offset_bottom = -193.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="QuizTitle" type="LineEdit" parent="MarginContainer/GeneralContainer" unique_id=1215988054]
+layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_daqpn")
 theme_override_font_sizes/font_size = 32
@@ -72,123 +74,11 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_r3xux")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nwjvr")
 placeholder_text = "Enter quiz title here..."
 
-[node name="HSeparator" type="HSeparator" parent="." unique_id=577906236]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 639.0
-offset_right = 1067.0
-offset_bottom = 643.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=797608835]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -504.0
-offset_top = -138.0
-offset_right = 491.0
-offset_bottom = 261.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_vimvy")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_p33t8")
-
-[node name="CreatorContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=163675209]
+[node name="QuestionCount&Button" type="HBoxContainer" parent="MarginContainer/GeneralContainer" unique_id=464339636]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 20
-
-[node name="CustomQuestionItem" parent="ScrollContainer/CreatorContainer" unique_id=246808537 instance=ExtResource("3_fosxa")]
-layout_mode = 2
-
-[node name="Buttons" type="HBoxContainer" parent="." unique_id=1035654521]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -219.0
-offset_top = 282.0
-offset_right = 219.5
-offset_bottom = 312.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 50
-
-[node name="SaveButton" type="Button" parent="Buttons" unique_id=606986739 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_daqpn")
-script = ExtResource("4_daqpn")
-button_label = NodePath("ButtonLabel")
-
-[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/SaveButton" unique_id=1017116264]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("2_daqpn")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 2
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/normal_font_size = 24
-text = "Save"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CancelButton" type="Button" parent="Buttons" unique_id=1933320683 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_daqpn")
-script = ExtResource("4_daqpn")
-button_label = NodePath("ButtonLabel")
-
-[node name="ButtonLabel" type="RichTextLabel" parent="Buttons/CancelButton" unique_id=1855106194]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_right = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("2_daqpn")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 2
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/normal_font_size = 24
-text = "Cancel"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="QuestionCount&Button" type="HBoxContainer" parent="." unique_id=464339636]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 142.0
-offset_right = 382.0
-offset_bottom = 176.0
 theme_override_constants/separation = 2
 
-[node name="TotalQuestions" type="RichTextLabel" parent="QuestionCount&Button" unique_id=1323638332]
+[node name="TotalQuestions" type="RichTextLabel" parent="MarginContainer/GeneralContainer/QuestionCount&Button" unique_id=1323638332]
 custom_maximum_size = Vector2(125, -1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -197,7 +87,7 @@ theme_override_font_sizes/normal_font_size = 22
 text = "1 questions"
 vertical_alignment = 1
 
-[node name="NewButton" type="Button" parent="QuestionCount&Button" unique_id=744980254 node_paths=PackedStringArray("button_label")]
+[node name="NewButton" type="Button" parent="MarginContainer/GeneralContainer/QuestionCount&Button" unique_id=744980254 node_paths=PackedStringArray("button_label")]
 custom_minimum_size = Vector2(0, 30)
 custom_maximum_size = Vector2(48.905, -1)
 layout_mode = 2
@@ -206,7 +96,7 @@ theme = ExtResource("2_daqpn")
 script = ExtResource("4_daqpn")
 button_label = NodePath("ButtonLabel")
 
-[node name="ButtonLabel" type="RichTextLabel" parent="QuestionCount&Button/NewButton" unique_id=701504317]
+[node name="ButtonLabel" type="RichTextLabel" parent="MarginContainer/GeneralContainer/QuestionCount&Button/NewButton" unique_id=701504317]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,7 +119,95 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="text_changed" from="QuizTitle" to="." method="_on_quiz_title_text_changed"]
-[connection signal="pressed" from="Buttons/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="Buttons/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="QuestionCount&Button/NewButton" to="." method="_on_new_button_pressed"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/GeneralContainer" unique_id=797608835]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vimvy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p33t8")
+
+[node name="CreatorContainer" type="VBoxContainer" parent="MarginContainer/GeneralContainer/ScrollContainer" unique_id=163675209]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="CustomQuestionItem" parent="MarginContainer/GeneralContainer/ScrollContainer/CreatorContainer" unique_id=246808537 instance=ExtResource("3_fosxa")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/GeneralContainer" unique_id=577906236]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_daqpn")
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/GeneralContainer" unique_id=1035654521]
+custom_minimum_size = Vector2(315, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="SaveButton" type="Button" parent="MarginContainer/GeneralContainer/Buttons" unique_id=606986739 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_daqpn")
+script = ExtResource("4_daqpn")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="MarginContainer/GeneralContainer/Buttons/SaveButton" unique_id=1017116264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_daqpn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Save"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="Button" parent="MarginContainer/GeneralContainer/Buttons" unique_id=1933320683 node_paths=PackedStringArray("button_label")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_daqpn")
+script = ExtResource("4_daqpn")
+button_label = NodePath("ButtonLabel")
+
+[node name="ButtonLabel" type="RichTextLabel" parent="MarginContainer/GeneralContainer/Buttons/CancelButton" unique_id=1855106194]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_daqpn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Cancel"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="text_changed" from="MarginContainer/GeneralContainer/QuizTitle" to="." method="_on_quiz_title_text_changed"]
+[connection signal="pressed" from="MarginContainer/GeneralContainer/QuestionCount&Button/NewButton" to="." method="_on_new_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GeneralContainer/Buttons/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GeneralContainer/Buttons/CancelButton" to="." method="_on_cancel_button_pressed"]

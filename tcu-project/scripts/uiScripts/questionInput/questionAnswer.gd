@@ -34,9 +34,14 @@ func getInputText() -> String:
 	return result
 
 # Sets the text of its question input field child
-func setInputText(new_text : String = "") -> void:
+func setInputText(new_text : String = ""):
 	if question_input:
 		question_input.setInputText(new_text)
+
+# Sets the placeholder text of its question input field child
+func setPlaceholderText(new_text : String = ""):
+	if question_input:
+		question_input.setPlaceholderText(new_text)
 
 #endregion
 

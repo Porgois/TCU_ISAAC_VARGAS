@@ -29,6 +29,7 @@ runtime/balloon_path="res://scenes/ui/dialogueBaloon/balloon.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
