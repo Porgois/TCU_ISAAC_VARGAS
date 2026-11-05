@@ -43,6 +43,11 @@ func setPlaceholderText(new_text : String = ""):
 	if question_input:
 		question_input.setPlaceholderText(new_text)
 
+func setQuestionNumber(number : int = -1):
+	if question_input:
+		print("SET QUESTION NUMBER EXISTS")
+		question_input.setQuestionNumber(number)
+
 #endregion
 
 #region CORRECT ANSWER (MULTIPLE CHOICE)

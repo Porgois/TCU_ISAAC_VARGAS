@@ -3,12 +3,26 @@
 [ext_resource type="Script" uid="uid://bxvav45n0fxyg" path="res://scripts/uiScripts/questionInput/questionInput.gd" id="1_63c8f"]
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="1_ma4a0"]
 
-[node name="QuestionInputField" type="TextEdit" unique_id=88266246 node_paths=PackedStringArray("text_edit")]
-custom_minimum_size = Vector2(0, 55)
+[node name="QuestionInput" type="HBoxContainer" unique_id=1882937884]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 8.0
+offset_bottom = 55.0
 grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="QuestionNumber" type="RichTextLabel" parent="." unique_id=1143470968]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "1."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionInputField" type="TextEdit" parent="." unique_id=88266246 node_paths=PackedStringArray("text_edit", "question_number")]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_ma4a0")
@@ -16,3 +30,4 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter question content here..."
 script = ExtResource("1_63c8f")
 text_edit = NodePath(".")
+question_number = NodePath("../QuestionNumber")

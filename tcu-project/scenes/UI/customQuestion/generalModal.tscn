@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d1h48wwwb4uvl" path="res://scenes/ui/customQuestion/creationModal.gd" id="1_siadc"]
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_a81qr"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="3_m2iav"]
+[ext_resource type="StyleBox" uid="uid://37y4uxpv7nuu" path="res://themes/default_style_box_line.tres" id="3_siadc"]
 
 [node name="ModalOverlay" type="Control" unique_id=866828715 node_paths=PackedStringArray("modal_title", "question_item_container")]
 layout_mode = 3
@@ -43,6 +44,7 @@ theme_override_constants/margin_bottom = 32
 [node name="Organizer" type="VBoxContainer" parent="Root" unique_id=156421680]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 15
 
 [node name="ModalTitle" type="RichTextLabel" parent="Root/Organizer" unique_id=1797294049]
 layout_mode = 2
@@ -57,10 +59,14 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSeparator" type="HSeparator" parent="Root/Organizer" unique_id=1454571634]
+layout_mode = 2
+theme_override_styles/separator = ExtResource("3_siadc")
 
 [node name="Buttons" type="HBoxContainer" parent="Root/Organizer" unique_id=276440373]
 layout_mode = 2

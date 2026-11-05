@@ -51,12 +51,13 @@ func getDefinition(index : int = 0) -> String:
 # Set term at index 'n' in the term container
 func setTerm(index : int = 0, text : String = ""):
 	if term_container:
-		term_container.get_child(index).setInputText(text)
+		print(term_container.get_child(0).name)
+		term_container.get_child(index).get_child(1).setInputText(text) # Pointing to second child
 
 # Set definition at index 'n' in the definition container
 func setDefinition(index : int = 0, text : String = ""):
 	if definition_container:
-		definition_container.get_child(index).setInputText(text)
+		definition_container.get_child(index).get_child(1).setInputText(text) # Pointing to second child
 
 # Creates new match pair with the containers' data
 func syncContainersWithPairs():

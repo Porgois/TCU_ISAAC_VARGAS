@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="1_1erip"]
 [ext_resource type="Script" uid="uid://cx6sc0vj1xbun" path="res://scripts/uiScripts/customQuiz/questionPrompterItems/generalQuestionPrompter.gd" id="1_8b6f2"]
 [ext_resource type="PackedScene" uid="uid://br4fbq4aag8ps" path="res://scenes/ui/customQuestion/questionAnswerMenu.tscn" id="2_1erip"]
+[ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="3_3vopr"]
 
 [node name="CompletionQuestionItem" type="VBoxContainer" unique_id=438143721 node_paths=PackedStringArray("question_input", "question_answers_container")]
 anchors_preset = 15
@@ -13,7 +14,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 20
 script = ExtResource("1_8b6f2")
-question_input = NodePath("QuestionSection/QuestionInput")
+question_input = NodePath("QuestionSection/QuestionInput/QuestionInputField")
 question_answers_container = NodePath("AnswersSection/QuestionAnswerMenu/ScrollContainer/Padding/AnswersContainer")
 
 [node name="QuestionSection" type="VBoxContainer" parent="." unique_id=583042454]
@@ -30,6 +31,10 @@ fit_content = true
 
 [node name="QuestionInput" parent="QuestionSection" unique_id=491828673 instance=ExtResource("1_1erip")]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestionNumber" parent="QuestionSection/QuestionInput" index="0" unique_id=1143470968]
+visible = false
 
 [node name="HintLabel" type="RichTextLabel" parent="QuestionSection" unique_id=24805023]
 layout_mode = 2
@@ -41,18 +46,37 @@ fit_content = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
-[node name="AnswersLabel" type="RichTextLabel" parent="AnswersSection" unique_id=1292177288]
+[node name="AnswerPromptContainer" type="HBoxContainer" parent="AnswersSection" unique_id=1894456419]
 layout_mode = 2
+size_flags_vertical = 0
+
+[node name="AnswersLabel" type="RichTextLabel" parent="AnswersSection/AnswerPromptContainer" unique_id=1292177288]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/normal_font_size = 24
 text = "Answers"
 fit_content = true
+vertical_alignment = 1
 
-[node name="QuestionAnswerMenu" parent="AnswersSection" unique_id=1829706107 instance=ExtResource("2_1erip")]
+[node name="AddAnswerButton" parent="AnswersSection/AnswerPromptContainer" unique_id=362318287 instance=ExtResource("3_3vopr")]
+custom_minimum_size = Vector2(65, 35)
+custom_maximum_size = Vector2(40, -1)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ButtonLabel" parent="AnswersSection/AnswerPromptContainer/AddAnswerButton" index="0" unique_id=1101348109]
+theme_override_font_sizes/normal_font_size = 30
+text = "+"
+
+[node name="QuestionAnswerMenu" parent="AnswersSection" unique_id=1829706107 node_paths=PackedStringArray("external_add_button") instance=ExtResource("2_1erip")]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
+external_add_button = NodePath("../AnswerPromptContainer/AddAnswerButton")
 
 [editable path="QuestionSection/QuestionInput"]
+[editable path="AnswersSection/AnswerPromptContainer/AddAnswerButton"]
 [editable path="AnswersSection/QuestionAnswerMenu"]

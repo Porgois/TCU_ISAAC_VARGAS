@@ -1,3 +1,4 @@
 theme,type,prompt,options,answer
 ,COMPLETION,The capital of France is __.,,paris
 ,COMPLETION,What __ your name?,,is
+,MC,What is 3 + 3?,8;6;12;4,6

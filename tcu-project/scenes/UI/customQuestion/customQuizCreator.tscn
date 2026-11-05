@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_daqpn"]
 [ext_resource type="PackedScene" uid="uid://cwdiacjdnrmmd" path="res://scenes/ui/customQuestion/questionItems/customQuestionItem.tscn" id="3_fosxa"]
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="4_daqpn"]
+[ext_resource type="StyleBox" uid="uid://37y4uxpv7nuu" path="res://themes/default_style_box_line.tres" id="5_fosxa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_daqpn"]
 content_margin_left = 20.0
@@ -20,12 +21,6 @@ corner_radius_bottom_left = 20
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vimvy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p33t8"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_daqpn"]
-color = Color(0.50140655, 0.5014065, 0.5014065, 1)
-grow_begin = -115.0
-grow_end = -115.0
-thickness = 5
 
 [node name="CustomQuestionCreator" type="Control" unique_id=1948691967 node_paths=PackedStringArray("total_question_label", "creator_container", "quiz_name_text")]
 layout_mode = 3
@@ -136,7 +131,7 @@ layout_mode = 2
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/GeneralContainer" unique_id=577906236]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_styles/separator = SubResource("StyleBoxLine_daqpn")
+theme_override_styles/separator = ExtResource("5_fosxa")
 
 [node name="Buttons" type="HBoxContainer" parent="MarginContainer/GeneralContainer" unique_id=1035654521]
 custom_minimum_size = Vector2(315, 0)

@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eeqbe")
 question_answer_container = NodePath("ScrollContainer/Padding/AnswersContainer")
+max_answer_count = 25
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=68102831]
 layout_mode = 2
@@ -33,15 +34,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
-
-[node name="Button" type="Button" parent="." unique_id=1358210461]
-custom_minimum_size = Vector2(25, 25)
-custom_maximum_size = Vector2(25, 25)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme = ExtResource("3_hf4uu")
-theme_override_font_sizes/font_size = 20
-text = "+"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

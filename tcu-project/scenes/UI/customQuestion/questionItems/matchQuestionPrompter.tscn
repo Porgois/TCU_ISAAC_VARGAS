@@ -1,110 +1,169 @@
-[gd_scene format=3 uid="uid://csrahnn0q1boc"]
+[gd_scene format=3 uid="uid://ce7dfe8al0b5b"]
 
 [ext_resource type="Script" uid="uid://dnxnub6sc3f5i" path="res://scripts/uiScripts/customQuiz/questionPrompterItems/matchQuestionPrompter.gd" id="1_7pm6a"]
 [ext_resource type="PackedScene" uid="uid://dr78uqw86ko8t" path="res://scenes/ui/customQuestion/questionTextInput.tscn" id="1_f74h7"]
-[ext_resource type="PackedScene" uid="uid://rkq5s1q5fakj" path="res://scenes/ui/customQuestion/questionAnswerInput.tscn" id="3_uqoj4"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="4_mn5xk"]
 
-[node name="MatchQuestionItem" type="Control" unique_id=2010322714 node_paths=PackedStringArray("term_container", "definition_container")]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+[node name="MatchQuestionItem" type="VBoxContainer" unique_id=438143721 node_paths=PackedStringArray("term_container", "definition_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 20
 script = ExtResource("1_7pm6a")
-term_container = NodePath("MatchQuestion/TermContainer")
-definition_container = NodePath("MatchQuestion/DefinitionContainer")
+term_container = NodePath("Term&DefinitionContainer/TermContainer")
+definition_container = NodePath("Term&DefinitionContainer/DefinitionContainer")
 
-[node name="QuestionTitlesContainer" type="HBoxContainer" parent="." unique_id=305508210]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -456.0
-offset_top = -296.0
-offset_right = 448.0
-offset_bottom = -31.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = -15
-
-[node name="SideAText" type="RichTextLabel" parent="QuestionTitlesContainer" unique_id=1356342785]
+[node name="LabelContainer" type="HBoxContainer" parent="." unique_id=223357838]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("4_mn5xk")
-theme_override_font_sizes/normal_font_size = 38
-text = "Terms"
+
+[node name="TermLabel" type="RichTextLabel" parent="LabelContainer" unique_id=722700366]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/normal_font_size = 22
+text = "Terms
+"
+fit_content = true
 horizontal_alignment = 1
 
-[node name="SideBText" type="RichTextLabel" parent="QuestionTitlesContainer" unique_id=1764798967]
+[node name="DefinitionLabel" type="RichTextLabel" parent="LabelContainer" unique_id=1028834770]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("4_mn5xk")
-theme_override_font_sizes/normal_font_size = 38
+size_flags_horizontal = 6
+theme_override_font_sizes/normal_font_size = 22
 text = "Definitions"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="MatchQuestion" type="HBoxContainer" parent="." unique_id=1433300523]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -458.0
-offset_top = -238.0
-offset_right = 497.0
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="Term&DefinitionContainer" type="HBoxContainer" parent="." unique_id=1586469266]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="TermContainer" type="VBoxContainer" parent="MatchQuestion" unique_id=831264418]
+[node name="TermContainer" type="VBoxContainer" parent="Term&DefinitionContainer" unique_id=1828822589]
+custom_minimum_size = Vector2(545, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
 
-[node name="SideAInput1" parent="MatchQuestion/TermContainer" unique_id=491828673 instance=ExtResource("1_f74h7")]
+[node name="QuestionInput" parent="Term&DefinitionContainer/TermContainer" unique_id=491828673 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SideAInput2" parent="MatchQuestion/TermContainer" unique_id=671928008 instance=ExtResource("1_f74h7")]
+[node name="QuestionInput2" parent="Term&DefinitionContainer/TermContainer" unique_id=88266246 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SideAInput3" parent="MatchQuestion/TermContainer" unique_id=580830902 instance=ExtResource("1_f74h7")]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/TermContainer/QuestionInput2" index="0" unique_id=1143470968]
+text = "2."
+
+[node name="QuestionInput3" parent="Term&DefinitionContainer/TermContainer" unique_id=875788549 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SideAInput4" parent="MatchQuestion/TermContainer" unique_id=899464921 instance=ExtResource("1_f74h7")]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/TermContainer/QuestionInput3" index="0" unique_id=1143470968]
+text = "3."
+
+[node name="QuestionInput4" parent="Term&DefinitionContainer/TermContainer" unique_id=1806442385 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="DefinitionContainer" type="VBoxContainer" parent="MatchQuestion" unique_id=1862464513]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/TermContainer/QuestionInput4" index="0" unique_id=1143470968]
+text = "4."
+
+[node name="ArrowContainer" type="VBoxContainer" parent="Term&DefinitionContainer" unique_id=533667565]
+custom_minimum_size = Vector2(75, 0)
+custom_maximum_size = Vector2(75, -1)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Arrow" type="RichTextLabel" parent="Term&DefinitionContainer/ArrowContainer" unique_id=1170796864]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+text = "<->"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow2" type="RichTextLabel" parent="Term&DefinitionContainer/ArrowContainer" unique_id=1765548434]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+text = "<->"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow3" type="RichTextLabel" parent="Term&DefinitionContainer/ArrowContainer" unique_id=2135386146]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+text = "<->"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow4" type="RichTextLabel" parent="Term&DefinitionContainer/ArrowContainer" unique_id=1905421060]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 16
+text = "<->"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefinitionContainer" type="VBoxContainer" parent="Term&DefinitionContainer" unique_id=281902639]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
 
-[node name="SideBAnswer1" parent="MatchQuestion/DefinitionContainer" unique_id=68155071 instance=ExtResource("3_uqoj4")]
+[node name="QuestionInput" parent="Term&DefinitionContainer/DefinitionContainer" unique_id=723272589 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SideBAnswer2" parent="MatchQuestion/DefinitionContainer" unique_id=302008719 instance=ExtResource("3_uqoj4")]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/DefinitionContainer/QuestionInput" index="0" unique_id=1143470968]
+visible = false
+
+[node name="QuestionInput2" parent="Term&DefinitionContainer/DefinitionContainer" unique_id=316660680 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SideBAnswer3" parent="MatchQuestion/DefinitionContainer" unique_id=504961464 instance=ExtResource("3_uqoj4")]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/DefinitionContainer/QuestionInput2" index="0" unique_id=1143470968]
+visible = false
+
+[node name="QuestionInput3" parent="Term&DefinitionContainer/DefinitionContainer" unique_id=1711404309 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SideBAnswer4" parent="MatchQuestion/DefinitionContainer" unique_id=1231475312 instance=ExtResource("3_uqoj4")]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/DefinitionContainer/QuestionInput3" index="0" unique_id=1143470968]
+visible = false
+
+[node name="QuestionInput4" parent="Term&DefinitionContainer/DefinitionContainer" unique_id=222630023 instance=ExtResource("1_f74h7")]
 layout_mode = 2
+size_flags_vertical = 3
 
-[editable path="MatchQuestion/DefinitionContainer/SideBAnswer1"]
-[editable path="MatchQuestion/DefinitionContainer/SideBAnswer2"]
-[editable path="MatchQuestion/DefinitionContainer/SideBAnswer3"]
-[editable path="MatchQuestion/DefinitionContainer/SideBAnswer4"]
+[node name="QuestionNumber" parent="Term&DefinitionContainer/DefinitionContainer/QuestionInput4" index="0" unique_id=1143470968]
+visible = false
+
+[node name="Spacing" type="VBoxContainer" parent="Term&DefinitionContainer" unique_id=1177325796]
+custom_maximum_size = Vector2(45, -1)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="HintLabel" type="RichTextLabel" parent="." unique_id=24805023]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "The definition next to a term represents the node it should be connected with."
+fit_content = true
+horizontal_alignment = 1
+
+[editable path="Term&DefinitionContainer/TermContainer/QuestionInput"]
+[editable path="Term&DefinitionContainer/TermContainer/QuestionInput2"]
+[editable path="Term&DefinitionContainer/TermContainer/QuestionInput3"]
+[editable path="Term&DefinitionContainer/TermContainer/QuestionInput4"]
+[editable path="Term&DefinitionContainer/DefinitionContainer/QuestionInput"]
+[editable path="Term&DefinitionContainer/DefinitionContainer/QuestionInput2"]
+[editable path="Term&DefinitionContainer/DefinitionContainer/QuestionInput3"]
+[editable path="Term&DefinitionContainer/DefinitionContainer/QuestionInput4"]
