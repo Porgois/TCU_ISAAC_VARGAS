@@ -16,6 +16,8 @@ shader_parameter/shadow_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcsfc"]
 next_pass = SubResource("ShaderMaterial_fc3aw")
+diffuse_mode = 3
+specular_mode = 2
 albedo_color = Color(0.3764706, 0.17254902, 0.17254902, 1)
 
 [node name="Classroom01" type="Node3D" unique_id=364240447 node_paths=PackedStringArray("teacher_marker")]
@@ -35,17 +37,22 @@ material = ExtResource("1_8bqne")
 size = Vector3(5.926819, 5.0649414, 6.514099)
 
 [node name="Light1" type="SpotLight3D" parent="." unique_id=324591598]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.6162114, -1.2703768)
-light_energy = 16.0
-spot_range = 8.258927
-spot_angle = 30.851536
+transform = Transform3D(0.99936646, -5.0075126e-09, 0.03559205, -0.028592078, -0.59553725, 0.80281866, 0.021196386, -0.80332774, -0.5951599, 0, 2.5204957, -1.9373677)
+light_energy = 10.0
+shadow_enabled = true
+shadow_bias = 0.299
+shadow_normal_bias = 0.0
+shadow_transmittance_bias = 0.91
+spot_range = 11.167
 
 [node name="Light2" type="SpotLight3D" parent="." unique_id=1897052046]
-transform = Transform3D(1, 0, 0, 0, -0.25618824, 0.96662694, 0, -0.96662694, -0.25618824, 0, 1.3611329, 1.4844012)
-light_energy = 6.0
+transform = Transform3D(1, 0, 0, 0, 0.3391592, 0.9407289, 0, -0.9407289, 0.3391592, 0, 1.6966277, 1.4844012)
+light_energy = 3.0
 shadow_enabled = true
+shadow_bias = 0.108
+shadow_normal_bias = 10.0
 spot_range = 8.258927
-spot_angle = 42.527893
+spot_angle = 82.36128
 
 [node name="Table" type="CSGBox3D" parent="." unique_id=946492855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051361084, -1.9216084, 0.1970098)
@@ -53,4 +60,9 @@ size = Vector3(4.0751343, 1, 0.9239502)
 material = SubResource("StandardMaterial3D_lcsfc")
 
 [node name="TeacherPosMarker" type="Marker3D" parent="." unique_id=1135785776]
-transform = Transform3D(0.94721025, 0, 0.32061297, 0, 1, 0, -0.32061297, 0, 0.94721025, -1.5971414, -2.0922794, -0.89753723)
+transform = Transform3D(0.93945026, 0, 0.34268582, 0, 1.0000004, 0, -0.34268582, 0, 0.93945014, -1.5378282, -2.0074058, -0.8013252)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=304962229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1160569, -0.9600654, -1.0076795)
+light_energy = 0.25
+omni_range = 1.1884065

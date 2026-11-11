@@ -26,7 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.19434929, 0.19434926, 0.19434926, 1)
+color = Color(0.14117648, 0.08235294, 0.15294118, 1)
 
 [node name="Root" type="MarginContainer" parent="." unique_id=1893425694]
 layout_mode = 1
@@ -74,7 +74,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 45
 
 [node name="SaveButton" type="Button" parent="Root/Organizer/Buttons" unique_id=362318287 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(150, 30)
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_a81qr")
@@ -92,8 +92,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_a81qr")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -105,7 +103,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CancelButton" type="Button" parent="Root/Organizer/Buttons" unique_id=984492716 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(150, 30)
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_a81qr")
@@ -123,8 +121,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_a81qr")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2

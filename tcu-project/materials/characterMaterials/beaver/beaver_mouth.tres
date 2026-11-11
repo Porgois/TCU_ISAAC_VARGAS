@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://drfkt7m1q7l3c"]
+
+[ext_resource type="Texture2D" uid="uid://dmsmwjo8t5wrt" path="res://textures/Characters/beaver/beaver_mouth_spritesheet.png" id="1_d0ive"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_d0ive")
+metallic_specular = 0.0
+uv1_scale = Vector3(1, 0.25, 1)
+texture_filter = 0
+texture_repeat = false

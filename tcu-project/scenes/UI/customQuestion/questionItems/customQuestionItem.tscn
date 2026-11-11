@@ -40,6 +40,7 @@ theme_override_constants/separation = 5
 custom_minimum_size = Vector2(35, 20)
 layout_mode = 2
 theme = ExtResource("2_iudgs")
+theme_override_colors/default_color = Color(0.9098039, 0.75686276, 0, 1)
 theme_override_font_sizes/normal_font_size = 24
 text = "1."
 horizontal_alignment = 1

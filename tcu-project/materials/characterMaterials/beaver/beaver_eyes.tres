@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dds4uo5byo3dv"]
+
+[ext_resource type="Texture2D" uid="uid://bjwrjoq6xpxbs" path="res://textures/Characters/beaver/beaver_eyes_spritesheet.png" id="1_f3q8t"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = ExtResource("1_f3q8t")
+metallic_specular = 0.0
+uv1_scale = Vector3(1, 0.25, 1)
+texture_filter = 0
+texture_repeat = false

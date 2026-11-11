@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bguexmf7cdabl"]
 
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="1_paso4"]
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="2_lnyq6"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_lnyq6"]
 
 [node name="Button" type="Button" unique_id=362318287 node_paths=PackedStringArray("button_label")]
 custom_minimum_size = Vector2(75, 40)
@@ -25,8 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_lnyq6")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2

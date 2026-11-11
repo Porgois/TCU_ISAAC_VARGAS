@@ -30,6 +30,7 @@ runtime/balloon_path="res://scenes/ui/dialogueBaloon/balloon.tscn"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://cfpagjgcb8xwq"
 
 [editor_plugins]
 

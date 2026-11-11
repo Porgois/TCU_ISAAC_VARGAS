@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dhhu4nxotg3d0" path="res://fonts/Pixellari.ttf" id="1_nwjvr"]
 [ext_resource type="StyleBox" uid="uid://ds4yr1aui10rp" path="res://themes/styleBox/style_box_hovered.tres" id="2_lkf7m"]
 [ext_resource type="StyleBox" uid="uid://b5jnp2v8y6n3f" path="res://themes/styleBox/style_box_pressed.tres" id="3_lkf7m"]
+[ext_resource type="StyleBox" uid="uid://mxucvbeoyk1q" path="res://themes/styleBox/new_style_box.tres" id="4_nwjvr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_5pdfq"]
 content_margin_left = 0.0
@@ -14,7 +15,7 @@ grow_end = -30.0
 thickness = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2g0"]
-bg_color = Color(0.3328807, 0.33288068, 0.33288068, 1)
+bg_color = Color(0.14117648, 0.08235294, 0.15294118, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -69,7 +70,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.4, 0.4, 0.4, 1)
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -88,17 +89,55 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.25, 0.25, 0.25, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
 border_color = Color(0.175, 0.175, 0.175, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_siadc"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwjvr"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fosxa"]
+bg_color = Color(0.9098039, 0.75686276, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxkhk"]
+bg_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3xux"]
+bg_color = Color(0.62004083, 0.6200406, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [resource]
 default_font = ExtResource("1_nwjvr")
@@ -120,7 +159,7 @@ Button/fonts/font = ExtResource("1_nwjvr")
 Button/styles/disabled = ExtResource("1_het5a")
 Button/styles/focus = ExtResource("1_het5a")
 Button/styles/hover = ExtResource("2_lkf7m")
-Button/styles/normal = ExtResource("1_het5a")
+Button/styles/normal = ExtResource("4_nwjvr")
 Button/styles/pressed = ExtResource("3_lkf7m")
 HSeparator/styles/separator = SubResource("StyleBoxLine_5pdfq")
 Label/colors/font_color = Color(1, 1, 1, 1)
@@ -134,17 +173,24 @@ Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_nwjvr")
 Label/styles/focus = ExtResource("2_lkf7m")
 Label/styles/normal = ExtResource("1_het5a")
+LineEdit/colors/font_color = Color(0.9098039, 0.75686276, 0, 1)
 LineEdit/fonts/font = ExtResource("1_nwjvr")
+LineEdit/styles/focus = ExtResource("4_nwjvr")
+LineEdit/styles/normal = ExtResource("4_nwjvr")
+LineEdit/styles/read_only = ExtResource("4_nwjvr")
 MenuBar/colors/font_outline_color = Color(0, 0, 0, 1)
 MenuBar/constants/outline_size = 8
 MenuBar/font_sizes/font_size = 16
 MenuBar/fonts/font = ExtResource("1_nwjvr")
+OptionButton/colors/font_color = Color(0.9098039, 0.75686276, 0, 1)
+OptionButton/colors/font_disabled_color = Color(0.9098039, 0.75686276, 0, 0.6862745)
+OptionButton/colors/font_hover_color = Color(1, 1, 0, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_fx2g0")
 PanelContainer/styles/panel = ExtResource("1_het5a")
 PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
-PopupMenu/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-PopupMenu/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 0.8)
-PopupMenu/colors/font_hover_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/colors/font_color = Color(0.9098039, 0.75686276, 0, 1)
+PopupMenu/colors/font_disabled_color = Color(0.9098039, 0.75686276, 0, 0.6862745)
+PopupMenu/colors/font_hover_color = Color(1, 1, 0, 1)
 PopupMenu/colors/font_outline_color = Color(0, 0, 0, 1)
 PopupMenu/colors/font_separator_color = Color(0.875, 0.875, 0.875, 1)
 PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
@@ -177,7 +223,14 @@ PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_rxt7e")
 PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_rxt7e")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_x0lyq")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_rxt7e")
-RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/default_color = Color(0.9098039, 0.75686276, 0.4392157, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.25490198, 0.11372549, 0.19215687, 1)
 RichTextLabel/constants/shadow_offset_x = 2
 RichTextLabel/constants/shadow_offset_y = 2
 RichTextLabel/fonts/normal_font = ExtResource("1_nwjvr")
+TextEdit/colors/font_color = Color(0.9098039, 0.75686276, 0.4392157, 1)
+TextEdit/styles/focus = SubResource("StyleBoxFlat_siadc")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_nwjvr")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_fosxa")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_oxkhk")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_r3xux")

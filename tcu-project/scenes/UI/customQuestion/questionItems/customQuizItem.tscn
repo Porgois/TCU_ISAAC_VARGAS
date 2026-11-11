@@ -4,6 +4,13 @@
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_cae4u"]
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="4_mmmnl"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nb76o"]
+bg_color = Color(0.14117648, 0.08235294, 0.15294118, 0.7254902)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
 [node name="CustomQuizItem" type="MarginContainer" unique_id=87228360 node_paths=PackedStringArray("quiz_name", "quiz_number")]
 anchors_preset = 10
 anchor_right = 1.0
@@ -15,6 +22,7 @@ quiz_number = NodePath("MarginContainer/NumberContainer/QuizNumber")
 
 [node name="Panel" type="Panel" parent="." unique_id=1135509703]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nb76o")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1334326121]
 layout_mode = 2

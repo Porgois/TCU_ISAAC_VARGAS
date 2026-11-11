@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d16kjifwrdbxf"
-path.s3tc="res://.godot/imported/basic_mouth.png-447dcef9c7fa1b0182d991f67cb97208.s3tc.ctex"
+uid="uid://bjwrjoq6xpxbs"
+path="res://.godot/imported/beaver_eyes_spritesheet.png-56dcd5106d7a020c48e5bbd8bc95324a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "7823a1e3d993f43702bbf41a2c473a1c"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/characters/basic_mouth.png"
-dest_files=["res://.godot/imported/basic_mouth.png-447dcef9c7fa1b0182d991f67cb97208.s3tc.ctex"]
+source_file="res://textures/Characters/beaver/beaver_eyes_spritesheet.png"
+dest_files=["res://.godot/imported/beaver_eyes_spritesheet.png-56dcd5106d7a020c48e5bbd8bc95324a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

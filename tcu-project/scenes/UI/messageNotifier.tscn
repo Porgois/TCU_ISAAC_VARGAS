@@ -14,6 +14,15 @@ script = ExtResource("1_wgqkt")
 notifier_prompt = NodePath("NotifierPrompt")
 notifier_timer = NodePath("SceneSwitchTimer")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=928769188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14117648, 0.08235294, 0.15294118, 1)
+
 [node name="NotifierPrompt" type="RichTextLabel" parent="." unique_id=1034417151]
 layout_mode = 1
 anchors_preset = 8

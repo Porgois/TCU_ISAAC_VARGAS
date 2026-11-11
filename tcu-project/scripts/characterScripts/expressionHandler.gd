@@ -21,7 +21,8 @@ enum EMOTION {
 
 # React
 enum ReactionMode { ALL, POSITIVE_ONLY, NEGATIVE_ONLY, NONE }
-
+const BODY_STATE_NEUTRAL : String = "BodyAnimations_neutral_body"
+const BODY_STATE_ANGRY : String = "BodyAnimations_angry_body"
 var current_emotion : EMOTION = EMOTION.NEUTRAL
 
 func _ready() -> void:
@@ -30,10 +31,6 @@ func _ready() -> void:
 	
 	# Set blink state
 	play_blink_animation()
-	
-	# Bind animation_finished signal
-	if body_animation_tree:
-		body_animation_tree.animation_finished.connect(_on_body_animation_finished)
 
 #region BASICS
 
@@ -146,16 +143,19 @@ func play_body_animation():
 		printerr("[EXPRESSION HANDLER] Error: No body animation tree has been set!\n")
 		return
 	
-	# Reset all condition flags
-	body_animation_tree.set("parameters/conditions/is_angry", false)
+	var playback := body_animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
+	if playback == null:
+		printerr("[EXPRESSION HANDLER] Error: Body animation tree has no state machine playback!\n")
+		return
 	
-	# Set condition flag based on emotion
-	# For now, any abnormal state (not neutral) will go back to neutral after finishing the animation
-	match current_emotion: # Animation plays automatically
+	# start() jumps straight to the state and restarts it from the beginning,
+	# so it works even if the animation was already playing
+	match current_emotion:
 		EMOTION.ANGRY:
-			body_animation_tree.set("parameters/conditions/is_angry", true)
-		EMOTION.NEUTRAL: # Take all the values back to default
-			body_animation_tree.set("parameters/conditions/is_angry", false)
+			playback.start(BODY_STATE_ANGRY)
+		EMOTION.NEUTRAL:
+			playback.start(BODY_STATE_NEUTRAL)
+
 #endregion
 
 #region SIGNALS
@@ -168,11 +168,5 @@ func _on_blink_timer_timeout() -> void:
 	# Timer reset
 	setRandomTimerTime()
 	blink_timer.start()
-
-# Stops not-neutral body animations from playing more than once
-func _on_body_animation_finished(animation_name : String = ""):
-	# Only play once if not neutral
-	if animation_name != "BodyAnimations/neutral_body":
-		body_animation_tree.set("parameters/conditions/is_angry", false) # Expand this to include more animations later on
 
 #endregion

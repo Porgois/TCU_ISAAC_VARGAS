@@ -6,7 +6,7 @@ extends Control
 @export var load_button: GeneralButton = null
 
 const TEMPLATES_PATH: String = "res://csvImports/templates/"
-const COLOR_NORMAL: Color = Color("f2f2f2")
+const COLOR_NORMAL: Color = Color("e8c170")
 const COLOR_DIM: Color = Color("505057ff")
 
 var general_button_scene: PackedScene = preload("res://scenes/ui/generalButton.tscn")

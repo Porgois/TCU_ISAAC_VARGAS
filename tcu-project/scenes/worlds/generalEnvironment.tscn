@@ -4,10 +4,8 @@
 [ext_resource type="Script" uid="uid://dxnxqv57k2tve" path="res://scripts/randomizerScripts/gameRandomizer.gd" id="2_8txxy"]
 [ext_resource type="Shader" uid="uid://70tcvy0thkk0" path="res://shaders/palette_limit.gdshader" id="2_nwccu"]
 [ext_resource type="Texture2D" uid="uid://lpgeoat2thq8" path="res://palettes/apollo-1x.png" id="3_ywcxp"]
-[ext_resource type="PackedScene" uid="uid://mpqauwiwugfq" path="res://scenes/characters/characterSonia.tscn" id="4_3c35o"]
 [ext_resource type="PackedScene" uid="uid://ba10ucc1glbb4" path="res://scenes/characters/characterLarry.tscn" id="4_xvxtd"]
 [ext_resource type="PackedScene" uid="uid://dnr33ho588upi" path="res://scenes/worlds/classrooms/classroom01.tscn" id="5_ywcxp"]
-[ext_resource type="PackedScene" uid="uid://dfg7b3cjlc81d" path="res://scenes/worlds/classrooms/classroom02.tscn" id="6_xvxtd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72wqw"]
 shader = ExtResource("2_nwccu")
@@ -22,8 +20,8 @@ game_randomizer = NodePath("GameRandomizer")
 
 [node name="GameRandomizer" type="Node" parent="." unique_id=2105243125]
 script = ExtResource("2_8txxy")
-teacher_scenes = Array[PackedScene]([ExtResource("4_xvxtd"), ExtResource("4_3c35o")])
-classroom_scenes = Array[PackedScene]([ExtResource("5_ywcxp"), ExtResource("6_xvxtd")])
+teacher_scenes = Array[PackedScene]([ExtResource("4_xvxtd")])
+classroom_scenes = Array[PackedScene]([ExtResource("5_ywcxp")])
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=532407072]
 texture_filter = 1
@@ -33,14 +31,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
-stretch_shrink = 4
+stretch_shrink = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=947803597]
 handle_input_locally = false
 anisotropic_filtering_level = 0
 audio_listener_enable_2d = true
 audio_listener_enable_3d = true
-size = Vector2i(288, 162)
+size = Vector2i(384, 216)
 render_target_update_mode = 4
 
 [node name="PaletteLimit" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1868509388]
@@ -54,7 +52,9 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1493793670]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.82051265, 2.9977655)
-fov = 45.0
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, -0.0642699, 3.1902251)
+fov = 50.0
+near = 0.001
+far = 300.0
 
 [node name="Level" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1608691538]

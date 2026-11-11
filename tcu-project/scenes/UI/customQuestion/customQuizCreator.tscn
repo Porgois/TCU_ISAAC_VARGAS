@@ -6,14 +6,6 @@
 [ext_resource type="Script" uid="uid://cims2j86e22sk" path="res://scripts/uiScripts/generalButton.gd" id="4_daqpn"]
 [ext_resource type="StyleBox" uid="uid://37y4uxpv7nuu" path="res://themes/default_style_box_line.tres" id="5_fosxa"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_daqpn"]
-content_margin_left = 20.0
-bg_color = Color(0.19793722, 0.19793725, 0.19793713, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3xux"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwjvr"]
@@ -33,6 +25,15 @@ script = ExtResource("1_lnrtv")
 total_question_label = NodePath("MarginContainer/GeneralContainer/QuestionCount&Button/TotalQuestions")
 creator_container = NodePath("MarginContainer/GeneralContainer/ScrollContainer/CreatorContainer")
 quiz_name_text = NodePath("MarginContainer/GeneralContainer/QuizTitle")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=957883085]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25490198, 0.11372549, 0.19215687, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=322169514]
 layout_mode = 1
@@ -60,11 +61,12 @@ fit_content = true
 vertical_alignment = 1
 
 [node name="QuizTitle" type="LineEdit" parent="MarginContainer/GeneralContainer" unique_id=1215988054]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_daqpn")
+theme_override_colors/selection_color = Color(0.9098039, 0.75686276, 0, 0.5529412)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_daqpn")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_r3xux")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nwjvr")
 placeholder_text = "Enter quiz title here..."
@@ -102,8 +104,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_daqpn")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -117,6 +117,7 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/GeneralContainer" unique_id=797608835]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_daqpn")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vimvy")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p33t8")
 
@@ -141,7 +142,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 20
 
 [node name="SaveButton" type="Button" parent="MarginContainer/GeneralContainer/Buttons" unique_id=606986739 node_paths=PackedStringArray("button_label")]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_daqpn")
@@ -159,8 +160,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_daqpn")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -180,6 +179,7 @@ script = ExtResource("4_daqpn")
 button_label = NodePath("ButtonLabel")
 
 [node name="ButtonLabel" type="RichTextLabel" parent="MarginContainer/GeneralContainer/Buttons/CancelButton" unique_id=1855106194]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -190,8 +190,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_daqpn")
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do3dvf0rig4sa"
-path="res://.godot/imported/TestCharacter_basic_eyes.png-97cce39b9a755ba12e61b5ff8a919a38.ctex"
+path="res://.godot/imported/TestCharacter_basic_eyes.png-cd7186197e6f6ae9bd43631004c21bad.ctex"
 metadata={
 "vram_texture": false
 }
@@ -13,8 +13,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/characters/TestCharacter_basic_eyes.png"
-dest_files=["res://.godot/imported/TestCharacter_basic_eyes.png-97cce39b9a755ba12e61b5ff8a919a38.ctex"]
+source_file="res://models/characters/test/TestCharacter_basic_eyes.png"
+dest_files=["res://.godot/imported/TestCharacter_basic_eyes.png-cd7186197e6f6ae9bd43631004c21bad.ctex"]
 
 [params]
 

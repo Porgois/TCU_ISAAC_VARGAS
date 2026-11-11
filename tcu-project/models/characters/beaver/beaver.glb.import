@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://fx7q2771sc5v"
-path="res://.godot/imported/TestCharacter.glb-d580d7793c8184a2209d476af266de84.scn"
+uid="uid://brhwku1fvjdkr"
+path="res://.godot/imported/beaver.glb-c24a6b39ce4ad051b21ca2534046e9aa.scn"
 
 [deps]
 
-source_file="res://models/characters/TestCharacter.glb"
-dest_files=["res://.godot/imported/TestCharacter.glb-d580d7793c8184a2209d476af266de84.scn"]
+source_file="res://models/characters/beaver/beaver.glb"
+dest_files=["res://.godot/imported/beaver.glb-c24a6b39ce4ad051b21ca2534046e9aa.scn"]
 
 [params]
 
@@ -41,20 +41,20 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "materials": {
-"m_capsule": {
+"m_beaver_fur": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/basicMaterials/basic_material.tres",
-"use_external/path": "uid://brrhsut0tp76v"
+"use_external/fallback_path": "res://materials/characterMaterials/beaver/beaver_fur.tres",
+"use_external/path": "uid://b7n0t1fu18gpk"
+},
+"m_beaver_mouth": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://materials/characterMaterials/beaver/beaver_mouth.tres",
+"use_external/path": "uid://drfkt7m1q7l3c"
 },
 "m_eyes": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/characterMaterials/Expressions/BaseEyes.tres",
-"use_external/path": "uid://ddwnvu6mbflbv"
-},
-"m_mouth": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://materials/characterMaterials/Expressions/BaseMouth.tres",
-"use_external/path": "uid://bj7lxnt1m3jbt"
+"use_external/fallback_path": "res://materials/characterMaterials/beaver/beaver_eyes.tres",
+"use_external/path": "uid://dds4uo5byo3dv"
 }
 }
 }
