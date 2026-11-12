@@ -17,3 +17,11 @@ func setVoiceReader(reader : VoiceReader = null):
 
 func setExpressionHandler(e_handler : ExpressionHandler = null):
 	self.expression_handler = e_handler
+
+#region EXPRESSION_HANDLER
+
+func resetExpression():
+	if expression_handler:
+		expression_handler.triggerNeutralReaction()
+
+#endregion

@@ -81,6 +81,9 @@ func promptInput() -> void:
 
 #region QUIZ
 
+func resetValues():
+	setDisplayedName("Teacher")
+
 func setQuiz(quiz: Quiz) -> void:
 	current_quiz = quiz
 	print("[QUIZ MANAGER] Quiz \"%s\" loaded successfully!" % quiz.quiz_name)
@@ -167,7 +170,6 @@ func askQuestion(question_index: int = 0, reaction_mode : ExpressionHandler.Reac
 func askRandomQuestion() -> QuestionHandler.QuestionResult:
 	return await askQuestion(randi() % questions.size())
 
-# Ask any question in the baloon, handling teacher feedback and returns the result
 # Ask any question in the balloon, handling teacher feedback and returns the result
 func presentQuestion(question : Question, reaction_mode : ExpressionHandler.ReactionMode = ExpressionHandler.ReactionMode.ALL) -> QuestionHandler.QuestionResult:
 	var result : QuestionHandler.QuestionResult = await getHandler().handleQuestion(question)

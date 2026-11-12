@@ -5,14 +5,44 @@
 [ext_resource type="StyleBox" uid="uid://ds4yr1aui10rp" path="res://themes/styleBox/style_box_hovered.tres" id="2_lkf7m"]
 [ext_resource type="StyleBox" uid="uid://b5jnp2v8y6n3f" path="res://themes/styleBox/style_box_pressed.tres" id="3_lkf7m"]
 [ext_resource type="StyleBox" uid="uid://mxucvbeoyk1q" path="res://themes/styleBox/new_style_box.tres" id="4_nwjvr"]
+[ext_resource type="StyleBox" uid="uid://37y4uxpv7nuu" path="res://themes/default_style_box_line.tres" id="5_r3xux"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_5pdfq"]
-content_margin_left = 0.0
-content_margin_top = 100.0
-color = Color(1, 1, 1, 0.29411766)
-grow_begin = -30.0
-grow_end = -30.0
-thickness = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n85q8"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 0.88235295)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="DPITexture" id="DPITexture_4775a"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" fill-opacity=\".75\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvobe"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 0.7254902)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1oap"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.20392157, 0.10980392, 0.15294118, 0.5686275)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2g0"]
 bg_color = Color(0.14117648, 0.08235294, 0.15294118, 1)
@@ -140,7 +170,6 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [resource]
-default_font = ExtResource("1_nwjvr")
 AcceptDialog/constants/buttons_min_width = 200
 Button/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0.47058824)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -157,11 +186,11 @@ Button/constants/shadow_offset_y = 2
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_nwjvr")
 Button/styles/disabled = ExtResource("1_het5a")
-Button/styles/focus = ExtResource("1_het5a")
-Button/styles/hover = ExtResource("2_lkf7m")
+Button/styles/focus = ExtResource("4_nwjvr")
+Button/styles/hover = SubResource("StyleBoxFlat_n85q8")
 Button/styles/normal = ExtResource("4_nwjvr")
 Button/styles/pressed = ExtResource("3_lkf7m")
-HSeparator/styles/separator = SubResource("StyleBoxLine_5pdfq")
+HSeparator/styles/separator = ExtResource("5_r3xux")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -173,10 +202,23 @@ Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_nwjvr")
 Label/styles/focus = ExtResource("2_lkf7m")
 Label/styles/normal = ExtResource("1_het5a")
-LineEdit/colors/font_color = Color(0.9098039, 0.75686276, 0, 1)
+LineEdit/colors/caret_color = Color(1, 1, 0, 1)
+LineEdit/colors/clear_button_color = Color(0.875, 0.875, 0.875, 1)
+LineEdit/colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+LineEdit/colors/font_color = Color(0.9098039, 0.75686276, 0.4392157, 1)
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0.9098039, 0.75686276, 0, 0.7254902)
+LineEdit/colors/font_selected_color = Color(0.9098039, 0.75686276, 0, 1)
+LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 0.5)
+LineEdit/colors/selection_color = Color(0.9098039, 0.75686276, 0, 0.6862745)
+LineEdit/constants/caret_width = 1
+LineEdit/constants/minimum_character_width = 4
+LineEdit/constants/outline_size = 0
+LineEdit/font_sizes/font_size = 16
 LineEdit/fonts/font = ExtResource("1_nwjvr")
-LineEdit/styles/focus = ExtResource("4_nwjvr")
-LineEdit/styles/normal = ExtResource("4_nwjvr")
+LineEdit/icons/clear = SubResource("DPITexture_4775a")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_pvobe")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_j1oap")
 LineEdit/styles/read_only = ExtResource("4_nwjvr")
 MenuBar/colors/font_outline_color = Color(0, 0, 0, 1)
 MenuBar/constants/outline_size = 8

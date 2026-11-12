@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dg0wrha02cbad" path="res://scripts/uiScripts/genericPrompter.gd" id="1_25yha"]
 [ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="2_tfub3"]
-[ext_resource type="StyleBox" uid="uid://dyvu075fdxj8u" path="res://themes/styleBox/style_box_normal.tres" id="3_4g86b"]
 [ext_resource type="PackedScene" uid="uid://bguexmf7cdabl" path="res://scenes/ui/generalButton.tscn" id="4_uuai0"]
 
 [node name="GenericPrompter" type="Control" unique_id=717873203 node_paths=PackedStringArray("guide_text", "guide_text_show_timer")]
@@ -63,11 +62,7 @@ offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_tfub3")
-theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("3_4g86b")
-theme_override_styles/read_only = ExtResource("3_4g86b")
-theme_override_styles/focus = ExtResource("3_4g86b")
 placeholder_text = "Placeholder"
 alignment = 1
 

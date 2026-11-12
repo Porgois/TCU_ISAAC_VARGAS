@@ -13,28 +13,38 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 20)
 script = ExtResource("1_4gebg")
-results_container = NodePath("Results/ResultsContainer")
+results_container = NodePath("Margins/Root/Results/ResultsContainer")
 
-[node name="Header" type="Control" parent="." unique_id=498019892]
+[node name="Margins" type="MarginContainer" parent="." unique_id=382688126]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 65.0
-offset_bottom = 65.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="SummaryHolder" type="HBoxContainer" parent="Header" unique_id=1331620050]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -409.25
-offset_right = 409.25
-offset_bottom = 46.0
-grow_horizontal = 2
+[node name="Root" type="VBoxContainer" parent="Margins" unique_id=994038642]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Type" type="RichTextLabel" parent="Header/SummaryHolder" unique_id=1161460106]
+[node name="TitleText" type="RichTextLabel" parent="Margins/Root" unique_id=2126431389]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("1_xbbp2")
+theme_override_font_sizes/normal_font_size = 26
+text = "RESULTS"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="SummaryHolder" type="HBoxContainer" parent="Margins/Root" unique_id=1331620050]
+layout_mode = 2
+
+[node name="Type" type="RichTextLabel" parent="Margins/Root/SummaryHolder" unique_id=1161460106]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -45,7 +55,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuestionText" type="RichTextLabel" parent="Header/SummaryHolder" unique_id=2072462185]
+[node name="QuestionText" type="RichTextLabel" parent="Margins/Root/SummaryHolder" unique_id=2072462185]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -56,7 +66,7 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Correct" type="RichTextLabel" parent="Header/SummaryHolder" unique_id=304488155]
+[node name="Correct" type="RichTextLabel" parent="Margins/Root/SummaryHolder" unique_id=304488155]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
@@ -66,48 +76,11 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Title" type="Control" parent="." unique_id=1297654575]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 25.0
-offset_bottom = 25.0
-grow_horizontal = 2
-
-[node name="TitleText" type="RichTextLabel" parent="Title" unique_id=2126431389]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -124.5
-offset_right = 124.5
-offset_bottom = 46.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-theme = ExtResource("1_xbbp2")
-theme_override_font_sizes/normal_font_size = 26
-text = "RESULTS"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Results" type="ScrollContainer" parent="." unique_id=1811913013]
+[node name="Results" type="ScrollContainer" parent="Margins/Root" unique_id=1811913013]
 custom_minimum_size = Vector2(400, 475)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -378.0
-offset_top = -223.0
-offset_right = 378.0
-offset_bottom = 252.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
-[node name="ResultsContainer" type="VBoxContainer" parent="Results" unique_id=250922357]
+[node name="ResultsContainer" type="VBoxContainer" parent="Margins/Root/Results" unique_id=250922357]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -115,24 +88,16 @@ theme = ExtResource("1_xbbp2")
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="ContinueButton" parent="." unique_id=419576029 instance=ExtResource("2_xbbp2")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -81.5
-offset_top = -55.0
-offset_right = 81.5
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="ContinueButton" parent="Margins/Root" unique_id=419576029 instance=ExtResource("2_xbbp2")]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 
-[node name="ButtonLabel" parent="ContinueButton" index="0" unique_id=1101348109]
+[node name="ButtonLabel" parent="Margins/Root/ContinueButton" index="0" unique_id=1101348109]
 text = "Continue
 "
 
-[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Margins/Root/ContinueButton" to="." method="_on_continue_button_pressed"]
 
-[editable path="ContinueButton"]
+[editable path="Margins/Root/ContinueButton"]

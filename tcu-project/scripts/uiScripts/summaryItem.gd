@@ -1,5 +1,5 @@
 class_name SummaryItem
-extends Node
+extends HBoxContainer
 
 @export var type_text : RichTextLabel
 @export var question_text : RichTextLabel

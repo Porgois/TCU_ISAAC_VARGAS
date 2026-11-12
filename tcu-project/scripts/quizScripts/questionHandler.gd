@@ -153,7 +153,7 @@ func handleMatchQuestion(question: Question) -> QuestionResult:
 # SA/COMPLETION helper
 func _promptForText(placeholder: String = "Type your answer...", question_content : String = "") -> String:
 	if prompter_scene == null or ui_container == null:
-		printerr("QuestionHandler: no prompter_scene/ui_container configured for free-text questions.")
+		printerr("[QUESTION HANDLER] No prompter_scene/ui_container configured for free-text questions!\n")
 		return ""
 
 	var prompter : GenericPrompter = prompter_scene.instantiate()

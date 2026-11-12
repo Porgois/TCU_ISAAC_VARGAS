@@ -19,10 +19,11 @@ enum EMOTION {
 	HAPPY # 3
 }
 
-# React
+# Reactions
 enum ReactionMode { ALL, POSITIVE_ONLY, NEGATIVE_ONLY, NONE }
-const BODY_STATE_NEUTRAL : String = "BodyAnimations_neutral_body"
-const BODY_STATE_ANGRY : String = "BodyAnimations_angry_body"
+const BODY_STATE_NEUTRAL : String = "Body_neutral"
+const BODY_STATE_ANGRY : String = "Body_angry"
+const BODY_STATE_HAPPY : String = "Body_happy"
 var current_emotion : EMOTION = EMOTION.NEUTRAL
 
 func _ready() -> void:
@@ -49,7 +50,7 @@ func reactToResult(mode : ReactionMode, correct : bool) -> bool:
 	if not shouldReact(mode, correct):
 		return false
 	if correct:
-		triggerNeutralReaction()
+		triggerPositiveReaction()
 	else:
 		triggerNegativeReaction()
 	return true
@@ -73,10 +74,12 @@ func shouldReact(mode : ReactionMode, correct : bool) -> bool:
 func triggerPositiveReaction():
 	changeEmotion(EMOTION.HAPPY)
 	play_eye_animation()
+	play_body_animation()
 
 func triggerNeutralReaction():
 	changeEmotion(EMOTION.NEUTRAL)
 	play_eye_animation()
+	play_body_animation()
 
 func triggerNegativeReaction():
 	changeEmotion(EMOTION.ANGRY)
@@ -97,6 +100,8 @@ func play_eye_animation():
 	match current_emotion:
 		EMOTION.NEUTRAL:
 			animation_prefix = "neutral"
+		EMOTION.HAPPY:
+			animation_prefix = "happy"
 		EMOTION.ANGRY:
 			animation_prefix = "angry"
 	
@@ -117,8 +122,9 @@ func play_blink_animation():
 		EMOTION.ANGRY:
 			animation_prefix = "angry"
 	
-	# Play animation
-	eye_animator.play("EyeAnimations/" + animation_prefix + "_blink")
+	# Play animation (only play if it exists)
+	if eye_animator.has_animation("EyeAnimations/" + animation_prefix + "_blink"):
+		eye_animator.play("EyeAnimations/" + animation_prefix + "_blink")
 
 # Play speak animation according to emotion
 func play_speak_animation():
@@ -131,6 +137,8 @@ func play_speak_animation():
 	match current_emotion:
 		EMOTION.NEUTRAL:
 			animation_prefix = "neutral"
+		EMOTION.HAPPY:
+			animation_prefix = "happy"
 		EMOTION.ANGRY:
 			animation_prefix = "angry"
 	
@@ -142,19 +150,22 @@ func play_body_animation():
 	if body_animation_tree == null:
 		printerr("[EXPRESSION HANDLER] Error: No body animation tree has been set!\n")
 		return
-	
+
 	var playback := body_animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 	if playback == null:
 		printerr("[EXPRESSION HANDLER] Error: Body animation tree has no state machine playback!\n")
 		return
-	
-	# start() jumps straight to the state and restarts it from the beginning,
-	# so it works even if the animation was already playing
+
 	match current_emotion:
-		EMOTION.ANGRY:
-			playback.start(BODY_STATE_ANGRY)
 		EMOTION.NEUTRAL:
-			playback.start(BODY_STATE_NEUTRAL)
+			body_animation_tree.set("parameters/conditions/to_neutral", true)
+		EMOTION.HAPPY:
+			body_animation_tree.set("parameters/conditions/to_neutral", false)
+			playback.start(BODY_STATE_HAPPY)
+		EMOTION.ANGRY:
+			body_animation_tree.set("parameters/conditions/to_neutral", false)
+			playback.start(BODY_STATE_ANGRY)
+	
 
 #endregion
 

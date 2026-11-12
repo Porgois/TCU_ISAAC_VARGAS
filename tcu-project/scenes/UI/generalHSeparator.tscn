@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://dltoj5xw62gy5"]
 
-[ext_resource type="Theme" uid="uid://djf3puxs4e6pe" path="res://themes/default_theme.tres" id="1_htwok"]
+[ext_resource type="Theme" uid="uid://uoiby3l5h8v" path="res://themes/default_theme.tres" id="1_htwok"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_htwok"]
+color = Color(0.14117648, 0.08235294, 0.15294118, 0.33333334)
+grow_begin = -125.0
+grow_end = -125.0
+thickness = 5
 
 [node name="HSeparator" type="HSeparator" unique_id=1924160153]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -1.5
-offset_right = 1.5
-offset_bottom = 4.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
 grow_horizontal = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme = ExtResource("1_htwok")
 theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_htwok")
